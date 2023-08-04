@@ -33,7 +33,7 @@
 \title[\sc{Complexidade de Algoritmos}]{Complexidade de Algoritmos}
 \author[Roland Teodorowitsch]{Roland Teodorowitsch}
 \institute[ALEST I - EP - PUCRS]{Algoritmos e Estruturas de Dados I - Escola Politécnica - PUCRS}
-\date{2	 de agosto de 2023}
+\date{3 de agosto de 2023}
 
 \begin{document}
 \justifying
@@ -87,7 +87,7 @@
 \begin{frame}\frametitle{Sumário}
 \begin{itemize}
 	\item Complexidade e análise de algoritmos
-	\item Contando o tempo
+	\item Medindo o tempo
 	\item Contagem de operações
 	\item Funções
 \end{itemize}
@@ -134,7 +134,7 @@
 \end{frame}
 
 %=======================================================
-\section{Contando o tempo}
+\section{Medindo o tempo}
 
 %-------------------------------------------------------
 \begin{frame}\frametitle{Tempo de processamento}
@@ -171,8 +171,8 @@ struct timeval antes, depois;
 gettimeofday(&antes, NULL);
 // algoritmo a ser medido...
 gettimeofday(&depois, NULL);
-unsigned long ms = (depois.tv_sec  - antes.tv_sec) * 1000000 +
-                    depois.tv_usec - antes.tv_usec;
+unsigned long us = (depois.tv_sec  - antes.tv_sec) * 1000000 +
+                   depois.tv_usec - antes.tv_usec;
 \end{lstlisting}}
 
 \end{itemize}
@@ -182,17 +182,9 @@ unsigned long ms = (depois.tv_sec  - antes.tv_sec) * 1000000 +
 \begin{frame}[fragile]\frametitle{Exemplo: Pesquisa Linear}
 \begin{itemize}
 	\item A função abaixo recebe um arranjo, o seu tamanho e um valor a ser localizado, e retorna a posição do valor no arranjo (ou -1 se não achar)
-{\scriptsize
-\begin{lstlisting}
-int localiza(int *dados, int tam, int valor) {
-  for (int pos=0; pos<tam; pos++)
-      if (valor == dados[pos])
-         return pos;
-  return -1;
-}
-\end{lstlisting}}
+{\small\lstinputlisting{pesquisa_linear/pesquisa_linear.c}}
 	\item Melhor caso: o valor procurado é o primeiro elemento do arranjo
-	\item Pior caso: o valor procurado é o último elemento do arranjo
+	\item Pior caso: o valor procurado NÃO existe no arranjo
 	\item O arranjo precisa estar ordenado?\\
 	\pause
 	\textbf{NÃO}
@@ -203,31 +195,7 @@ int localiza(int *dados, int tam, int valor) {
 \begin{frame}[fragile]\frametitle{Exemplo: Pesquisa Linear}
 \begin{itemize}
 	\item Para visualizar como o algoritmo se comporta (``entender'' a sua complexidade), executa-se a função com valores crescentes de arranjo
-{\tiny
-\begin{lstlisting}
-#define INI 1000000
-#define FIM 8000000
-#define INC 10000
-
-int main() {
-  struct timeval antes, depois;
-  int *vetor = malloc( sizeof(int) * FIM );
-  if (vetor == NULL) return 1;
-  for (int pos=0; pos<FIM; pos++) //preenche o vetor
-      vetor[pos] = pos;
-  for (int total=INI; total<=FIM; total+=INC) {
-      gettimeofday(&antes, NULL);
-      int loc = localiza(vetor, total, total-1); //pior caso: ultimo elem
-      gettimeofday(&depois, NULL);
-      if (loc != total-1) return 1;
-      unsigned long microssegundos = (depois.tv_sec - antes.tv_sec) * 1000000 +
-                                     depois.tv_usec - antes.tv_usec;
-      printf("%d %lu\n", total, microssegundos	);
-  }
-  free(vetor);
-  return 0;
-}
-\end{lstlisting}}
+{\fontsize{0}{6.4}\selectfont\lstinputlisting{pesquisa_linear/main.c}}
 \end{itemize}
 \end{frame}
 
@@ -236,55 +204,127 @@ int main() {
 \vspace{-5mm}
 \begin{columns}[T]
 \begin{column}{0.2\linewidth}{\tiny
-\begin{verbatim}
-1000000 2752
-1010000 2794
-1020000 2809
-1030000 2796
-1040000 2744
-1050000 2753
-1060000 2774
-1070000 2752
-1080000 2755
-1090000 2780
-1100000 2703
-1110000 2685
-1120000 2707
-1130000 2732
-1140000 2757
-1150000 2786
-1160000 2805
-1170000 2837
-1180000 2855
-1190000 2876
-1200000 2900
-1210000 2892
-...	
-\end{verbatim}
+\verbatiminput{pucrs-ec-poo-unidade_01-complexidade_de_algoritmos-laminas-inicio_curva_pesquisa_linear.txt}
 }
 \end{column}
 \begin{column}{0.8\linewidth}
 \begin{figure}[h]
 	\centering
-	\includegraphics[height=0.65\paperheight]{pucrs-ec-poo-unidade_01-complexidade_de_algoritmos-laminas-grafico6.jpg}
+	\includegraphics[height=0.65\paperheight]{pucrs-ec-poo-unidade_01-complexidade_de_algoritmos-laminas-grafico_pesquisa_linear.jpg}
 \end{figure}
 \end{column}
 \end{columns}
+\end{frame}
+
+%-------------------------------------------------------
+\begin{frame}[fragile]\frametitle{Exemplo: Pesquisa Linear (Considerações)}
 \begin{itemize}
+	\item Considerando o algoritmo e a sua implementação, que tipo de curva de desempenho seria possível esperar?
+	\item É possível visualizar a curva esperada no gráfico obtido?
 	\item Qual a origem das variações do tempo de execução?
 \end{itemize}
 \end{frame}
 
 %-------------------------------------------------------
-\begin{frame}[fragile]\frametitle{Exercício: \emph{BubbleSort}}
+\begin{frame}[fragile]\frametitle{Exercício 1: \emph{Bubble Sort} (Linux)}
 \begin{itemize}
-	\item Considere o algoritmo de ordenação \emph{BubbleSort}, incluindo eventuais variações
-	\item Implemente-o com eventuais variações e após a sua aplicação acrescente um código para verificar se a ordenação funcionou
-	\item Escolha uma faixa de tamanhos para avaliar cada implementação e também uma unidade de tempo (ms, us ou ns)
-	\item Para cada tamanho de arranjo, gere um array com elementos diferentes, em ordem decrescente do maior valor para o menor
-	\item Gere os gráficos de desempenho de cada implementação
-	\item Gere gráficos também para arranjo já ordenado e arranjo com valores aleatórios
+	\item Implemente o algoritmo de ordenação \emph{BubbleSort}, por exemplo, a partir do pseudocódigo disponível na Wikipedia (\url{https://pt.wikipedia.org/wiki/Bubble_sort}) -- use o seguinte protótipo como modelo:
+{\scriptsize
+\begin{lstlisting}
+void bubble_sort(int *dados, int tam);
+\end{lstlisting}}
+	\item Acrescente a sua implementação ao código da próxima página
+	\begin{itemize}
+		\item Este código trabalha com n variando de 1000 até 10000 com incremento 10, e medindo o tempo em microssegundos
+	\end{itemize}
+	\item Gere o gráfico de desempenho a partir da execução
+	\begin{itemize}
+		\item Salve seu código em um arquivo chamado \texttt{bubble\_sort.c} e compile-o usando:\\
+		\texttt{gcc -o bubble\_sort bubble\_sort.c}
+		\item Execute o programa direcionando a sua saída para um arquivo chamado \texttt{curva1.txt}:\\
+		\texttt{./bubble\_sort \textgreater curva1.txt}
+		\item Use o \textbf{GNUPLOT} para visualizar o arquivo \texttt{curva1.txt} (dicas nas próximas páginas)
+	\end{itemize}
 \end{itemize}
+\end{frame}
+
+%-------------------------------------------------------
+\begin{frame}[fragile]\frametitle{Exercício 1: \emph{Bubble Sort} (código da função \texttt{main()})}
+{\fontsize{0}{6}\selectfont\lstinputlisting{bubble_sort/main.c}}
+\end{frame}
+
+%-------------------------------------------------------
+\begin{frame}[fragile]\frametitle{Exercício 1: \emph{Bubble Sort} (dicas sobre \textbf{GNUPLOT})}
+\begin{itemize}
+	\item \textbf{GNUPLOT} é um aplicativo para gerar gráficos, disponível em várias plataformas
+	\item Para mostrar, por exemplo, o gráfico correspondente aos dados armazenados no arquivo \texttt{curva1.txt} em uma janela, executa-se o \textbf{GNUPLOT} (\texttt{gnuplot}) e digita-se os seguintes comandos:
+{\scriptsize
+\begin{verbatim}
+set xlabel "n" font "Arial,16"
+set ylabel "t(us)" font "Arial,16"
+plot "curva1.txt" with lines title "bubble\\_sort()"
+\end{verbatim}
+}
+	\item Para gerar um arquivo JPEG com o conteúdo do gráfico, pode-se usar os seguintes comandos:
+{\scriptsize
+\begin{verbatim}
+set terminal jpeg
+set output "grafico1.jpg"
+set xlabel "n" font "Arial,16"
+set ylabel "t(us)" font "Arial,16"
+plot "curva1.txt" with lines title "bubble\\_sort()"
+\end{verbatim}
+}
+\end{itemize}
+\end{frame}
+
+%-------------------------------------------------------
+\begin{frame}[fragile]\frametitle{Solução 1: \emph{Bubble Sort} (primeira implementação)}
+{\scriptsize\lstinputlisting{bubble_sort/bubble_sort1.c}}
+\end{frame}
+
+%-------------------------------------------------------
+\begin{frame}[fragile]\frametitle{Solução 1: \emph{Bubble Sort} (gráfico da primeira implementação)}
+\begin{figure}[h]
+	\centering
+	\includegraphics[height=0.75\paperheight]{pucrs-ec-poo-unidade_01-complexidade_de_algoritmos-laminas-grafico_bubble_sort1.jpg}
+\end{figure}
+\end{frame}
+
+%-------------------------------------------------------
+\begin{frame}[fragile]\frametitle{Exercício 2: \emph{Bubble Sort} otimizado}
+\begin{itemize}
+	\item A versão sugerida para implementação do \emph{Bubble Sort} tem um problema:
+	\begin{itemize}
+		\item Depois de executar uma passagem, o maior elemento é ``empurrado'' para a sua posição
+		\item E: as passagens seguintes continuam ``tentado'' empurrar o maior elemento para o final
+	\end{itemize}
+	\item A solução consiste em diminuir gradualmente o tamanho até onde cada passagem é executada
+	\item Implemente esta solução e compare o seu desempenho com a versão anterior
+\end{itemize}
+\end{frame}
+
+%-------------------------------------------------------
+\begin{frame}[fragile]\frametitle{Solução 2: \emph{Bubble Sort} otimizado}
+{\scriptsize\lstinputlisting{bubble_sort/bubble_sort2.c}}
+\end{frame}
+
+%-------------------------------------------------------
+\begin{frame}[fragile]\frametitle{Solução 2: \emph{Bubble Sort} otimizado (comandos do \texttt{gnuplot})}
+\begin{verbatim}
+set xlabel "n" font "Arial,16"
+set ylabel "t(us)" font "Arial,16"
+plot "curva1.txt" with lines title "Bubble Sort",
+     "curva2.txt" with lines title "Bubble Sort Otimizado"
+\end{verbatim}
+\end{frame}
+
+%-------------------------------------------------------
+\begin{frame}[fragile]\frametitle{Solução 2: \emph{Bubble Sort} (gráfico das duas implementações)}
+\begin{figure}[h]
+	\centering
+	\includegraphics[height=0.75\paperheight]{pucrs-ec-poo-unidade_01-complexidade_de_algoritmos-laminas-grafico_bubble_sort2.jpg}
+\end{figure}
 \end{frame}
 
 %-------------------------------------------------------
@@ -303,8 +343,8 @@ int main() {
 %-------------------------------------------------------
 \begin{frame}\frametitle{Análise de algoritmos}
 \begin{itemize}
-	\item Não pode considerar o tempo de execução
-	\item Deve ser feita diretamente sobre o pseudocódigo de alto nível
+	\item Não considera o tempo de execução
+	\item Pode ser feita diretamente sobre o pseudocódigo de alto nível
 	\item Consiste em contar quantas \textbf{operações primitivas} são executadas
 	\begin{itemize}
 		\item Operação primitiva: instrução de baixo nível com um tempo de execução constante
@@ -325,7 +365,7 @@ int main() {
 \end{itemize}
 \end{frame}
 
-%-------------------------------------------------------
+%-------------------------------------------------------	
 \begin{frame}[fragile]\frametitle{Exemplo 1}
 \begin{itemize}
 	\item Contar o número de operações para atribuir para cada posição v[i] de um arranjo unidimensional o resultado de i*2
@@ -335,7 +375,7 @@ for (i = 0; i < v.comprimento; i++)
     v[i] = i * 2
 \end{verbatim}
 	\pause
-	\item Operação (multiplicação, atribuição e acesso as posições do arranjo): \textbf{n vezes (n = 10)}
+	\item Operação (multiplicação, atribuição e acesso às posições do arranjo): \textbf{n vezes (n = 10)}
 	\pause
 	\begin{figure}[h]
 		\centering
@@ -355,7 +395,7 @@ for (i=0; i<m.comprimento; i++)
         m[i][j] = i * j
 \end{verbatim}
 	\pause
-	\item Operação (multiplicação, atribuição e acesso as posições do arranjo): \textbf{n*n vezes (n = 10)}
+	\item Operação (multiplicação, atribuição e acesso às posições do arranjo): \textbf{n*n vezes (n = 10)}
 	\pause
 	\begin{figure}[h]
 		\centering
