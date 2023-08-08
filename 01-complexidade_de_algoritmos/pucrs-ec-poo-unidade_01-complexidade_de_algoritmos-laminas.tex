@@ -33,7 +33,7 @@
 \title[\sc{Complexidade de Algoritmos}]{Complexidade de Algoritmos}
 \author[Roland Teodorowitsch]{Roland Teodorowitsch}
 \institute[ALEST I - EP - PUCRS]{Algoritmos e Estruturas de Dados I - Escola Politécnica - PUCRS}
-\date{3 de agosto de 2023}
+\date{8 de agosto de 2023}
 
 \begin{document}
 \justifying
@@ -54,7 +54,7 @@
 \vspace{-3mm}
 \begin{figure}[h]
 	\centering
-	\includegraphics[height=0.3\paperheight]{pucrs-ec-poo-unidade_01-complexidade_de_algoritmos-laminas-livro_goodrich.jpg}
+	\includegraphics[height=0.3\paperheight]{imagens/livro_goodrich.jpg}
 \end{figure}
 \end{column}
 \begin{column}{0.85\linewidth}
@@ -71,7 +71,7 @@
 \vspace{-3mm}
 \begin{figure}[h]
 	\centering
-	\includegraphics[height=0.3\paperheight]{pucrs-ec-poo-unidade_01-complexidade_de_algoritmos-laminas-livro_cormen.jpg}
+	\includegraphics[height=0.3\paperheight]{imagens/livro_cormen.jpg}
 \end{figure}
 \end{column}
 \begin{column}{0.85\linewidth}
@@ -141,10 +141,26 @@
 \begin{itemize}
 	\item Depende de uma série de fatores: \emph{hardware}, \emph{software}, tamanho e tipo da entrada de dados
 	\item Algoritmo: tempo de execução (ms) X tamanho da entrada de dados (n)
-	\begin{figure}[h]
-		\centering
-		\includegraphics[height=0.6\paperheight]{pucrs-ec-poo-unidade_01-complexidade_de_algoritmos-laminas-grafico.jpg}
-	\end{figure}
+%\vspace{-5mm}
+\begin{columns}[T]
+\begin{column}{0.5\linewidth}
+\begin{figure}[h]
+	\centering
+	\includegraphics[height=0.6\paperheight]{graficos/grafico.jpg}
+\end{figure}
+\end{column}
+\begin{column}{0.5\linewidth}
+\vspace{5mm}
+{\fontsize{0}{4}\selectfont{}\textbf{GNUPLOT:}
+\verbatiminput{graficos/grafico.gnuplot}
+~\\
+~\\
+\textbf{grafico.txt:}
+\verbatiminput{graficos/grafico.txt}
+}
+\end{column}
+\end{columns}
+
 \end{itemize}
 \end{frame}
 
@@ -195,7 +211,7 @@ unsigned long us = (depois.tv_sec  - antes.tv_sec) * 1000000 +
 \begin{frame}[fragile]\frametitle{Exemplo: Pesquisa Linear}
 \begin{itemize}
 	\item Para visualizar como o algoritmo se comporta (``entender'' a sua complexidade), executa-se a função com valores crescentes de arranjo
-{\fontsize{0}{6.4}\selectfont\lstinputlisting{pesquisa_linear/main.c}}
+{\fontsize{0}{5.5}\selectfont\lstinputlisting{pesquisa_linear/main.c}}
 \end{itemize}
 \end{frame}
 
@@ -203,15 +219,21 @@ unsigned long us = (depois.tv_sec  - antes.tv_sec) * 1000000 +
 \begin{frame}[fragile]\frametitle{Exemplo: Pesquisa Linear (Resultado)}
 \vspace{-5mm}
 \begin{columns}[T]
-\begin{column}{0.2\linewidth}{\tiny
-\verbatiminput{pucrs-ec-poo-unidade_01-complexidade_de_algoritmos-laminas-inicio_curva_pesquisa_linear.txt}
+\begin{column}{0.1\linewidth}{\tiny
+\verbatiminput{pesquisa_linear/curva-inicio.txt}
 }
 \end{column}
-\begin{column}{0.8\linewidth}
+\begin{column}{0.55\linewidth}
 \begin{figure}[h]
 	\centering
-	\includegraphics[height=0.65\paperheight]{pucrs-ec-poo-unidade_01-complexidade_de_algoritmos-laminas-grafico_pesquisa_linear.jpg}
+	\includegraphics[height=0.65\paperheight]{pesquisa_linear/grafico.jpg}
 \end{figure}
+\end{column}
+\begin{column}{0.35\linewidth}
+\vspace{5mm}
+{\fontsize{0}{4}\selectfont{}\textbf{GNUPLOT:}
+\verbatiminput{pesquisa_linear/grafico.gnuplot}
+}
 \end{column}
 \end{columns}
 \end{frame}
@@ -235,7 +257,7 @@ void bubble_sort(int *dados, int tam);
 \end{lstlisting}}
 	\item Acrescente a sua implementação ao código da próxima página
 	\begin{itemize}
-		\item Este código trabalha com n variando de 1000 até 10000 com incremento 10, e medindo o tempo em microssegundos
+		\item Este código trabalha com $n$ variando de 1000 até 10000 com incremento 10, e medindo o tempo em microssegundos
 	\end{itemize}
 	\item Gere o gráfico de desempenho a partir da execução
 	\begin{itemize}
@@ -250,7 +272,7 @@ void bubble_sort(int *dados, int tam);
 
 %-------------------------------------------------------
 \begin{frame}[fragile]\frametitle{Exercício 1: \emph{Bubble Sort} (código da função \texttt{main()})}
-{\fontsize{0}{6}\selectfont\lstinputlisting{bubble_sort/main.c}}
+{\fontsize{0}{5.4}\selectfont\lstinputlisting{bubble_sort/main.c}}
 \end{frame}
 
 %-------------------------------------------------------
@@ -285,10 +307,21 @@ plot "curva1.txt" with lines title "bubble\\_sort()"
 
 %-------------------------------------------------------
 \begin{frame}[fragile]\frametitle{Solução 1: \emph{Bubble Sort} (gráfico da primeira implementação)}
+\vspace{-5mm}
+\begin{columns}[T]
+\begin{column}{0.6\linewidth}
 \begin{figure}[h]
 	\centering
-	\includegraphics[height=0.75\paperheight]{pucrs-ec-poo-unidade_01-complexidade_de_algoritmos-laminas-grafico_bubble_sort1.jpg}
+	\includegraphics[height=0.75\paperheight]{bubble_sort/grafico1.jpg}
 \end{figure}
+\end{column}
+\begin{column}{0.4\linewidth}
+\vspace{5mm}
+{\fontsize{0}{4}\selectfont{}\textbf{GNUPLOT:}
+\verbatiminput{bubble_sort/grafico1.gnuplot}
+}
+\end{column}
+\end{columns}
 \end{frame}
 
 %-------------------------------------------------------
@@ -321,10 +354,21 @@ plot "curva1.txt" with lines title "Bubble Sort",
 
 %-------------------------------------------------------
 \begin{frame}[fragile]\frametitle{Solução 2: \emph{Bubble Sort} (gráfico das duas implementações)}
+\vspace{-5mm}
+\begin{columns}[T]
+\begin{column}{0.6\linewidth}
 \begin{figure}[h]
 	\centering
-	\includegraphics[height=0.75\paperheight]{pucrs-ec-poo-unidade_01-complexidade_de_algoritmos-laminas-grafico_bubble_sort2.jpg}
+	\includegraphics[height=0.75\paperheight]{bubble_sort/grafico2.jpg}
 \end{figure}
+\end{column}
+\begin{column}{0.4\linewidth}
+\vspace{5mm}
+{\fontsize{0}{4}\selectfont{}\textbf{GNUPLOT:}
+\verbatiminput{bubble_sort/grafico2.gnuplot}
+}
+\end{column}
+\end{columns}
 \end{frame}
 
 %-------------------------------------------------------
@@ -375,12 +419,23 @@ for (i = 0; i < v.comprimento; i++)
     v[i] = i * 2
 \end{verbatim}
 	\pause
-	\item Operação (multiplicação, atribuição e acesso às posições do arranjo): \textbf{n vezes (n = 10)}
+	\item Operação (multiplicação, atribuição e acesso às posições do arranjo): \textbf{$n$}
 	\pause
-	\begin{figure}[h]
-		\centering
-		\includegraphics[height=0.4\paperheight]{pucrs-ec-poo-unidade_01-complexidade_de_algoritmos-laminas-grafico2.png}
-	\end{figure}
+\vspace{-3mm}
+\begin{columns}[T]
+\begin{column}{0.6\linewidth}
+\begin{figure}[h]
+	\centering
+	\includegraphics[height=0.4\paperheight]{graficos/10n.jpg}
+\end{figure}
+\end{column}
+\begin{column}{0.4\linewidth}
+\vspace{5mm}
+{\fontsize{0}{4}\selectfont{}\textbf{GNUPLOT:}
+\verbatiminput{graficos/10n.gnuplot}
+}
+\end{column}
+\end{columns}
 \end{itemize}
 \end{frame}
 
@@ -395,74 +450,166 @@ for (i=0; i<m.comprimento; i++)
         m[i][j] = i * j
 \end{verbatim}
 	\pause
-	\item Operação (multiplicação, atribuição e acesso às posições do arranjo): \textbf{n*n vezes (n = 10)}
+	\item Operação (multiplicação, atribuição e acesso às posições do arranjo): \textbf{$n \times n$}
 	\pause
-	\begin{figure}[h]
-		\centering
-		\includegraphics[height=0.35\paperheight]{pucrs-ec-poo-unidade_01-complexidade_de_algoritmos-laminas-grafico3.png}
-	\end{figure}
+\vspace{-3mm}
+\begin{columns}[T]
+\begin{column}{0.6\linewidth}
+\begin{figure}[h]
+	\centering
+	\includegraphics[height=0.35\paperheight]{graficos/nxn.jpg}
+\end{figure}
+\end{column}
+\begin{column}{0.4\linewidth}
+\vspace{5mm}
+{\fontsize{0}{4}\selectfont{}\textbf{GNUPLOT:}
+\verbatiminput{graficos/nxn.gnuplot}
+}
+\end{column}
+\end{columns}
 \end{itemize}
 \end{frame}
 
-
 %-------------------------------------------------------
-\begin{frame}[fragile]\frametitle{Exercícios (1/2)}
-Implementar e contar o número de operações das funções listadas a seguir.
+\begin{frame}[fragile]\frametitle{Exercício (1/2)}
+Conte o número de operações executadas pelas seguintes funções.
 \begin{columns}[T]
 \begin{column}{0.5\linewidth}
 \begin{enumerate}
-	\item
-{\small
-\begin{verbatim}
-int f1(n)
-    r=0
-    for (i=1; i<n; i++)
-        r = r + 1
-    return r
-\end{verbatim}
-}
-	\item
-{\small
-\begin{verbatim}
-int f2(n)
-    r=0
-    for (i=1; i<n; i++)
-        for (j=i+1; j<n; j++)
-            r = r + 2
-    return r
-\end{verbatim}
-}
+	\item {\scriptsize\lstinputlisting{contagem/contagem01.c}}
+	\item {\scriptsize\lstinputlisting{contagem/contagem02.c}}
 \end{enumerate}
 \end{column}
 \begin{column}{0.5\linewidth}
 \begin{enumerate}
-\setcounter{enumi}{2}
-	\item
-{\small
-\begin{verbatim}
-int f3(n)
-    cont=0
-    for (i=1; i<n; i++)
-        for (j=1; j<n; j++)
-            print i*j
-            cont++
-     return cont
-\end{verbatim}
-}
+	\setcounter{enumi}{2}
+	\item {\scriptsize\lstinputlisting{contagem/contagem03.c}}
+	\item {\scriptsize\lstinputlisting{contagem/contagem04.c}}
 \end{enumerate}
 \end{column}
 \end{columns}
 \end{frame}
 
 %-------------------------------------------------------
-\begin{frame}[fragile]\frametitle{Exercícios (2/2)}
+\begin{frame}[fragile]\frametitle{Exercício (2/2)}
+\begin{enumerate}
+	\setcounter{enumi}{4}
+	\item {\scriptsize\lstinputlisting{contagem/contagem05.c}}
+	\item {\scriptsize\lstinputlisting{contagem/contagem06.c}}
+\end{enumerate}
+\end{frame}
+
+%-------------------------------------------------------
+\begin{frame}[fragile]\frametitle{Exercício: soluções (1/6)}
 \begin{columns}[T]
 \begin{column}{0.5\linewidth}
+%\vspace{-4mm}
 \begin{enumerate}
-\setcounter{enumi}{3}
-	\item
-{\small
+	\setcounter{enumi}{0}
+	\item {\scriptsize\lstinputlisting{contagem/contagem01.c}}
+{\tiny
 \begin{verbatim}
+n = 10   /  i = 0..9    [op = 10]
+
+n = 20   /  i = 0..19   [op = 20]
+
+n = 50   /  i = 0..49   [op = 50]
+
+n = 100  /  i = 0..99   [op = 100]
+
+n = 1000 /  i = 0..999  [op = 1000]
+\end{verbatim}
+Número de operações: $n \therefore O(n)$
+}
+\end{enumerate}
+\end{column}
+\begin{column}{0.5\linewidth}
+\begin{figure}[h]
+	\centering
+		\includegraphics[height=0.5\paperheight]{contagem/contagem01.jpg}
+\end{figure}
+{\fontsize{0}{4}\selectfont{}\textbf{GNUPLOT:}
+\verbatiminput{contagem/contagem01.gnuplot}
+}
+\end{column}
+\end{columns}
+\end{frame}
+
+%-------------------------------------------------------
+\begin{frame}[fragile]\frametitle{Exercício: soluções (2/6)}
+\begin{columns}[T]
+\begin{column}{0.5\linewidth}
+%\vspace{-4mm}
+\begin{enumerate}
+	\setcounter{enumi}{1}
+	\item {\scriptsize\lstinputlisting{contagem/contagem02.c}}
+{\tiny
+\begin{verbatim}
+n = 10  /  i = 0  /  j = 0..9
+           i = 1  /  j = 0..9
+           i = 2  /  j = 0..9
+           i = 3  /  j = 0..9
+           i = 4  /  j = 0..9
+           i = 5  /  j = 0..9
+           i = 6  /  j = 0..9
+           i = 7  /  j = 0..9
+           i = 8  /  j = 0..9
+           i = 9  /  j = 0..9  [op = 100]
+\end{verbatim}
+Número de operações: $n \times n = n^{2} \therefore O(n^2)$
+}
+\end{enumerate}
+\end{column}
+\begin{column}{0.5\linewidth}
+\begin{figure}[h]
+	\centering
+	\includegraphics[height=0.5\paperheight]{contagem/contagem02.jpg}
+\end{figure}
+{\fontsize{0}{4}\selectfont{}\textbf{GNUPLOT:}
+\verbatiminput{contagem/contagem02.gnuplot}
+}
+\end{column}
+\end{columns}
+\end{frame}
+
+%-------------------------------------------------------
+\begin{frame}[fragile]\frametitle{Exercício: soluções (3/6)}
+\begin{columns}[T]
+\begin{column}{0.5\linewidth}
+%\vspace{-4mm}
+\begin{enumerate}
+	\setcounter{enumi}{2}
+	\item {\scriptsize\lstinputlisting{contagem/contagem03.c}}
+{\tiny
+\begin{verbatim}
+n = 10  /  i = 0  /  j = 1,2,3,4,5,6,7,8,9
+           i = 1  /  j = 2,3,4,5,6,7,8,9
+           i = 2  /  j = 3,4,5,6,7,8,9
+           i = 3  /  j = 4,5,6,7,8,9
+           i = 4  /  j = 5,6,7,8,9
+           i = 5  /  j = 6,7,8,9
+           i = 6  /  j = 7,8,9
+           i = 7  /  j = 8,9
+           i = 8  /  j = 9
+           i = 9  /  j =        [op = 45]
+\end{verbatim}
+Número de operações: $\frac{n \times (n-1)}{2} = \frac{n^2}{2}-\frac{n}{2} \therefore O(n^2)$
+}
+\end{enumerate}	
+\end{column}
+\begin{column}{0.5\linewidth}
+\begin{figure}[h]
+	\centering
+	\includegraphics[height=0.5\paperheight]{contagem/contagem03.jpg}
+\end{figure}
+{\fontsize{0}{4}\selectfont{}\textbf{GNUPLOT:}
+\verbatiminput{contagem/contagem03.gnuplot}
+}
+\end{column}
+\end{columns}
+\end{frame}
+
+\begin{comment}
 int f4(n)
     r=0
     for (i=1; i<n; i++)
@@ -470,36 +617,114 @@ int f4(n)
             for (k=i; k<j; k++)
                 r = r + 1
      return r
-\end{verbatim}
-}
-	\item
-{\small
+\end{comment}
+
+%-------------------------------------------------------
+\begin{frame}[fragile]\frametitle{Exercício: soluções (4/6)}
+\begin{columns}[T]
+\begin{column}{0.5\linewidth}
+%\vspace{-4mm}
+\begin{enumerate}
+	\setcounter{enumi}{3}
+	\item {\scriptsize\lstinputlisting{contagem/contagem04.c}}
+{\tiny
 \begin{verbatim}
-int f5(n)
-    r=0
-    for (i=1; i<n; i++)
-        for (j=i; j<i+3; j++)
-            for (k=i; k<j; k++)
-                r = r + 1
-    return r
+n = 10  /  i = 0  /  j = 
+           i = 1  /  j = 0..1
+           i = 2  /  j = 0..3
+           i = 3  /  j = 0..5
+           i = 4  /  j = 0..7
+           i = 5  /  j = 0..9
+           i = 6  /  j = 0..11
+           i = 7  /  j = 0..13
+           i = 8  /  j = 0..15
+           i = 9  /  j = 0..17  [op = 90]
 \end{verbatim}
+Número de operações: $n \times (n-1) = n^2 - n \therefore O(n^2)$
 }
 \end{enumerate}
 \end{column}
 \begin{column}{0.5\linewidth}
+\begin{figure}[h]
+	\centering
+	\includegraphics[height=0.5\paperheight]{contagem/contagem04.jpg}
+\end{figure}
+{\fontsize{0}{4}\selectfont{}\textbf{GNUPLOT:}
+\verbatiminput{contagem/contagem04.gnuplot}
+}
+\end{column}
+\end{columns}
+\end{frame}
+
+%-------------------------------------------------------
+\begin{frame}[fragile]\frametitle{Exercício: soluções (5/6)}
+\begin{columns}[T]
+\begin{column}{0.5\linewidth}
+%\vspace{-4mm}
 \begin{enumerate}
-\setcounter{enumi}{5}
-	\item
-{\small
+	\setcounter{enumi}{4}
+	\item {\scriptsize\lstinputlisting{contagem/contagem05.c}}
+{\tiny
 \begin{verbatim}
-int f6(n)
-    if (n==0)
-       return 1
-    else
-       return f6(n-1) + f6(n-1)
+n = 10  / i = 0  /  j = 0  /  k = 
+                    j = 1  /  k = 0
+                    j = 2  /  k = 0..1
+          i = 1  /  j = 1  /  k = 
+                    j = 2  /  k = 1
+                    j = 3  /  k = 1..2
+          ...
+          i = 9  /  j = 9  /  k = 
+                    j = 10 /  k = 9
+                    j = 11 /  k = 9..10   [op = 30]
 \end{verbatim}
+Número de operações: $n \times 3 = 3n \therefore O(n)$
 }
 \end{enumerate}
+\end{column}
+\begin{column}{0.5\linewidth}
+\begin{figure}[h]
+	\centering
+	\includegraphics[height=0.5\paperheight]{contagem/contagem05.jpg}
+\end{figure}
+{\fontsize{0}{4}\selectfont{}\textbf{GNUPLOT:}
+\verbatiminput{contagem/contagem05.gnuplot}
+}
+\end{column}
+\end{columns}
+\end{frame}
+
+%-------------------------------------------------------
+\begin{frame}[fragile]\frametitle{Exercício: soluções (6/6)}
+\begin{columns}[T]
+\begin{column}{0.5\linewidth}
+%\vspace{-4mm}
+\begin{enumerate}
+	\setcounter{enumi}{5	}
+	\item {\scriptsize\lstinputlisting{contagem/contagem06.c}}
+{\tiny
+\begin{verbatim}
+n = 1  [op = 1]	
+n = 2  [op = 3]
+n = 3  [op = 7]
+n = 4  [op = 15]
+n = 5  [op = 31]
+n = 6  [op = 63]
+n = 7  [op = 127]
+n = 8  [op = 255]
+n = 9  [op = 511]
+\end{verbatim}
+Número de operações: $2^{n}-1 \therefore O(2^{n})$
+}
+\end{enumerate}
+\end{column}
+\begin{column}{0.5\linewidth}
+\begin{figure}[h]
+	\centering
+	\includegraphics[height=0.5\paperheight]{contagem/contagem06.jpg}
+\end{figure}
+{\fontsize{0}{4}\selectfont{}\textbf{GNUPLOT:}
+\verbatiminput{contagem/contagem06.gnuplot}
+}
 \end{column}
 \end{columns}
 \end{frame}
@@ -542,18 +767,45 @@ int f6(n)
 	\item Não importa o valor de $n$, sempre será igual ao valor da constante $c$
 	\item Exemplo: função que recebe um arranjo de inteiros e retorna o valor do primeiro elemento multiplicado por 2
 \end{itemize}
+\vspace{-5mm}
+\begin{columns}[T]
+\begin{column}{0.6\linewidth}
+\begin{figure}[h]
+	\centering
+	\includegraphics[height=0.5\paperheight]{graficos/1.jpg}
+\end{figure}
+\end{column}
+\begin{column}{0.4\linewidth}
+\vspace{5mm}
+{\fontsize{0}{4}\selectfont{}\textbf{GNUPLOT:}
+\verbatiminput{graficos/1.gnuplot}
+}
+\end{column}
+\end{columns}
 \end{frame}
 
 %-------------------------------------------------------
 \begin{frame}\frametitle{Função Logaritmo: $\log n$}
 \begin{itemize}
-	\item $f(n) = \log_{2}n$
-	\item O número de operações realizadas para solução do problema não cresce da mesma forma que $n$
-	\begin{itemize}
-		\item Se dobra o valor de $n$, o incremento do consumo é bem menor
-	\end{itemize}
+	\item $f(n) = \log{}n$ ou $f(n) = \log_{2}n$
+	\item O número de operações realizadas para solução do problema não cresce da mesma forma que $n$: se dobra o valor de $n$, o incremento do consumo é bem menor
 	\item Exemplo: conversão de número decimal para binário e pesquisa binária (\emph{binary search})
 \end{itemize}
+\vspace{-5mm}
+\begin{columns}[T]
+\begin{column}{0.6\linewidth}
+\begin{figure}[h]
+	\centering
+	\includegraphics[height=0.5\paperheight]{graficos/log_n.jpg}
+\end{figure}
+\end{column}
+\begin{column}{0.4\linewidth}
+\vspace{5mm}
+{\fontsize{0}{4}\selectfont{}\textbf{GNUPLOT:}
+\verbatiminput{graficos/log_n.gnuplot}
+}
+\end{column}
+\end{columns}
 \end{frame}
 
 %-------------------------------------------------------
@@ -561,8 +813,23 @@ int f6(n)
 \begin{itemize}
 	\item Se dobra o valor de $n$, dobra o consumo de recursos
 	\item $f(n) = n$
-	\item Exemplo: localizar um elemento em uma lista.
+	\item Exemplo: localizar um elemento em uma lista
 \end{itemize}
+\vspace{-5mm}
+\begin{columns}[T]
+\begin{column}{0.6\linewidth}
+\begin{figure}[h]
+	\centering
+	\includegraphics[height=0.5\paperheight]{graficos/n.jpg}
+\end{figure}
+\end{column}
+\begin{column}{0.4\linewidth}
+\vspace{5mm}
+{\fontsize{0}{4}\selectfont{}\textbf{GNUPLOT:}
+\verbatiminput{graficos/n.gnuplot}
+}
+\end{column}
+\end{columns}
 \end{frame}
 
 %-------------------------------------------------------
@@ -573,6 +840,21 @@ int f6(n)
 	\item Cresce mais rápido que a função linear e mais devagar que a função quadrática
 	\item Exemplo: Algoritmos de ordenação mergesort e heapsort\\\url{http://www.sorting-algorithms.com/}
 \end{itemize}
+\vspace{-5mm}
+\begin{columns}[T]
+\begin{column}{0.6\linewidth}
+\begin{figure}[h]
+	\centering
+	\includegraphics[height=0.5\paperheight]{graficos/n_log_n.jpg}
+\end{figure}
+\end{column}
+\begin{column}{0.4\linewidth}
+\vspace{5mm}
+{\fontsize{0}{4}\selectfont{}\textbf{GNUPLOT:}
+\verbatiminput{graficos/n_log_n.gnuplot}
+}
+\end{column}
+\end{columns}
 \end{frame}
 
 %-------------------------------------------------------
@@ -583,6 +865,21 @@ int f6(n)
 	\item Não cresce de forma abrupta,mas dificultam o uso em problemas grandes.
 	\item Exemplo: Ordenação com o algoritmo $bubblesort$
 \end{itemize}
+\vspace{-5mm}
+\begin{columns}[T]
+\begin{column}{0.6\linewidth}
+\begin{figure}[h]
+	\centering
+	\includegraphics[height=0.5\paperheight]{graficos/n^2.jpg}
+\end{figure}
+\end{column}
+\begin{column}{0.4\linewidth}
+\vspace{5mm}
+{\fontsize{0}{4}\selectfont{}\textbf{GNUPLOT:}
+\verbatiminput{graficos/n^2.gnuplot}
+}
+\end{column}
+\end{columns}
 \end{frame}
 
 %-------------------------------------------------------
@@ -593,6 +890,21 @@ int f6(n)
 	\item Aparece com menos frequência na análise de algoritmos do que as funções constante, linear ou quadrática
 	\item Exemplo: multiplicar duas matrizes
 \end{itemize}
+\vspace{-5mm}
+\begin{columns}[T]
+\begin{column}{0.6\linewidth}
+\begin{figure}[h]
+	\centering
+	\includegraphics[height=0.5\paperheight]{graficos/n^3.jpg}
+\end{figure}
+\end{column}
+\begin{column}{0.4\linewidth}
+\vspace{5mm}
+{\fontsize{0}{4}\selectfont{}\textbf{GNUPLOT:}
+\verbatiminput{graficos/n^3.gnuplot}
+}
+\end{column}
+\end{columns}
 \end{frame}
 
 %-------------------------------------------------------
@@ -604,29 +916,97 @@ int f6(n)
 	\item Aplicável apenas em problemas pequenos.
 	\item Exemplos: quebrar senhas com força bruta e listar todos os subconjuntos de um conjunto S
 \end{itemize}
+\vspace{-5mm}
+\begin{columns}[T]
+\begin{column}{0.6\linewidth}
+\begin{figure}[h]
+	\centering
+	\includegraphics[height=0.5\paperheight]{graficos/2^n.jpg}
+\end{figure}
+\end{column}
+\begin{column}{0.4\linewidth}
+\vspace{5mm}
+{\fontsize{0}{4}\selectfont{}\textbf{GNUPLOT:}
+\verbatiminput{graficos/2^n.gnuplot}
+}
+\end{column}
+\end{columns}
 \end{frame}
 
 %-------------------------------------------------------
-\begin{frame}\frametitle{Funções}
-\begin{itemize}
-	\item Taxas de crescimento para as funções usadas em análise de algoritmos
-\end{itemize}
-
+\begin{frame}\frametitle{Comparativo entre as taxas de crescimento das funções (todas)}
+\vspace{-5mm}
 \begin{columns}[T]
 \begin{column}{0.5\linewidth}
-	\begin{figure}[h]
-		\centering
-		\includegraphics[height=0.6\paperheight]{pucrs-ec-poo-unidade_01-complexidade_de_algoritmos-laminas-grafico4.png}
-	\end{figure}
+\begin{figure}[h]
+	\centering
+	\includegraphics[height=0.65\paperheight]{graficos/todas.jpg}
+\end{figure}
 \end{column}
 \begin{column}{0.5\linewidth}
-	\begin{figure}[h]
-		\centering
-		\includegraphics[height=0.6\paperheight]{pucrs-ec-poo-unidade_01-complexidade_de_algoritmos-laminas-grafico5.png}
-	\end{figure}
+\vspace{5mm}
+{\fontsize{0}{4}\selectfont{}\textbf{GNUPLOT:}
+\verbatiminput{graficos/todas.gnuplot}
+}
 \end{column}
 \end{columns}
+\end{frame}
 
+%-------------------------------------------------------
+\begin{frame}\frametitle{Comparativo entre as taxas de crescimento das funções (grupo 1)}
+\vspace{-5mm}
+\begin{columns}[T]
+\begin{column}{0.5\linewidth}
+\begin{figure}[h]
+	\centering
+	\includegraphics[height=0.65\paperheight]{graficos/grupo1.jpg}
+\end{figure}
+\end{column}
+\begin{column}{0.5\linewidth}
+\vspace{5mm}
+{\fontsize{0}{4}\selectfont{}\textbf{GNUPLOT:}
+\verbatiminput{graficos/grupo1.gnuplot}
+}
+\end{column}
+\end{columns}
+\end{frame}
+
+%-------------------------------------------------------
+\begin{frame}\frametitle{Comparativo entre as taxas de crescimento das funções (grupo 2)}
+\vspace{-5mm}
+\begin{columns}[T]
+\begin{column}{0.5\linewidth}
+\begin{figure}[h]
+	\centering
+	\includegraphics[height=0.65\paperheight]{graficos/grupo2.jpg}
+\end{figure}
+\end{column}
+\begin{column}{0.5\linewidth}
+\vspace{5mm}
+{\fontsize{0}{4}\selectfont{}\textbf{GNUPLOT:}
+\verbatiminput{graficos/grupo2.gnuplot}
+}
+\end{column}
+\end{columns}
+\end{frame}
+
+%-------------------------------------------------------
+\begin{frame}\frametitle{Comparativo entre as taxas de crescimento das funções (grupo 3)}
+\vspace{-5mm}
+\begin{columns}[T]
+\begin{column}{0.5\linewidth}
+\begin{figure}[h]
+	\centering
+	\includegraphics[height=0.65\paperheight]{graficos/grupo3.jpg}
+\end{figure}
+\end{column}
+\begin{column}{0.5\linewidth}
+\vspace{5mm}
+{\fontsize{0}{4}\selectfont{}\textbf{GNUPLOT:}
+\verbatiminput{graficos/grupo3.gnuplot}
+}
+\end{column}
+\end{columns}
 \end{frame}
 
 %-------------------------------------------------------
@@ -640,16 +1020,515 @@ int f6(n)
 \end{itemize}
 \end{frame}
 
+\section{Exercícios}
+
 %-------------------------------------------------------
 \begin{frame}\frametitle{Exercício 1}
+Dois algoritmos para resolver o mesmo problema foram analisados e concluiu-se que eles executam os seguintes números de operações:\\
 \begin{itemize}
-	\item Dois algoritmos para resolver o mesmo problema\\
-$f_{1}(n) = 2n^2 + 5n$ operações\\
-$f_{2}(n) = 500n + 4000$ operações
-	\item Considere o número de operações de cada um para diferentes valores de $n$ (por exemplo, $n = 10$ e $n = 1000$)
-	\item Qual é a melhor solução?
+	\item Algoritmo A: $f_{A}(n) = 2n^2 + 5n$ operações
+	\item Algoritmo B: $f_{B}(n) = 500n + 4000$ operações
+\end{itemize}
+Qual desses algoritmos consiste na melhor solução? Analise o número de operações de cada algoritmo para diferentes valores de $n$ (por exemplo, $n = 10$, $n = 100$, $n = 1000$, etc.)
+\end{frame}
+
+%-------------------------------------------------------
+\begin{frame}[fragile]\frametitle{Exercício 2}
+Analise os algoritmos abaixo e identifique a sua classe de complexidade. Para verificar se a sua resposta está correta, implemente cada algoritmo, teste com diferentes valores de $n$ e gere um gráfico usando o GNUPLOT.
+\vspace{-4mm}
+\begin{columns}[T]
+\begin{column}{0.5\linewidth}
+\begin{enumerate}
+	\item {\scriptsize\lstinputlisting{contagem/contagem07.c}}
+\vspace{-4mm}
+	\item {\scriptsize\lstinputlisting{contagem/contagem08.c}}
+\end{enumerate}
+\end{column}
+\begin{column}{0.5\linewidth}
+\begin{enumerate}
+	\setcounter{enumi}{2}
+	\item {\scriptsize\lstinputlisting{contagem/contagem09.c}}
+\vspace{-4mm}
+	\item {\scriptsize\lstinputlisting{contagem/contagem10.c}}
+\end{enumerate}
+	\end{column}
+\end{columns}
+\end{frame}
+
+%-------------------------------------------------------
+\begin{frame}[fragile]\frametitle{Exercício 2}
+\begin{columns}[T]
+\begin{column}{0.5\linewidth}
+\begin{enumerate}
+	\setcounter{enumi}{4}
+	\item {\scriptsize\lstinputlisting{contagem/contagem11.c}}
+	\item {\scriptsize\lstinputlisting{contagem/contagem12.c}}
+\end{enumerate}
+\end{column}
+\begin{column}{0.5\linewidth}
+\end{column}
+\end{columns}
+\end{frame}
+
+%-------------------------------------------------------
+\begin{frame}\frametitle{Exercício 3}
+Faça um algoritmo para o problema abaixo e analise a sua complexidade.\\
+~\\
+Problema:
+\begin{itemize}
+	\item Dado um intervalo [1;V]
+	\item Determinar quantas sequencias de valores entre 1 e V somam exatamente V
+\end{itemize}
+Exemplo:
+\begin{itemize}
+	\item V=15
+	\item Sequências
+	\begin{itemize}
+		\item 1+2+3+4+5
+		\item 4+5+6
+		\item 7+8
+		\item 15
+	\end{itemize}
+	\item Resposta: 4 sequências de valores somam exatamente 15
 \end{itemize}
 \end{frame}
+
+\section{Notação $O$}
+
+\newcommand{\sep}{\hspace*{.5em}}
+%-------------------------------------------------------
+\begin{frame}\frametitle{Notação $O$}
+\begin{itemize}
+	\item O número de passos durante a execução de um algoritmo pode variar
+	\item Exemplo: ordenar um vetor\\
+\noindent $\fbox{2} \sep \fbox{1} \sep \fbox{3} \sep \fbox{4} \sep \fbox{5} \sep \fbox{6}$ \sep x \sep
+          $\fbox{6} \sep \fbox{5} \sep \fbox{4} \sep \fbox{3} \sep \fbox{2} \sep \fbox{1}$
+	\item Existe o limite superior e o limite inferior para cada algoritmo
+	\item Exemplo:\\
+\url{https://www.toptal.com/developers/sorting-algorithms/bubble-sort}
+\end{itemize}
+\end{frame}
+
+%-------------------------------------------------------
+\begin{frame}\frametitle{Notação $O$}
+\begin{itemize}
+	\item Limite inferior
+	\begin{itemize}
+		\item Menor tempo de execução sobre todas as entradas de tamanho $n$
+		\item Exemplo: \emph{Bubble Sort} recebe vetor de entrada quase ordenado
+	\end{itemize}
+	\item Limite superior
+	\begin{itemize}
+		\item Maior tempo de execução sobre todas as entradas de tamanho $n$
+		\item Exemplo: \emph{Bubble Sort} recebe vetor de entrada ordenado de trás para frente
+	\end{itemize}
+	\item Caso ``médio''
+	\begin{itemize}
+		\item Média dos tempos de execução sobre todas as entradas de tamanho n
+	\end{itemize}
+\end{itemize}
+\end{frame}
+
+%-------------------------------------------------------
+\begin{frame}\frametitle{Notação $O$}
+\begin{itemize}
+	\item Tempo cresce conforme a entrada de dados cresce
+	\item Determinar o ``tempo médio'' é difícil
+	\item Portanto, para análise de algoritmos quase sempre se quer saber o limite superior
+	\begin{itemize}
+		\item Mais fácil de analisar
+		\item Crucial para determinadas aplicações
+	\end{itemize}
+\end{itemize}
+\end{frame}
+
+%-------------------------------------------------------
+\begin{frame}\frametitle{Notação $O$}
+\begin{itemize}
+	\item Importante:
+	\begin{itemize}
+		\item Concentrar-se na taxa de crescimento do tempo de execução como uma função do tamanho da entrada n
+	\end{itemize}
+	\item Por exemplo:
+	\begin{itemize}
+		\item No algoritmo que verifica maior número de um arranjo de inteiros, o tempo de execução cresce proporcionalmente a n
+		\item Tempo de execução: $n$ vezes um fator constante
+	\end{itemize}
+\end{itemize}
+\end{frame}
+
+%-------------------------------------------------------
+\begin{frame}\frametitle{Notação $O$}
+\begin{itemize}
+	\item Ao ver uma expressão $f(n) = a^n$, normalmente se pensa em valores pequenos
+	\begin{itemize}
+		\item É o que se consegue resolver
+	\end{itemize}
+	\item Análise de algoritmos
+	\begin{itemize}
+		\item Ignora os valores pequenos e concentra-se nos valores enormes de $n$
+	\end{itemize}
+	\item Para grandes valores de n, as funções $n^2$ , $(3/2)n^2$ , $n^2+100n$, por exemplo, crescem com a mesma velocidade, portanto são equivalentes
+\end{itemize}
+\end{frame}
+
+%-------------------------------------------------------
+\begin{frame}\frametitle{Notação $O$}
+\begin{itemize}
+	\item 
+\end{itemize}
+\end{frame}
+
+%-------------------------------------------------------
+\begin{frame}\frametitle{Notação $O$}
+\begin{itemize}
+	\item 
+\end{itemize}
+\end{frame}
+
+%-------------------------------------------------------
+\begin{frame}\frametitle{Notação $O$}
+\begin{itemize}
+	\item 
+\end{itemize}
+\end{frame}
+
+%-------------------------------------------------------
+\begin{frame}\frametitle{Notação $O$}
+\begin{itemize}
+	\item 
+\end{itemize}
+\end{frame}
+
+%-------------------------------------------------------
+\begin{frame}\frametitle{Notação $O$}
+\begin{itemize}
+	\item 
+\end{itemize}
+\end{frame}
+
+%-------------------------------------------------------
+\begin{frame}\frametitle{Notação $O$}
+\begin{itemize}
+	\item 
+\end{itemize}
+\end{frame}
+
+%-------------------------------------------------------
+\begin{frame}\frametitle{Notação $O$}
+\begin{itemize}
+	\item 
+\end{itemize}
+\end{frame}
+
+%-------------------------------------------------------
+\begin{frame}\frametitle{Notação $O$}
+\begin{itemize}
+	\item 
+\end{itemize}
+\end{frame}
+
+\section{Notação $\Omega$ e Notação $\Theta$}
+
+%-------------------------------------------------------
+\begin{frame}\frametitle{Notação $\Omega$ e Notação $\Theta$}
+\begin{itemize}
+	\item 
+\end{itemize}
+\end{frame}
+
+\section{Análise assintótica}
+
+%-------------------------------------------------------
+\begin{frame}\frametitle{Análise assintótica}
+\begin{itemize}
+	\item 
+\end{itemize}
+\end{frame}
+
+\begin{comment}
+
+
+
+Notação O
+◼
+ n2 , (3/2)n2 , n2+100n , crescem com a mesma velocidade
+Notação O
+◼
+ Assintótico
+◼
+ Quando se quer descrever o comportamento quando
+se aproxima de um limite, ou seja, quando n tende ao
+infinito
+◼
+ Sejam f(n) e g(n) funções mapeando inteiros não
+negativos em números reais
+◼
+ Diz-se que f(n) é O(g(n)) se existe uma constante
+c > 0 e uma constante n0 >= 1 tais que
+f(n) <= cg(n), para todo inteiro n>= n0
+◼
+ Notação O:
+◼
+ f(n) é O de g(n)
+◼
+ f(n) é da ordem de g(n)
+© 2010 Goodrich, Tamassia
+Notação O
+◼
+ Sejam f(n) e g(n) funções mapeando inteiros não
+negativos em números reais
+◼
+ Diz-se que f(n) é O(g(n)) se existe uma constante
+c > 0 e uma constante n0 >= 1 tais que
+f(n) <= cg(n), para todo inteiro n>= n0
+© 2010 Goodrich, Tamassia
+Notação O
+◼
+ f(n)=O(g(n)) significa
+◼
+ que g(n) cresce mais (ou da mesma forma que) a
+função f(n) à medida que n cresce para o infinito. Para
+isso, pode ser preciso multiplicar g(n) por uma
+constante.
+◼
+ Notação O é usada para:
+◼
+ Caracterizar o tempo de execução e limites espaciais
+em função de um parâmetro n que varia de problema
+para problema
+© 2010 Goodrich, Tamassia
+Notação O
+◼
+Exemplo: algoritmo para encontrar o maior
+elemento de um arranjo de inteiros
+◼
+ n representa o número de elementos no arranjo
+◼
+ Usando a notação O se pode afirmar (independente do
+computador que será usado):
+◼
+ Este algoritmo executa em tempo O(n)
+◼
+ Justificativa:
+◼
+ O número de operações primitivas executadas pelo algoritmo é
+constante em cada iteração
+◼
+ Pode-se dizer que o tempo de execução do algoritmo para uma
+entrada de tamanho n é no máximo uma constante, vezes n
+© 2010 Goodrich, Tamassia
+Notação O
+◼
+ Propriedades da notação O
+◼
+ Permite ignorar os fatores constantes e os termos de
+menor ordem, focando nos principais componentes da
+função que afetam seu crescimento
+◼
+ Se f(n) é um polinômio de grau d, isto é,
+f(n) = a0 + a1n + ... + adnd
+e ad>0, então f(n) é O(nd)
+◼
+ Deve-se descrever a função O em termos simples
+© 2010 Goodrich, Tamassia
+Notação O
+◼
+Propriedades da notação O
+◼
+ Portanto, o termo de mais alto grau em um polinômio é
+o termo que determina a taxa de crescimento
+assintótico do polinômio
+◼
+ Exemplos:
+◼
+ 5n2 + 3n log n + 2n + 5 é O(n2)
+◼
+ 20n3 + 10n log n + 5 é O(n 3)
+◼
+ 3 log n + 2 é O(log n)
+◼
+ 2n+2 é O(2 n)
+◼
+ 2n + 100 log n é O(n)
+© 2010 Goodrich, Tamassia
+Notação O
+◼
+ As sete funções apresentadas são as mais usadas
+em conjunto com a notação O
+◼
+ 1
+ log n
+ n
+ n log n
+ n2
+ n 3
+ a n
+◼
+ Caracterizam os tempos de execução e consumo de
+memória dos algoritmos
+◼
+ Os nomes destas funções são usados para referenciar
+o tempo de execução
+◼
+ Exemplos:
+◼
+ Algoritmo que executa no limite superior em tempo 4n2 + n log n
+é um algoritmo de tempo quadrático, pois executa em tempo
+O(n2)
+◼
+ Algoritmo que executa no limite superior em 5n + 20 log n + 4 é
+um algoritmo de tempo linear, ou seja, O(n)
+© 2010 Goodrich, Tamassia
+Roteiro
+◼
+ Notação O
+◼
+ Notação  e Notação 
+◼
+ Análise assintótica
+PUCRS, Escola Politécnica - Isabel H. Manssour
+Este material é de uso exclusivo dos alunos matriculados na disciplina de Algoritmos e Estruturas de Dados I.
+É proibida sua reprodução e divulgação para qualquer finalidade.
+Notação 
+◼
+ Notação O
+◼
+ Maneira assintótica de dizer que uma função é “menor
+que ou igual a” outra função
+◼
+ Notação 
+◼
+ Maneira assintótica de dizer que uma função cresce a
+uma taxa que é “maior ou igual a” de outra função
+◼
+Notação 
+◼
+ Notação  permite dizer que duas funções crescem à
+mesma taxa
+© 2010 Goodrich, Tamassia
+Notação 
+◼
+ Sejam f(n) e g(n) funções mapeando inteiros não
+negativos em números reais
+◼
+ Diz-se que f(n) é (g(n)) se g(n) é O(f(n)), ou
+seja, se existe uma constante c > 0 e uma
+constante n0 >= 1 tais que
+f(n) >= cg(n), para todo inteiro n>= n0
+◼
+ Permite dizer que uma função é assintoticamente maior
+que ou igual a outra, exceto por um fator constante
+◼
+ Se diz que f(n) é ômega de g(n)
+◼
+ Exemplo: 3n log n + 2n é (n log n)
+© 2010 Goodrich, Tamassia
+Notação 
+◼
+ Diz-se que f(n) é (g(n)),
+se f(n) é O(g(n)) e f(n) é (g(n)), ou seja,
+existem constantes reais c’>0 e c’’>0 e uma
+constante inteira n 0 >= 1 tais que
+c’g(n) <= f(n) <= c’’g(n), para n>= n 0
+◼
+ Se diz que f(n) é theta de g(n)
+◼
+ Exemplo: 3n log n <= 4n + 5 log n é (n log n)
+© 2010 Goodrich, Tamassia
+Notação 
+◼
+ Exemplo de gráficos das notações O,  e 
+◼
+ Notação  limita uma função entre valores constantes
+◼
+ Notação O dá um limite superior para uma função
+dentro de um valor constante
+◼
+ Notação  dá um limite inferior para uma função dentro
+de um valor constante
+[Cormen et al. 2012]
+Roteiro
+◼
+ Notação O
+◼
+ Notação  e Notação 
+◼
+ Análise assintótica
+PUCRS, Escola Politécnica - Isabel H. Manssour
+Este material é de uso exclusivo dos alunos matriculados na disciplina de Algoritmos e Estruturas de Dados I.
+É proibida sua reprodução e divulgação para qualquer finalidade.
+Análise assintótica
+◼
+ Suponha dois algoritmos, A e B, para resolver um
+mesmo problema
+◼
+ A tem um tempo de execução O(n)
+◼
+ B tem um tempo de execução O(n2)
+◼
+ Qual deles é melhor?
+◼
+ A é assintoticamente melhor que B
+© 2010 Goodrich, Tamassia
+Análise assintótica
+◼
+ Pode-se usar a notação O para ordenar classes
+de funções por seu crescimento assintótico
+1
+ log n
+ n
+ n log n
+ n2
+ n3
+ 2n
+© 2010 Goodrich, Tamassia
+Análise assintótica
+◼
+ Para analisar algoritmos com a notação O, o mais
+apropriado é dizer:
+f(n) é O(g(n)),
+ou
+f(n)  O(g(n))
+© 2010 Goodrich, Tamassia
+Análise assintótica
+◼
+ O que é um algoritmo rápido?
+◼
+ Em geral, um algoritmo executando em tempo
+O(n log n), com um fator constante razoável, pode
+ser considerado eficiente
+◼
+ Até um método O(n2) pode ser suficientemente
+rápido em alguns contextos (n pequeno)
+◼
+ Algoritmo executando em tempo O(2n) dificilmente
+pode ser considerado eficiente
+© 2010 Goodrich, Tamassia
+Análise assintótica
+◼
+ Notações O,  e  fornecem uma linguagem
+conveniente para análise de estruturas de dados
+e algoritmos
+◼
+ Permitem a concentração nos aspectos gerais, em vez
+dos detalhes
+© 2010 Goodrich, Tamassia
+Referências
+◼
+ Livro do Goodrich e Tamassia
+Estruturas de Dados & Algoritmos
+5a edição
+Capítulo 4 (páginas 162 à 182)
+Leitura
+fortemente
+recomendada
+◼
+ Livro do Cormen et al.
+Algoritmos – Teoria e Prática
+Capítulo 3
+
+\end{comment}
 
 %-------------------------------------------------------
 \begin{frame}[fragile]\frametitle{Exercício 2} % Fonte: https://create.kahoot.it/details/2e37a282-4d9d-4902-8afc-9b827ed393fc
