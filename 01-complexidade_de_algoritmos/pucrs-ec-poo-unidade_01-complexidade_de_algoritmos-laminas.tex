@@ -1147,7 +1147,7 @@ Exemplo:
 \begin{itemize}
 	\item Importante:
 	\begin{itemize}
-		\item Concentrar-se na taxa de crescimento do tempo de execução como uma função do tamanho da entrada n
+		\item Concentrar-se na taxa de crescimento do tempo de execução como uma função do tamanho da entrada $n$
 	\end{itemize}
 	\item Por exemplo:
 	\begin{itemize}
@@ -1173,30 +1173,78 @@ Exemplo:
 \end{frame}
 
 %-------------------------------------------------------
-\begin{frame}\frametitle{Notação $O$}
+\begin{frame}[fragile]\frametitle{Notação $O$}
+\vspace{-5mm}
+\begin{columns}[T]
+\begin{column}{0.5\linewidth}
+\begin{figure}[h]
+	\centering
+	\includegraphics[height=0.65\paperheight]{graficos/grafico2.jpg}
+\end{figure}
+\end{column}
+\begin{column}{0.5\linewidth}
+\vspace{5mm}
+{\fontsize{0}{4}\selectfont{}\textbf{GNUPLOT:}
+\verbatiminput{graficos/grafico2.gnuplot}
+}
+\end{column}
+\end{columns}
+\end{frame}
+
+%-------------------------------------------------------
+\begin{frame}\frametitle{Notação Assintótica}
 \begin{itemize}
-	\item 
+	\item Assintótico (Adj.)
+	\begin{itemize}
+		\item Quando se quer descrever o comportamento quando se aproxima de um limite, ou seja, quando n tende ao infinito
+		\item Aquilo que está relativamente próximo
+		\item Para todos os valores suficientemente grandes
+		\item O comportamento a ser observado em uma função $f(n)$, quando $n$ tende ao infinito
+		\item Relativo à Assintota
+		\begin{itemize}
+			\item (Mat.) linha reta relacionada com uma curva, cuja distância entre elas se torna infinitamente pequena, a partir de determinado ponto
+			\item (Fig.) Caminho que se aproxima continuamente de um ideal sem jamais o atingir
+		\end{itemize}
+	\end{itemize}
+	\item Notações
+	\begin{itemize}
+		\item Notação O
+		\item Notação $\Omega$ (ômega)
+		\item Notação $\Theta$ (\emph{theta})
+	\end{itemize}
 \end{itemize}
 \end{frame}
 
 %-------------------------------------------------------
 \begin{frame}\frametitle{Notação $O$}
 \begin{itemize}
-	\item 
+	\item Sejam $f(n)$ e $g(n)$ funções mapeando inteiros não negativos em números reais
+	\item Diz-se que $f(n)$ é $O(g(n))$ se existe uma constante real $c > 0$ e uma constante inteira $n_0 \ge 1$ tais que
+$f(n) \le cg(n)$, para todo inteiro $n \ge n0$
+\begin{figure}[h]
+	\centering
+	\includegraphics[height=0.5\paperheight]{imagens/grafico_fx_gx.jpg}
+\end{figure}
 \end{itemize}
 \end{frame}
 
 %-------------------------------------------------------
 \begin{frame}\frametitle{Notação $O$}
 \begin{itemize}
-	\item 
-\end{itemize}
-\end{frame}
-
-%-------------------------------------------------------
-\begin{frame}\frametitle{Notação $O$}
-\begin{itemize}
-	\item 
+	\item Notação O:
+	\begin{itemize}
+		\item $f(n)$ é \textbf{O} de $g(n)$
+		\item $f(n)$ é \textbf{da ordem} de $g(n)$
+	\end{itemize}
+	\item $f(n)=O(g(n))$
+	\begin{itemize}
+		\item Significa que $g(n)$ cresce mais (ou da mesma forma que) a função $f(n)$ à medida que $n$ cresce para o infinito
+		\item Para isso, pode ser preciso multiplicar $g(n)$ por uma constante
+	\end{itemize}
+	\item Notação O é usada para
+	\begin{itemize}
+		\item \textbf{Caracterizar o tempo de execução} e limites espaciais em função de um parâmetro $n$ que varia de problema para problema
+	\end{itemize}
 \end{itemize}
 \end{frame}
 
@@ -1252,51 +1300,6 @@ Exemplo:
 
 Notação O
 ◼
- n2 , (3/2)n2 , n2+100n , crescem com a mesma velocidade
-Notação O
-◼
- Assintótico
-◼
- Quando se quer descrever o comportamento quando
-se aproxima de um limite, ou seja, quando n tende ao
-infinito
-◼
- Sejam f(n) e g(n) funções mapeando inteiros não
-negativos em números reais
-◼
- Diz-se que f(n) é O(g(n)) se existe uma constante
-c > 0 e uma constante n0 >= 1 tais que
-f(n) <= cg(n), para todo inteiro n>= n0
-◼
- Notação O:
-◼
- f(n) é O de g(n)
-◼
- f(n) é da ordem de g(n)
-© 2010 Goodrich, Tamassia
-Notação O
-◼
- Sejam f(n) e g(n) funções mapeando inteiros não
-negativos em números reais
-◼
- Diz-se que f(n) é O(g(n)) se existe uma constante
-c > 0 e uma constante n0 >= 1 tais que
-f(n) <= cg(n), para todo inteiro n>= n0
-© 2010 Goodrich, Tamassia
-Notação O
-◼
- f(n)=O(g(n)) significa
-◼
- que g(n) cresce mais (ou da mesma forma que) a
-função f(n) à medida que n cresce para o infinito. Para
-isso, pode ser preciso multiplicar g(n) por uma
-constante.
-◼
- Notação O é usada para:
-◼
- Caracterizar o tempo de execução e limites espaciais
-em função de um parâmetro n que varia de problema
-para problema
 © 2010 Goodrich, Tamassia
 Notação O
 ◼
