@@ -33,7 +33,7 @@
 \title[\sc{Complexidade de Algoritmos}]{Complexidade de Algoritmos}
 \author[Roland Teodorowitsch]{Roland Teodorowitsch}
 \institute[ALEST I - EP - PUCRS]{Algoritmos e Estruturas de Dados I - Escola Politécnica - PUCRS}
-\date{8 de agosto de 2023}
+\date{9 de agosto de 2023}
 
 \begin{document}
 \justifying
@@ -1251,29 +1251,61 @@ $f(n) \le cg(n)$, para todo inteiro $n \ge n0$
 %-------------------------------------------------------
 \begin{frame}\frametitle{Notação $O$}
 \begin{itemize}
-	\item 
+	\item Exemplo: algoritmo para encontrar o maior elemento de um arranjo de inteiros
+	\begin{itemize}
+		\item $n$ representa o número de elementos no arranjo
+		\item Usando a notação $O$ se pode afirmar (independente do computador que será usado):
+		\begin{itemize}
+			\item Este algoritmo executa em tempo $O(n)$
+		\end{itemize}
+		\item Justificativa:
+		\begin{itemize}
+			\item O número de operações primitivas executadas pelo algoritmo é constante em cada iteração
+			\item Pode-se dizer que o tempo de execução do algoritmo para uma entrada de tamanho $n$ é no máximo uma constante, vezes $n$
+		\end{itemize}
+	\end{itemize}
+\end{itemize}
+\end{frame}
+
+%-------------------------------------------------------
+\begin{frame}\frametitle{Propriedades da notação $O$}
+\begin{itemize}
+	\item Permite ignorar os fatores constantes e os termos de menor ordem, focando nos principais componentes da função que afetam seu crescimento
+	\item Se $f(n)$ é um polinômio de grau $d$, isto é,
+\[f(n) = a_0 + a_{1}n + ... + a_{d}n^{d}\]
+e $a_d > 0$, então $f(n)$ é $O(n^{d})$
+	\item Deve-se descrever a função O em termos simples
+\end{itemize}
+\end{frame}
+
+%-------------------------------------------------------
+\begin{frame}\frametitle{Propriedades da notação $O$}
+\begin{itemize}
+	\item Portanto, o termo de mais alto grau em um polinômio é o termo que determina a taxa de crescimento assintótico do polinômio
+	\item Exemplos:
+	\begin{itemize}
+		\item $5n^2 + 3n\log{n} + 2n + 5$ é $O(n^2)$
+		\item $20n^3 + 10n\log{n} + 5$ é $O(n^3)$
+		\item $3\log{n} + 2$ é $O(\log{n})$
+		\item $2^{n+2}$ é $O(2^n)$
+		\item $2n + 100\log{n}$ é $O(n)$
+	\end{itemize}
 \end{itemize}
 \end{frame}
 
 %-------------------------------------------------------
 \begin{frame}\frametitle{Notação $O$}
 \begin{itemize}
-	\item 
-\end{itemize}
-\end{frame}
-
-%-------------------------------------------------------
-\begin{frame}\frametitle{Notação $O$}
-\begin{itemize}
-	\item 
-\end{itemize}
-\end{frame}
-
-%-------------------------------------------------------
-\begin{frame}\frametitle{Notação $O$}
-\begin{itemize}
-	\item 
-\end{itemize}
+	\item As sete funções apresentadas são as mais usadas em conjunto com a notação $O$\\
+$1$, $\log{n}$, $n$, $n\log{n}$, $n^2$, $n^3$, $a^n$
+	\item Caracterizam os tempos de execução e consumo de memória dos algoritmos
+	\item Os nomes destas funções são usados para referenciar o tempo de execução
+	\item Exemplos:
+	\begin{itemize}
+		\item  Algoritmo que executa no limite superior em tempo $4n^2 + n\log{n}$ é um algoritmo de tempo quadrático, pois executa em tempo $O(n^2)$
+		\item Algoritmo que executa no limite superior em $5n + 20\log{n} + 4$ é um algoritmo de tempo linear, ou seja, $O(n)$
+	\end{itemize}
+	\end{itemize}
 \end{frame}
 
 \section{Notação $\Omega$ e Notação $\Theta$}
@@ -1281,8 +1313,47 @@ $f(n) \le cg(n)$, para todo inteiro $n \ge n0$
 %-------------------------------------------------------
 \begin{frame}\frametitle{Notação $\Omega$ e Notação $\Theta$}
 \begin{itemize}
-	\item 
+	\item Notação $O$\\
+	Maneira assintótica de dizer que uma função é ``menor que ou igual a'' outra função
+	\item Notação $\Omega$\\
+	Maneira assintótica de dizer que uma função cresce a uma taxa que é ``maior ou igual a'' outra função
+	\item Notação $\Theta$\\
+	Permite dizer que duas funções crescem à mesma taxa
+	\end{itemize}
+\end{frame}
+
+%-------------------------------------------------------
+\begin{frame}\frametitle{Notação $\Omega$}
+\begin{itemize}
+	\item Sejam $f(n)$ e $g(n)$ funções mapeando inteiros não negativos em números reais
+	\item Diz-se que $f(n)$ é $\Omega(g(n))$ se $g(n)$ é $O(f(n))$, ou seja, se existe uma constante real $c > 0$ e uma constante inteira $n_0 \ge 1$ tais que $f(n) \ge cg(n)$, para todo inteiro $n \ge n_0$
+	\item Permite dizer que uma função é assintoticamente maior que ou igual a outra, exceto por um fator constante
+	\item Se diz que $f(n)$ \textbf{é ômega de} $g(n)$
+	\item Exemplo: $3n\log{n} + 2n$ é $\Omega(n\log{n})$
 \end{itemize}
+\end{frame}
+
+%-------------------------------------------------------
+\begin{frame}\frametitle{Notação $\Theta$}
+\begin{itemize}
+	\item Diz-se que $f(n)$ é $\Theta(g(n))$, se $f(n)$ é $O(g(n))$ e $f(n)$ é $\Omega(g(n))$, ou seja, existem constantes reais $c' > 0$ e $c'' > 0$ e uma constante inteira $n_0 \ge 1$ tais que $c'g(n) \le f(n) \le c''g(n)$, para $n \ge n_0$
+	\item Se diz que $f(n)$ \textbf{é theta} de $g(n)$
+	\item Exemplo: $3n\log{n} + 4n + 5 \log{n}$ é $\Theta(n\log{n})$
+\end{itemize}
+\end{frame}
+
+%-------------------------------------------------------
+\begin{frame}\frametitle{Exemplo de gráficos das notações $O$, $\Omega$ e $\Theta$}
+\begin{itemize}
+	\item Notação $\Theta$ limita uma função entre valores constantes
+	\item Notação $O$ dá um limite superior para uma função dentro de um valor constante
+	\item Notação $\Omega$ dá um limite inferior para uma função dentro de um valor constante
+		\end{itemize}
+\begin{figure}[h]
+	\centering
+	\includegraphics[height=0.5\paperheight]{imagens/notacoes.jpg}
+\tiny{Fonte: Cormen \emph{et al.} (2012)}
+\end{figure}
 \end{frame}
 
 \section{Análise assintótica}
@@ -1290,251 +1361,59 @@ $f(n) \le cg(n)$, para todo inteiro $n \ge n0$
 %-------------------------------------------------------
 \begin{frame}\frametitle{Análise assintótica}
 \begin{itemize}
-	\item 
+	\item Suponha dois algoritmos, A e B, para resolver um mesmo problema
+	\begin{itemize}
+		\item A tem um tempo de execução $O(n)$
+		\item B tem um tempo de execução $O(n^2)$
+		\item Qual deles é melhor?
+		\item A é assintoticamente melhor que B
+	\end{itemize}
 \end{itemize}
 \end{frame}
 
-\begin{comment}
-
-
-
-Notação O
-◼
-© 2010 Goodrich, Tamassia
-Notação O
-◼
-Exemplo: algoritmo para encontrar o maior
-elemento de um arranjo de inteiros
-◼
- n representa o número de elementos no arranjo
-◼
- Usando a notação O se pode afirmar (independente do
-computador que será usado):
-◼
- Este algoritmo executa em tempo O(n)
-◼
- Justificativa:
-◼
- O número de operações primitivas executadas pelo algoritmo é
-constante em cada iteração
-◼
- Pode-se dizer que o tempo de execução do algoritmo para uma
-entrada de tamanho n é no máximo uma constante, vezes n
-© 2010 Goodrich, Tamassia
-Notação O
-◼
- Propriedades da notação O
-◼
- Permite ignorar os fatores constantes e os termos de
-menor ordem, focando nos principais componentes da
-função que afetam seu crescimento
-◼
- Se f(n) é um polinômio de grau d, isto é,
-f(n) = a0 + a1n + ... + adnd
-e ad>0, então f(n) é O(nd)
-◼
- Deve-se descrever a função O em termos simples
-© 2010 Goodrich, Tamassia
-Notação O
-◼
-Propriedades da notação O
-◼
- Portanto, o termo de mais alto grau em um polinômio é
-o termo que determina a taxa de crescimento
-assintótico do polinômio
-◼
- Exemplos:
-◼
- 5n2 + 3n log n + 2n + 5 é O(n2)
-◼
- 20n3 + 10n log n + 5 é O(n 3)
-◼
- 3 log n + 2 é O(log n)
-◼
- 2n+2 é O(2 n)
-◼
- 2n + 100 log n é O(n)
-© 2010 Goodrich, Tamassia
-Notação O
-◼
- As sete funções apresentadas são as mais usadas
-em conjunto com a notação O
-◼
- 1
- log n
- n
- n log n
- n2
- n 3
- a n
-◼
- Caracterizam os tempos de execução e consumo de
-memória dos algoritmos
-◼
- Os nomes destas funções são usados para referenciar
-o tempo de execução
-◼
- Exemplos:
-◼
- Algoritmo que executa no limite superior em tempo 4n2 + n log n
-é um algoritmo de tempo quadrático, pois executa em tempo
-O(n2)
-◼
- Algoritmo que executa no limite superior em 5n + 20 log n + 4 é
-um algoritmo de tempo linear, ou seja, O(n)
-© 2010 Goodrich, Tamassia
-Roteiro
-◼
- Notação O
-◼
- Notação  e Notação 
-◼
- Análise assintótica
-PUCRS, Escola Politécnica - Isabel H. Manssour
-Este material é de uso exclusivo dos alunos matriculados na disciplina de Algoritmos e Estruturas de Dados I.
-É proibida sua reprodução e divulgação para qualquer finalidade.
-Notação 
-◼
- Notação O
-◼
- Maneira assintótica de dizer que uma função é “menor
-que ou igual a” outra função
-◼
- Notação 
-◼
- Maneira assintótica de dizer que uma função cresce a
-uma taxa que é “maior ou igual a” de outra função
-◼
-Notação 
-◼
- Notação  permite dizer que duas funções crescem à
-mesma taxa
-© 2010 Goodrich, Tamassia
-Notação 
-◼
- Sejam f(n) e g(n) funções mapeando inteiros não
-negativos em números reais
-◼
- Diz-se que f(n) é (g(n)) se g(n) é O(f(n)), ou
-seja, se existe uma constante c > 0 e uma
-constante n0 >= 1 tais que
-f(n) >= cg(n), para todo inteiro n>= n0
-◼
- Permite dizer que uma função é assintoticamente maior
-que ou igual a outra, exceto por um fator constante
-◼
- Se diz que f(n) é ômega de g(n)
-◼
- Exemplo: 3n log n + 2n é (n log n)
-© 2010 Goodrich, Tamassia
-Notação 
-◼
- Diz-se que f(n) é (g(n)),
-se f(n) é O(g(n)) e f(n) é (g(n)), ou seja,
-existem constantes reais c’>0 e c’’>0 e uma
-constante inteira n 0 >= 1 tais que
-c’g(n) <= f(n) <= c’’g(n), para n>= n 0
-◼
- Se diz que f(n) é theta de g(n)
-◼
- Exemplo: 3n log n <= 4n + 5 log n é (n log n)
-© 2010 Goodrich, Tamassia
-Notação 
-◼
- Exemplo de gráficos das notações O,  e 
-◼
- Notação  limita uma função entre valores constantes
-◼
- Notação O dá um limite superior para uma função
-dentro de um valor constante
-◼
- Notação  dá um limite inferior para uma função dentro
-de um valor constante
-[Cormen et al. 2012]
-Roteiro
-◼
- Notação O
-◼
- Notação  e Notação 
-◼
- Análise assintótica
-PUCRS, Escola Politécnica - Isabel H. Manssour
-Este material é de uso exclusivo dos alunos matriculados na disciplina de Algoritmos e Estruturas de Dados I.
-É proibida sua reprodução e divulgação para qualquer finalidade.
-Análise assintótica
-◼
- Suponha dois algoritmos, A e B, para resolver um
-mesmo problema
-◼
- A tem um tempo de execução O(n)
-◼
- B tem um tempo de execução O(n2)
-◼
- Qual deles é melhor?
-◼
- A é assintoticamente melhor que B
-© 2010 Goodrich, Tamassia
-Análise assintótica
-◼
- Pode-se usar a notação O para ordenar classes
-de funções por seu crescimento assintótico
-1
- log n
- n
- n log n
- n2
- n3
- 2n
-© 2010 Goodrich, Tamassia
-Análise assintótica
-◼
- Para analisar algoritmos com a notação O, o mais
-apropriado é dizer:
-f(n) é O(g(n)),
-ou
-f(n)  O(g(n))
-© 2010 Goodrich, Tamassia
-Análise assintótica
-◼
- O que é um algoritmo rápido?
-◼
- Em geral, um algoritmo executando em tempo
-O(n log n), com um fator constante razoável, pode
-ser considerado eficiente
-◼
- Até um método O(n2) pode ser suficientemente
-rápido em alguns contextos (n pequeno)
-◼
- Algoritmo executando em tempo O(2n) dificilmente
-pode ser considerado eficiente
-© 2010 Goodrich, Tamassia
-Análise assintótica
-◼
- Notações O,  e  fornecem uma linguagem
-conveniente para análise de estruturas de dados
-e algoritmos
-◼
- Permitem a concentração nos aspectos gerais, em vez
-dos detalhes
-© 2010 Goodrich, Tamassia
-Referências
-◼
- Livro do Goodrich e Tamassia
-Estruturas de Dados & Algoritmos
-5a edição
-Capítulo 4 (páginas 162 à 182)
-Leitura
-fortemente
-recomendada
-◼
- Livro do Cormen et al.
-Algoritmos – Teoria e Prática
-Capítulo 3
-
-\end{comment}
+%-------------------------------------------------------
+\begin{frame}\frametitle{Análise assintótica}
+\begin{itemize}
+	\item Pode-se usar a notação $O$ para ordenar classes de funções por seu crescimento assintótico\\
+$1$ ~ ~ $\log{n}$ ~ ~ $n$ ~ ~ $n\log{n}$ ~ ~ $n^2$ ~ ~ $n^3$ ~ ~ $2^n$
+\end{itemize}
+\begin{figure}[h]
+	\centering
+	\includegraphics[height=0.5\paperheight]{imagens/tabela.jpg}
+\end{figure}
+\end{frame}
 
 %-------------------------------------------------------
-\begin{frame}[fragile]\frametitle{Exercício 2} % Fonte: https://create.kahoot.it/details/2e37a282-4d9d-4902-8afc-9b827ed393fc
+\begin{frame}\frametitle{Análise assintótica}
+\begin{itemize}
+	\item Para analisar algoritmos com a notação $O$, o mais apropriado é dizer:\\
+$f(n)$ é $O(g(n))$,\\
+ou\\
+$f(n) \in O(g(n))$
+\end{itemize}
+\end{frame}
+
+%-------------------------------------------------------
+\begin{frame}\frametitle{O que é um algoritmo rápido?}
+\begin{itemize}
+	\item Em geral, um algoritmo executando em tempo $O(n\log{n})$, com um fator constante razoável, pode ser considerado eficiente
+	\item Até um método $O(n^2)$ pode ser suficientemente rápido em alguns contextos ($n$ pequeno)
+	\item Algoritmo executando em tempo $O(2^n)$ dificilmente pode ser considerado eficiente
+\end{itemize}
+\end{frame}
+
+%-------------------------------------------------------
+\begin{frame}\frametitle{Análise assintótica}
+\begin{itemize}
+	\item Notações $O$, $\Omega$ e $\Theta$ fornecem uma linguagem conveniente para análise de estruturas de dados e algoritmos
+	\begin{itemize}
+		\item Permitem a concentração nos aspectos gerais, em vez dos detalhes
+	\end{itemize}
+\end{itemize}
+\end{frame}
+
+%-------------------------------------------------------
+\begin{frame}[fragile]\frametitle{Exercício 1} % Fonte: https://create.kahoot.it/details/2e37a282-4d9d-4902-8afc-9b827ed393fc
 Qual a complexidade do algoritmo abaixo?
 {\scriptsize
 \begin{verbatim}
@@ -1556,7 +1435,7 @@ for (i=1; i<=n; ++i)
 \end{frame}
 
 %-------------------------------------------------------
-\begin{frame}[fragile]\frametitle{Exercício 3} % Fonte: https://create.kahoot.it/details/2e37a282-4d9d-4902-8afc-9b827ed393fc
+\begin{frame}[fragile]\frametitle{Exercício 2} % Fonte: https://create.kahoot.it/details/2e37a282-4d9d-4902-8afc-9b827ed393fc
 Qual a complexidade do algoritmo abaixo?
 {\scriptsize
 \begin{verbatim}
@@ -1574,16 +1453,6 @@ int busca(v[1..N] : inteiro, elem : inteiro)
 	\item $O(2n)$
 \end{enumerate}
 \end{frame}
-
-\begin{comment}
-%-------------------------------------------------------
-\begin{frame}\frametitle{Funções}
-\begin{itemize}
-	\item 
-Exercício:
-https://kahoot.com/
-
-\end{comment}
 
 %=======================================================
 \section{Créditos}
