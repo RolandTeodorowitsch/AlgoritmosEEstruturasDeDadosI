@@ -33,7 +33,7 @@
 \title[\sc{Recursão}]{Recursão}
 \author[Roland Teodorowitsch]{Roland Teodorowitsch}
 \institute[ALEST I - EP - PUCRS]{Algoritmos e Estruturas de Dados I - Escola Politécnica - PUCRS}
-\date{10 de agosto de 2023}
+\date{14 de agosto de 2023}
 
 \begin{document}
 \justifying
@@ -67,19 +67,20 @@
 \end{frame}
 
 %-------------------------------------------------------
-\begin{frame}\frametitle{Algoritmo recursivo}
+\begin{frame}\frametitle{Algoritmo Recursivo}
 \begin{itemize}
-	\item É um algoritmo que faz chamada a si próprio dentro de sua implementação
+	\item É um algoritmo que chamada a si próprio
 	\item \textbf{Importante:} o algoritmo deve garantir que a recursão termine
 	\begin{itemize}
-		\item Do contrário se entrará em um laço infinito
-		\item Importante considerar a condição de termino logo no início da implementação do algoritmo
+		\item Caso contrário cria-se um ``laço infinito'' que causará um estouro de pilha
+		\lstinputlisting{src/loop.c}
+		\item Geralmente coloca-se uma condição de parada (situação em que a chamada recursiva NÃO é realizada) no início da implementação
 	\end{itemize}
 \end{itemize}
 \end{frame}
 
 %-------------------------------------------------------
-\begin{frame}\frametitle{Exemplo clássico: fatorial}
+\begin{frame}\frametitle{Exemplo clássico: Fatorial}
 \begin{itemize}
 	\item O fatorial de n é normalmente definido como:
 \[ n! = \prod_{k=1}^{n}{k} = n \times (n-1) \times (n-2) \times ... \times 3 \times 2 \times 1,\qquad \forall n \in \mathbb{N}\]
@@ -94,13 +95,13 @@ n \times (n-1)!, & \mbox{se ~ } n > 1
 \end{frame}
 
 %-------------------------------------------------------
-\begin{frame}[fragile]\frametitle{Implementação do fatorial}
+\begin{frame}[fragile]\frametitle{Implementação do Fatorial}
 \begin{itemize}
 	\item Iterativo
 {\scriptsize\lstinputlisting{src/fatorial.c}}
 	\item Recursivo
 {\scriptsize\lstinputlisting{src/fatorialRec.c}}
-	\end{itemize}
+\end{itemize}
 \end{frame}
 
 %-------------------------------------------------------
@@ -112,7 +113,29 @@ n \times (n-1)!, & \mbox{se ~ } n > 1
 \end{frame}
 
 %-------------------------------------------------------
-\begin{frame}\frametitle{Recursividade}
+\begin{frame}\frametitle{Exemplo: Contagem}
+\begin{itemize}
+	\item Iterativo
+{\scriptsize\lstinputlisting{src/contagem.c}}
+	\pause
+	\item Recursivo
+{\scriptsize\lstinputlisting{src/contagemRec.c}}
+\end{itemize}
+\end{frame}
+
+%-------------------------------------------------------
+\begin{frame}\frametitle{Exercício: Contagem Regressiva}
+\begin{itemize}
+	\item Iterativo
+{\scriptsize\lstinputlisting{src/contagemRegressiva.c}}
+	\pause
+	\item Recursivo
+{\scriptsize\lstinputlisting{src/contagemRegressivaRec.c}}
+\end{itemize}
+\end{frame}
+
+%-------------------------------------------------------
+\begin{frame}\frametitle{Recursividade [*]}
 \begin{itemize}
 	\item Poderosa ferramenta de programação
 	\item Apesar de bastante empregada, nem sempre ela deve ser aplicada
@@ -124,14 +147,7 @@ n \times (n-1)!, & \mbox{se ~ } n > 1
 \end{frame}
 
 %-------------------------------------------------------
-\begin{frame}\frametitle{...}
-\begin{itemize}
-	\item ...	
-\end{itemize}
-\end{frame}
-
-%-------------------------------------------------------
-\begin{frame}\frametitle{Vantagens}
+\begin{frame}\frametitle{Vantagens [*]}
 \begin{itemize}
 	\item Rotinas mais concisas
 	\item Relação direta com uma prova por indução matemática
@@ -147,7 +163,7 @@ n \times (n-1)!, & \mbox{se ~ } n > 1
 \end{frame}
 
 %-------------------------------------------------------
-\begin{frame}\frametitle{Desvantagens}
+\begin{frame}\frametitle{Desvantagens [*]}
 \begin{itemize}
 	\item Cada chamada recursiva implica em um custo (tempo e espaço)
 	\begin{itemize}
@@ -156,27 +172,198 @@ n \times (n-1)!, & \mbox{se ~ } n > 1
 		\item Cada chamada requer
 		\begin{itemize}
 			\item O empilhamento de parâmetros e endereços de retorno da função que chama
-			\item O desempilhamento de parâmetros pela função que executa
+			\item A alocação de variáveis locais da função % [Roland]
+			%\item O desempilhamento de parâmetros pela função que executa
 		\end{itemize}
 		\item Cada retorno requer
 		\begin{itemize}
+			\item A desalocação das variáveis locais da função % [Roland]
 			\item O desempilhamento do endereço de retorno
-			\item O empilhamento do resultado (ou passagem por registrador)
-			\item O desempilhamento do retorno pela função que chamou
+			%\item O empilhamento do resultado (ou passagem por registrador)
+			%\item O desempilhamento do retorno pela função que chamou
 		\end{itemize}
 	\end{itemize}
 \end{itemize}
 \end{frame}
 
 %-------------------------------------------------------
+\begin{frame}\frametitle{Algoritmos de Pesquisa}
+\begin{itemize}
+	\item Localizam um elemento dentro de uma coleção
+	\item Podem retornar
+	\begin{itemize}
+		\item \textbf{Valor booleano} (\texttt{true} se o elemento existir na coleção ou \texttt{false}, em caso contrário) ou
+		\item \textbf{Índice} (posição) do elemento na coleção (ou -1 se não encontrar)
+	\end{itemize}
+	\item Para coleções \textbf{desordenadas}, deve-se usar um algoritmo de \textbf{pesquisa linear}
+	\item Quando a coleção está \textbf{ordenada}, pode-se usar um algoritmo de \textbf{pesquisa binária}
+\end{itemize}
+\end{frame}
+
+%-------------------------------------------------------
+\begin{frame}\frametitle{Pesquisa Linear}
+\begin{itemize}
+	\item Serve para coleções \textbf{desordenadas}
+	\item Estratégia: comparar o elemento procurado com cada item da coleção até encontrar ou até chegar ao fim
+	\item Melhor caso: o elemento procurado é o primeiro da lista
+	\item Pior caso: o elemento procurado \textbf{NÃO} existe na lista
+	\item Também poderia ser aplicado sobre coleções ordenadas
+	\item Complexidade: $O(n)$
+\end{itemize}
+\end{frame}
+
+%-------------------------------------------------------
+\begin{frame}[fragile]\frametitle{Implementação da Pesquisa Linear}
+\begin{itemize}
+	\item Iterativo
+{\scriptsize\lstinputlisting{src/pesquisaLinear.c}}
+	\pause
+	\item Recursivo
+{\scriptsize\lstinputlisting{src/pesquisaLinearRec.c}}
+\end{itemize}
+\end{frame}
+
+%-------------------------------------------------------
+\begin{frame}\frametitle{Pesquisa Binária}
+\begin{itemize}
+	\item Serve \textbf{APENAS} para coleções \textbf{ordenadas}
+	\item Estratégia:
+	\begin{itemize}
+		\item Compara o valor procurado com o elemento do meio
+		\begin{itemize}
+			\item Se for igual, encontrou
+			\item Se for menor, continua-se a busca na metade inferior (desconsidera a metade superior)
+			\item Se for maior, continua-se a busca na metade superior (desconsidera a metade inferior)
+		\end{itemize}
+		\item Repete-se o procecimento até que o valor procurado seja encontrado ou até que não se consiga dividir a coleção
+	\end{itemize}
+	\item Complexidade: $O(\log{n})$
+\end{itemize}
+\end{frame}
+
+%-------------------------------------------------------
+\begin{frame}[fragile]\frametitle{Pesquisa Binária Iterativa}
+\lstinputlisting[basicstyle=\ttfamily\scriptsize]{src/pesquisaBinaria.c}
+\end{frame}
+
+%-------------------------------------------------------
+\begin{frame}\frametitle{Pesquisa Binária: Exemplo (\texttt{valor = 18})}
+\begin{itemize}
+
+	\item Passo 1:
+\begin{tabular}{cccccccccc}
+\tiny{0} & \tiny{1} & \tiny{2} & \tiny{3} & \tiny{4} & \tiny{5} & \tiny{6} & \tiny{7} & \tiny{8} & \tiny{9}\\
+\hline
+\multicolumn{1}{|c|}{2} & \multicolumn{1}{c|}{4} & \multicolumn{1}{c|}{6} & \multicolumn{1}{c|}{8} & \multicolumn{1}{c|}{10} & \multicolumn{1}{c|}{12} & \multicolumn{1}{c|}{14} & \multicolumn{1}{c|}{16} & \multicolumn{1}{c|}{18} & \multicolumn{1}{c|}{20}\\
+\hline
+$\uparrow$ & & & & $\uparrow$ & & & & & $\uparrow$ \\
+{\tiny\texttt ini} & & & & {\tiny\texttt meio} & & & & & {\tiny\texttt fim} \\
+\end{tabular}
+
+	\item Passo 2:
+\begin{tabular}{cccccccccc}
+\tiny{0} & \tiny{1} & \tiny{2} & \tiny{3} & \tiny{4} & \tiny{5} & \tiny{6} & \tiny{7} & \tiny{8} & \tiny{9}\\
+\hline
+\multicolumn{1}{|c|}{2} & \multicolumn{1}{c|}{4} & \multicolumn{1}{c|}{6} & \multicolumn{1}{c|}{8} & \multicolumn{1}{c|}{10} & \multicolumn{1}{c|}{12} & \multicolumn{1}{c|}{14} & \multicolumn{1}{c|}{16} & \multicolumn{1}{c|}{18} & \multicolumn{1}{c|}{20}\\
+\hline
+ & & & & & $\uparrow$ & & $\uparrow$ & & $\uparrow$ \\
+ & & & & & {\tiny\texttt ini} & & {\tiny\texttt meio} & & {\tiny\texttt fim} \\
+\end{tabular}
+
+	\item Passo 3:
+\begin{tabular}{cccccccccc}
+\tiny{0} & \tiny{1} & \tiny{2} & \tiny{3} & \tiny{4} & \tiny{5} & \tiny{6} & \tiny{7} & \tiny{8} & \tiny{9}\\
+\hline
+\multicolumn{1}{|c|}{2} & \multicolumn{1}{c|}{4} & \multicolumn{1}{c|}{6} & \multicolumn{1}{c|}{8} & \multicolumn{1}{c|}{10} & \multicolumn{1}{c|}{12} & \multicolumn{1}{c|}{14} & \multicolumn{1}{c|}{16} & \multicolumn{1}{c|}{18} & \multicolumn{1}{c|}{20}\\
+\hline
+ & & & & & & & & $\uparrow$ & $\uparrow$ \\
+ & & & & & & & & {\tiny\texttt ini} & {\tiny\texttt fim} \\
+ & & & & & & & & {\tiny\texttt meio} & \\
+\end{tabular}
+ ~ Valor 18 encontrado no índice 8!
+\end{itemize}
+\end{frame}
+
+%-------------------------------------------------------
+\begin{frame}\frametitle{Pesquisa Binária: Exemplo (\texttt{valor = 5})}
+\begin{itemize}
+
+	\item Passo 1:
+\begin{tabular}{cccccccccc}
+\tiny{0} & \tiny{1} & \tiny{2} & \tiny{3} & \tiny{4} & \tiny{5} & \tiny{6} & \tiny{7} & \tiny{8} & \tiny{9}\\
+\hline
+\multicolumn{1}{|c|}{2} & \multicolumn{1}{c|}{4} & \multicolumn{1}{c|}{6} & \multicolumn{1}{c|}{8} & \multicolumn{1}{c|}{10} & \multicolumn{1}{c|}{12} & \multicolumn{1}{c|}{14} & \multicolumn{1}{c|}{16} & \multicolumn{1}{c|}{18} & \multicolumn{1}{c|}{20}\\
+\hline
+$\uparrow$ & & & & $\uparrow$ & & & & & $\uparrow$ \\
+{\tiny\texttt ini} & & & & {\tiny\texttt meio} & & & & & {\tiny\texttt fim} \\
+\end{tabular}\\~\\~
+
+	\item Passo 2:
+\begin{tabular}{cccccccccc}
+\tiny{0} & \tiny{1} & \tiny{2} & \tiny{3} & \tiny{4} & \tiny{5} & \tiny{6} & \tiny{7} & \tiny{8} & \tiny{9}\\
+\hline
+\multicolumn{1}{|c|}{2} & \multicolumn{1}{c|}{4} & \multicolumn{1}{c|}{6} & \multicolumn{1}{c|}{8} & \multicolumn{1}{c|}{10} & \multicolumn{1}{c|}{12} & \multicolumn{1}{c|}{14} & \multicolumn{1}{c|}{16} & \multicolumn{1}{c|}{18} & \multicolumn{1}{c|}{20}\\
+\hline
+$\uparrow$ & $\uparrow$ & & $\uparrow$ & & & & & & \\
+{\tiny\texttt ini} & {\tiny\texttt meio}& & {\tiny\texttt fim} & & & & & & \\
+\end{tabular}
+
+\end{itemize}
+\end{frame}
+
+%-------------------------------------------------------
+\begin{frame}\frametitle{Pesquisa Binária: Exemplo (\texttt{valor = 5})}
+\begin{itemize}
+
+	\item Passo 3:
+\begin{tabular}{cccccccccc}
+\tiny{0} & \tiny{1} & \tiny{2} & \tiny{3} & \tiny{4} & \tiny{5} & \tiny{6} & \tiny{7} & \tiny{8} & \tiny{9}\\
+\hline
+\multicolumn{1}{|c|}{2} & \multicolumn{1}{c|}{4} & \multicolumn{1}{c|}{6} & \multicolumn{1}{c|}{8} & \multicolumn{1}{c|}{10} & \multicolumn{1}{c|}{12} & \multicolumn{1}{c|}{14} & \multicolumn{1}{c|}{16} & \multicolumn{1}{c|}{18} & \multicolumn{1}{c|}{20}\\
+\hline
+ & & $\uparrow$ & $\uparrow$ & & & & & & \\
+ & & {\tiny\texttt ini} & {\tiny\texttt fim} & & & & & & \\
+ & & {\tiny\texttt meio} & & & & & & & \\
+\end{tabular}\\~\\~
+
+	\item Passo 4:
+\begin{tabular}{cccccccccc}
+\tiny{0} & \tiny{1} & \tiny{2} & \tiny{3} & \tiny{4} & \tiny{5} & \tiny{6} & \tiny{7} & \tiny{8} & \tiny{9}\\
+\hline
+\multicolumn{1}{|c|}{2} & \multicolumn{1}{c|}{4} & \multicolumn{1}{c|}{6} & \multicolumn{1}{c|}{8} & \multicolumn{1}{c|}{10} & \multicolumn{1}{c|}{12} & \multicolumn{1}{c|}{14} & \multicolumn{1}{c|}{16} & \multicolumn{1}{c|}{18} & \multicolumn{1}{c|}{20}\\
+\hline
+ & $\uparrow$ & $\uparrow$ & & & & & & & \\
+ & {\tiny\texttt fim} & {\tiny\texttt ini} & & & & & & & \\
+\end{tabular}
+ ~ Valor 5 \textbf{NÃO} encontrado!
+
+\end{itemize}
+\end{frame}
+
+%-------------------------------------------------------
+\begin{frame}[fragile]\frametitle{Pesquisa Binária Recursiva}
+\lstinputlisting[basicstyle=\ttfamily\scriptsize]{src/pesquisaBinariaRec.c}
+\end{frame}
+
+%-------------------------------------------------------
 \begin{frame}\frametitle{Exercícios}
 \begin{enumerate}
-	\item Faça o algoritmo da potência de forma não recursiva e de forma recursiva. Considere que o valor da base e do expoente são recebidos por parâmetro, inteiros e positivos.
-	\item Faça um algoritmo recursivo que inverta a ordem dos elementos de um vetor.
-	\item Faça um algoritmo recursivo para somar os elementos de um vetor.
-	\item \textbf{Desafio:}\\
-	Faça um algoritmo recursivo para verificar se uma cadeia de caracteres é um palíndromo.\\
-	Teste: ``socorrammesubinoonibusemmarrocos''.
+	\item Dado um valor inteiro e positivo (\texttt{n}), o valor da constante de \emph{Euler} poder ser calculando com precisão diretamente proporcional a \texttt{n} através da fórmula:
+\[ E = \frac{1}{0!} + \frac{1}{1!} + \frac{1}{2!}+ \frac{1}{3!} + ... + \frac{1}{n!}\]
+Implemente, em C, um método recursivo que recebe \texttt{n}, retornando o valor de \emph{Euler} calculado usando a fórmula acima.
+	\item Considere a função abaixo, que implementa o somatório de um vetor e implemente a sua versão recursiva.
+\lstinputlisting[basicstyle=\ttfamily\tiny]{src/somatorio.c}
+\end{enumerate}
+\end{frame}
+
+%-------------------------------------------------------
+\begin{frame}\frametitle{Exercícios}
+\begin{enumerate}
+        \setcounter{enumi}{2}
+	\item Considere a função que implementa o algoritmo \emph{Bubble Sort} (apresentada na unidade anterior) e implemente a sua versão recursiva).
+	\item Implemente uma função recursiva que inverte os elementos de um vetor, trocando o primeiro elemento com o último, o segundo com o penúltimo, e assim sucessivamente.
+	\item Implemente uma função recursiva que verifica se uma cadeia de caracteres recebida como parâmetro é um palíndromo ou não. Por exemplo, ``socorrammesubinoonibusemmarrocos'' é um palíndromo.
+	%\item Faça o algoritmo da potência de forma não recursiva e de forma recursiva. Considere que o valor da base e do expoente são recebidos por parâmetro, inteiros e positivos.
 \end{enumerate}
 \end{frame}
 
@@ -186,7 +373,7 @@ n \times (n-1)!, & \mbox{se ~ } n > 1
 %-------------------------------------------------------
 \begin{frame}\frametitle{Créditos}
 \begin{itemize}
-	\item Estas lâminas contêm trechos de materiais criados e disponibilizados pelo professor Iaçanã Ianiski Weber.
+	\item Estas lâminas contêm trechos de materiais criados e disponibilizados pelo professor Iaçanã Ianiski Weber [*].
 \end{itemize}
 \end{frame}
 
