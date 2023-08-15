@@ -33,7 +33,7 @@
 \title[\sc{Complexidade de Algoritmos}]{Complexidade de Algoritmos}
 \author[Roland Teodorowitsch]{Roland Teodorowitsch}
 \institute[ALEST I - EP - PUCRS]{Algoritmos e Estruturas de Dados I - Escola Politécnica - PUCRS}
-\date{11 de agosto de 2023}
+\date{15 de agosto de 2023}
 
 \begin{document}
 \justifying
@@ -1096,7 +1096,7 @@ Exemplo:
 \section{Notação $O$}
 
 \newcommand{\sep}{\hspace*{.5em}}
-%-------------------------------------------------------
+	%-------------------------------------------------------
 \begin{frame}\frametitle{Notação $O$}
 \begin{itemize}
 	\item O número de passos durante a execução de um algoritmo pode variar
@@ -1454,13 +1454,99 @@ int busca(v[1..N] : inteiro, elem : inteiro)
 \end{enumerate}
 \end{frame}
 
+%-------------------------------------------------------
+\begin{frame}[fragile]\frametitle{Exercício 3} % Fonte: P1 (2023/1) - Iaçanã Ianiski Weber
+Analise os trechos de algoritmos abaixo e identifique suas respectivas classes de complexidade.
+
+\begin{columns}[T]
+\begin{column}{0.5\linewidth}
+\begin{enumerate}
+	\item \textbf{Algoritmo I:}
+{\scriptsize
+\begin{verbatim}
+for (i=0; i < n; i++)
+    for (j=0; j < n; j++)
+         a += i*3 + aa[i][j];
+\end{verbatim}
+}
+	\item \textbf{Algoritmo II:}
+{\scriptsize
+\begin{verbatim}
+for (i=1; i < n; i=i+i)
+    b = b >> i;
+\end{verbatim}
+}
+	\item \textbf{Algoritmo III:}
+{\scriptsize
+\begin{verbatim}
+for (i=0; i < n; i++)
+    for (j=0; j < n; j++)
+        for (k=0; k < n; k++)
+            c += i + j + k;
+\end{verbatim}
+}
+\end{enumerate}
+\end{column}
+\begin{column}{0.5\linewidth}
+\begin{enumerate}
+	\setcounter{enumi}{3}
+	\item \textbf{Algoritmo IV:}
+{\scriptsize
+\begin{verbatim}
+for (i=0; i < n; i++)
+    for (j=i; j < i+5; j++)
+        for (k=0; k < n; k++)
+            d++;
+\end{verbatim}
+}
+	\item \textbf{Algoritmo V:}
+{\scriptsize
+\begin{verbatim}
+for (i=0; i < 127; i++)
+    for (j = 0; j < 127; j++)
+        e[i][j] = 0;
+\end{verbatim}
+}
+\end{enumerate}
+\end{column}
+\end{columns}
+\end{frame}
+
+%-------------------------------------------------------
+\begin{frame}[fragile]\frametitle{Exercício 4} % Fonte: P1 (2023/1) - Iaçanã Ianiski Weber
+Considere as seguintes funções:
+\[ f_1(n) = O(n) \qquad f_2(n) = O(\log{n}) \qquad f_3(n) = O(2^n) \qquad f_4(n) = O(n^2) \]
+A sequência que apresenta as funções acima ordenadas, pela sua taxa de crescimento, de forma crescente é:
+\begin{enumerate}[A]
+	\item $f_2$ -- $f_1$ -- $f_4$ -- $f_3$ % CERTA
+	\item $f_3$ -- $f_4$ -- $f_1$ -- $f_2$
+	\item $f_1$ -- $f_3$ -- $f_2$ -- $f_4$
+	\item $f_1$ -- $f_2$ -- $f_3$ -- $f_4$
+	\item $f_2$ -- $f_1$ -- $f_3$ -- $f_4$
+\end{enumerate}
+\end{frame}
+
+%-------------------------------------------------------
+\begin{frame}[fragile]\frametitle{Exercício 5} % Fonte: P1 (2023/1) - Iaçanã Ianiski Weber
+Qual a notação $O$ dos algoritmos que têm as seguintes taxas de crescimento assintóticas?
+\begin{enumerate}[a]
+	\item $3n\log{n} + 2n + 5$      % $O(n)$
+	\item $1000n\log{n} + 15n^3$    % $O(n^3)$
+	\item $8 \log{n} + n$           % $O(n)$
+	\item $500n^5 + 2n$             % $O(2^n)$
+	\item $10\log{n} + 1521$        % $O(\log{n})$
+	\item $3n + 4500n$              % $O(n)$
+	\item $3n + 753\log{n} + 4$     % $O(n)$s
+\end{enumerate}
+	\end{frame}
+
 %=======================================================
 \section{Créditos}
 
 %-------------------------------------------------------
 \begin{frame}\frametitle{Créditos}
 \begin{itemize}
-	\item Estas lâminas contêm trechos de materiais criados e disponibilizados pela professora Isabe Harb Manssour.
+	\item Estas lâminas contêm trechos de materiais criados e disponibilizados pelos professores Isabe Harb Manssour e Iaçanã Ianiski Weber.
 \end{itemize}
 \end{frame}
 
