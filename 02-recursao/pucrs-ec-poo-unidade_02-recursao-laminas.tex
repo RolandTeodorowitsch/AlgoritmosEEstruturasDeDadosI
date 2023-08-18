@@ -33,7 +33,7 @@
 \title[\sc{Recursão}]{Recursão}
 \author[Roland Teodorowitsch]{Roland Teodorowitsch}
 \institute[ALEST I - EP - PUCRS]{Algoritmos e Estruturas de Dados I - Escola Politécnica - PUCRS}
-\date{14 de agosto de 2023}
+\date{17 de agosto de 2023}
 
 \begin{document}
 \justifying
@@ -73,7 +73,7 @@
 	\item \textbf{Importante:} o algoritmo deve garantir que a recursão termine
 	\begin{itemize}
 		\item Caso contrário cria-se um ``laço infinito'' que causará um estouro de pilha
-		\lstinputlisting{src/loop.c}
+		\lstinputlisting{src/loop.cpp}
 		\item Geralmente coloca-se uma condição de parada (situação em que a chamada recursiva NÃO é realizada) no início da implementação
 	\end{itemize}
 \end{itemize}
@@ -98,9 +98,9 @@ n \times (n-1)!, & \mbox{se ~ } n > 1
 \begin{frame}[fragile]\frametitle{Implementação do Fatorial}
 \begin{itemize}
 	\item Iterativo
-{\scriptsize\lstinputlisting{src/fatorial.c}}
+{\scriptsize\lstinputlisting{src/fatorial.cpp}}
 	\item Recursivo
-{\scriptsize\lstinputlisting{src/fatorialRec.c}}
+{\scriptsize\lstinputlisting{src/fatorialRec.cpp}}
 \end{itemize}
 \end{frame}
 
@@ -116,10 +116,10 @@ n \times (n-1)!, & \mbox{se ~ } n > 1
 \begin{frame}\frametitle{Exemplo: Contagem}
 \begin{itemize}
 	\item Iterativo
-{\scriptsize\lstinputlisting{src/contagem.c}}
+{\scriptsize\lstinputlisting{src/contagem.cpp}}
 	\pause
 	\item Recursivo
-{\scriptsize\lstinputlisting{src/contagemRec.c}}
+{\scriptsize\lstinputlisting{src/contagemRec.cpp}}
 \end{itemize}
 \end{frame}
 
@@ -127,10 +127,23 @@ n \times (n-1)!, & \mbox{se ~ } n > 1
 \begin{frame}\frametitle{Exercício: Contagem Regressiva}
 \begin{itemize}
 	\item Iterativo
-{\scriptsize\lstinputlisting{src/contagemRegressiva.c}}
+{\scriptsize\lstinputlisting{src/contagemRegressiva.cpp}}
 	\pause
 	\item Recursivo
-{\scriptsize\lstinputlisting{src/contagemRegressivaRec.c}}
+{\scriptsize\lstinputlisting{src/contagemRegressivaRec.cpp}}
+\end{itemize}
+\end{frame}
+
+%-------------------------------------------------------
+\begin{frame}\frametitle{Exercício: Geração de Índices de uma Matriz}
+\begin{itemize}
+	\item Iterativo
+{\scriptsize\lstinputlisting{src/indicesMatriz.cpp}}
+	\pause
+	\item Recursivo
+{\scriptsize\lstinputlisting{src/indicesMatrizRec1.cpp}}
+	\pause
+	\item \textbf{Desafio:} faça uma versão recursiva do algoritmo acima sem usar nenhum laço!
 \end{itemize}
 \end{frame}
 
@@ -186,6 +199,9 @@ n \times (n-1)!, & \mbox{se ~ } n > 1
 \end{itemize}
 \end{frame}
 
+%=======================================================
+\section{Algoritmos de Pesquisa}
+
 %-------------------------------------------------------
 \begin{frame}\frametitle{Algoritmos de Pesquisa}
 \begin{itemize}
@@ -208,6 +224,7 @@ n \times (n-1)!, & \mbox{se ~ } n > 1
 	\item Melhor caso: o elemento procurado é o primeiro da lista
 	\item Pior caso: o elemento procurado \textbf{NÃO} existe na lista
 	\item Também poderia ser aplicado sobre coleções ordenadas
+	\pause
 	\item Complexidade: $O(n)$
 \end{itemize}
 \end{frame}
@@ -216,10 +233,10 @@ n \times (n-1)!, & \mbox{se ~ } n > 1
 \begin{frame}[fragile]\frametitle{Implementação da Pesquisa Linear}
 \begin{itemize}
 	\item Iterativo
-{\scriptsize\lstinputlisting{src/pesquisaLinear.c}}
+{\scriptsize\lstinputlisting{src/pesquisaLinear.cpp}}
 	\pause
 	\item Recursivo
-{\scriptsize\lstinputlisting{src/pesquisaLinearRec.c}}
+{\scriptsize\lstinputlisting{src/pesquisaLinearRec.cpp}}
 \end{itemize}
 \end{frame}
 
@@ -237,13 +254,14 @@ n \times (n-1)!, & \mbox{se ~ } n > 1
 		\end{itemize}
 		\item Repete-se o procecimento até que o valor procurado seja encontrado ou até que não se consiga dividir a coleção
 	\end{itemize}
-	\item Complexidade: $O(\log{n})$
+	\pause
+		\item Complexidade: $O(\log{n})$
 \end{itemize}
 \end{frame}
 
 %-------------------------------------------------------
 \begin{frame}[fragile]\frametitle{Pesquisa Binária Iterativa}
-\lstinputlisting[basicstyle=\ttfamily\scriptsize]{src/pesquisaBinaria.c}
+\lstinputlisting[basicstyle=\ttfamily\scriptsize]{src/pesquisaBinaria.cpp}
 \end{frame}
 
 %-------------------------------------------------------
@@ -342,8 +360,11 @@ $\uparrow$ & $\uparrow$ & & $\uparrow$ & & & & & & \\
 
 %-------------------------------------------------------
 \begin{frame}[fragile]\frametitle{Pesquisa Binária Recursiva}
-\lstinputlisting[basicstyle=\ttfamily\scriptsize]{src/pesquisaBinariaRec.c}
+\lstinputlisting[basicstyle=\ttfamily\scriptsize]{src/pesquisaBinariaRec.cpp}
 \end{frame}
+
+%=======================================================
+\section{Exercícios}
 
 %-------------------------------------------------------
 \begin{frame}\frametitle{Exercícios}
@@ -352,7 +373,7 @@ $\uparrow$ & $\uparrow$ & & $\uparrow$ & & & & & & \\
 \[ E = \frac{1}{0!} + \frac{1}{1!} + \frac{1}{2!}+ \frac{1}{3!} + ... + \frac{1}{n!}\]
 Implemente, em C, um método recursivo que recebe \texttt{n}, retornando o valor de \emph{Euler} calculado usando a fórmula acima.
 	\item Considere a função abaixo, que implementa o somatório de um vetor e implemente a sua versão recursiva.
-\lstinputlisting[basicstyle=\ttfamily\tiny]{src/somatorio.c}
+\lstinputlisting[basicstyle=\ttfamily\tiny]{src/somatorio.cpp}
 \end{enumerate}
 \end{frame}
 
@@ -368,12 +389,37 @@ Implemente, em C, um método recursivo que recebe \texttt{n}, retornando o valor
 \end{frame}
 
 %=======================================================
+\section{Soluções}
+
+%-------------------------------------------------------
+\begin{frame}\frametitle{Soluções}
+\begin{enumerate}
+	\item \lstinputlisting[basicstyle=\ttfamily\tiny]{src/eulerRec.cpp}
+
+	\item \lstinputlisting[basicstyle=\ttfamily\tiny]{src/somatorioRec.cpp}
+
+	\item \lstinputlisting[basicstyle=\ttfamily\tiny]{src/bubbleSortRec.cpp}
+\end{enumerate}
+\end{frame}
+
+%-------------------------------------------------------
+\begin{frame}\frametitle{Soluções}
+\begin{enumerate}
+        \setcounter{enumi}{3}
+	\item \lstinputlisting[basicstyle=\ttfamily\tiny]{src/inverteVetorRec.cpp}
+
+	\item \lstinputlisting[basicstyle=\ttfamily\tiny]{src/palindromoRec.cpp}
+
+\end{enumerate}
+\end{frame}
+
+%=======================================================
 \section{Créditos}
 
 %-------------------------------------------------------
 \begin{frame}\frametitle{Créditos}
 \begin{itemize}
-	\item Estas lâminas contêm trechos de materiais criados e disponibilizados pelo professor Iaçanã Ianiski Weber [*].
+	\item Estas lâminas contêm trechos adaptados de materiais criados e disponibilizados pelo professor Iaçanã Ianiski Weber [*].
 \end{itemize}
 \end{frame}
 

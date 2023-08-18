@@ -1,5 +1,5 @@
-#include <stdio.h>
+#include <iostream>
 void contagemRegressiva(int n) {
   for (int i=n; i>=1; i--)
-      printf("%d\n", i);
+      std::cout << i << std::endl;
 }
