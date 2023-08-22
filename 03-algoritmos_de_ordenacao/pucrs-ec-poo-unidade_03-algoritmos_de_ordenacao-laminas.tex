@@ -63,7 +63,7 @@
 \end{column}
 \begin{column}{0.85\linewidth}
 \vspace{3mm}
-\textbf{Seção 3.1.2}\\
+\textbf{Seções 3.1.2, 11.1 (\emph{Merge Sort}), 11.2 (\emph{Quick Sort}), 11.3.3 (comparação)}\\
 \scriptsize{GOODRICH, Michael T.; TAMASSIA, Roberto. \textbf{Estruturas de dados e algoritmos em Java}. Tradução: Bernardo Copstein. 5. ed. Porto Alegre: Bookman, 2013. xxii, 713 p. E-book. ISBN 9788582600191. Tradução de: Data Structures and Algorithms in Java, 5th Edition. Disponível em: \textless{}\url{https://integrada.minhabiblioteca.com.br/\#/books/9788582600191/}\textgreater{}. Acesso em: 01 ago. 2023.}
 \end{column}
 \end{columns}
@@ -192,7 +192,7 @@
 \end{frame}
 
 %-------------------------------------------------------
-\begin{frame}[fragile]\frametitle{\emph{Bubble Sort}: Mais informações}
+\begin{frame}[fragile]\frametitle{\emph{Bubble Sort}: Mais informações [*]}
 \begin{itemize}
 	\item \url{http://www.sorting-algorithms.com/bubble-sort}
 	\item \url{https://www.hackerearth.com/practice/algorithms/sorting/bubble-sort/tutorial/}
@@ -205,7 +205,8 @@
 %-------------------------------------------------------
 \begin{frame}\frametitle{\emph{Selection Sort}}
 \begin{itemize}
-	\item É um método fácil de implementar e bastante intuitivo, o que não garante eficiência...
+	\item É um algorimo de ordenação por seleção
+	\item Fácil de implementar e bastante intuitivo, o que não garante eficiência...
 	\item Estratégia: procurar o menor elemento e colocá-lo na sua posiçao
 	\item Repete-se a estratégia até que todos os elementos estejam em sua posição
 	\item Complexidade: $O(n^2)$ (melhor e pior caso)
@@ -262,6 +263,7 @@
 %-------------------------------------------------------
 \begin{frame}\frametitle{\emph{Insertion Sort}}
 \begin{itemize}
+	\item É um algorimo de ordenação por inserção
 	\item Estratégia:
 	\begin{itemize}
 		\item Escolhe-se uma base que inicia no segundo elemento e avança até o último elemento
@@ -328,7 +330,7 @@
 \end{frame}
 
 %-------------------------------------------------------
-\begin{frame}[fragile]\frametitle{\emph{Insertion Sort}: Mais informações}
+\begin{frame}[fragile]\frametitle{\emph{Insertion Sort}: Mais informações [*]}
 \begin{itemize}
 	\item \url{http://www.sorting-algorithms.com/insertion-sort}
 	\item \url{https://www.hackerearth.com/practice/algorithms/sorting/insertion-sort/tutorial/}
@@ -341,9 +343,89 @@
 %-------------------------------------------------------
 \begin{frame}\frametitle{\emph{Merge Sort}}
 \begin{itemize}
-	\item ...
+	\item É um algorimo de ordenação por intercalação
+	\item Utiliza o padrão (estratégia) conhecido como ``divisão e conquista''
+	\item Consiste de 3 etapas
+	\begin{itemize}
+		\item Divisão: se há algo a ordenar, divide os dados de entrada em duas (ou mais) partes e executa o algoritmo sobre cada uma das partes; se não há nada a ordenar, retorna a solução
+		\item Conquista: cada parte dos dados é classificada recursivamente
+		\item Combinação: quando cada subconjunto está classificado (internamente), eles devem ser combinados (\emph{merge}) realizando-se uma intercalação
+	\end{itemize}
+	\item Permite implementação recursiva
 \end{itemize}
-%\lstinputlisting[basicstyle=\ttfamily\scriptsize]{src/mergeSort.cpp}
+\end{frame}
+
+%-------------------------------------------------------
+\begin{frame}\frametitle{\emph{Merge Sort}: Estratégia [*]}
+\begin{itemize}
+	\item  Para ordenar uma sequência $S$ com $n$ elementos:
+	\begin{itemize}
+		\item \textbf{Dividir}: se $S$ tem zero ou um elemento, retorna $S$, pois já está classificado; senão, remove os elementos de $S$ e coloca-os em duas sequências, $S_1$ e $S_2$ ($n/2$ elementos em cada um)
+		\item \textbf{Conquistar}: classifica as sequências $S_1$ e $S_2$ recursivamente
+		\item \textbf{Combinar}: coloca os elementos de volta em $S$ com a união das sequências $S_1$ e $S_2$ ordenadas
+	\end{itemize}
+	\end{itemize}
+\end{frame}
+
+%-------------------------------------------------------
+\begin{frame}\frametitle{\emph{Merge Sort}: Exemplo}
+\begin{columns}[T]
+\begin{column}{0.6\linewidth}
+\vspace{-3mm}
+\begin{figure}[h]
+	\centering
+	\includegraphics[height=0.7\paperheight]{imagens/mergesort.png}\\
+	\tiny{Fonte: \url{https://en.wikipedia.org/wiki/Merge_sort}}
+\end{figure}
+\end{column}
+\begin{column}{0.4\linewidth}
+\vspace{3mm}
+\begin{itemize}
+	\item A execução do algoritmo pode ser vista como uma árvore binária
+	\item Cada nodo representa uma chamada recursiva do algoritmo \emph{Merge Sort}
+	\item Nodos recebem sequências de entrada para serem processadas e, por fim, geram sequências de saída ordenadas
+\end{itemize}
+\end{column}
+\end{columns}
+\end{frame}
+
+%-------------------------------------------------------
+\begin{frame}\frametitle{\emph{Merge Sort}: Implementação}
+\lstinputlisting[basicstyle=\ttfamily\scriptsize]{src/mergeSort.cpp}
+\end{frame}
+
+%-------------------------------------------------------
+\begin{frame}\frametitle{\emph{Merge Sort}: Desempenho [*]}
+\begin{columns}[T]
+\begin{column}{0.4\linewidth}
+\vspace{3mm}
+\begin{itemize}
+	\item O tamanho da sequência de entrada é a metade a cada chamada recursiva
+	\item A árvore associada a uma execução do algoritmo com uma sequência de tamanho $n$, tem altura $\log n$
+	\item Conclusões:
+	\begin{itemize}
+		\item Altura da árvore é $\log n$
+		\item Tempo gasto em cada nível: $O(n)$
+		\item Tempo de execução: $O(n\log n)$
+	\end{itemize}
+\end{itemize}
+\end{column}
+\begin{column}{0.6\linewidth}
+\vspace{-3mm}
+\begin{figure}[h]
+	\centering
+	\includegraphics[height=0.6\paperheight]{imagens/mergesort_desempenho.png}
+\end{figure}
+\end{column}
+\end{columns}
+\end{frame}
+
+%-------------------------------------------------------
+\begin{frame}[fragile]\frametitle{\emph{Merge Sort}: Mais informações [*]}
+\begin{itemize}
+	\item \url{http://www.sorting-algorithms.com/merge-sort}
+	\item \url{https://www.hackerearth.com/practice/algorithms/sorting/merge-sort/tutorial/}
+\end{itemize}
 \end{frame}
 
 %=======================================================
@@ -351,13 +433,27 @@
 
 %-------------------------------------------------------
 \begin{frame}\frametitle{\emph{Quick Sort}}
-\begin{itemize}
+\begin{itemize}	
+	\item ...
+\end{itemize}
+%	\lstinputlisting[basicstyle=\ttfamily\scriptsize]{src/quickSort.cpp}
+\end{frame}
+
+%=======================================================
+\section{Comparação}
+
+%-------------------------------------------------------
+\begin{frame}\frametitle{Comparação}
+\begin{itemize}	
 	\item ...
 \end{itemize}
 %	\lstinputlisting[basicstyle=\ttfamily\scriptsize]{src/quickSort.cpp}
 \end{frame}
 
 \begin{comment}
+
+
+
 %-------------------------------------------------------
 \begin{frame}\frametitle{Exemplo clássico: Fatorial}
 \begin{itemize}

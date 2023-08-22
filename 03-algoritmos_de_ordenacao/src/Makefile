@@ -1,6 +1,7 @@
 APP =			bubbleSort \
 			selectionSort \
-			insertionSort
+			insertionSort \
+			mergeSort
 
 all:			${APP}
 
@@ -12,6 +13,9 @@ selectionSort:		selectionSortMain.cpp selectionSort.cpp
 
 insertionSort:		insertionSortMain.cpp insertionSort.cpp
 			@g++ -o insertionSort insertionSortMain.cpp insertionSort.cpp
+
+mergeSort:		mergeSortMain.cpp mergeSort.cpp
+			@g++ -o mergeSort mergeSortMain.cpp mergeSort.cpp
 
 clean:
 			@rm -f ${APP}

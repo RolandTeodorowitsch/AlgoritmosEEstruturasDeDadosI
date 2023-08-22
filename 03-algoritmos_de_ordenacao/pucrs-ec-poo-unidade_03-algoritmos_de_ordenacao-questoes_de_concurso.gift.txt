@@ -1,0 +1,43 @@
+$CATEGORY: $course$/AlgoritmosEEstruturasDeDadosI-AlgoritmosDeOrdenacao-QuestoesDeConcurso
+
+::ALEST I - Algoritmos de Ordenação - Questões de Concurso - 001::[html]<p align="justify"><b>(Câmara Municipal de Pau dos Ferros / RN - 2018 - Técnico em Informática - UEPB / CPCON - 37)</b> Não é um algoritmo clássico de ordenação:</p>{
+	~Quick Sort.#
+	=Prediction Sort.#
+	~Merge Sort.#
+	~Insertion Sort.#
+	~Bubble Sort.#
+}
+
+::ALEST I - Algoritmos de Ordenação - Questões de Concurso - 002::[html]<p align="justify"><b>(AGER-MT - 2023 - Analista Regulador / Perfil: Ciências da Computação e(ou) Sistemas de Informação - CEBRASPE - 30)</b> Para ordenar um vetor de 10 elementos usando-se a ordenação por seleção, a quantidade de comparações necessárias é igual a</p>{
+	~25.#
+	~65.#
+	~35.#
+	=45.#
+	~55.#
+}
+
+::ALEST I - Algoritmos de Ordenação - Questões de Concurso - 003::[html]<p align="justify"><b>(IF-MA - 2023 - Analista de Tecnologia da Informação / Desenvolvimento de Sistemas - Instituto AOCP - 32)</b> Métodos de ordenação são algoritmos usados para organizar elementos de uma sequência em uma ordem específica. Qual método de ordenação tem complexidade de tempo médio O(n log n) e utiliza a técnica de dividir e conquistar?</p>{
+	~Bubble sort.#
+	~Selection sort.#
+	~Insertion sort.#
+	~Quick sort.#
+	=Merge sort.#
+}	
+
+::ALEST I - Algoritmos de Ordenação - Questões de Concurso - 004::[html]<p align="justify"><b>(MPE-RO - 2023 - Analista Programador - CEBRASPE - 59)</b> Assinale a opção que contém apenas exemplos de algoritmos de ordenação que utilizam o método de ordenação por troca.</p>{
+	~<i>insertion sort</i> e <i>selection sort</i>#
+	~<i>quick sort</i> e <i>merge sort</i>#
+	=<i>bubble sort</i> e <i>quick sort</i>#
+	~<i>insertion sort</i> e <i>merge sort</i>#
+	~<i>bubble sort</i> e <i>selection sort</i>#
+}
+
+::ALEST I - Algoritmos de Ordenação - Questões de Concurso - 005::[html]<p align="justify"><b>(UFRRJ - 2023 - Analista de Tecnologia da Informação - UFRRJ - 53)</b> Sobre os algoritmos para ordenação de dados, é correto afirmar que o</p>{
+	~<i>heapsort</i> é considerado um algoritmo estável, fundamentado na estratégia de divisão e conquista.#
+	~<i>mergesort</i> é considerado um algoritmo instável, apresentando uma complexidade de <i>O(n<sup>2</sup>)</i> comparações no melhor caso.#
+	=<i>bubblesort</i> é considerado um algoritmo estável, apresentando uma complexidade de <i>O(n<sup>2</sub>)</i> comparações no pior caso.#
+	~<i>insertion sort</i> é considerado um algoritmo instável, apresentando uma complexidade de <i>O(n)</i> comparações no pior caso.#
+	~<i>quicksort</i> é considerado um algoritmo estável, fundamentado em uma estratégia de inserção de dados em lista.#
+}
+
+
