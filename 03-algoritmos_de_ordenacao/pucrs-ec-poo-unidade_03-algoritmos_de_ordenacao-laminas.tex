@@ -37,7 +37,7 @@
 \title[\sc{Algoritmos de Ordenação}]{Algoritmos de Ordenação}
 \author[Roland Teodorowitsch]{Roland Teodorowitsch}
 \institute[ALEST I - EP - PUCRS]{Algoritmos e Estruturas de Dados I - Escola Politécnica - PUCRS}
-\date{22 de agosto de 2023}
+\date{23 de agosto de 2023}
 
 \begin{document}
 \justifying
@@ -432,42 +432,56 @@
 \section{\emph{Quick Sort}}
 
 %-------------------------------------------------------
-\begin{frame}\frametitle{\emph{Quick Sort} [*]}
-\begin{itemize}	
-	\item Também utiliza o padrão ``Dividir para Conquistar'', mas de uma maneira diferente do \emph{Merge Sort}
-	\item O maior processamento é feito \textbf{antes} das chamadas recursivas
-	\item Estratégia geral:
-	\begin{itemize}	
-		\item Divisão de $S$ em subconjuntos (sequências)
-		\item Recursão para classificar cada subconjunto
-		\item Combinar as subsequências ordenadas através de uma concatenação simples
+\begin{frame}\frametitle{\emph{Quick Sort}}
+\begin{itemize}
+	\item Foi criado pelo cientista britânico Charles Antony Richard Hoare em 1959 e publicado em 1961
+	\item É um algoritmo de ordenação por comparação que também utiliza o padrão ``Divisão e Conquista''
+	\item Diferentemente do \emph{Merge Sort}, o \emph{Quick Sort} procura realizar a parte mais significativa do processamento \textbf{antes} das chamadas recursivas
+	\item A estratégia geral subdivide-se nos seguintes passos:
+	\begin{itemize}
+		\item Escolhe-se um elemento da lista, denominado \textbf{pivô}
+		\item Particionamento: a lista é reorganizada de forma que todos os elementos da lista menores que o pivô fiquem  à esquerda do pivô e que todos os elemenos maiores do que o pivô fiquem à sua direita -- o pivô estará em sua posição correta, porém  ``cercado'' por duas listas não ordenadas
+		\item Essas duas listas são recursivamente ordenadas usando a mesma estratégia
+	\end{itemize}
+	\item Há variantes relacionadas principalmente à escolha do pivô, que o influencia o desempenho
+\end{itemize}
+\end{frame}
+
+%-------------------------------------------------------
+\begin{frame}[fragile]\frametitle{\emph{Quick Sort}: Escolha do Pivô}
+\begin{itemize}
+	\item A escolha do pivô é influencia o desempenho
+	\item Métodos:
+	\begin{itemize}
+		\item Lomuto: criado por Nico Lomuto, tipicamente escolhe o primeiro ou último elemento da coleção
+		\item Hoare: escolhe o elemento central da coleção como pivô
+		\item Pivô aleatório
+		\item Valor intermediário entre primeiro, central e último elementos
 	\end{itemize}
 \end{itemize}
 \end{frame}
 
 %-------------------------------------------------------
-\begin{frame}\frametitle{\emph{Quick Sort}: 3 Etapas Principais [*]}
-\begin{enumerate}
-	\item Dividir
-	\begin{itemize}	
-		\item Se $S$ tem pelo menos dois elementos, seleciona um deles para ser o \textbf{pivô}
-		\item O pivô pode ser qualquer elemento de $S$
-		\item Remove todos os elementos de $S$ e coloca-os em três sequências:
-		\begin{itemize}	
-			\item $L$: armazena os elementos de $S$ menores que o pivô
-			\item $E$: armazena os elementos de $S$ iguais ao pivô
-			\item $G$: armazena os elementos de $S$ maiores que o pivô
-		\end{itemize}
+\begin{frame}\frametitle{\emph{Merge Sort}: Implementação (Hoare)}
+\lstinputlisting[basicstyle=\ttfamily\scriptsize]{src/quickSort1.cpp}
+\end{frame}
+
+%-------------------------------------------------------
+\begin{frame}\frametitle{\emph{Merge Sort}: Implementação (Lomuto)}
+\lstinputlisting[basicstyle=\ttfamily\tiny]{src/quickSort2.cpp}
+\end{frame}
+
+%-------------------------------------------------------
+\begin{frame}[fragile]\frametitle{\emph{Quick Sort}: Análise}
+\begin{itemize}
+	\item Se a posição do pivô escolhido for central, o \emph{Quick Sort} consegue duas subcoleções de tamanhos próximos
+	\begin{itemize}
+		\item Consequentemente a altura da árvore de execução será $O(\log{n})$
+		\item Como em cada nível o tempo de execução será $O(n)$
+		\item Então, o tempo de execução do algoritmo será $O(n\log{n})$
 	\end{itemize}
-	\item Conquistar
-	\begin{itemize}	
-		\item Recursivamente ordena as sequências $L$ e $G$
-	\end{itemize}
-	\item Combinar
-	\begin{itemize}	
-		\item  Coloca de volta os elementos em $S$, inserindo primeiro os elementos de $L$, depois de $E$ e finalmente de $G$
-	\end{itemize}
-\end{enumerate}
+	\item No caso da variante Lomuto que escolhe o último elemento como pivô, se a coleção já estiver ordenada, tem-se o pior caso, ou seja, $O(n^2)$
+\end{itemize}
 \end{frame}
 
 %-------------------------------------------------------
@@ -479,92 +493,18 @@
 \end{itemize}
 \end{frame}
 
-\begin{comment}
-
-
-
-Quick-sort
-◼
- Execução do algoritmo pode ser vista como
-uma árvore binária (quick-sort tree):
-a)
- Sequência de entrada processada em cada nodo da
-árvore
-b)
- Sequência de saída gerada em cada nodo da árvore
-Quick-sort
-◼
- Execução do algoritmo pode ser vista como
-uma árvore binária (quick-sort tree):
-◼
- Altura pode chegar a ser linear
-◼
- Por exemplo, quando a sequência consiste de n
-elementos distintos já ordenados
-◼
- L teria tamanho n-1, E tamanho 1 e G tamanho 0
-◼
- A cada chamada do quick-sort para L, o tamanho
-seria decrementado em 1, e a altura
-da árvore seria n-1
-Quick-sort
-◼
- Execução do algoritmo quick-sort
-◼
- Questões importantes:
-◼
- Consumo de memória:
-◼
- Na prática não são criados três vetores
-◼
- O próprio vetor é alterado
-◼
- Escolha do pivô
-
-
-
-Quick-sort
-◼
- Análise do tempo de execução do algoritmo
-◼
- Tempo total de execução: O(n.h), sendo h a
-altura da árvore
-◼
- Pior caso: h = n-1, o que leva o tempo de
-execução para O(n2)
-Quick-sort
-◼
- Análise do tempo de execução do algoritmo
-◼
- O melhor para o quick-sort é quando L e G
-possuem mais ou menos o mesmo tamanho
-◼
- Neste caso, a árvore fica com altura O(log n) e o
-tempo de execução do algoritmo fica O(n log n)
-◼
- Escolher o último ou o primeiro elemento como
-pivô se a sequência já está ordenada leva para
-o pior caso
-Quick-sort
-◼
- Análise do tempo de execução do algoritmo
-◼
- Solução:
-◼
- Escolher o índice do pivô de forma randômica,
-escolher o elemento do meio da sequência ou usar a
-mediana de três valores (primeiro, meio e último)
-◼
- Faz o quick-sort ter “na média” tempo de execução
-O(n log n)
-◼
- Tirando a escolha do pivô, o algoritmo permanece o
-mesmo
-
-\end{comment}
-
 %=======================================================
 \section{Comparação}
+
+%-------------------------------------------------------
+\begin{frame}[fragile]\frametitle{Comparação}
+\begin{itemize}
+	\item Definir qual é o ``melhor'' algoritmo de ordenação nem sempre é fácil
+	\item Há muitas variações, tanto nas implementações dos algoritmos quanto nas configurações de coleções (ordendada, invertida, aleatória, com muitos elementos duplicados, sem elementos duplicados, etc.)
+	\item Até mesmo o \emph{Bubble Sort} pode apresentar o melhor desempenho para uma comfiguração específica
+	\item Mas há alguns fatores que devem ser considerados...
+\end{itemize}
+\end{frame}
 
 %-------------------------------------------------------
 \begin{frame}[fragile]\frametitle{Estabilidade [*]}
@@ -606,20 +546,28 @@ mesmo
 \end{frame}
 
 %-------------------------------------------------------
+\begin{frame}\frametitle{Armazenamento}
+\begin{itemize}	
+	\item Versões recursivas dos algoritmos necessitarão de memória da pilha
+	\begin{itemize}	
+		\item No \emph{Merge Sort} e \emph{Quick Sort}, o número máximo de chamadas recursivas aninhadas (ativas em determinado momento), em geral, será $O(\log{n})$
+		\item Cuidado: implementações recursivas de outros algoritmos de ordenação podem gerar $O(n)$ chamadas recursivas aninhadas
+	\end{itemize}
+	\item Algoritmos de ordenação \emph{in-place} utilizam apenas o espaço da própria coleção para realizar a ordenação, NÃO necessitando de áreas de memória auxiliares
+	\begin{itemize}	
+		\item \emph{Merge Sort}, por exemplo, precisa de um vetor auxiliar
+	\end{itemize}
+	\end{itemize}
+\end{frame}
+
+%-------------------------------------------------------
 \begin{frame}\frametitle{\emph{Bubble Sort}}
 \begin{itemize}
 	\item Complexidade: $O(n^2)$ (pior caso) ou $O(n)$ (melhor caso, considerando a implementação otimizada)
-	\item Vantagens:
-	\begin{itemize}	
-		\item É simples de ser implementado
-		\item É estável
-		\item Não necessita de um vetor auxiliar (\emph{in-place}), ocupando menos memória
-	\end{itemize}
-	\item Desvantagens:
-	\begin{itemize}	
-		\item NÃO é recomendado para vetores grandes
-		\item Executa SEMPRE $(n^2-n)/2$ comparações
-	\end{itemize}
+	\item É simples de ser implementado
+	\item É estável
+	\item Não necessita de um vetor auxiliar (\emph{in-place}), ocupando menos memória
+	\item NÃO é recomendado para coleções grandes
 \end{itemize}
 \end{frame}
 
@@ -627,18 +575,12 @@ mesmo
 \begin{frame}\frametitle{\emph{Selection Sort}}
 \begin{itemize}
 	\item Complexidade: $O(n^2)$
-	\item Vantagens:
-	\begin{itemize}	
-		\item É simples de ser implementado
-		\item Não necessita de um vetor auxiliar (\emph{in-place}), ocupando menos memória
-		\item É relativamente rápido para pequenos vetores
-	\end{itemize}
-	\item Desvantagens:
-	\begin{itemize}	
-		\item É um dos mais lentos para vetores grandes
-		\item NÃO é estável
-		\item Executa SEMPRE $(n^2-n)/2$ comparações
-	\end{itemize}
+	\item É simples de ser implementado
+	\item Não necessita de um vetor auxiliar (\emph{in-place}), ocupando menos memória
+	\item É relativamente rápido para pequenas coleções
+	\item É um dos mais lentos para coleções grandes
+	\item NÃO é estável
+	\item Executa SEMPRE $(n^2-n)/2$ comparações
 \end{itemize}
 \end{frame}
 
@@ -646,14 +588,10 @@ mesmo
 \begin{frame}\frametitle{\emph{Insertion Sort}}
 \begin{itemize}
 	\item Complexidade: $O(n^2)$ (pior caso) ou $O(n)$ (melhor caso)
-	\item Vantagens:
-	\begin{itemize}	
-		\item É estável
-	\end{itemize}
-	\item Desvantagens:
-	\begin{itemize}	
-		\item ...
-	\end{itemize}
+	\item É estável
+	\item Não necessita de um vetor auxiliar (\emph{in-place}), ocupando menos memória
+	\item Tem desempenho razoável principalmente para pequenas coleções (tamanho da ordem de dezenas)
+	\item Eficiente para ordenação de coleções ``quase'' ordenadas
 \end{itemize}
 \end{frame}
 
@@ -661,14 +599,9 @@ mesmo
 \begin{frame}\frametitle{\emph{Merge Sort}}
 \begin{itemize}
 	\item Complexidade: $O(n\log{n})$
-	\item Vantagens:
-	\begin{itemize}	
-		\item É estável
-	\end{itemize}
-	\item Desvantagens:
-	\begin{itemize}	
-		\item ...
-	\end{itemize}
+	\item É estável
+	\item Tem bom desempenho para coleções grandes
+	\item Necessita de um vetor auxiliar
 \end{itemize}
 \end{frame}
 
@@ -676,427 +609,39 @@ mesmo
 \begin{frame}\frametitle{\emph{Quick Sort}}
 \begin{itemize}
 	\item Complexidade: $O(n\log{n})$
-	\item Vantagens:
-	\begin{itemize}
-		\item ...
-	\end{itemize}
-	\item Desvantagens:
-	\begin{itemize}	
-		\item NÃO é estável
-	\end{itemize}
-\end{itemize}
-\end{frame}
-
-\begin{comment}
-
-Comparação
-◼
- Qual é o melhor algoritmo?
-◼
- Não existe claramente o “melhor”
-◼
- O algoritmo que melhor se aplica para um uso
-específico depende de várias propriedades
-◼
- Existem algumas “diretivas” e observações
-◼
- Observação:
-◼
- Algoritmo de ordenação é dito in-place se utiliza apenas
-uma quantidade constante de memória, além daquela
-necessária para os objetos, eles próprios ordenados
-
-
-
-◼
- Insertion-sort
-◼
- Se bem implementado, tempo de execução
-pode ser O(n+k), sendo k o número de
-inversões (pares de elementos fora de ordem)
-◼
- Portanto
-◼
- É simples de programar
-◼
- É excelente para ordenar pequenas sequências (<50)
-◼
- É bastante eficiente para ordenar sequências “quase”
-ordenadas
-◼
- Fora destas situações torna-se uma escolha pobre
-pelo tempo de execução O(n2)
-
-
-Comparação
-◼
- Merge-sort
- Difícil de executar in-place
-◼
- Torná-lo in-place exige um algoritmo mais complicado
-◼
- Fica menos atrativo do que as implementações in-
-place do quick-sort para sequências que cabem na
-memória principal do computador
-◼
- Sendo assim, é excelente para casos em que a
-entrada não cabe na memória principal e precisa ser
-armazenada em blocos em uma memória externa
-◼
- Tende a minimizar os acessos a disco para fazer
-leitura/escrita
-
-
-Comparação
-◼
- Quick-sort
-◼
- Análises experimentais mostram que se a se-
-quência de entrada couber na memória principal:
-◼
- Versões in-place do quick-sort executam mais rápido
-que o merge-sort
-◼
- E o quick-sort tende, em média, a ser melhor que o
-heap-sort
-◼
- Então, é uma ótima escolha como algoritmo de
-ordenação de finalidades genéricas no uso em
-memória
-◼
- Tempo O(n2) para o pior caso, torna-o uma
-escolha pobre para aplicações em tempo real
-
-
-
-
-%-------------------------------------------------------
-\begin{frame}\frametitle{Exemplo clássico: Fatorial}
-\begin{itemize}
-	\item O fatorial de n é normalmente definido como:
-\[ n! = \prod_{k=1}^{n}{k} = n \times (n-1) \times (n-2) \times ... \times 3 \times 2 \times 1,\qquad \forall n \in \mathbb{N}\]
-	\item Por exemplo:
-\[5 ! = 5 \times 4 \times 3 \times 2 \times 1 = 120\]
-	\item Mas também pode-se usar a sua definição recursiva:
-\[ n! = \begin{cases}
-1, & \mbox{se ~ } n=0 \mbox{~ ou ~ } n=1\\
-n \times (n-1)!, & \mbox{se ~ } n > 1
-\end{cases} \]
+	\item Tem um desempenho excelente para vetores grandes
+	\item NÃO é estável
+	\item A escolha do pivô pode comprometer o desempenho
+	\item Análises experimentais mostram que, se a sequência de entrada couber na memória principal, versões \emph{in-place} do \emph{Quick Sort}  executam mais rápido que o \emph{Merge Sort} [*]
 \end{itemize}
 \end{frame}
 
 %-------------------------------------------------------
-\begin{frame}[fragile]\frametitle{Implementação do Fatorial}
+\begin{frame}\frametitle{Comparativo com Medição de Tempo}
 \begin{itemize}
-	\item Iterativo
-{\scriptsize\lstinputlisting{src/fatorial.cpp}}
-	\item Recursivo
-{\scriptsize\lstinputlisting{src/fatorialRec.cpp}}
-\end{itemize}
-\end{frame}
-
-%-------------------------------------------------------
-\begin{frame}\frametitle{Exemplo: Contagem}
-\begin{itemize}
-	\item Iterativo
-{\scriptsize\lstinputlisting{src/contagem.cpp}}
-	\pause
-	\item Recursivo
-{\scriptsize\lstinputlisting{src/contagemRec.cpp}}
-\end{itemize}
-\end{frame}
-
-%-------------------------------------------------------
-\begin{frame}\frametitle{Exercício: Contagem Regressiva}
-\begin{itemize}
-	\item Iterativo
-{\scriptsize\lstinputlisting{src/contagemRegressiva.cpp}}
-	\pause
-	\item Recursivo
-{\scriptsize\lstinputlisting{src/contagemRegressivaRec.cpp}}
-\end{itemize}
-\end{frame}
-
-%-------------------------------------------------------
-\begin{frame}\frametitle{Exercício: Geração de Índices de uma Matriz}
-\begin{itemize}
-	\item Iterativo
-{\scriptsize\lstinputlisting{src/indicesMatriz.cpp}}
-	\pause
-	\item Recursivo
-{\scriptsize\lstinputlisting{src/indicesMatrizRec1.cpp}}
-	\pause
-	\item \textbf{Desafio:} faça uma versão recursiva do algoritmo acima sem usar nenhum laço!
-\end{itemize}
-\end{frame}
-
-%-------------------------------------------------------
-\begin{frame}\frametitle{Recursividade [*]}
-\begin{itemize}
-	\item Poderosa ferramenta de programação
-	\item Apesar de bastante empregada, nem sempre ela deve ser aplicada
-	\begin{itemize}
-		\item É preciso analisar o problema e ver se necessita de uma solução recursiva
-	\end{itemize}
-	\item Quando bem empregada pode tornar a solução de um problema clara, simples e consisa
-\end{itemize}
-\end{frame}
-
-%-------------------------------------------------------
-\begin{frame}\frametitle{Vantagens [*]}
-\begin{itemize}
-	\item Rotinas mais concisas
-	\item Relação direta com uma prova por indução matemática
-	\begin{itemize}
-		\item Indução matemática: metodo de prova matemática usado para demonstrar a verdade de um número infinito de proposições
-		\begin{itemize}
-			\item Válida se funciona para $n$ igual a $0$ ou $1$
-			\item Válida se vale para $n$ igual a $k$ e $k + 1$
-		\end{itemize}
-		\item Facilita verificar a correção
-	\end{itemize}
-\end{itemize}
-\end{frame}
-
-%-------------------------------------------------------
-\begin{frame}\frametitle{Desvantagens [*]}
-\begin{itemize}
-	\item Cada chamada recursiva implica em um custo (tempo e espaço)
-	\begin{itemize}
-		\item Informações são armazenadas na pilha
-		\item Para cada chamada realizada, um conjunto de variáveis locais é alocado (criado)
-		\item Cada chamada requer
-		\begin{itemize}
-			\item O empilhamento de parâmetros e endereços de retorno da função que chama
-			\item A alocação de variáveis locais da função % [Roland]
-			%\item O desempilhamento de parâmetros pela função que executa
-		\end{itemize}
-		\item Cada retorno requer
-		\begin{itemize}
-			\item A desalocação das variáveis locais da função % [Roland]
-			\item O desempilhamento do endereço de retorno
-			%\item O empilhamento do resultado (ou passagem por registrador)
-			%\item O desempilhamento do retorno pela função que chamou
-		\end{itemize}
-	\end{itemize}
-\end{itemize}
-\end{frame}
-
-%=======================================================
-\section{Algoritmos de Pesquisa}
-
-%-------------------------------------------------------
-\begin{frame}\frametitle{Algoritmos de Pesquisa}
-\begin{itemize}
-	\item Localizam um elemento dentro de uma coleção
-	\item Podem retornar
-	\begin{itemize}
-		\item \textbf{Valor booleano} (\texttt{true} se o elemento existir na coleção ou \texttt{false}, em caso contrário) ou
-		\item \textbf{Índice} (posição) do elemento na coleção (ou -1 se não encontrar)
-	\end{itemize}
-	\item Para coleções \textbf{desordenadas}, deve-se usar um algoritmo de \textbf{pesquisa linear}
-	\item Quando a coleção está \textbf{ordenada}, pode-se usar um algoritmo de \textbf{pesquisa binária}
-\end{itemize}
-\end{frame}
-
-%-------------------------------------------------------
-\begin{frame}\frametitle{Pesquisa Linear}
-\begin{itemize}
-	\item Serve para coleções \textbf{desordenadas}
-	\item Estratégia: comparar o elemento procurado com cada item da coleção até encontrar ou até chegar ao fim
-	\item Melhor caso: o elemento procurado é o primeiro da lista
-	\item Pior caso: o elemento procurado \textbf{NÃO} existe na lista
-	\item Também poderia ser aplicado sobre coleções ordenadas
-	\pause
-	\item Complexidade: $O(n)$
-\end{itemize}
-\end{frame}
-
-%-------------------------------------------------------
-\begin{frame}[fragile]\frametitle{Implementação da Pesquisa Linear}
-\begin{itemize}
-	\item Iterativo
-{\scriptsize\lstinputlisting{src/pesquisaLinear.cpp}}
-	\pause
-	\item Recursivo
-{\scriptsize\lstinputlisting{src/pesquisaLinearRec.cpp}}
-\end{itemize}
-\end{frame}
-
-%-------------------------------------------------------
-\begin{frame}\frametitle{Pesquisa Binária}
-\begin{itemize}
-	\item Serve \textbf{APENAS} para coleções \textbf{ordenadas}
-	\item Estratégia:
-	\begin{itemize}
-		\item Compara o valor procurado com o elemento do meio
-		\begin{itemize}
-			\item Se for igual, encontrou
-			\item Se for menor, continua-se a busca na metade inferior (desconsidera a metade superior)
-			\item Se for maior, continua-se a busca na metade superior (desconsidera a metade inferior)
-		\end{itemize}
-		\item Repete-se o procecimento até que o valor procurado seja encontrado ou até que não se consiga dividir a coleção
-	\end{itemize}
-	\pause
-		\item Complexidade: $O(\log{n})$
-\end{itemize}
-\end{frame}
-
-%-------------------------------------------------------
-\begin{frame}[fragile]\frametitle{Pesquisa Binária Iterativa}
-\lstinputlisting[basicstyle=\ttfamily\scriptsize]{src/pesquisaBinaria.cpp}
-\end{frame}
-
-%-------------------------------------------------------
-\begin{frame}\frametitle{Pesquisa Binária: Exemplo (\texttt{valor = 18})}
-\begin{itemize}
-
-	\item Passo 1:
-\begin{tabular}{cccccccccc}
-\tiny{0} & \tiny{1} & \tiny{2} & \tiny{3} & \tiny{4} & \tiny{5} & \tiny{6} & \tiny{7} & \tiny{8} & \tiny{9}\\
+	\item Vetor de 10.000 inteiros em 3 configurações: ordenado, invertido e aleatório
+	\item Tempos medidos em $\mu$s (microssegundos)
+\begin{center}
+\begin{tabular}{|c|c|c|c|}
 \hline
-\multicolumn{1}{|c|}{2} & \multicolumn{1}{c|}{4} & \multicolumn{1}{c|}{6} & \multicolumn{1}{c|}{8} & \multicolumn{1}{c|}{10} & \multicolumn{1}{c|}{12} & \multicolumn{1}{c|}{14} & \multicolumn{1}{c|}{16} & \multicolumn{1}{c|}{18} & \multicolumn{1}{c|}{20}\\
+\textbf{Algoritmo} & \textbf{Ordenado} & \textbf{Invertido} & \textbf{Aleatório}\\
 \hline
-$\uparrow$ & & & & $\uparrow$ & & & & & $\uparrow$ \\
-{\tiny\texttt ini} & & & & {\tiny\texttt meio} & & & & & {\tiny\texttt fim} \\
+\emph{Bubble Sort} & 117 & 192173 & 224400 \\
+\hline
+\emph{Selection Sort} & 135131 & 105908 & 106956\\
+\hline
+\emph{Insertion Sort} & 174 & 148203 & 58291\\
+\hline
+\emph{Merge Sort} & 4277 & 3879 & 6470\\
+\hline
+\emph{Quick Sort} (Hoare) & 1186 & 406 & 1587\\
+\hline
+\emph{Quick Sort} (Lomuto) & 203035 & 136896 & 1108\\
+\hline
 \end{tabular}
-
-	\item Passo 2:
-\begin{tabular}{cccccccccc}
-\tiny{0} & \tiny{1} & \tiny{2} & \tiny{3} & \tiny{4} & \tiny{5} & \tiny{6} & \tiny{7} & \tiny{8} & \tiny{9}\\
-\hline
-\multicolumn{1}{|c|}{2} & \multicolumn{1}{c|}{4} & \multicolumn{1}{c|}{6} & \multicolumn{1}{c|}{8} & \multicolumn{1}{c|}{10} & \multicolumn{1}{c|}{12} & \multicolumn{1}{c|}{14} & \multicolumn{1}{c|}{16} & \multicolumn{1}{c|}{18} & \multicolumn{1}{c|}{20}\\
-\hline
- & & & & & $\uparrow$ & & $\uparrow$ & & $\uparrow$ \\
- & & & & & {\tiny\texttt ini} & & {\tiny\texttt meio} & & {\tiny\texttt fim} \\
-\end{tabular}
-
-	\item Passo 3:
-\begin{tabular}{cccccccccc}
-\tiny{0} & \tiny{1} & \tiny{2} & \tiny{3} & \tiny{4} & \tiny{5} & \tiny{6} & \tiny{7} & \tiny{8} & \tiny{9}\\
-\hline
-\multicolumn{1}{|c|}{2} & \multicolumn{1}{c|}{4} & \multicolumn{1}{c|}{6} & \multicolumn{1}{c|}{8} & \multicolumn{1}{c|}{10} & \multicolumn{1}{c|}{12} & \multicolumn{1}{c|}{14} & \multicolumn{1}{c|}{16} & \multicolumn{1}{c|}{18} & \multicolumn{1}{c|}{20}\\
-\hline
- & & & & & & & & $\uparrow$ & $\uparrow$ \\
- & & & & & & & & {\tiny\texttt ini} & {\tiny\texttt fim} \\
- & & & & & & & & {\tiny\texttt meio} & \\
-\end{tabular}
- ~ Valor 18 encontrado no índice 8!
+\end{center}
 \end{itemize}
 \end{frame}
-
-%-------------------------------------------------------
-\begin{frame}\frametitle{Pesquisa Binária: Exemplo (\texttt{valor = 5})}
-\begin{itemize}
-
-	\item Passo 1:
-\begin{tabular}{cccccccccc}
-\tiny{0} & \tiny{1} & \tiny{2} & \tiny{3} & \tiny{4} & \tiny{5} & \tiny{6} & \tiny{7} & \tiny{8} & \tiny{9}\\
-\hline
-\multicolumn{1}{|c|}{2} & \multicolumn{1}{c|}{4} & \multicolumn{1}{c|}{6} & \multicolumn{1}{c|}{8} & \multicolumn{1}{c|}{10} & \multicolumn{1}{c|}{12} & \multicolumn{1}{c|}{14} & \multicolumn{1}{c|}{16} & \multicolumn{1}{c|}{18} & \multicolumn{1}{c|}{20}\\
-\hline
-$\uparrow$ & & & & $\uparrow$ & & & & & $\uparrow$ \\
-{\tiny\texttt ini} & & & & {\tiny\texttt meio} & & & & & {\tiny\texttt fim} \\
-\end{tabular}\\~\\~
-
-	\item Passo 2:
-\begin{tabular}{cccccccccc}
-\tiny{0} & \tiny{1} & \tiny{2} & \tiny{3} & \tiny{4} & \tiny{5} & \tiny{6} & \tiny{7} & \tiny{8} & \tiny{9}\\
-\hline
-\multicolumn{1}{|c|}{2} & \multicolumn{1}{c|}{4} & \multicolumn{1}{c|}{6} & \multicolumn{1}{c|}{8} & \multicolumn{1}{c|}{10} & \multicolumn{1}{c|}{12} & \multicolumn{1}{c|}{14} & \multicolumn{1}{c|}{16} & \multicolumn{1}{c|}{18} & \multicolumn{1}{c|}{20}\\
-\hline
-$\uparrow$ & $\uparrow$ & & $\uparrow$ & & & & & & \\
-{\tiny\texttt ini} & {\tiny\texttt meio}& & {\tiny\texttt fim} & & & & & & \\
-\end{tabular}
-
-\end{itemize}
-\end{frame}
-
-%-------------------------------------------------------
-\begin{frame}\frametitle{Pesquisa Binária: Exemplo (\texttt{valor = 5})}
-\begin{itemize}
-
-	\item Passo 3:
-\begin{tabular}{cccccccccc}
-\tiny{0} & \tiny{1} & \tiny{2} & \tiny{3} & \tiny{4} & \tiny{5} & \tiny{6} & \tiny{7} & \tiny{8} & \tiny{9}\\
-\hline
-\multicolumn{1}{|c|}{2} & \multicolumn{1}{c|}{4} & \multicolumn{1}{c|}{6} & \multicolumn{1}{c|}{8} & \multicolumn{1}{c|}{10} & \multicolumn{1}{c|}{12} & \multicolumn{1}{c|}{14} & \multicolumn{1}{c|}{16} & \multicolumn{1}{c|}{18} & \multicolumn{1}{c|}{20}\\
-\hline
- & & $\uparrow$ & $\uparrow$ & & & & & & \\
- & & {\tiny\texttt ini} & {\tiny\texttt fim} & & & & & & \\
- & & {\tiny\texttt meio} & & & & & & & \\
-\end{tabular}\\~\\~
-
-	\item Passo 4:
-\begin{tabular}{cccccccccc}
-\tiny{0} & \tiny{1} & \tiny{2} & \tiny{3} & \tiny{4} & \tiny{5} & \tiny{6} & \tiny{7} & \tiny{8} & \tiny{9}\\
-\hline
-\multicolumn{1}{|c|}{2} & \multicolumn{1}{c|}{4} & \multicolumn{1}{c|}{6} & \multicolumn{1}{c|}{8} & \multicolumn{1}{c|}{10} & \multicolumn{1}{c|}{12} & \multicolumn{1}{c|}{14} & \multicolumn{1}{c|}{16} & \multicolumn{1}{c|}{18} & \multicolumn{1}{c|}{20}\\
-\hline
- & $\uparrow$ & $\uparrow$ & & & & & & & \\
- & {\tiny\texttt fim} & {\tiny\texttt ini} & & & & & & & \\
-\end{tabular}
- ~ Valor 5 \textbf{NÃO} encontrado!
-
-\end{itemize}
-\end{frame}
-
-%-------------------------------------------------------
-\begin{frame}[fragile]\frametitle{Pesquisa Binária Recursiva}
-\lstinputlisting[basicstyle=\ttfamily\scriptsize]{src/pesquisaBinariaRec.cpp}
-\end{frame}
-
-%=======================================================
-\section{Exercícios}
-
-%-------------------------------------------------------
-\begin{frame}\frametitle{Exercícios}
-\begin{enumerate}
-	\item Dado um valor inteiro e positivo (\texttt{n}), o valor da constante de \emph{Euler} poder ser calculando com precisão diretamente proporcional a \texttt{n} através da fórmula:
-\[ E = \frac{1}{0!} + \frac{1}{1!} + \frac{1}{2!}+ \frac{1}{3!} + ... + \frac{1}{n!}\]
-Implemente, em C, um método recursivo que recebe \texttt{n}, retornando o valor de \emph{Euler} calculado usando a fórmula acima.
-	\item Considere a função abaixo, que implementa o somatório de um vetor e implemente a sua versão recursiva.
-\lstinputlisting[basicstyle=\ttfamily\tiny]{src/somatorio.cpp}
-\end{enumerate}
-\end{frame}
-
-%-------------------------------------------------------
-\begin{frame}\frametitle{Exercícios}
-\begin{enumerate}
-        \setcounter{enumi}{2}
-	\item Considere a função que implementa o algoritmo \emph{Bubble Sort} (apresentada na unidade anterior) e implemente a sua versão recursiva).
-	\item Implemente uma função recursiva que inverte os elementos de um vetor, trocando o primeiro elemento com o último, o segundo com o penúltimo, e assim sucessivamente.
-	\item Implemente uma função recursiva que verifica se uma cadeia de caracteres recebida como parâmetro é um palíndromo ou não. Por exemplo, ``socorrammesubinoonibusemmarrocos'' é um palíndromo.
-	%\item Faça o algoritmo da potência de forma não recursiva e de forma recursiva. Considere que o valor da base e do expoente são recebidos por parâmetro, inteiros e positivos.
-\end{enumerate}
-\end{frame}
-
-%=======================================================
-\section{Soluções}
-
-%-------------------------------------------------------
-\begin{frame}\frametitle{Soluções}
-\begin{enumerate}
-	\item \lstinputlisting[basicstyle=\ttfamily\tiny]{src/eulerRec.cpp}
-
-	\item \lstinputlisting[basicstyle=\ttfamily\tiny]{src/somatorioRec.cpp}
-
-	\item \lstinputlisting[basicstyle=\ttfamily\tiny]{src/bubbleSortRec.cpp}
-\end{enumerate}
-\end{frame}
-
-%-------------------------------------------------------
-\begin{frame}\frametitle{Soluções}
-\begin{enumerate}
-        \setcounter{enumi}{3}
-	\item \lstinputlisting[basicstyle=\ttfamily\tiny]{src/inverteVetorRec.cpp}
-
-	\item \lstinputlisting[basicstyle=\ttfamily\tiny]{src/palindromoRec.cpp}
-
-\end{enumerate}
-\end{frame}
-
-\end{comment}
 
 %=======================================================
 \section{Créditos}

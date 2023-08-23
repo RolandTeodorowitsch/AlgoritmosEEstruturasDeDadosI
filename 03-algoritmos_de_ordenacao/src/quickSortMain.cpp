@@ -6,7 +6,7 @@
 
 using namespace std;
 
-void mergeSort(int *dados, int ini, int fim);
+void quickSort(int *dados, int ini, int fim);
 
 int estaOrdenado(int *dados, int tam) {
   for (int i=0; i<tam-1; ++i) if (dados[i] > dados[i+1]) return 0;
@@ -23,7 +23,7 @@ int main() {
   cout << "> Ordenado:  ";
   for (int i=0; i<TAM; i++) vetor[i] = i; //preenche o vetor ordenado
   gettimeofday(&antes, NULL);
-  mergeSort(vetor,0,TAM-1);
+  quickSort(vetor,0,TAM-1);
   gettimeofday(&depois, NULL);
   microssegundos = (depois.tv_sec - antes.tv_sec) * 1000000 + depois.tv_usec - antes.tv_usec;
   if (estaOrdenado(vetor,TAM)) cout << microssegundos << " us" << endl;
@@ -32,7 +32,7 @@ int main() {
   cout << "> Invertido: ";
   for (int i=0; i<TAM; i++) vetor[i] = TAM - i; //preenche o vetor invertido
   gettimeofday(&antes, NULL);
-  mergeSort(vetor,0,TAM-1);
+  quickSort(vetor,0,TAM-1);
   gettimeofday(&depois, NULL);
   microssegundos = (depois.tv_sec - antes.tv_sec) * 1000000 + depois.tv_usec - antes.tv_usec;
   if (estaOrdenado(vetor,TAM)) cout << microssegundos << " us" << endl;
@@ -41,7 +41,7 @@ int main() {
   cout << "> Aleatório: ";
   for (int i=0; i<TAM; i++) vetor[i] = rand()%TAM; //preenche o vetor aleatoriamente
   gettimeofday(&antes, NULL);
-  mergeSort(vetor,0,TAM-1);
+  quickSort(vetor,0,TAM-1);
   gettimeofday(&depois, NULL);
   microssegundos = (depois.tv_sec - antes.tv_sec) * 1000000 + depois.tv_usec - antes.tv_usec;
   if (estaOrdenado(vetor,TAM)) cout << microssegundos << " us" << endl;

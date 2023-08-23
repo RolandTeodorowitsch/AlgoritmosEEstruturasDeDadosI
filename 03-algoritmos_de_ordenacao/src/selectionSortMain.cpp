@@ -1,4 +1,5 @@
 #include <iostream>
+#include <cstdlib>
 #include <sys/time.h>
 
 #define TAM  10000
@@ -15,12 +16,36 @@ int estaOrdenado(int *dados, int tam) {
 int main() {
   int vetor[TAM];
   struct timeval antes, depois;
-  for (int i=0; i<TAM; i++) vetor[i] = TAM - i; //preenche o vetor
+  unsigned long microssegundos;
+
+  srand(time(0));
+
+  cout << "> Ordenado:  ";
+  for (int i=0; i<TAM; i++) vetor[i] = i; //preenche o vetor ordenado
   gettimeofday(&antes, NULL);
   selectionSort(vetor,TAM);
   gettimeofday(&depois, NULL);
-  unsigned long microssegundos = (depois.tv_sec - antes.tv_sec) * 1000000 + depois.tv_usec - antes.tv_usec;
-  if (estaOrdenado(vetor,TAM)) cout << "> OK (" << microssegundos << ")" << endl;
-  else cout << "> FALHOU" << endl;
+  microssegundos = (depois.tv_sec - antes.tv_sec) * 1000000 + depois.tv_usec - antes.tv_usec;
+  if (estaOrdenado(vetor,TAM)) cout << microssegundos << " us" << endl;
+  else cout << "FALHOU" << endl;
+
+  cout << "> Invertido: ";
+  for (int i=0; i<TAM; i++) vetor[i] = TAM - i; //preenche o vetor invertido
+  gettimeofday(&antes, NULL);
+  selectionSort(vetor,TAM);
+  gettimeofday(&depois, NULL);
+  microssegundos = (depois.tv_sec - antes.tv_sec) * 1000000 + depois.tv_usec - antes.tv_usec;
+  if (estaOrdenado(vetor,TAM)) cout << microssegundos << " us" << endl;
+  else cout << "FALHOU" << endl;
+
+  cout << "> Aleatório: ";
+  for (int i=0; i<TAM; i++) vetor[i] = rand()%TAM; //preenche o vetor aleatoriamente
+  gettimeofday(&antes, NULL);
+  selectionSort(vetor,TAM);
+  gettimeofday(&depois, NULL);
+  microssegundos = (depois.tv_sec - antes.tv_sec) * 1000000 + depois.tv_usec - antes.tv_usec;
+  if (estaOrdenado(vetor,TAM)) cout << microssegundos << " us" << endl;
+  else cout << "FALHOU" << endl;
+
   return 0;
 }
