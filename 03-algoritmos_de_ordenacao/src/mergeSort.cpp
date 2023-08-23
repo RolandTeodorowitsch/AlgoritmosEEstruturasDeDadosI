@@ -8,7 +8,7 @@ void merge(int *dados, int ini, int meio, int fim) {
       else                          aux[k++] = dados[q++];
   }
   for (int p=0; p<k; p++) dados[ini++] = aux[p];
-  delete aux;
+  delete[] aux;
 }
 
 void mergeSort(int *dados, int ini, int fim) {

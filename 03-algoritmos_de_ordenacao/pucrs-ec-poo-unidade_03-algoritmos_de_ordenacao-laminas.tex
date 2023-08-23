@@ -37,7 +37,7 @@
 \title[\sc{Algoritmos de Ordenação}]{Algoritmos de Ordenação}
 \author[Roland Teodorowitsch]{Roland Teodorowitsch}
 \institute[ALEST I - EP - PUCRS]{Algoritmos e Estruturas de Dados I - Escola Politécnica - PUCRS}
-\date{18 de agosto de 2023}
+\date{22 de agosto de 2023}
 
 \begin{document}
 \justifying
@@ -432,25 +432,340 @@
 \section{\emph{Quick Sort}}
 
 %-------------------------------------------------------
-\begin{frame}\frametitle{\emph{Quick Sort}}
+\begin{frame}\frametitle{\emph{Quick Sort} [*]}
 \begin{itemize}	
-	\item ...
+	\item Também utiliza o padrão ``Dividir para Conquistar'', mas de uma maneira diferente do \emph{Merge Sort}
+	\item O maior processamento é feito \textbf{antes} das chamadas recursivas
+	\item Estratégia geral:
+	\begin{itemize}	
+		\item Divisão de $S$ em subconjuntos (sequências)
+		\item Recursão para classificar cada subconjunto
+		\item Combinar as subsequências ordenadas através de uma concatenação simples
+	\end{itemize}
 \end{itemize}
-%	\lstinputlisting[basicstyle=\ttfamily\scriptsize]{src/quickSort.cpp}
 \end{frame}
+
+%-------------------------------------------------------
+\begin{frame}\frametitle{\emph{Quick Sort}: 3 Etapas Principais [*]}
+\begin{enumerate}
+	\item Dividir
+	\begin{itemize}	
+		\item Se $S$ tem pelo menos dois elementos, seleciona um deles para ser o \textbf{pivô}
+		\item O pivô pode ser qualquer elemento de $S$
+		\item Remove todos os elementos de $S$ e coloca-os em três sequências:
+		\begin{itemize}	
+			\item $L$: armazena os elementos de $S$ menores que o pivô
+			\item $E$: armazena os elementos de $S$ iguais ao pivô
+			\item $G$: armazena os elementos de $S$ maiores que o pivô
+		\end{itemize}
+	\end{itemize}
+	\item Conquistar
+	\begin{itemize}	
+		\item Recursivamente ordena as sequências $L$ e $G$
+	\end{itemize}
+	\item Combinar
+	\begin{itemize}	
+		\item  Coloca de volta os elementos em $S$, inserindo primeiro os elementos de $L$, depois de $E$ e finalmente de $G$
+	\end{itemize}
+\end{enumerate}
+\end{frame}
+
+%-------------------------------------------------------
+\begin{frame}[fragile]\frametitle{\emph{Quick Sort}: Mais informações [*]}
+\begin{itemize}
+	\item \url{https://en.wikipedia.org/wiki/Quicksort}
+	\item \url{http://www.sorting-algorithms.com/quick-sort}
+	\item \url{https://www.hackerearth.com/practice/algorithms/sorting/quick-sort/tutorial/}
+\end{itemize}
+\end{frame}
+
+\begin{comment}
+
+
+
+Quick-sort
+◼
+ Execução do algoritmo pode ser vista como
+uma árvore binária (quick-sort tree):
+a)
+ Sequência de entrada processada em cada nodo da
+árvore
+b)
+ Sequência de saída gerada em cada nodo da árvore
+Quick-sort
+◼
+ Execução do algoritmo pode ser vista como
+uma árvore binária (quick-sort tree):
+◼
+ Altura pode chegar a ser linear
+◼
+ Por exemplo, quando a sequência consiste de n
+elementos distintos já ordenados
+◼
+ L teria tamanho n-1, E tamanho 1 e G tamanho 0
+◼
+ A cada chamada do quick-sort para L, o tamanho
+seria decrementado em 1, e a altura
+da árvore seria n-1
+Quick-sort
+◼
+ Execução do algoritmo quick-sort
+◼
+ Questões importantes:
+◼
+ Consumo de memória:
+◼
+ Na prática não são criados três vetores
+◼
+ O próprio vetor é alterado
+◼
+ Escolha do pivô
+
+
+
+Quick-sort
+◼
+ Análise do tempo de execução do algoritmo
+◼
+ Tempo total de execução: O(n.h), sendo h a
+altura da árvore
+◼
+ Pior caso: h = n-1, o que leva o tempo de
+execução para O(n2)
+Quick-sort
+◼
+ Análise do tempo de execução do algoritmo
+◼
+ O melhor para o quick-sort é quando L e G
+possuem mais ou menos o mesmo tamanho
+◼
+ Neste caso, a árvore fica com altura O(log n) e o
+tempo de execução do algoritmo fica O(n log n)
+◼
+ Escolher o último ou o primeiro elemento como
+pivô se a sequência já está ordenada leva para
+o pior caso
+Quick-sort
+◼
+ Análise do tempo de execução do algoritmo
+◼
+ Solução:
+◼
+ Escolher o índice do pivô de forma randômica,
+escolher o elemento do meio da sequência ou usar a
+mediana de três valores (primeiro, meio e último)
+◼
+ Faz o quick-sort ter “na média” tempo de execução
+O(n log n)
+◼
+ Tirando a escolha do pivô, o algoritmo permanece o
+mesmo
+
+\end{comment}
 
 %=======================================================
 \section{Comparação}
 
 %-------------------------------------------------------
-\begin{frame}\frametitle{Comparação}
+\begin{frame}[fragile]\frametitle{Estabilidade [*]}
 \begin{itemize}	
-	\item ...
+	\item Um algoritmo de ordenação é estável (\emph{stable}) se não altera a posição relativa dos elementos que têm o mesmo valor
+	\item Exemplo:
+	\begin{verbatim}
+		\item Coleção inicial:
+\begin{verbatim}
+{ {"João",21}, {"Ana", 55}, {"João", 13"}, {"Beto"}, 34}, {"Yuri", 23} }
+\end{verbatim}
+		\item Coleção ordenada por um algoritmo estável:
+\begin{verbatim}
+{ {"Ana", 55}, {"Beto"}, 34}, {"João",21}, {"João", 13"}, {"Yuri", 23} }
+\end{verbatim}
+		\item Coleção ordenada por um algoritmo instável:
+\begin{verbatim}
+{ {"Ana", 55}, {"Beto"}, 34}, {"João", 13"}, {"João",21}, {"Yuri", 23} }
+\end{verbatim}
 \end{itemize}
-%	\lstinputlisting[basicstyle=\ttfamily\scriptsize]{src/quickSort.cpp}
+\end{frame}
+
+%-------------------------------------------------------
+\begin{frame}\frametitle{Comparação dos Algoritmos quanto à Estabilidade}
+\begin{itemize}	
+	\item São estáveis:
+	\begin{itemize}	
+		\item \emph{Bubble Sort}
+		\item \emph{Insertion Sort}
+		\item \emph{Merge Sort}
+	\end{itemize}
+	\item São instáveis:
+	\begin{itemize}	
+		\item \emph{Selection Sort}
+		\item \emph{Quick Sort}
+	\end{itemize}
+\end{itemize}
+\end{frame}
+
+%-------------------------------------------------------
+\begin{frame}\frametitle{\emph{Bubble Sort}}
+\begin{itemize}
+	\item Complexidade: $O(n^2)$ (pior caso) ou $O(n)$ (melhor caso, considerando a implementação otimizada)
+	\item Vantagens:
+	\begin{itemize}	
+		\item É simples de ser implementado
+		\item É estável
+		\item Não necessita de um vetor auxiliar (\emph{in-place}), ocupando menos memória
+	\end{itemize}
+	\item Desvantagens:
+	\begin{itemize}	
+		\item NÃO é recomendado para vetores grandes
+		\item Executa SEMPRE $(n^2-n)/2$ comparações
+	\end{itemize}
+\end{itemize}
+\end{frame}
+
+%-------------------------------------------------------
+\begin{frame}\frametitle{\emph{Selection Sort}}
+\begin{itemize}
+	\item Complexidade: $O(n^2)$
+	\item Vantagens:
+	\begin{itemize}	
+		\item É simples de ser implementado
+		\item Não necessita de um vetor auxiliar (\emph{in-place}), ocupando menos memória
+		\item É relativamente rápido para pequenos vetores
+	\end{itemize}
+	\item Desvantagens:
+	\begin{itemize}	
+		\item É um dos mais lentos para vetores grandes
+		\item NÃO é estável
+		\item Executa SEMPRE $(n^2-n)/2$ comparações
+	\end{itemize}
+\end{itemize}
+\end{frame}
+
+%-------------------------------------------------------
+\begin{frame}\frametitle{\emph{Insertion Sort}}
+\begin{itemize}
+	\item Complexidade: $O(n^2)$ (pior caso) ou $O(n)$ (melhor caso)
+	\item Vantagens:
+	\begin{itemize}	
+		\item É estável
+	\end{itemize}
+	\item Desvantagens:
+	\begin{itemize}	
+		\item ...
+	\end{itemize}
+\end{itemize}
+\end{frame}
+
+%-------------------------------------------------------
+\begin{frame}\frametitle{\emph{Merge Sort}}
+\begin{itemize}
+	\item Complexidade: $O(n\log{n})$
+	\item Vantagens:
+	\begin{itemize}	
+		\item É estável
+	\end{itemize}
+	\item Desvantagens:
+	\begin{itemize}	
+		\item ...
+	\end{itemize}
+\end{itemize}
+\end{frame}
+
+%-------------------------------------------------------
+\begin{frame}\frametitle{\emph{Quick Sort}}
+\begin{itemize}
+	\item Complexidade: $O(n\log{n})$
+	\item Vantagens:
+	\begin{itemize}
+		\item ...
+	\end{itemize}
+	\item Desvantagens:
+	\begin{itemize}	
+		\item NÃO é estável
+	\end{itemize}
+\end{itemize}
 \end{frame}
 
 \begin{comment}
+
+Comparação
+◼
+ Qual é o melhor algoritmo?
+◼
+ Não existe claramente o “melhor”
+◼
+ O algoritmo que melhor se aplica para um uso
+específico depende de várias propriedades
+◼
+ Existem algumas “diretivas” e observações
+◼
+ Observação:
+◼
+ Algoritmo de ordenação é dito in-place se utiliza apenas
+uma quantidade constante de memória, além daquela
+necessária para os objetos, eles próprios ordenados
+
+
+
+◼
+ Insertion-sort
+◼
+ Se bem implementado, tempo de execução
+pode ser O(n+k), sendo k o número de
+inversões (pares de elementos fora de ordem)
+◼
+ Portanto
+◼
+ É simples de programar
+◼
+ É excelente para ordenar pequenas sequências (<50)
+◼
+ É bastante eficiente para ordenar sequências “quase”
+ordenadas
+◼
+ Fora destas situações torna-se uma escolha pobre
+pelo tempo de execução O(n2)
+
+
+Comparação
+◼
+ Merge-sort
+ Difícil de executar in-place
+◼
+ Torná-lo in-place exige um algoritmo mais complicado
+◼
+ Fica menos atrativo do que as implementações in-
+place do quick-sort para sequências que cabem na
+memória principal do computador
+◼
+ Sendo assim, é excelente para casos em que a
+entrada não cabe na memória principal e precisa ser
+armazenada em blocos em uma memória externa
+◼
+ Tende a minimizar os acessos a disco para fazer
+leitura/escrita
+
+
+Comparação
+◼
+ Quick-sort
+◼
+ Análises experimentais mostram que se a se-
+quência de entrada couber na memória principal:
+◼
+ Versões in-place do quick-sort executam mais rápido
+que o merge-sort
+◼
+ E o quick-sort tende, em média, a ser melhor que o
+heap-sort
+◼
+ Então, é uma ótima escolha como algoritmo de
+ordenação de finalidades genéricas no uso em
+memória
+◼
+ Tempo O(n2) para o pior caso, torna-o uma
+escolha pobre para aplicações em tempo real
+
 
 
 
