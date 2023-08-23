@@ -571,19 +571,20 @@ mesmo
 \begin{itemize}	
 	\item Um algoritmo de ordenação é estável (\emph{stable}) se não altera a posição relativa dos elementos que têm o mesmo valor
 	\item Exemplo:
-	\begin{verbatim}
+	\begin{itemize}
 		\item Coleção inicial:
 \begin{verbatim}
-{ {"João",21}, {"Ana", 55}, {"João", 13"}, {"Beto"}, 34}, {"Yuri", 23} }
+{ {"João", 21}, {"Ana", 55}, {"João", 13"}, {"Beto", 34}, {"Yuri", 23} }
 \end{verbatim}
 		\item Coleção ordenada por um algoritmo estável:
 \begin{verbatim}
-{ {"Ana", 55}, {"Beto"}, 34}, {"João",21}, {"João", 13"}, {"Yuri", 23} }
+{ {"Ana", 55}, {"Beto", 34}, {"João", 21}, {"João", 13"}, {"Yuri", 23} }
 \end{verbatim}
 		\item Coleção ordenada por um algoritmo instável:
 \begin{verbatim}
-{ {"Ana", 55}, {"Beto"}, 34}, {"João", 13"}, {"João",21}, {"Yuri", 23} }
+{ {"Ana", 55}, {"Beto", 34}, {"João", 13"}, {"João", 21}, {"Yuri", 23} }
 \end{verbatim}
+	\end{itemize}
 \end{itemize}
 \end{frame}
 
