@@ -6,7 +6,9 @@ void quickSort(int *dados, int ini, int fim) {
         while (dados[j] > pivo)
               --j;
         if (i <= j) {
-           int aux = dados[i];  dados[i] = dados[j];  dados[j] = aux;
+           int aux = dados[i];
+           dados[i] = dados[j];
+           dados[j] = aux;
            ++i;
            --j;
         }

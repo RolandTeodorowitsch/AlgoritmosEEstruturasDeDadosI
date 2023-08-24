@@ -8,13 +8,15 @@
 \usetheme{AnnArbor}
 \usecolortheme{orchid}
 \usefonttheme[onlymath]{serif}
-\usepackage{listings}
-\usepackage{colortbl	}
+%\usepackage{listings}
+\usepackage{listingsutf8}
+\usepackage{colortbl}
 \usepackage{array}
 
 \newcolumntype{C}[0]{>{\centering\arraybackslash}p{0.4cm}}
 
 \lstset{language=C++,
+	inputencoding=utf8/latin1,	
 	backgroundcolor=\color{green!10},
 	basicstyle=\ttfamily,
 	keywordstyle=\color{blue}\ttfamily,
@@ -37,9 +39,10 @@
 \title[\sc{Algoritmos de Ordenação}]{Algoritmos de Ordenação}
 \author[Roland Teodorowitsch]{Roland Teodorowitsch}
 \institute[ALEST I - EP - PUCRS]{Algoritmos e Estruturas de Dados I - Escola Politécnica - PUCRS}
-\date{23 de agosto de 2023}
+\date{24 de agosto de 2023}
 
 \begin{document}
+
 \justifying
 
 %-------------------------------------------------------
@@ -453,8 +456,8 @@
 	\item A escolha do pivô é influencia o desempenho
 	\item Métodos:
 	\begin{itemize}
-		\item Lomuto: criado por Nico Lomuto, tipicamente escolhe o primeiro ou último elemento da coleção
 		\item Hoare: escolhe o elemento central da coleção como pivô
+		\item Lomuto: criado por Nico Lomuto, tipicamente escolhe o primeiro ou último elemento da coleção
 		\item Pivô aleatório
 		\item Valor intermediário entre primeiro, central e último elementos
 	\end{itemize}
@@ -462,13 +465,65 @@
 \end{frame}
 
 %-------------------------------------------------------
-\begin{frame}\frametitle{\emph{Merge Sort}: Implementação (Hoare)}
-\lstinputlisting[basicstyle=\ttfamily\scriptsize]{src/quickSort1.cpp}
+\begin{frame}[fragile]\frametitle{\emph{Quick Sort}: Algoritmo (Hoare) \tiny{[Fonte: \url{https://pt.wikipedia.org/wiki/Quicksort}]}}
+\fontsize{1}{6.5}\selectfont{
+\begin{verbatim}
+procedimento QuickSort(X[], IniVet, FimVet)
+var
+   i, j, pivo, aux
+início
+   i <- IniVet
+   j <- FimVet
+   pivo <- X[(IniVet + FimVet) div 2]
+   enquanto(i <= j)
+    |      enquanto (X[i] < pivo) faça
+    |       |   i <- i + 1
+    |      fimEnquanto
+    |      enquanto (X[j] > pivo) faça
+    |       |   j <- j - 1
+    |      fimEnquanto
+    |      se (i <= j) então
+    |       |   aux  <- X[i]
+    |       |   X[i] <- X[j]
+    |       |   X[j] <- aux
+    |       |   i <- i + 1
+    |       |   j <- j - 1
+    |      fimSe
+   fimEnquanto
+   se (IniVet < j) então
+    |  QuickSort(X, IniVet, j)
+   fimSe
+   se (i < FimVet) então
+    |  QuickSort(X, i, FimVet)
+   fimSe
+fimProcedimento
+\end{verbatim}
+}
 \end{frame}
 
 %-------------------------------------------------------
-\begin{frame}\frametitle{\emph{Merge Sort}: Implementação (Lomuto)}
-\lstinputlisting[basicstyle=\ttfamily\tiny]{src/quickSort2.cpp}
+\begin{frame}[fragile]\frametitle{\emph{Quick Sort}: Algoritmo (Lomuto) \tiny{[Fonte: \url{https://pt.wikipedia.org/wiki/Quicksort}]}}
+%\fontsize{1}{6.5}\selectfont{
+\scriptsize{
+\begin{verbatim}
+algorithm quicksort(A, lo, hi) is
+    if lo < hi then
+        p := particiona(A, lo, hi)
+        quicksort(A, lo, p – 1)
+        quicksort(A, p + 1, hi)
+
+algorithm particiona(A, lo, hi) is
+    pivot := A[hi]
+    i := lo - 1    
+    for j := lo to hi - 1 do
+        if A[j] < pivot then
+            i := i + 1
+            swap A[i] with A[j]
+    if pivot < A[i + 1] then
+        swap A[i + 1] with A[hi]
+    return i + 1
+\end{verbatim}
+}
 \end{frame}
 
 %-------------------------------------------------------
@@ -501,7 +556,7 @@
 \begin{itemize}
 	\item Definir qual é o ``melhor'' algoritmo de ordenação nem sempre é fácil
 	\item Há muitas variações, tanto nas implementações dos algoritmos quanto nas configurações de coleções (ordendada, invertida, aleatória, com muitos elementos duplicados, sem elementos duplicados, etc.)
-	\item Até mesmo o \emph{Bubble Sort} pode apresentar o melhor desempenho para uma comfiguração específica
+	\item Até mesmo o \emph{Bubble Sort} pode apresentar o melhor desempenho para uma configuração específica
 	\item Mas há alguns fatores que devem ser considerados...
 \end{itemize}
 \end{frame}
@@ -644,6 +699,33 @@
 \end{frame}
 
 %=======================================================
+\section{Exercícios e Testes}
+
+%-------------------------------------------------------
+\begin{frame}\frametitle{Exercício 1}
+\begin{enumerate}
+	\item Implemente os algoritmos das duas versões de \emph{Quick Sort} apresentadas nestas lâminas em C/C++ e teste as suas implementações com o código da página a seguir.
+\end{enumerate}
+\end{frame}
+
+%-------------------------------------------------------
+\begin{frame}\frametitle{Exercício 1}
+\fontsize{1}{5}\selectfont{
+\lstinputlisting{src/quickSortMain.cpp}
+}
+\end{frame}
+
+%-------------------------------------------------------
+\begin{frame}\frametitle{Exercícios 2, 3 e 4}
+\begin{enumerate}
+        \setcounter{enumi}{1}
+	\item Adapte o código com a função \texttt{main()}, da lâmina anterior, para rodá-lo com as implementações de \emph{Bubble Sort}, \emph{Selection Sort}, \emph{Insertion Sort} e \emph{Merge Sort} (apresentadas nestas lâminas). Compare os tempos de execução de todas as implementações de algoritmos de ordenação.
+	\item O código da função \texttt{main()}, da lâmina anterior, executa testes com um vetor já ordenado (em ordem crescente), com um vetor invertido (ordenado em ordem decrescente) e com um vetor com valores aleatórios. Crie uma nova configuração de teste para um vetor com alto número de elementos duplicados, e teste todos os algoritmos para esta nova configuração.
+	\item Procure outros algoritmos de ordenação na Internet, implemente-os e adapte essas implementações para funcionarem no mesmo padrão dos testes executados anteriormente.
+\end{enumerate}
+\end{frame}
+
+%=======================================================
 \section{Créditos}
 
 %-------------------------------------------------------
@@ -651,6 +733,19 @@
 \begin{itemize}
 	\item Estas lâminas contêm trechos adaptados de materiais criados e disponibilizados pela professora Isabel Harb Manssour [*].
 \end{itemize}
+\end{frame}
+
+%=======================================================
+\section{Soluções}
+
+%-------------------------------------------------------
+\begin{frame}\frametitle{Solução: \emph{Quick Sort} (Hoare) em C/C++}
+\lstinputlisting[basicstyle=\ttfamily\scriptsize]{src/quickSort1.cpp}
+\end{frame}
+
+%-------------------------------------------------------
+\begin{frame}\frametitle{Solução: \emph{Quick Sort} (Lomuto) em C/C++}
+\lstinputlisting[basicstyle=\ttfamily\tiny]{src/quickSort2.cpp}
 \end{frame}
 
 %-------------------------------------------------------
