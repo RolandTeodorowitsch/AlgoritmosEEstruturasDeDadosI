@@ -529,13 +529,14 @@ algorithm particiona(A, lo, hi) is
 %-------------------------------------------------------
 \begin{frame}[fragile]\frametitle{\emph{Quick Sort}: Análise}
 \begin{itemize}
-	\item Se a posição do pivô escolhido for central, o \emph{Quick Sort} consegue duas subcoleções de tamanhos próximos
+	\item Se a \textbf{posição do pivô} escolhido for \textbf{central}, o \emph{Quick Sort} consegue duas subcoleções de tamanhos próximos
 	\begin{itemize}
-		\item Consequentemente a altura da árvore de execução será $O(\log{n})$
+		\item Se isso \textbf{sempre} ocorresse, a altura da árvore de execução seria $O(\log{n})$
 		\item Como em cada nível o tempo de execução será $O(n)$
-		\item Então, o tempo de execução do algoritmo será $O(n\log{n})$
+		\item Então, o \textbf{melhor} tempo de execução do algoritmo poderia ser definido como $O(n\log{n})$
 	\end{itemize}
-	\item No caso da variante Lomuto que escolhe o último elemento como pivô, se a coleção já estiver ordenada, tem-se o pior caso, ou seja, $O(n^2)$
+	\item Por outro lado, no caso da variante Lomuto, que escolhe o último elemento como pivô, se a coleção já estiver ordenada, tem-se uma situação de pior caso, ou seja, $O(n^2)$
+	\item Portanto, o desempenho do \emph{Quick Sort} está fortemente atrelado à escolha do pivô e à configuração ou posição inicial dos elementos na coleção
 \end{itemize}
 \end{frame}
 
@@ -653,7 +654,7 @@ algorithm particiona(A, lo, hi) is
 %-------------------------------------------------------
 \begin{frame}\frametitle{\emph{Merge Sort}}
 \begin{itemize}
-	\item Complexidade: $O(n\log{n})$
+	\item Complexidade: $O(n\log{n})$ (pior caso)
 	\item É estável
 	\item Tem bom desempenho para coleções grandes
 	\item Necessita de um vetor auxiliar
@@ -663,11 +664,11 @@ algorithm particiona(A, lo, hi) is
 %-------------------------------------------------------
 \begin{frame}\frametitle{\emph{Quick Sort}}
 \begin{itemize}
-	\item Complexidade: $O(n\log{n})$ (melhor caso)
+	\item Complexidade: $O(n\log{n})$ (melhor caso) ou $(n^2)$ (pior caso)
 	\item Tem um desempenho excelente para vetores grandes
 	\item NÃO é estável
 	\item A escolha do pivô pode comprometer o desempenho
-	\item Análises experimentais mostram que, se a sequência de entrada couber na memória principal, versões \emph{in-place} do \emph{Quick Sort}  executam mais rápido que o \emph{Merge Sort} [*]
+	\item Análises experimentais mostram que, se a sequência de entrada couber na memória principal, versões \emph{in-place} do \emph{Quick Sort} executam mais rápido que o \emph{Merge Sort} [*]
 \end{itemize}
 \end{frame}
 

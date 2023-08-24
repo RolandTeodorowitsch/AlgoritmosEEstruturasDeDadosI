@@ -35,7 +35,7 @@ $CATEGORY: $course$/AlgoritmosEEstruturasDeDadosI-AlgoritmosDeOrdenacao-Questoes
 ::ALEST I - Algoritmos de Ordenação - Questões de Concurso - 005::[html]<p align="justify"><b>(UFRRJ - 2023 - Analista de Tecnologia da Informação - UFRRJ - 53)</b> Sobre os algoritmos para ordenação de dados, é correto afirmar que o</p>{
 	~<i>heapsort</i> é considerado um algoritmo estável, fundamentado na estratégia de divisão e conquista.#
 	~<i>mergesort</i> é considerado um algoritmo instável, apresentando uma complexidade de <i>O(n<sup>2</sup>)</i> comparações no melhor caso.#
-	=<i>bubblesort</i> é considerado um algoritmo estável, apresentando uma complexidade de <i>O(n<sup>2</sub>)</i> comparações no pior caso.#
+	=<i>bubblesort</i> é considerado um algoritmo estável, apresentando uma complexidade de <i>O(n<sup>2</sup>)</i> comparações no pior caso.#
 	~<i>insertion sort</i> é considerado um algoritmo instável, apresentando uma complexidade de <i>O(n)</i> comparações no pior caso.#
 	~<i>quicksort</i> é considerado um algoritmo estável, fundamentado em uma estratégia de inserção de dados em lista.#
 }
