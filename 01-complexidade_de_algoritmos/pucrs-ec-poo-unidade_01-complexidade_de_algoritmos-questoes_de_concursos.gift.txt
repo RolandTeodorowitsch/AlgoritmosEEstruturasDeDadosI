@@ -1,0 +1,24 @@
+$CATEGORY: $course$/AlgoritmosEEstruturasDeDadosI-ComplexidadeDeAlgoritmos-QuestoesDeConcursos
+
+::ALEST I - Complexidade de Algoritmos - Questões de Concursos - 001::[html]<p align="justify"><b>(Polícia Científica/PE - 2016 - Perito Criminal (CC/EC/SI) - CESPE - 53)</b></p>
+<pre>cont = 0;
+for (int x = 1; x &lt;= n; x++)
+    for(int y = x; y &lt;= n; y++)
+       cont = cont + 1;</pre>
+<p aling="justify">Considerando as instruções precedentes, assinale a opção que apresenta a relação correta entre as variáveis n e cont no final do laço.</p>{
+	~<code>cont \= n<sup>2</sup> + 1</code>#
+	~<code>cont \= n(n<sup>2</sup> + 1)/2</code>#
+	=<code>cont \= n(n + 1)/2</code>#
+	~<code>cont \= n<sup>2</sup></code>#
+	~<code>cont \= n + 1</code>#
+}
+
+::ALEST I - Complexidade de Algoritmos - Questões de Concursos - 002::[html]<p align="justify"><b>(SEFAZ/RR - 2022 - Implementador de Software/Tipo A - IDECAN - 60)</b> A complexidade de algoritmos considera o tempo de execução que um código usa para solucionar um problema. Selecione a alternativa que mostra a notação da menor complexidade entre as seguintes: Ordem quadrática; Ordem cúbica; Ordem logarítmica; Ordem linear; Ordem exponencial</p>{
+	~O(n<sup>2</sup>)#
+	~O(n<sup></sup>)#
+	~O(n)#
+	~O(c<sup>n</sup>)#
+	=O(log n)#
+}
+
+
