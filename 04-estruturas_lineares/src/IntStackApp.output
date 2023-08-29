@@ -1,0 +1,15 @@
+IntStack(4):   | | | | |  size=0/4  top=X  isEmpty=1  isFull=0
+push(1): OK    |1| | | |  size=1/4  top=1  isEmpty=0  isFull=0
+push(2): OK    |1|2| | |  size=2/4  top=2  isEmpty=0  isFull=0
+push(3): OK    |1|2|3| |  size=3/4  top=3  isEmpty=0  isFull=0
+pop(3):  OK    |1|2| | |  size=2/4  top=2  isEmpty=0  isFull=0
+push(4): OK    |1|2|4| |  size=3/4  top=4  isEmpty=0  isFull=0
+push(5): OK    |1|2|4|5|  size=4/4  top=5  isEmpty=0  isFull=1
+push(6): ERRO  |1|2|4|5|  size=4/4  top=5  isEmpty=0  isFull=1
+pop(5):  OK    |1|2|4| |  size=3/4  top=4  isEmpty=0  isFull=0
+pop(4):  OK    |1|2| | |  size=2/4  top=2  isEmpty=0  isFull=0
+pop(2):  OK    |1| | | |  size=1/4  top=1  isEmpty=0  isFull=0
+pop(1):  OK    | | | | |  size=0/4  top=X  isEmpty=1  isFull=0
+pop(X):  ERRO  | | | | |  size=0/4  top=X  isEmpty=1  isFull=0
+push(7): OK    |7| | | |  size=1/4  top=7  isEmpty=0  isFull=0
+clear(): OK    | | | | |  size=0/4  top=X  isEmpty=1  isFull=0

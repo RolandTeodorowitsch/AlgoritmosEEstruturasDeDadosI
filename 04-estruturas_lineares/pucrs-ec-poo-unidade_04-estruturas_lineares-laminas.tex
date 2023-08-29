@@ -1,0 +1,463 @@
+\documentclass[aspectratio=169]{beamer}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[brazil]{babel}
+\usepackage{ragged2e}
+\usepackage{booktabs}
+\usepackage{verbatim}
+\usetheme{AnnArbor}
+\usecolortheme{orchid}
+\usefonttheme[onlymath]{serif}
+\usepackage{listings}
+\usepackage{colortbl}
+\usepackage{array}
+
+\newcolumntype{C}[0]{>{\centering\arraybackslash}p{0.4cm}}
+
+\lstset{language=C++,
+	backgroundcolor=\color{green!10},
+	basicstyle=\ttfamily,
+	keywordstyle=\color{blue}\ttfamily,
+	stringstyle=\color{red}\ttfamily,
+	commentstyle=\color{green}\ttfamily,
+	morecomment=[l][\color{magenta}]{\#},
+	literate=
+	{á}{{\'a}}1
+	{à}{{\`a}}1
+	{ã}{{\~a}}1
+	{â}{{\^a}}1
+	{é}{{\'e}}1
+	{ê}{{\^e}}1
+	{í}{{\'i}}1
+	{ó}{{\'o}}1
+	{õ}{{\~o}}1
+	{ú}{{\'u}}1
+	{ü}{{\"u}}1
+	{ç}{{\c{c}}}1
+	{Á}{{\'A}}1
+	{À}{{\`A}}1
+	{Ã}{{\~A}}1
+	{Â}{{\^A}}1
+	{É}{{\'E}}1
+	{Ê}{{\^E}}1
+	{Í}{{\'I}}1
+	{Ó}{{\'O}}1
+	{Õ}{{\~O}}1
+	{Ú}{{\'U}}1
+	{Ü}{{\"U}}1
+	{Ç}{{\c{C}}}1
+}
+
+\AtBeginSection[]{
+  \begin{frame}
+  \vfill
+  \centering
+  \begin{beamercolorbox}[sep=8pt,center,shadow=true,rounded=true]{title}
+    \usebeamerfont{title}\insertsectionhead\par%
+  \end{beamercolorbox}
+  \vfill
+  \end{frame}
+}
+
+\title[\sc{Estruturas Lineares}]{Estruturas Lineares}
+\author[Roland Teodorowitsch]{Roland Teodorowitsch}
+\institute[ALEST I - EP - PUCRS]{Algoritmos e Estruturas de Dados I - Escola Politécnica - PUCRS}
+\date{29 de agosto de 2023}
+
+\begin{document}
+
+\justifying
+
+%-------------------------------------------------------
+\begin{frame}
+	\titlepage
+\end{frame}
+
+%=======================================================
+\section{Introdução}
+
+%-------------------------------------------------------
+\begin{frame}\frametitle{Leitura(s) Recomendada(s)}
+
+\begin{columns}[T]
+\begin{column}{0.15\linewidth}
+\vspace{-3mm}
+\begin{figure}[h]
+	\centering
+	\includegraphics[height=0.3\paperheight]{imagens/livro_goodrich.jpg}
+\end{figure}
+\end{column}
+%\vspace{3mm}
+\begin{column}{0.85\linewidth}
+\tiny{\textbf{Seções 3.2 (Listas simplesmente encadeadas), 3.3 (Listas duplamente encadeadas), 6.1 (Listas arranjo), 6.2 (Listas de nodos), 6,4 (Os TADs de lista e o \emph{framework} de coleções)}\\
+~}\\
+\scriptsize{GOODRICH, Michael T.; TAMASSIA, Roberto. \textbf{Estruturas de dados e algoritmos em Java}. Tradução: Bernardo Copstein. 5. ed. Porto Alegre: Bookman, 2013. xxii, 713 p. E-book. ISBN 9788582600191. Tradução de: Data Structures and Algorithms in Java, 5th Edition. Disponível em: \textless{}\url{https://integrada.minhabiblioteca.com.br/\#/books/9788582600191/}\textgreater{}. Acesso em: 01 ago. 2023.}
+\end{column}
+\end{columns}
+
+\end{frame}
+
+%=======================================================
+\section{Tipos Abstratos de Dados}
+
+%-------------------------------------------------------
+\begin{frame}\frametitle{Abordagem OO}
+\begin{itemize}
+	\item Princípios da abordagem OO
+	\begin{itemize}
+		\item \textbf{Abstração}: representação de um objeto do mundo real, ``abstraindo-se'' os detalhes desnecessários, de forma que o objeto possa ser utilizado sem se preocupar com como ele foi implementado
+		\item \textbf{Encapsulamento}: detalhes da implementação ficam escondidos e a manipulação dos dados acontede através de uma interface pública
+		\item \textbf{Modularidade}: vários componentes que interagem
+	\end{itemize}
+	\item Abstração, Encapsulamento, Herança e Polimorfismo são considerados os 4 pilares da POO
+\end{itemize}
+\end{frame}
+
+%-------------------------------------------------------
+\begin{frame}\frametitle{Tipos Abstratos de Dados}
+\begin{itemize}
+	\item A aplicação de abstração ao projeto de estruturas de dados nos leva a \textbf{Tipos Abstratos de Dados (TAD)}
+	\item TAD
+	\begin{itemize}
+		\item É uma especificação de um conjunto de dados e operações que podem ser executadas sobre esses dados
+		\item Modelo matemático de estruturas de dados que especifica
+		\begin{itemize}
+			\item O tipo dos dados armazenados
+			\item As operações definidas sobre esses dados
+			\item Os tipos dos parâmetros dessas operações
+		\end{itemize}
+	\end{itemize}
+	\item A separação de especificação e implementação permite usar um TAD sem conhecer nada sobre a sua implementação
+	\begin{itemize}
+		\item Assim, um TAD pode ter mais de uma implementação
+	\end{itemize}
+\end{itemize}
+\end{frame}
+
+%-------------------------------------------------------
+\begin{frame}\frametitle{TAD}
+\begin{itemize}
+	\item Usa ``encapsulamento''
+	\item Princípio: esconder detalhes de representação e direcionar o acesso aos objetos abstratos por meio de operações
+	\item A representação fica protegida contra qualquer tentativa de manipulá-la diretamente (só através das operações disponíveis)
+	\item Define o que cada operação faz, mas não como o faz
+\end{itemize}
+\end{frame}
+
+%-------------------------------------------------------
+\begin{frame}\frametitle{Tipos Abstratos de Dados}
+\begin{itemize}
+	\item Resumindo, TAD é uma estrutura de programa que contém
+	\begin{itemize}
+		\item A especificação de uma estrutura de dados
+		\item Um conjunto de operações que podem ser realizadas sobre os dados encapsulados
+	\end{itemize}
+	\item Exemplos de TADs
+	\begin{itemize}
+		\item Pilhas, Filas, Deques e Listas
+	\end{itemize}
+	\item Essas estruturas são classificadas como lineares
+	\begin{itemize}
+		\item Representam coleções de elementos linearmente organizados que oferecem métodos para inserir, acessar e remover elementos
+		\item Tem a ordem interna de seus elementos definida pela forma como são feitas inserções e remoções na estrutura
+		\item Costuma ter duas extremidades (esquerda e direita; frente e traseira; cabeça e cauda; ...)
+	\end{itemize}
+\end{itemize}
+\end{frame}
+
+%-------------------------------------------------------
+\begin{frame}\frametitle{Estruturas Lineares}
+\begin{itemize}
+	\item \textbf{Lista}
+	\begin{itemize}
+		\item Organiza os dados de maneira sequencial (não necessariamente de forma física, mas sempre existe uma ordem lógica entre os elementos)
+		\item Permite inserção, acesso e remoção de elementos
+	\end{itemize}
+	\item \textbf{Pilha}
+	\begin{itemize}
+		\item Usa a política \emph{LIFO -- Last In First Out} (o último elemento que entrou, é o primeiro a sair)
+		\item Possui apenas uma entrada, chamada de topo, a partir da qual os dados entram e saem dela
+	\end{itemize}
+	\item \textbf{Fila}
+	\begin{itemize}
+		\item Usa a política \emph{FIFO -- First In First Out} (o primeiro elemento a entrar será o primeiro a sair)
+		\item Os elementos entram por um lado (``cauda'' ou parte de trás) e saem por outro (``cabeça'' ou parte da frente)
+	\end{itemize}
+	\item \textbf{Deque} (\emph{Double-Ended QUEue})
+	\begin{itemize}
+		\item Os elementos entram e saem por qualquer uma das extremidades (cauda ou cabeça) da lista
+	\end{itemize}
+\end{itemize}
+\end{frame}
+
+%-------------------------------------------------------
+\begin{frame}\frametitle{Estruturas Lineares}
+\begin{itemize}
+	\item Permitem representar um conjunto de dados de um mesmo tipo (com alguma afinidade) de forma a preservar a relação de ordem entre seus elementos
+	\item Cada elemento da estrutura é chamado de nó, ou nodo.
+	\item Uma estrutura linear é definida como:
+	\begin{itemize}
+		\item Um conjunto de $N$ nós, organizados de forma a refletir a posição relativa dos mesmos
+		\item Se $N > 0$, os nós da estrutura serão $x_1$, $x_2$, ..., $x_N$, 
+		\begin{itemize}
+			\item $x_1$ é o primeiro nó
+			\item Para $1 < k < N$, o nó $x_k$ é precedido pelo nó $x_{k-1}$ e seguido pelo nó $x_{k+1}$
+			\item $x_N$ é o último nó
+		\end{itemize}
+		\item Quando $N = 0$, diz-se que a estrutura está vazia
+	\end{itemize}
+\end{itemize}
+\end{frame}
+
+%-------------------------------------------------------
+\begin{frame}\frametitle{Exemplos de Estruturas Lineares}
+\begin{itemize}
+	\item Pessoas na fila de um caixa (ordem definida pela chegada e posição na fila)
+	\item Pessoas na sala de espera de um consultório (ordem definida pela chegada)
+	\item Conjunto de notas dos alunos de uma turma
+	\item Itens no estoque de uma loja
+	\item Palavras de um texto
+	\item Letras de uma palavra
+	\item Especificação de operações e operandos em uma expressão matemática
+	\item Dias da semana
+	\item Relação de compromissos
+	\item Pilha de livros
+	\item Cartas de um baralho
+	\item etc.
+\end{itemize}
+\end{frame}
+
+%-------------------------------------------------------
+\begin{frame}[fragile]\frametitle{Alocação de Estruturas Lineares}
+\begin{itemize}
+	\item Estruturas lineares podem ser alocadas de forma:
+	\begin{itemize}
+		\item \textbf{Sequencial ou Contígua}\\Os nós, além de estarem em uma sequência lógica, também estão \textbf{fisicamente em sequência}
+\begin{center}
+\begin{tabular}{CCCCC}
+\tiny{0} & \tiny{1} & \tiny{2} & \tiny{3} & \tiny{4}\\
+\hline
+\multicolumn{1}{|C|}{5} & \multicolumn{1}{|C|}{7} & \multicolumn{1}{|C|}{8} & \multicolumn{1}{|C|}{1} & \multicolumn{1}{|C|}{3}\\
+\hline
+\end{tabular}
+\end{center}
+		\item \textbf{Encadeada}\\Os nós são alocados dinamicamente e são ligados entre si, de forma que há uma sequência lógica, mas fisicamente os nós NÃO precisam estar contíguos
+\begin{figure}[h]
+	\centering
+	\includegraphics[height=0.15\paperheight]{imagens/lista_simplesmente_encadeada.png}
+\end{figure}
+	\end{itemize}
+	\item Cada forma tem as suas vantagens e desvantagens
+\end{itemize}
+\end{frame}
+
+%-------------------------------------------------------
+\begin{frame}\frametitle{Alocação Sequencial ou Contígua de Estruturas Lineares}
+\begin{itemize}
+	\item Nós adjacentes na estrutura são armazenados em endereços contíguos na memória física e o tamanho da estrutura é fixo
+	\item A implementação é feita com vetores (arranjos ou \emph{arrays}), que podem ser alocados de forma estática ou dinâmica
+	\item Pode-se trabalhar com vetores parcialmente prenchidos
+	\item O acesso é rápido
+	\item NÃO é possível ter espaços vazios (não utilizados) no meio da estrutura (a não ser no final, para vetores parcialmente preenchidos)
+	\item Inserção e Remoção de elementos no meio exige movimentação de elementos
+	\item Para estruturas alocadas dinamicamente, pode-se: alocar um novo vetor, copiar os elementos do antigo para o novo, desalocar o antigo e passar a usar o novo -- mas isto pode ser custoso
+\end{itemize}
+\end{frame}
+	
+%-------------------------------------------------------
+\begin{frame}[fragile]\frametitle{Alocação Sequencial ou Contígua de Estruturas Lineares (vetores.cpp)}
+\lstinputlisting[basicstyle=\ttfamily\tiny]{src/vetores.cpp}
+\end{frame}
+
+%-------------------------------------------------------
+\begin{frame}[fragile]\frametitle{Alocação Sequencial ou Contígua de Estruturas Lineares (vetores2.cpp)}
+\lstinputlisting[basicstyle=\ttfamily\tiny]{src/vetores2.cpp}
+\end{frame}
+
+%-------------------------------------------------------
+\begin{frame}\frametitle{Alocação Encadeada de Estruturas Lineares}
+\begin{itemize}
+	\item Os elementos da estrutura seguem uma ordem lógica, mas \textbf{NÃO estão necessariamente armazenados sequencialmente na memória}
+	\item A relação lógica de ordem é implementada através de uma ligação (referência ou armazenamento de endereço) entre os nodos
+	\item Estruturas lineares encadeadas são chamadas de \textbf{listas encadeadas}, sendo que cada nodo pode armazenar uma referência para o próximo elemento (lista simplesmente encadeada)
+\begin{figure}[h]
+	\centering
+	\includegraphics[height=0.15\paperheight]{imagens/lista_simplesmente_encadeada.png}
+\end{figure}
+	\item Ou para o elemento anterior e para o próximo elemento (lista duplamente encadeada)
+\begin{figure}[h]
+	\centering
+	\includegraphics[height=0.16\paperheight]{imagens/lista_duplamente_encadeada.png}
+\end{figure}
+	\item A estrutura pode aumentar e diminuir em tempo de execução
+\end{itemize}
+\end{frame}
+
+%-------------------------------------------------------
+\begin{frame}\frametitle{Alocação Encadeada de Estruturas Lineares}
+\begin{itemize}
+	\item Quando for necessário inserir um elemento na estrutura, deve-se:
+	\begin{itemize}
+		\item Alocar um novo nodo
+		\item Preencher as informações no nodo
+		\item Inserir o novo nodo em determinada posição da estrutura (o que exige ajustes em alguns encadeamentos)
+	\end{itemize}
+	\item Alocação encadeada será útil quando:
+	\begin{itemize}
+		\item Não é possível prever o número de entradas de dados em tempo de compilação
+		\item For mais fácil aplicar determinada operação sobre a estrutura encadeada
+	\end{itemize}
+\end{itemize}
+\end{frame}
+
+%-------------------------------------------------------
+\begin{frame}\frametitle{Operações Básicas sobre Estruturas Lineares}
+\begin{itemize}
+	\item Criação da estrutura
+	\item Destruição da estrutura
+	\item Inserção de um elemento na estrutura
+	\item Remoção de um elemento da estrutura
+	\item Acesso a um elemento da estrutura
+	\item Alteração de um elemento da estrutura
+	\item Combinação de duas ou mais estruturas
+	\item Ordenação dos elementos da estrutura
+	\item Cópia de uma estrutura
+	\item Localização de um nodo através de alguma informação do nodo
+\end{itemize}
+\end{frame}
+
+%=======================================================
+\section{Pilhas}
+
+%-------------------------------------------------------
+\begin{frame}\frametitle{Pilha ou \emph{Stack}}
+\begin{itemize}
+	\item Usa a política \emph{LIFO -- Last In First Out} (o último elemento que entrou, é o primeiro a sair)
+	\item Possui apenas uma entrada, chamada de topo, a partir da qual os dados são inseridos e removidos
+	\item Pode ser implementada usando
+	\begin{itemize}
+		\item Arranjo:
+\begin{figure}[h]
+	\flushleft
+	\includegraphics[height=0.11\paperheight]{imagens/pilha1.png}
+\end{figure}
+		\item Lista Simplesmente Encadeada:
+\begin{figure}[h]
+	\flushleft
+	\includegraphics[height=0.12\paperheight]{imagens/pilha2.png}
+\end{figure}
+		\item Lista Duplamente Encadeada:
+\begin{figure}[h]
+	\flushleft
+	\includegraphics[height=0.12\paperheight]{imagens/pilha3.png}
+\end{figure}
+	\end{itemize}
+\end{itemize}
+\end{frame}
+
+%-------------------------------------------------------
+\begin{frame}\frametitle{Aplicações que Usam Pilha}
+\begin{itemize}
+	\item Operações de edição de desfazer/refazer
+	\item Histórico de visitação de páginas em navegadores \emph{web} (botão \emph{back})
+	\item Cadeia de chamada de métodos em interpretadores e máquinas virtuais
+	\item Auxiliar para implementação de outras estruturas de dados e algoritmos
+	\item Implementação de compiladores
+	\item Computação Gráfica (operações com matrizes)
+	\item Manipulação de expressões aritméticas: infixada, pós-fixada, pré-fixada
+\end{itemize}
+\end{frame}
+
+%-------------------------------------------------------
+\begin{frame}\frametitle{Métodos do TAD Pilha}
+\begin{itemize}
+	\item \texttt{bool push(e)}: insere o elemento e no topo da pilha (retorna \texttt{true}, em caso de sucesso, ou \texttt{false}, se NÃO houver espaço)
+	\item \texttt{bool pop(\&e)}: remove e retorna (por referência) o elemento do topo da pilha (retorna \texttt{true}, em caso de sucesso, ou \texttt{false}, a pilha estiver vazia)
+	\item \texttt{bool top(\&e)} ou \texttt{bool peek(\&e)}: retorna (por referência) o elemento do topo da pilha, mas não o remove da pilha (retorna \texttt{true}, em caso de sucesso, ou \texttt{false}, a pilha estiver vazia)
+	\item \texttt{int size()}: retorna o número de elementos da pilha
+	\item \texttt{int maxSize()}: retorna o número máximo de elementos suportado pela pilha
+	\item \texttt{bool isEmpty()}: retorna \texttt{true}, se a pilha estiver vazia, ou \texttt{false}, em caso contrário
+	\item \texttt{bool isFull()}: retorna \texttt{true}, se a pilha estiver cheia, ou \texttt{false}, em caso contrário
+	\item \texttt{void clear()}: esvazia a pilha
+\end{itemize}
+\end{frame}
+
+%-------------------------------------------------------
+\begin{frame}\frametitle{Exemplo de Implementação: \texttt{IntStack.hpp}}
+\lstinputlisting[basicstyle=\ttfamily\tiny]{src/IntStack.hpp}
+\end{frame}
+
+%-------------------------------------------------------
+\begin{frame}\frametitle{Exemplo de Implementação: \texttt{IntStack.cpp}}
+\fontsize{3pt}{5pt}\selectfont{
+\lstinputlisting{src/IntStack.cpp}
+}
+\end{frame}
+	
+%-------------------------------------------------------
+\begin{frame}\frametitle{Exemplo de Implementação: \texttt{IntStackMain.cpp}}
+\fontsize{5pt}{6pt}\selectfont{
+\lstinputlisting{src/IntStackMain.cpp}
+}
+\end{frame}
+%-------------------------------------------------------
+\begin{frame}\frametitle{Exemplo de Implementação (Saída)}
+\lstinputlisting[basicstyle=\ttfamily\scriptsize]{src/IntStackApp.output}
+\end{frame}
+
+%=======================================================
+\section{Exercícios}
+
+%-------------------------------------------------------
+\begin{frame}[fragile]\frametitle{Exercícios}
+\begin{enumerate}
+{\small
+	\item Considerando como base a implementação da classe \texttt{IntStack} (apresentadas nas lâminas anteriores), implemente uma classe em C++ para gerenciar uma pilha de caracteres (\texttt{CharStack}).
+	\item Usando a classe da questão anterior, escreva um programa em C++, que inverte as letras de cada palavra de um texto terminado por ponto (.) preservando a ordem das palavras.\\
+Por exemplo, dado o texto:\\
+\begin{verbatim}
+ESTE EXERCICIO E MUITO FACIL.
+\end{verbatim}
+A saída deve ser:
+\begin{verbatim}
+ETSE OICICREXE E OTIUM LICAF
+\end{verbatim}
+\item Considerando ainda a classe \texttt{CharStack}, escreva uma função que verifique se uma palavra (\texttt{string}) é um palíndromo.
+\item Implemente uma função em C++ para testar se duas pilhas de caracteres (objetos da classe \texttt{CharStack}), \texttt{P1} e \texttt{P2}, são iguais.
+\item Implemente uma função em C++ para copiar os elementos de uma pilha Desenvolva uma operação para copiar elementos de uma pilha \texttt{P1} para uma pilha \texttt{P2} (sem destruir \texttt{P1}).
+}
+\end{enumerate}
+\end{frame}
+
+%=======================================================
+\section{Créditos}
+
+%-------------------------------------------------------
+\begin{frame}\frametitle{Créditos}
+\begin{itemize}
+	\item Estas lâminas contêm trechos inspirados em materiais criados e disponibilizados pelos professores Isabel Harb Manssour e Iaçanã Ianiski Weber.
+\end{itemize}
+\end{frame}
+
+\begin{comment}
+
+
+
+%=======================================================
+\section{Soluções}
+
+%-------------------------------------------------------
+\begin{frame}\frametitle{Solução: \emph{Quick Sort} (Hoare) em C/C++}
+\lstinputlisting[basicstyle=\ttfamily\scriptsize]{src/quickSort1.cpp}
+\end{frame}
+
+%-------------------------------------------------------
+\begin{frame}\frametitle{Solução: \emph{Quick Sort} (Lomuto) em C/C++}
+\lstinputlisting[basicstyle=\ttfamily\tiny]{src/quickSort2.cpp}
+\end{frame}
+
+\end{comment}
+
+%-------------------------------------------------------
+\end{document}
+
