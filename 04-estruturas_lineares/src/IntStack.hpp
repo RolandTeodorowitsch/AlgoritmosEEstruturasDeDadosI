@@ -23,5 +23,4 @@ public:
   void clear();
   string str() const;
 };
-
 #endif

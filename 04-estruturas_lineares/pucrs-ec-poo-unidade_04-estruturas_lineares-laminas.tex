@@ -62,7 +62,7 @@
 \title[\sc{Estruturas Lineares}]{Estruturas Lineares}
 \author[Roland Teodorowitsch]{Roland Teodorowitsch}
 \institute[ALEST I - EP - PUCRS]{Algoritmos e Estruturas de Dados I - Escola Politécnica - PUCRS}
-\date{29 de agosto de 2023}
+\date{30 de agosto de 2023}
 
 \begin{document}
 
@@ -364,7 +364,7 @@
 	\item Auxiliar para implementação de outras estruturas de dados e algoritmos
 	\item Implementação de compiladores
 	\item Computação Gráfica (operações com matrizes)
-	\item Manipulação de expressões aritméticas: infixada, pós-fixada, pré-fixada
+	\item Manipulação de expressões aritméticas: infixada, pós-fixada, pré-fixada % https://ww2.inf.ufg.br/~hebert/disc/aed1/AED1_09_Pilas.pdf
 \end{itemize}
 \end{frame}
 
@@ -430,6 +430,95 @@ ETSE OICICREXE E OTIUM LICAF
 \end{frame}
 
 %=======================================================
+\section{Implementando uma Pilha Encadeada}
+
+%-------------------------------------------------------
+\begin{frame}\frametitle{Estruturas Lineares Encadeadas}
+\begin{itemize}
+	\item Uma estrutura encadeada é uma estrutura composta por nodos, que possuem campos que apontam para outros nodos
+	\item Por exemplo, em uma lista simplesmente encadeada, tipicamente:
+	\begin{itemize}
+		\item Há um ponteiro para o primeiro elemento da lista
+		\item Cada nodo tem um campo que aponta para o próximo elemento da lista
+		\item O campo de encadeamento do último elemento contém uma referência inválida
+	\end{itemize}
+\begin{figure}[h]
+	\centering
+	\includegraphics[height=0.15\paperheight]{imagens/lista_simplesmente_encadeada2.png}
+\end{figure}
+	\item Ao inserir um elemento, deve-se alocar um nodo, preenchê-lo e colocá-lo na posição desejada na estrutura (ajustando as referências necessárias)
+	\item Ao remover um elemento, é preciso removê-lo (ajustando as referências necessárias) e desalocá-lo
+\end{itemize}
+\end{frame}
+
+%-------------------------------------------------------
+\begin{frame}[fragile]\frametitle{Estruturas Encadeadas em C++}
+\begin{itemize}
+	\item Pode-se declarar um nodo em C++, para armazenar caracteres, da seguinte forma:
+\begin{lstlisting}[basicstyle=\ttfamily\scriptsize]
+struct Nodo {
+  char letra;
+  Nodo *prox;
+  Nodo(char l) {
+    letra = l;
+    next = nullptr;
+  }
+};
+\end{lstlisting}
+	\item \texttt{nullptr} é usado para indicar uma estrutura vazia ou fim da estrutura
+	\item Exemplo: construção da seguinte lista simplesmente encadeada
+\begin{figure}[h]
+	\centering
+	\includegraphics[height=0.15\paperheight]{imagens/lista_simplesmente_encadeada2.png}
+\end{figure}
+\end{itemize}
+\end{frame}
+
+%-------------------------------------------------------
+\begin{frame}[fragile]\frametitle{Exemplo: \texttt{lista\_simplesmente\_encadeada.cpp}}
+\fontsize{5pt}{5pt}\selectfont{
+\lstinputlisting{src/lista_simplesmente_encadeada.cpp}
+}
+\end{frame}
+
+%-------------------------------------------------------
+\begin{frame}[fragile]\frametitle{Exercício 6}
+\begin{enumerate}
+        \setcounter{enumi}{5}
+	\item Usando como modelo o programa da lâmina anterior, construa em C++ a seguinte lista duplamente encadeada. Percorra a lista, mostrando o conteúdo de seus nodos, tanto do início para o fim, quanto do fim para o início.	
+\begin{figure}[h]
+	\centering
+	\includegraphics[height=0.16\paperheight]{imagens/lista_duplamente_encadeada.png}
+\end{figure}
+\end{enumerate}
+\end{frame}
+
+%-------------------------------------------------------
+\begin{frame}[fragile]\frametitle{Exercício 7}
+\begin{enumerate}
+        \setcounter{enumi}{6}
+	\item Usando como ponto de partida a classe \texttt{IntStack}, apresentada anteriormente e implementada usando alocação sequencial ou contígua, implemente a classe \texttt{IntLinkedStack}, que funciona da mesma forma, porém usando alocação encadeada.\\
+	Observações:
+	\begin{itemize}
+		\item A versão usando alocação encadeada eliminará a necessidade de se trabalhar com um limite máximo de elementos, consequentemente, os métodos \texttt{maxSize()} e \texttt{isFull()} NÃO farão parate da nova implementação.
+		\item A definição da classe (arquivo \texttt{IntLinkedStack.hpp}) e um programa de teste ((arquivo \texttt{IntLinkedStackMain.cpp})) estão listados nas lâminas a seguir.
+	\end{itemize}
+\end{enumerate}
+\end{frame}
+
+%-------------------------------------------------------
+\begin{frame}[fragile]\frametitle{Exercício 7: \texttt{IntLinkedStack.hpp}}
+\lstinputlisting[basicstyle=\ttfamily\tiny]{src/IntLinkedStack.hpp}
+\end{frame}
+
+%-------------------------------------------------------
+\begin{frame}[fragile]\frametitle{Exercício 7: \texttt{IntLinkedStackMain.cpp}}
+\fontsize{6pt}{6pt}\selectfont{
+\lstinputlisting{src/IntLinkedStackMain.cpp}
+}
+\end{frame}
+
+%=======================================================
 \section{Créditos}
 
 %-------------------------------------------------------
@@ -439,24 +528,39 @@ ETSE OICICREXE E OTIUM LICAF
 \end{itemize}
 \end{frame}
 
-\begin{comment}
-
-
-
 %=======================================================
 \section{Soluções}
 
 %-------------------------------------------------------
-\begin{frame}\frametitle{Solução: \emph{Quick Sort} (Hoare) em C/C++}
-\lstinputlisting[basicstyle=\ttfamily\scriptsize]{src/quickSort1.cpp}
+\begin{frame}[fragile]\frametitle{Exercício 1: \texttt{CharStack.hpp}}
+\lstinputlisting[basicstyle=\ttfamily\tiny]{src/CharStack.hpp}
 \end{frame}
 
 %-------------------------------------------------------
-\begin{frame}\frametitle{Solução: \emph{Quick Sort} (Lomuto) em C/C++}
-\lstinputlisting[basicstyle=\ttfamily\tiny]{src/quickSort2.cpp}
+\begin{frame}[fragile]\frametitle{Exercício 1: \texttt{CharStack.cpp}}
+\fontsize{5pt}{5pt}\selectfont{
+\lstinputlisting{src/CharStack.cpp}
+}
 \end{frame}
 
-\end{comment}
+%-------------------------------------------------------
+\begin{frame}[fragile]\frametitle{Exercício 2: \texttt{questao2.cpp}}
+\lstinputlisting[basicstyle=\ttfamily\tiny]{src/questao2.cpp}
+\end{frame}
+
+%-------------------------------------------------------
+\begin{frame}[fragile]\frametitle{Exercício 6: \texttt{lista\_duplamente\_encadeada.cpp}}
+\fontsize{5pt}{5pt}\selectfont{
+\lstinputlisting{src/lista_duplamente_encadeada.cpp}
+}
+\end{frame}
+
+%-------------------------------------------------------
+\begin{frame}[fragile]\frametitle{Exercício 7: \texttt{IntLinkedStack.cpp}}
+\fontsize{3pt}{5pt}\selectfont{
+\lstinputlisting{src/IntLinkedStack.cpp}
+}
+\end{frame}
 
 %-------------------------------------------------------
 \end{document}
