@@ -7,6 +7,11 @@ IntStack::IntStack(int mxSz) {
 }
 
 IntStack::~IntStack() {  delete[] stack;  }
+int IntStack::size() const { return numElements; }
+int IntStack::maxSize() const { return maxElements; }
+bool IntStack::isEmpty() const { return numElements == 0; }
+bool IntStack::isFull() const { return numElements == maxElements; }
+void IntStack::clear() { numElements = 0; }
 
 bool IntStack::push(const int &e) {
   if ( numElements == maxElements ) return false;
@@ -22,12 +27,6 @@ bool IntStack::top(int &e) const {
   if ( numElements < 1 ) return false;
   else { e = stack[ numElements-1 ];  return true; }
 }
-
-int IntStack::size() const { return numElements; }
-int IntStack::maxSize() const { return maxElements; }
-bool IntStack::isEmpty() const { return numElements == 0; }
-bool IntStack::isFull() const { return numElements == maxElements; }
-void IntStack::clear() { numElements = 0; }
 
 string IntStack::str() const {
   int i;   stringstream ss;

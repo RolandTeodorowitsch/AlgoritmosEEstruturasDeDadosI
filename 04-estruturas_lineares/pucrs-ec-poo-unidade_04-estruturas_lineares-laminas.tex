@@ -233,14 +233,10 @@
 	\item Estruturas lineares podem ser alocadas de forma:
 	\begin{itemize}
 		\item \textbf{Sequencial ou Contígua}\\Os nós, além de estarem em uma sequência lógica, também estão \textbf{fisicamente em sequência}
-\begin{center}
-\begin{tabular}{CCCCC}
-\tiny{0} & \tiny{1} & \tiny{2} & \tiny{3} & \tiny{4}\\
-\hline
-\multicolumn{1}{|C|}{5} & \multicolumn{1}{|C|}{7} & \multicolumn{1}{|C|}{8} & \multicolumn{1}{|C|}{1} & \multicolumn{1}{|C|}{3}\\
-\hline
-\end{tabular}
-\end{center}
+\begin{figure}[h]
+	\centering
+	\includegraphics[height=0.10\paperheight]{imagens/vetor.png}
+\end{figure}
 		\item \textbf{Encadeada}\\Os nós são alocados dinamicamente e são ligados entre si, de forma que há uma sequência lógica, mas fisicamente os nós NÃO precisam estar contíguos
 \begin{figure}[h]
 	\centering
@@ -327,31 +323,38 @@
 \end{frame}
 
 %=======================================================
-\section{Pilhas}
+\section{Pilha (\emph{Stack})}
 
 %-------------------------------------------------------
 \begin{frame}\frametitle{Pilha ou \emph{Stack}}
 \begin{itemize}
 	\item Usa a política \emph{LIFO -- Last In First Out} (o último elemento que entrou, é o primeiro a sair)
 	\item Possui apenas uma entrada, chamada de topo, a partir da qual os dados são inseridos e removidos
-	\item Pode ser implementada usando
-	\begin{itemize}
-		\item Arranjo:
+\begin{figure}[h]
+	\centering
+	\includegraphics[height=0.3\paperheight]{imagens/pilha.png}
+\end{figure}
+\end{itemize}
+\end{frame}
+
+%-------------------------------------------------------
+\begin{frame}\frametitle{Pilha: Implementações Possíveis}
+\begin{itemize}
+	\item \textbf{Arranjo}
 \begin{figure}[h]
 	\flushleft
-	\includegraphics[height=0.11\paperheight]{imagens/pilha1.png}
+	\includegraphics[height=0.15\paperheight]{imagens/pilha1.png}
 \end{figure}
-		\item Lista Simplesmente Encadeada:
+	\item \textbf{Lista Simplesmente Encadeada}
 \begin{figure}[h]
 	\flushleft
-	\includegraphics[height=0.12\paperheight]{imagens/pilha2.png}
+	\includegraphics[height=0.15\paperheight]{imagens/pilha2.png}
 \end{figure}
-		\item Lista Duplamente Encadeada:
+	\item \textbf{Lista Duplamente Encadeada}
 \begin{figure}[h]
 	\flushleft
-	\includegraphics[height=0.12\paperheight]{imagens/pilha3.png}
+	\includegraphics[height=0.15\paperheight]{imagens/pilha3.png}
 \end{figure}
-	\end{itemize}
 \end{itemize}
 \end{frame}
 
@@ -371,7 +374,7 @@
 %-------------------------------------------------------
 \begin{frame}\frametitle{Métodos do TAD Pilha}
 \begin{itemize}
-	\item \texttt{bool push(e)}: insere o elemento e no topo da pilha (retorna \texttt{true}, em caso de sucesso, ou \texttt{false}, se NÃO houver espaço)
+	\item \texttt{bool push(e)}: insere o elemento no topo da pilha (retorna \texttt{true}, em caso de sucesso, ou \texttt{false}, se NÃO houver espaço)
 	\item \texttt{bool pop(\&e)}: remove e retorna (por referência) o elemento do topo da pilha (retorna \texttt{true}, em caso de sucesso, ou \texttt{false}, a pilha estiver vazia)
 	\item \texttt{bool top(\&e)} ou \texttt{bool peek(\&e)}: retorna (por referência) o elemento do topo da pilha, mas não o remove da pilha (retorna \texttt{true}, em caso de sucesso, ou \texttt{false}, a pilha estiver vazia)
 	\item \texttt{int size()}: retorna o número de elementos da pilha
@@ -466,37 +469,38 @@ struct Nodo {
 };
 \end{lstlisting}
 	\item \texttt{nullptr} é usado para indicar uma estrutura vazia ou fim da estrutura
-	\item Exemplo: construção da seguinte lista simplesmente encadeada
+	\item Exemplo: construção da seguinte pilha simplesmente encadeada
 \begin{figure}[h]
 	\centering
-	\includegraphics[height=0.15\paperheight]{imagens/lista_simplesmente_encadeada2.png}
+	\includegraphics[height=0.15\paperheight]{imagens/pilha_simplesmente_encadeada.png}
 \end{figure}
 \end{itemize}
 \end{frame}
 
 %-------------------------------------------------------
-\begin{frame}[fragile]\frametitle{Exemplo: \texttt{lista\_simplesmente\_encadeada.cpp}}
+\begin{frame}[fragile]\frametitle{Exemplo: \texttt{pilha\_simplesmente\_encadeada.cpp}}
 \fontsize{5pt}{5pt}\selectfont{
-\lstinputlisting{src/lista_simplesmente_encadeada.cpp}
+\lstinputlisting{src/pilha_simplesmente_encadeada.cpp}
 }
 \end{frame}
 
 %-------------------------------------------------------
-\begin{frame}[fragile]\frametitle{Exercício 6}
+\begin{frame}[fragile]\frametitle{Exercícios 6 e 7}
 \begin{enumerate}
         \setcounter{enumi}{5}
+	\item Modifique o programa da lâmina anterior para que a lista seja criada \textbf{com um laço}, exatamente com o mesmo conteúdo e na mesma ordem lógica. Faça as inserções sempre pela mesma extremidade da estrutura encadeada.
 	\item Usando como modelo o programa da lâmina anterior, construa em C++ a seguinte lista duplamente encadeada. Percorra a lista, mostrando o conteúdo de seus nodos, tanto do início para o fim, quanto do fim para o início.	
 \begin{figure}[h]
 	\centering
-	\includegraphics[height=0.16\paperheight]{imagens/lista_duplamente_encadeada.png}
+	\includegraphics[height=0.16\paperheight]{imagens/pilha_duplamente_encadeada.png}
 \end{figure}
 \end{enumerate}
 \end{frame}
 
 %-------------------------------------------------------
-\begin{frame}[fragile]\frametitle{Exercício 7}
+\begin{frame}[fragile]\frametitle{Exercício 8}
 \begin{enumerate}
-        \setcounter{enumi}{6}
+        \setcounter{enumi}{7}
 	\item Usando como ponto de partida a classe \texttt{IntStack}, apresentada anteriormente e implementada usando alocação sequencial ou contígua, implemente a classe \texttt{IntLinkedStack}, que funciona da mesma forma, porém usando alocação encadeada.\\
 	Observações:
 	\begin{itemize}
@@ -516,6 +520,106 @@ struct Nodo {
 \fontsize{6pt}{6pt}\selectfont{
 \lstinputlisting{src/IntLinkedStackMain.cpp}
 }
+\end{frame}
+
+%=======================================================
+\section{Fila (\emph{Queue})}
+
+%-------------------------------------------------------
+\begin{frame}\frametitle{Fila ou \emph{Queue}}
+\begin{itemize}
+	\item Usa a política \emph{FIFO -- First In First Out} (o primeiro que entrou, é o primeiro a sair)
+	\item Possui uma entrada (fim), a partir da qual os dados são inseridos, e uma saída (início), a partir da qual os dados são removidos
+\begin{figure}[h]
+	\centering
+	\includegraphics[height=0.3\paperheight]{imagens/fila.png}
+\end{figure}
+\end{itemize}
+\end{frame}
+
+%-------------------------------------------------------
+\begin{frame}\frametitle{Fila: Implementações Possíveis}
+\begin{itemize}
+	\item \textbf{Arranjo circular}
+\begin{figure}[h]
+	\flushleft
+	\includegraphics[height=0.13\paperheight]{imagens/fila1a.png} ~ ~ ~ \includegraphics[height=0.13\paperheight]{imagens/fila1b.png}
+\end{figure}
+	\item \textbf{Lista Simplesmente Encadeada}
+\begin{figure}[h]
+	\flushleft
+	\includegraphics[height=0.15\paperheight]{imagens/fila2.png}
+\end{figure}
+	\item \textbf{Lista Duplamente Encadeada}
+\begin{figure}[h]
+	\flushleft
+	\includegraphics[height=0.15\paperheight]{imagens/fila3.png}
+\end{figure}
+\end{itemize}
+\end{frame}
+
+%-------------------------------------------------------
+\begin{frame}\frametitle{Aplicações que Usam Fila}
+\begin{itemize}
+	\item Desenvolvimento de aplicativos
+	\begin{itemize}
+		\item Gerenciamento de transações para aplicativos de lojas, teatros, centros de reserva, etc.
+	\end{itemize}
+	\item Simulações
+	\begin{itemize}
+		\item Listas de espera na simulação de sistemas de atendimento (banco, supermercado, etc.)
+	\end{itemize}
+	\item Sistemas Operacionais
+	\begin{itemize}
+		\item Fila de documentos para impressão
+		\item Escalonamento de processos em um sistema operacional
+		\item Fila de requisições de acesso a disco
+		\item Fila de espera por recursos
+		\item Fila (\emph{buffering}) de mensagens e pacotes
+	\end{itemize}
+	\item Estruturas de Dados
+	\begin{itemize}
+		\item Suporte na implementação de algoritmos sobre árvores e grafos
+	\end{itemize}
+	\item etc.
+\end{itemize}
+\end{frame}
+
+%-------------------------------------------------------
+\begin{frame}\frametitle{Métodos do TAD Fila (\emph{Queue})}
+\begin{itemize}
+	\item \texttt{bool enqueue(e)}: insere o elemento no final da fila (retorna \texttt{true}, em caso de sucesso, ou \texttt{false}, se NÃO houver espaço)
+	\item \texttt{bool dequeue(\&e)}: remove e retorna (por referência) o elemento do início da fila (retorna \texttt{true}, em caso de sucesso, ou \texttt{false}, a fila estiver vazia)
+	\item \texttt{bool head(\&e)}: retorna (por referência) o elemento do início da fila, mas não o remove da fila (retorna \texttt{true}, em caso de sucesso, ou \texttt{false}, a fila estiver vazia)
+	\item \texttt{int size()}: retorna o número de elementos da fila
+	\item \texttt{int maxSize()}: retorna o número máximo de elementos suportado pela fila
+	\item \texttt{bool isEmpty()}: retorna \texttt{true}, se a fila estiver vazia, ou \texttt{false}, em caso contrário
+	\item \texttt{bool isFull()}: retorna \texttt{true}, se a fila estiver cheia, ou \texttt{false}, em caso contrário
+	\item \texttt{void clear()}: esvazia a fila
+\end{itemize}
+\end{frame}
+
+%-------------------------------------------------------
+\begin{frame}\frametitle{Exemplo de Implementação: \texttt{IntQueue.hpp}}
+\lstinputlisting[basicstyle=\ttfamily\tiny]{src/IntQueue.hpp}
+\end{frame}
+
+%-------------------------------------------------------
+\begin{frame}\frametitle{Exemplo de Implementação: \texttt{IntQueue.cpp}}
+\fontsize{3pt}{5pt}\selectfont{
+\lstinputlisting{src/IntQueue.cpp}
+}
+\end{frame}
+	
+%-------------------------------------------------------
+\begin{frame}\frametitle{Exemplo de Implementação: \texttt{IntQueueMain.cpp}}
+\fontsize{5pt}{6pt}\selectfont{
+\lstinputlisting{src/IntQueueMain.cpp}
+}
+\end{frame}
+%-------------------------------------------------------
+\begin{frame}\frametitle{Exemplo de Implementação (Saída)}
+\lstinputlisting[basicstyle=\ttfamily\scriptsize]{src/IntQueueApp.output}
 \end{frame}
 
 %=======================================================
@@ -549,14 +653,21 @@ struct Nodo {
 \end{frame}
 
 %-------------------------------------------------------
-\begin{frame}[fragile]\frametitle{Exercício 6: \texttt{lista\_duplamente\_encadeada.cpp}}
-\fontsize{5pt}{5pt}\selectfont{
-\lstinputlisting{src/lista_duplamente_encadeada.cpp}
+\begin{frame}[fragile]\frametitle{Exercício 6: \texttt{pilhla\_simplesmente\_encadeada2.cpp}}
+\fontsize{6pt}{6pt}\selectfont{
+\lstinputlisting{src/pilha_simplesmente_encadeada2.cpp}
 }
 \end{frame}
 
 %-------------------------------------------------------
-\begin{frame}[fragile]\frametitle{Exercício 7: \texttt{IntLinkedStack.cpp}}
+\begin{frame}[fragile]\frametitle{Exercício 7: \texttt{pilha\_duplamente\_encadeada.cpp}}
+\fontsize{5pt}{5pt}\selectfont{
+\lstinputlisting{src/pilha_duplamente_encadeada.cpp}
+}
+\end{frame}
+
+%-------------------------------------------------------
+\begin{frame}[fragile]\frametitle{Exercício 8: \texttt{IntLinkedStack.cpp}}
 \fontsize{3pt}{5pt}\selectfont{
 \lstinputlisting{src/IntLinkedStack.cpp}
 }

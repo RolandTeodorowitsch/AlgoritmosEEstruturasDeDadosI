@@ -1,4 +1,4 @@
-$CATEGORY: $course$/AlgoritmosEEstruturasDeDadosI-ComplexidadeDeAlgoritmos-QuestoesDeConcursos
+$CATEGORY: $course$/Algoritmos e Estruturas de Dados I - Complexidade de Algoritmos - Questões de Concursos
 
 ::ALEST I - Complexidade de Algoritmos - Questões de Concursos - 001::[html]<p align="justify"><b>(Polícia Científica/PE - 2016 - Perito Criminal (CC/EC/SI) - CESPE - 53)</b></p>
 <pre>cont = 0;

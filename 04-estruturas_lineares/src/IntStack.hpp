@@ -13,14 +13,14 @@ private:
 public:
   IntStack(int mxSz = 10);
   ~IntStack();
-  bool push(const int &e);
-  bool pop(int &e);
-  bool top(int &e) const;
   int size() const;
   int maxSize() const;
   bool isEmpty() const;
   bool isFull() const;
   void clear();
+  bool push(const int &e);
+  bool pop(int &e);
+  bool top(int &e) const;
   string str() const;
 };
 #endif

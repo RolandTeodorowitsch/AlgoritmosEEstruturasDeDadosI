@@ -1,6 +1,13 @@
-$CATEGORY: $course$/AlgoritmosEEstruturasDeDadosI-EstruturasLineares-QuestoesDeConcursos
+$CATEGORY: $course$/Algoritmos e Estruturas de Dados I - Estruturas Lineares - Questões de Concursos
 
-::ALEST I - Estruturas Lineares - Questões de Concursos - 001::[html]<p align="justify"><b>(Polícia Científica/PE - 2016 - Perito Criminal (CC/EC/SI) - CESPE - 52)</b> Assinale a opção que apresenta um tipo de dado elementar.</p>{
+::ALEST I - Estruturas Lineares - Questões de Concurso - 001::[html]<p align="justify"><b>(UFG - 2023 - Analista de Tecnologia da Informação/Área: Sistemas - Instituto Verbena - 46)</b> Os pilares da orientação a objetos são um conjunto de conceitos fundamentais que estabelecem os princípios básicos da programação orientada a objetos. Esses pilares são representados por:</p>{
+	=Abstração, Herança, Polimorfismo e Encapsulamento.#
+	~Herança, Sobrecarga, Polimorfismo e Sobrescrita.#
+	~Sobrecarga, Abstração, Typecasting e Encapsulamento.#
+	~Sobrescrita, Herança, Encapsulamento e <i>Typecasting</i>.#
+}
+
+::ALEST I - Estruturas Lineares - Questões de Concursos - 002::[html]<p align="justify"><b>(Polícia Científica/PE - 2016 - Perito Criminal (CC/EC/SI) - CESPE - 52)</b> Assinale a opção que apresenta um tipo de dado elementar.</p>{
 	~matriz#
 	~pilha#
 	=inteiro#
@@ -8,7 +15,7 @@ $CATEGORY: $course$/AlgoritmosEEstruturasDeDadosI-EstruturasLineares-QuestoesDeC
 	~<i>array</i>#
 }
 
-::ALEST I - Estruturas Lineares - Questões de Concursos - 002::[html]<p align="justify"><b>(Polícia Científica/PE - 2016 - Perito Criminal (CC/EC/SI) - CESPE - 55)</b> Em linguagens de programação, o dado denominado registro é definido como um(a)</p>{
+::ALEST I - Estruturas Lineares - Questões de Concursos - 003::[html]<p align="justify"><b>(Polícia Científica/PE - 2016 - Perito Criminal (CC/EC/SI) - CESPE - 55)</b> Em linguagens de programação, o dado denominado registro é definido como um(a)</p>{
 	~estrutura de dados que armazena informação de -32768 a +32769.#
 	=estrutura formada por uma coleção de uma ou mais variáveis agrupadas sob um único nome.#
 	~estrutura de dados em que os dados que foram inseridos primeiramente na pilha serão os últimos a serem removidos.#
@@ -16,7 +23,7 @@ $CATEGORY: $course$/AlgoritmosEEstruturasDeDadosI-EstruturasLineares-QuestoesDeC
 	~conjunto de campos de mesmo tipo.#
 }
 
-::ALEST I - Estruturas Lineares - Questões de Concursos - 003::[html]<p align="justify"><b>(SEFAZ/RR - 2022 - Implementador de Software/Tipo A - IDECAN - 62)</b> As listas sequenciais são estruturas que servem para armazenar elementos de maneira relacionada e lógica. De acordo com os tipos de operações que são permitidas, e que podem ser realizadas, as listas sequenciais são classificadas em:</p>{
+::ALEST I - Estruturas Lineares - Questões de Concursos - 004::[html]<p align="justify"><b>(SEFAZ/RR - 2022 - Implementador de Software/Tipo A - IDECAN - 62)</b> As listas sequenciais são estruturas que servem para armazenar elementos de maneira relacionada e lógica. De acordo com os tipos de operações que são permitidas, e que podem ser realizadas, as listas sequenciais são classificadas em:</p>{
 	~Filas; Estruturas#
 	~Filas; Pilhas#
 	~Deques; Pilhas; Vetores#
@@ -24,7 +31,7 @@ $CATEGORY: $course$/AlgoritmosEEstruturasDeDadosI-EstruturasLineares-QuestoesDeC
 	~Filas; Estruturas; Vetores#
 }
 
-::ALEST I - Estruturas Lineares - Questões de Concursos - 004::[html]<p align="justify"><b>(SEFAZ/RR - 2022 - Implementador de Software/Tipo A - IDECAN - 63)</b> As listas encadeadas simples são normalmente utilizadas para relacionar itens que precisam ser exibidos ou manipulados por meio de estruturas dinâmicas. Em relação a manipulação de uma lista encadeada simples, analise os itens:</p>
+::ALEST I - Estruturas Lineares - Questões de Concursos - 005::[html]<p align="justify"><b>(SEFAZ/RR - 2022 - Implementador de Software/Tipo A - IDECAN - 63)</b> As listas encadeadas simples são normalmente utilizadas para relacionar itens que precisam ser exibidos ou manipulados por meio de estruturas dinâmicas. Em relação a manipulação de uma lista encadeada simples, analise os itens:</p>
 <ol type="I">
 <li>É preciso inicializar a lista antes de inserir algum elemento.</li>
 <li>A inclusão de um elemento em uma lista encadeada simples pode ser realizada somente de duas maneiras: no início e no final da lista.</li>
@@ -40,7 +47,7 @@ $CATEGORY: $course$/AlgoritmosEEstruturasDeDadosI-EstruturasLineares-QuestoesDeC
 	~Apenas II, IV e V.#
 }
 
-::ALEST I - Estruturas Lineares - Questões de Concursos - 005::[html]<p align="justify"><b>(Banco do Brasil S/A - 2021 - Escriturário / Agente de Tecnologia - Fundação CESGRANRIO - 53)</b> Desejam-se realizar buscas nas seguintes coleções de dados, representadas na linguagem Java:</p>
+::ALEST I - Estruturas Lineares - Questões de Concursos - 006::[html]<p align="justify"><b>(Banco do Brasil S/A - 2021 - Escriturário / Agente de Tecnologia - Fundação CESGRANRIO - 53)</b> Desejam-se realizar buscas nas seguintes coleções de dados, representadas na linguagem Java:</p>
 <ol type="I">
 <li>Um <i>array</i> de 1.000 números inteiros ordenados de forma decrescente;</li>
 <li>Uma lista encadeada desordenada e alocada dinamicamente, cujos 1.000 nós contêm strings (uma string por nó);</li>
@@ -54,31 +61,21 @@ $CATEGORY: $course$/AlgoritmosEEstruturasDeDadosI-EstruturasLineares-QuestoesDeC
 	~I - sequencial; II - binária; III - binária#
 }
 
-::ALEST I - Estruturas Lineares - Questões de Concursos - 006::[html]<p align="justify"><b>(Banco do Brasil S/A - 2021 - Escriturário / Agente de Tecnologia - Fundação CESGRANRIO - 68)</b> Em um determinado treinamento de pessoal de TI, para facilitar o aprendizado sobre o funcionamento da estrutura de dados PILHA, utilizou-se o jogo de trocas, cujas regras são apresentadas a seguir.</p>
-<p align="justify"><b>JOGO DAS TROCAS - REGRAS</p></p>
-<p align="justify">Para começar o jogo, o jogador recebe duas pilhas, P1 e P2.</p>
-<p align="justify">P1 está preenchida com quatro fichas, identificadas por nomes fictícios e empilhadas em ordem alfabética CRESCENTE
-a partir do topo.</p>
-<p align="justify">P2 está inicialmente vazia.</p>
-<p align="justify">Uma ficha desempilhada de P1 é imediatamente empilhada em P2.</p>
-<p align="justify">A operação (P2,pop) acarreta impressão do nome que está na ficha desempilhada e descarte da ficha.</p>
-<p align="justify">Para ganhar o jogo, o jogador precisa determinar corretamente, dentre sequências derivadas da sequência inicial, por troca da posição de seus elementos, qual delas poderia ser impressa com essas operações.</p>
-<p align="justify">No início do jogo, foram dadas as pilhas P2, vazia, e P1 preenchida com as seguintes operações de empilhamento: push(P1,Zeus); push(P1,Hades); push(P1,Cibele); push(P1, Apolo).</p>
-<p align="justify">Considerando-se esse cenário, qual seria a sequência possível de ser impressa, da esquerda para a direita, de acordo com as regras do JOGO DAS TROCAS?</p>{
-	~Apolo, Zeus, Cibele, Hades#
-	~Hades, Apolo, Zeus, Cibele#
-	~Zeus, Cibele, Apolo, Hades#
-	~Hades, Apolo, Cibele, Zeus#
-	=Cibele, Hades, Apolo, Zeus#
-}
-
 ::ALEST I - Estruturas Lineares - Questões de Concursos - 007::[html]<p align="justify"><b>(ABIN - 2018 - Oficial Técnico de Inteligência (Área 8) - CESPE/CEBRASPE - 71)</b> Julgue <u>o item subsequente</u><s>os itens subsequentes</s>, relativos à lógica de programação.</p>
 <p align="justify">Pilha é uma estrutura de dados em que o último elemento a ser inserido será o primeiro a ser retirado.</p>{
 	=Certo#
 	~Errado#
 }
 
-::ALEST I - Estruturas Lineares - Questões de Concursos - 008::[html]<p align="justify"><b>(AL/MG - 2022 - Analista Legislativo/Analista de Sistemas/Desenvolvimento de Sisitemas - FUMARC - 37)</b> Analise as afirmativas referentes às estruturas de dados básicas:</p>
+::ALEST I - Estruturas Lineares - Questões de Concurso - 008::[html]<p align="justify"><b>(AGER-MT - 2023 - Analista Regulador / Perfil: Ciências da Computação e(ou) Sistemas de Informação - CEBRASPE - 27)</b> As operações <i>push</i> (inserir no topo), <i>pop</i> (retirar do topo) e <i>top</i> (observar o topo) são utilizadas em estruturas de dados do tipo</p>{
+	=pilha.#
+	~fila.#
+	~tabela <i>hash</i>.#
+	~grafo.#
+	~árvore binária.#
+}
+
+::ALEST I - Estruturas Lineares - Questões de Concursos - 009::[html]<p align="justify"><b>(AL/MG - 2022 - Analista Legislativo/Analista de Sistemas/Desenvolvimento de Sisitemas - FUMARC - 37)</b> Analise as afirmativas referentes às estruturas de dados básicas:</p>
 <ol type="I">
 <li>Uma <b>lista linear</b> é uma sequência de zero ou mais itens <i>x<sub>1</i>, <i>x<sub>2</sub></i>, ..., <i>x<sub>n</sub></i>, em que <i>x<sub>i</sub></i> é de um determinado tipo e <i>n</i> representa o tamanho da lista linear.</li>
 <li>Uma <b>pilha</b> é uma lista linear em que todas as inserções, retiradas e geralmente todos os acessos, são feitos em apenas um extremo da lista.</li>

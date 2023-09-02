@@ -7,10 +7,14 @@ all:		$(PDF) src.zip
 		@pdflatex -shell-escape $<
 		@pdflatex -shell-escape $<
 
-src.zip:	src/IntLinkedStack.hpp src/IntLinkedStackMain.cpp src/IntStack.cpp src/IntStack.hpp src/IntStackMain.cpp \
-		src/lista_simplesmente_encadeada.cpp src/vetores2.cpp src/vetores.cpp
-		@zip -r src.zip src/IntLinkedStack.hpp src/IntLinkedStackMain.cpp src/IntStack.cpp src/IntStack.hpp \
-			src/IntStackMain.cpp src/lista_simplesmente_encadeada.cpp src/vetores2.cpp src/vetores.cpp
+src.zip:	src/IntLinkedStack.hpp src/IntLinkedStackMain.cpp \
+		src/IntStack.cpp src/IntStack.hpp src/IntStackMain.cpp \
+		src/pilha_simplesmente_encadeada.cpp src/vetores2.cpp src/vetores.cpp \
+		src/IntQueue.hpp src/IntQueue.cpp src/IntQueueMain.cpp
+		@zip -r src.zip src/IntLinkedStack.hpp src/IntLinkedStackMain.cpp \
+				src/IntStack.cpp src/IntStack.hpp src/IntStackMain.cpp \
+				src/pilha_simplesmente_encadeada.cpp src/vetores2.cpp src/vetores.cpp \
+				src/IntQueue.hpp src/IntQueue.cpp src/IntQueueMain.cpp
 
 clean:
 		@rm -f *~ *.pyg *.log *.out *.aux *.toc *.nav *.snm *.vrb

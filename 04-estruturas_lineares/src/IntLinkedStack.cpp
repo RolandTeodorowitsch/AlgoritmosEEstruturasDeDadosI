@@ -30,7 +30,7 @@ void IntLinkedStack::clear() {
 }
 
 string IntLinkedStack::str() const {
-  int i;   stringstream ss;
+  stringstream ss;
   ss << "|";
   for (Reg *aux = stack; aux != nullptr; aux = aux->next)
       ss << aux->data << "|";

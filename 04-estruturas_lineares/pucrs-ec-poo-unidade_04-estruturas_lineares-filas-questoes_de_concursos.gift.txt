@@ -1,0 +1,10 @@
+$CATEGORY: $course$/Algoritmos e Estruturas de Dados I - Estruturas Lineares - Filas - Questões de Concursos
+
+::ALEST I - Estruturas Lineares - Filas - Questões de Concursos - 001::[html]<p align="justify"><b>(UFG - 2023 - Técnico de Tecnologia da Informação - Instituto Verbena - 34)</b> Em uma estrutura de dados do tipo fila, denominada S, há a sequência de valores (33, 22, 11), na qual o elemento mais à esquerda na sequência refere-se à posição primeira da fila. Sejam as operações: (i) desenfileira (F), que remove um elemento da fila F e retorna esse elemento; e (ii) enfileira (F, E), que insere o elemento E na fila F. Após executar a expressão "enfileira(S, desenfileira(S)-desenfileira(S))", a sequência de elementos de S será:</p>{
+	~11, -22.#
+	~11, -11.#
+	=11, 11.#
+	~11, 22.#
+}
+
+

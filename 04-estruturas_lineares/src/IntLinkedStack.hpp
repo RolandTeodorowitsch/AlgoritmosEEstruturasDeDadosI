@@ -1,8 +1,6 @@
 #ifndef _INTLINKEDSTACK_HPP
 #define _INTLINKEDSTACK_HPP
-
 #include <string>
-
 using namespace std;
 
 class IntLinkedStack {

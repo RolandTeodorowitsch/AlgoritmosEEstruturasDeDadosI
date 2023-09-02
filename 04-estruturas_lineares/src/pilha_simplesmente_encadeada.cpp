@@ -16,18 +16,18 @@ int main() {
   Nodo *nodo4 = new Nodo('D');
   Nodo *nodo5 = new Nodo('E');
 
-  Nodo *primeiro = nodo1;
-  nodo1->prox = nodo2;
-  nodo2->prox = nodo3;
-  nodo3->prox = nodo4;
-  nodo4->prox = nodo5;
+  Nodo *topo = nodo5;
+  nodo5->prox = nodo4;
+  nodo4->prox = nodo3;
+  nodo3->prox = nodo2;
+  nodo2->prox = nodo1;
 
-  for (Nodo *aux = primeiro; aux != nullptr; aux = aux->prox)
+  for (Nodo *aux = topo; aux != nullptr; aux = aux->prox)
       cout << aux->letra << endl;
 
-  while (primeiro != nullptr) {
-        Nodo *aux = primeiro;
-        primeiro = primeiro->prox;
+  while (topo != nullptr) {
+        Nodo *aux = topo;
+        topo = topo->prox;
         delete aux;
   }
 

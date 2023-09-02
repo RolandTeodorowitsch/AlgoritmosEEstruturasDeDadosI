@@ -1,0 +1,15 @@
+IntQueue(4):      | | | | |  size=0/4  head=X  isEmpty=1  isFull=0
+enqueue(1): OK    |1| | | |  size=1/4  head=1  isEmpty=0  isFull=0
+enqueue(2): OK    |1|2| | |  size=2/4  head=1  isEmpty=0  isFull=0
+enqueue(3): OK    |1|2|3| |  size=3/4  head=1  isEmpty=0  isFull=0
+dequeue(1): OK    | |2|3| |  size=2/4  head=2  isEmpty=0  isFull=0
+enqueue(4): OK    | |2|3|4|  size=3/4  head=2  isEmpty=0  isFull=0
+enqueue(5): OK    |5|2|3|4|  size=4/4  head=2  isEmpty=0  isFull=1
+enqueue(6): ERRO  |5|2|3|4|  size=4/4  head=2  isEmpty=0  isFull=1
+dequeue(2): OK    |5| |3|4|  size=3/4  head=3  isEmpty=0  isFull=0
+dequeue(3): OK    |5| | |4|  size=2/4  head=4  isEmpty=0  isFull=0
+dequeue(4): OK    |5| | | |  size=1/4  head=5  isEmpty=0  isFull=0
+dequeue(5): OK    | | | | |  size=0/4  head=X  isEmpty=1  isFull=0
+dequeue(X): ERRO  | | | | |  size=0/4  head=X  isEmpty=1  isFull=0
+enqueue(7): OK    | |7| | |  size=1/4  head=7  isEmpty=0  isFull=0
+clear():    OK    | | | | |  size=0/4  head=X  isEmpty=1  isFull=0

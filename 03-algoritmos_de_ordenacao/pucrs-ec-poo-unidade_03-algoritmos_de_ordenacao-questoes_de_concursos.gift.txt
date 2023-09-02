@@ -1,4 +1,4 @@
-$CATEGORY: $course$/AlgoritmosEEstruturasDeDadosI-AlgoritmosDeOrdenacao-QuestoesDeConcursos
+$CATEGORY: $course$/Algoritmos e Estruturas de Dados I - Algoritmos de Ordenacao - Questoes de Concursos
 
 ::ALEST I - Algoritmos de Ordenação - Questões de Concursos - 001::[html]<p align="justify"><b>(Câmara Municipal de Pau dos Ferros / RN - 2018 - Técnico em Informática - UEPB / CPCON - 37)</b> Não é um algoritmo clássico de ordenação:</p>{
 	~Quick Sort.#

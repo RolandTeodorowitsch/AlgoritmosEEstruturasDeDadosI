@@ -1,4 +1,4 @@
-$CATEGORY: $course$/AlgoritmosEEstruturasDeDadosI-Recursao-QuestoesDeConcursos
+$CATEGORY: $course$/Algoritmos e Estruturas de DadosI - Recursão - Questões de Concursos
 
 ::ALEST I - Recursão - Questões de Concursos - 001::[html]<p align="justify"><b>(Polícia Científica/PE - 2016 - Perito Criminal (CC/EC/SI) - CESPE - 56)</b></p>
 <pre>
@@ -18,4 +18,30 @@ int Afunc (int a, int n) {
 	=5#
 }
 
+::ALEST I - Recursão - Questões de Concursos - 002::[html]<p align="justify"><b>(Banco do Brasil - 2022 - Agente de Tecnologia/Microrregião 158/TI -  Fundação Cesgranrio - 63)</b> Para entender como o algoritmo de busca binária se comporta, um estudante de computação resolveu inserir um comando <code>system.out.printf()</code> em um método chamado <code>busca</code>. Esse método, escrito em Java, realiza uma busca binária em um <i>array</i> de números inteiros, ordenados de forma ascendente. O objetivo do <code>printf</cocde> é exibir, no console, o valor de  cada elemento do <i>array</i> visitado pelo algoritmo de busca binária.</p>
+<p align="justify">Para testar o código que criou, o estudante escreveu o método main a seguir.</p>
+<pre>
+public class Main {
+
+&nbsp; &nbsp; &nbsp; public static void main(String[] args) {
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; int lista[]={5,18,27,33,44,49,54,67,69,72,79,86,87,92};
+
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; // o array lista possui 14 elementos
+
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; busca(78, lista);
+&nbsp; &nbsp; &nbsp; }
+
+&nbsp; &nbsp; &nbsp; public static int busca(int val,int lista[]) {
+
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; // código relativo ao algoritmo de busca binária
+&nbsp; &nbsp; &nbsp; }
+}
+</pre>
+<p aling="justify">O que será exibido no console quando o método main for executado?</p>{
+	=54 79 69 72#
+	~49 72 86 79#
+	~54 86 69 72 79#
+	~67 86 72 79#
+	~54 79 67 69 72#
+}
 
