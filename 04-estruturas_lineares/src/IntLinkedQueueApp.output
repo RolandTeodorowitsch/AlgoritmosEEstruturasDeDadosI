@@ -1,0 +1,15 @@
+IntLinkedQueue:   |  size=0  head=X  isEmpty=1
+enqueue(1): OK    |1|  size=1  head=1  isEmpty=0
+enqueue(2): OK    |1|2|  size=2  head=1  isEmpty=0
+enqueue(3): OK    |1|2|3|  size=3  head=1  isEmpty=0
+dequeue(1): OK    |2|3|  size=2  head=2  isEmpty=0
+enqueue(4): OK    |2|3|4|  size=3  head=2  isEmpty=0
+enqueue(5): OK    |2|3|4|5|  size=4  head=2  isEmpty=0
+enqueue(6): OK    |2|3|4|5|6|  size=5  head=2  isEmpty=0
+dequeue(2): OK    |3|4|5|6|  size=4  head=3  isEmpty=0
+dequeue(3): OK    |4|5|6|  size=3  head=4  isEmpty=0
+dequeue(4): OK    |5|6|  size=2  head=5  isEmpty=0
+dequeue(5): OK    |6|  size=1  head=6  isEmpty=0
+dequeue(X): OK    |  size=0  head=X  isEmpty=1
+enqueue(7): OK    |7|  size=1  head=7  isEmpty=0
+clear():    OK    |  size=0  head=X  isEmpty=1

@@ -2,8 +2,7 @@
 #include "IntQueue.hpp"
 
 IntQueue::IntQueue(int mxSz) {
-  numElements = insertPos = removePos = 0;   maxElements =  ( mxSz < 1 ) ? 10 : mxSz;
-  queue = new int[maxElements];
+  numElements = insertPos = removePos = 0;   maxElements =  ( mxSz < 1 ) ? 10 : mxSz;  queue = new int[maxElements];
 }
 
 IntQueue::~IntQueue() {  delete[] queue;  }

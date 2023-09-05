@@ -62,7 +62,7 @@
 \title[\sc{Estruturas Lineares}]{Estruturas Lineares}
 \author[Roland Teodorowitsch]{Roland Teodorowitsch}
 \institute[ALEST I - EP - PUCRS]{Algoritmos e Estruturas de Dados I - Escola Politécnica - PUCRS}
-\date{30 de agosto de 2023}
+\date{4 de setembro de 2023}
 
 \begin{document}
 
@@ -504,19 +504,19 @@ struct Nodo {
 	\item Usando como ponto de partida a classe \texttt{IntStack}, apresentada anteriormente e implementada usando alocação sequencial ou contígua, implemente a classe \texttt{IntLinkedStack}, que funciona da mesma forma, porém usando alocação encadeada.\\
 	Observações:
 	\begin{itemize}
-		\item A versão usando alocação encadeada eliminará a necessidade de se trabalhar com um limite máximo de elementos, consequentemente, os métodos \texttt{maxSize()} e \texttt{isFull()} NÃO farão parate da nova implementação.
+		\item A versão usando alocação encadeada eliminará a necessidade de se trabalhar com um limite máximo de elementos, consequentemente, os métodos \texttt{maxSize()} e \texttt{isFull()} NÃO farão parte da nova implementação.
 		\item A definição da classe (arquivo \texttt{IntLinkedStack.hpp}) e um programa de teste ((arquivo \texttt{IntLinkedStackMain.cpp})) estão listados nas lâminas a seguir.
 	\end{itemize}
 \end{enumerate}
 \end{frame}
 
 %-------------------------------------------------------
-\begin{frame}[fragile]\frametitle{Exercício 7: \texttt{IntLinkedStack.hpp}}
+\begin{frame}[fragile]\frametitle{Exercício 8: \texttt{IntLinkedStack.hpp}}
 \lstinputlisting[basicstyle=\ttfamily\tiny]{src/IntLinkedStack.hpp}
 \end{frame}
 
 %-------------------------------------------------------
-\begin{frame}[fragile]\frametitle{Exercício 7: \texttt{IntLinkedStackMain.cpp}}
+\begin{frame}[fragile]\frametitle{Exercício 8: \texttt{IntLinkedStackMain.cpp}}
 \fontsize{6pt}{6pt}\selectfont{
 \lstinputlisting{src/IntLinkedStackMain.cpp}
 }
@@ -554,6 +554,29 @@ struct Nodo {
 \begin{figure}[h]
 	\flushleft
 	\includegraphics[height=0.15\paperheight]{imagens/fila3.png}
+\end{figure}
+\end{itemize}
+\end{frame}
+
+%-------------------------------------------------------
+\begin{frame}[fragile]\frametitle{Implementação de um Arranjo Circular}
+\begin{itemize}
+	\item Usam-se índices para inserção (\texttt{insertPos}) e remoção (\texttt{removePos}) que percorrem o arranjo (\texttt{queue}) de forma ``circular''
+	\item Para inserir pode-se usar:
+\begin{lstlisting}[basicstyle=\ttfamily\scriptsize]
+queue[ insertPos++ ] = e;
+insertPos %= maxElements; // Ou: if ( insertPos == maxElements ) insertPos = 0;
+\end{lstlisting}
+	\item Para remover pode-se usar:
+\begin{lstlisting}[basicstyle=\ttfamily\scriptsize]
+e = queue[ removePos++ ];
+removePos %= maxElements; // Ou: if ( removePos == maxElements ) removePos = 0;
+\end{lstlisting}
+	\item Deve-se verificar as situações de arranjo cheio (na inserção) e arranjo vazio (na remoção)
+	\item Exemplos:
+\begin{figure}[h]
+	\flushleft
+	\includegraphics[height=0.13\paperheight]{imagens/fila1a.png} ~ ~ ~ \includegraphics[height=0.13\paperheight]{imagens/fila1b.png}
 \end{figure}
 \end{itemize}
 \end{frame}
@@ -622,6 +645,45 @@ struct Nodo {
 \lstinputlisting[basicstyle=\ttfamily\scriptsize]{src/IntQueueApp.output}
 \end{frame}
 
+%-------------------------------------------------------
+\begin{frame}[fragile]\frametitle{Exercício 9}
+\begin{enumerate}
+        \setcounter{enumi}{8}
+	\item Considere duas estrutura de dados do tipo fila, chamadas \texttt{A} e \texttt{B}. Na fila \texttt{A}, foram inseridos (nessa ordem) os seguintes valores: 10, 20 e 30. E, na fila \texttt{B}, foram inseridos (nessa ordem) os seguintes valores: 30, 20 e 10. Para ambas as estruturas, considere as seguintes operações:
+\begin{itemize}
+	\item \texttt{dequeue(F)}: que remove um elemento da fila \texttt{F} e retorna esse elemento;
+	\item \texttt{enqueue(F, E)}: que insere o elemento \texttt{E} na fila \texttt{F};
+	\item \texttt{head(F)}: que retorna o elemento do início da fila, sem removê-lo da estrutura.
+\end{itemize}
+Quais serão as sequências de elementos nas filas \texttt{A} e \texttt{B}, após executar a expressão ``\texttt{enqueue(A, dequeue(A) + dequeue(B) + head(A))}''?
+\end{enumerate}
+\end{frame}
+
+%-------------------------------------------------------
+\begin{frame}[fragile]\frametitle{Exercício 10}
+\begin{enumerate}
+        \setcounter{enumi}{9}
+	\item Usando como ponto de partida a classe \texttt{IntQueue}, apresentada anteriormente e implementada usando alocação sequencial ou contígua, implemente a classe \texttt{IntLinkedQueue}, que funciona da mesma forma, porém usando alocação encadeada.\\
+	Observações:
+	\begin{itemize}
+		\item A versão usando alocação encadeada eliminará a necessidade de se trabalhar com um limite máximo de elementos, consequentemente, os métodos \texttt{maxSize()} e \texttt{isFull()} NÃO farão parte da nova implementação.
+		\item A definição da classe (arquivo \texttt{IntLinkedQueue.hpp}) e um programa de teste ((arquivo \texttt{IntLinkedQueueMain.cpp})) estão listados nas lâminas a seguir.
+	\end{itemize}
+\end{enumerate}
+\end{frame}
+
+%-------------------------------------------------------
+\begin{frame}[fragile]\frametitle{Exercício 10: \texttt{IntLinkedQueue.hpp}}
+\lstinputlisting[basicstyle=\ttfamily\tiny]{src/IntLinkedQueue.hpp}
+\end{frame}
+
+%-------------------------------------------------------
+\begin{frame}[fragile]\frametitle{Exercício 10: \texttt{IntLinkedQueueMain.cpp}}
+\fontsize{6pt}{6pt}\selectfont{
+\lstinputlisting{src/IntLinkedQueueMain.cpp}
+}
+\end{frame}
+
 %=======================================================
 \section{Créditos}
 
@@ -653,7 +715,7 @@ struct Nodo {
 \end{frame}
 
 %-------------------------------------------------------
-\begin{frame}[fragile]\frametitle{Exercício 6: \texttt{pilhla\_simplesmente\_encadeada2.cpp}}
+\begin{frame}[fragile]\frametitle{Exercício 6: \texttt{pilha\_simplesmente\_encadeada2.cpp}}
 \fontsize{6pt}{6pt}\selectfont{
 \lstinputlisting{src/pilha_simplesmente_encadeada2.cpp}
 }
@@ -670,6 +732,21 @@ struct Nodo {
 \begin{frame}[fragile]\frametitle{Exercício 8: \texttt{IntLinkedStack.cpp}}
 \fontsize{3pt}{5pt}\selectfont{
 \lstinputlisting{src/IntLinkedStack.cpp}
+}
+\end{frame}
+
+%-------------------------------------------------------
+\begin{frame}[fragile]\frametitle{Exercício 9}
+\begin{verbatim}
+A = { 20, 30, 60 }
+B = { 20, 10 }
+\end{verbatim}
+\end{frame}
+
+%-------------------------------------------------------
+\begin{frame}[fragile]\frametitle{Exercício 8: \texttt{IntLinkedQueue.cpp}}
+\fontsize{3pt}{5pt}\selectfont{
+\lstinputlisting{src/IntLinkedQueue.cpp}
 }
 \end{frame}
 

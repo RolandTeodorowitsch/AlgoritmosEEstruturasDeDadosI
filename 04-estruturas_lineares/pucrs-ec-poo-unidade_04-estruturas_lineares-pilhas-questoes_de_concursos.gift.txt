@@ -680,3 +680,14 @@ tmUtK+yb21thj9ZldaHQK0r7B6AHm7bjc/CSAAAAAElFTkSuQmCC" alt="Questão 66" title="Q
 	~20 35 34 40#
 	~40 34 30 60#
 }
+
+
+::ALEST I - Estruturas Lineares - Pilhas - Questões de Concursos - 006::[html]<p align="justify"><b>(POSCOMP - 2015 - Mestrado/Doutorado -  CS/UFG - 23)</b> São exemplos de aplicações práticas de listas que seguem o princípio LIFO:</p>{
+	~a verificação de agrupamentos de tags HTML de abertura e fechamento, implementada em navegadores web; o gerenciamento de trabalhos de impressão realizado pelo processo spooler de impressão.#
+	~a alocação de uma fatia de tempo de CPU para múltiplas aplicações concorrentes, realizada por um escalonador round-robin; o gerenciamento de pacotes em redes de computadores, implementado em roteadores.#
+	~o registro ordenado dos maiores escores obtidos em um jogo de videogame; a verificação da abertura e do fechamento de parênteses em expressões aritméticas.#
+	=o gerenciamento de endereços visitados mais recentemente, encontrado em navegadores web; o mecanismo de reversão de operações mais recentes, implementado em editores de texto.#
+		~o cálculo de espaço em disco consumido por um diretório (e seus componentes) em um sistema de arquivos; a procura por padrões em cadeias de caracteres por meio da técnica de força bruta.#
+}
+
+

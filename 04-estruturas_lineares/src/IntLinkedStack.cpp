@@ -7,8 +7,8 @@ int IntLinkedStack::size() const {  return numElements;  }
 bool IntLinkedStack::isEmpty() const {  return numElements == 0;  }
 
 void IntLinkedStack::push(const int e) {
-  Reg *novo = new Reg(e);
-  novo->next = stack;   stack = novo;
+  Reg *aux = new Reg(e);
+  aux->next = stack;   stack = aux;
   ++numElements;
 }
 

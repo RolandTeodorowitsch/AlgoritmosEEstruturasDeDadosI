@@ -6,7 +6,9 @@ ALL =			vetores \
 			pilha_simplesmente_encadeada2 \
 			pilha_duplamente_encadeada \
 			IntLinkedStackApp \
-			IntQueueApp
+			IntLinkedStackQuestao \
+			IntQueueApp \
+			IntLinkedQueueApp
 
 CFLAGS =		-std=c++11
 
@@ -38,9 +40,16 @@ IntLinkedStackApp:	IntLinkedStack.cpp IntLinkedStack.hpp IntLinkedStackMain.cpp
 			@g++ ${CFLAGS} -o IntLinkedStackApp IntLinkedStackMain.cpp IntLinkedStack.cpp
 			@./IntLinkedStackApp > IntLinkedStackApp.output
 
+IntLinkedStackQuestao:	IntLinkedStack.cpp IntLinkedStack.hpp IntLinkedStackQuestao.cpp
+			@g++ ${CFLAGS} -o IntLinkedStackQuestao IntLinkedStackQuestao.cpp IntLinkedStack.cpp
+
 IntQueueApp:		IntQueue.cpp IntQueue.hpp IntQueueMain.cpp
 			@g++ ${CFLAGS} -o IntQueueApp IntQueueMain.cpp IntQueue.cpp
 			@./IntQueueApp > IntQueueApp.output
+
+IntLinkedQueueApp:	IntLinkedQueue.cpp IntLinkedQueue.hpp IntLinkedQueueMain.cpp
+			@g++ ${CFLAGS} -o IntLinkedQueueApp IntLinkedQueueMain.cpp IntLinkedQueue.cpp
+			@./IntLinkedQueueApp > IntLinkedQueueApp.output
 
 clean:
 			@rm -f ${ALL}
