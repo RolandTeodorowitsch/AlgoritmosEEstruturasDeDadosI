@@ -7,7 +7,7 @@ int IntLinkedQueue::size() const {  return numElements;  }
 bool IntLinkedQueue::isEmpty() const {  return numElements==0;  }
 
 void IntLinkedQueue::enqueue(const int e) {
-  Reg *aux = new Reg(e);
+  Node *aux = new Node(e);
   if ( queueHead == nullptr) {  queueHead = queueTail = aux;  }
   else {  queueTail->next = aux;   queueTail = aux;  }
   ++numElements;
@@ -15,7 +15,7 @@ void IntLinkedQueue::enqueue(const int e) {
 
 bool IntLinkedQueue::dequeue(int &e) {
   if ( numElements == 0 ) return false;
-  --numElements;  e = queueHead->data;  Reg *aux = queueHead;  queueHead = queueHead->next;  delete aux;
+  --numElements;  e = queueHead->data;  Node *aux = queueHead;  queueHead = queueHead->next;  delete aux;
   return true;
 }
 
@@ -25,14 +25,14 @@ bool IntLinkedQueue::head(int &e) const {
 }
 
 void IntLinkedQueue::clear() {
-  while (queueHead != nullptr) {  Reg *aux = queueHead;   queueHead = queueHead->next;   delete aux;  }
+  while (queueHead != nullptr) {  Node *aux = queueHead;   queueHead = queueHead->next;   delete aux;  }
   numElements = 0;
 }
 
 string IntLinkedQueue::str() const {
   stringstream ss;
   ss << "|";
-  for (Reg *aux = queueHead; aux != nullptr; aux = aux->next)
+  for (Node *aux = queueHead; aux != nullptr; aux = aux->next)
       ss << aux->data << "|";
   return ss.str();
 }

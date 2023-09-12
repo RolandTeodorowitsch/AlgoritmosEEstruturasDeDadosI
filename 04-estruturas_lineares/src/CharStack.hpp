@@ -13,7 +13,7 @@ private:
 public:
   CharStack(int mxSz = 10);
   ~CharStack();
-  bool push(const char &e);
+  bool push(const char e);
   bool pop(char &e);
   bool top(char &e) const;
   int size() const;
@@ -21,6 +21,6 @@ public:
   bool isEmpty() const;
   bool isFull() const;
   void clear();
-  string str() const;
+  string str() const; // APENAS PARA DEPURACAO
 };
 #endif

@@ -1,0 +1,11 @@
+$CATEGORY: $course$/Algoritmos e Estruturas de Dados I - Estruturas Lineares - Deques - Questões de Concursos
+
+::ALEST I - Estruturas Lineares - Deques - Questões de Concursos - 001::[html]<p align="justify"><b>(MEC - 2009 - Desenvolvedor - FGV - 71)</b> A respeito do tipo de dados abstrato DEQUE, é <b>incorreto</b> afirmar que:</p>{
+	~implementação básica de DEQUE é um <i>buffer</i> circular.#
+	~o tipo de dados abstrato DEQUE é uma extensão da estrutura de dados fila.#
+	~este tipo de estrutura de dados suporta inserção e remoção tanto em seu final, quanto em seu início.#
+	~em <i>BlockingDeque</i> é uma DEQUE que espera por espaço quando armazenar e que um elemento exista para retirar.#
+	=suas funções básicas são conhecidas como ENQUEUE, que adiciona um elemento, e DEQUEUE, que remove um elemento.#
+}
+
+

@@ -13,7 +13,7 @@ bool IntStack::isEmpty() const { return numElements == 0; }
 bool IntStack::isFull() const { return numElements == maxElements; }
 void IntStack::clear() { numElements = 0; }
 
-bool IntStack::push(const int &e) {
+bool IntStack::push(const int e) {
   if ( numElements == maxElements ) return false;
   else { stack[ numElements++ ] = e;  return true; }
 }

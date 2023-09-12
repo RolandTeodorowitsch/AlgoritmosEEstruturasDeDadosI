@@ -6,12 +6,12 @@ using namespace std;
 class IntLinkedStack {
 private:
   int numElements;
-  struct Reg {
+  struct Node {
     int data;
-    Reg *next;
-    Reg(int d) {  data = d;  next = nullptr;  }
+    Node *next;
+    Node(int d) {  data = d;  next = nullptr;  }
   };
-  Reg *stack;
+  Node *stack;
 public:
   IntLinkedStack();
   ~IntLinkedStack();
@@ -21,6 +21,6 @@ public:
   int size() const;
   bool isEmpty() const;
   void clear();
-  string str() const;
+  string str() const; // APENAS PARA DEPURACAO
 };
 #endif

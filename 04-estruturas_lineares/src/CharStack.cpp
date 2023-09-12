@@ -8,7 +8,7 @@ CharStack::CharStack(int mxSz) {
 
 CharStack::~CharStack() {  delete[] stack;  }
 
-bool CharStack::push(const char &e) {
+bool CharStack::push(const char e) {
   if ( numElements == maxElements ) return false;
   else { stack[ numElements++ ] = e;  return true; }
 }

@@ -1,6 +1,6 @@
 $CATEGORY: $course$/Algoritmos e Estruturas de Dados I - Estruturas Lineares - Questões de Concursos
 
-::ALEST I - Estruturas Lineares - Questões de Concurso - 001::[html]<p align="justify"><b>(UFG - 2023 - Analista de Tecnologia da Informação/Área: Sistemas - Instituto Verbena - 46)</b> Os pilares da orientação a objetos são um conjunto de conceitos fundamentais que estabelecem os princípios básicos da programação orientada a objetos. Esses pilares são representados por:</p>{
+::ALEST I - Estruturas Lineares - Questões de Concursos - 001::[html]<p align="justify"><b>(UFG - 2023 - Analista de Tecnologia da Informação/Área: Sistemas - Instituto Verbena - 46)</b> Os pilares da orientação a objetos são um conjunto de conceitos fundamentais que estabelecem os princípios básicos da programação orientada a objetos. Esses pilares são representados por:</p>{
 	=Abstração, Herança, Polimorfismo e Encapsulamento.#
 	~Herança, Sobrecarga, Polimorfismo e Sobrescrita.#
 	~Sobrecarga, Abstração, Typecasting e Encapsulamento.#
@@ -47,7 +47,7 @@ $CATEGORY: $course$/Algoritmos e Estruturas de Dados I - Estruturas Lineares - Q
 	~Apenas II, IV e V.#
 }
 
-::ALEST I - Estruturas Lineares - Questões de Concursos - 006::[html]<p align="justify"><b>(Banco do Brasil S/A - 2021 - Escriturário / Agente de Tecnologia - Fundação CESGRANRIO - 53)</b> Desejam-se realizar buscas nas seguintes coleções de dados, representadas na linguagem Java:</p>
+::ALEST I - Estruturas Lineares - Questões de Concursos - 006::[html]<p align="justify"><b>(Banco do Brasil S/A - 2021 - Escriturário / Agente de Tecnologia - Fundação CESGRANRIO - 53)</b> Desejam-se realizar buscas nas seguintes coleções de dados, representadas na linguagem <i>Java</i>:</p>
 <ol type="I">
 <li>Um <i>array</i> de 1.000 números inteiros ordenados de forma decrescente;</li>
 <li>Uma lista encadeada desordenada e alocada dinamicamente, cujos 1.000 nós contêm strings (uma string por nó);</li>
@@ -61,13 +61,13 @@ $CATEGORY: $course$/Algoritmos e Estruturas de Dados I - Estruturas Lineares - Q
 	~I - sequencial; II - binária; III - binária#
 }
 
-::ALEST I - Estruturas Lineares - Questões de Concursos - 007::[html]<p align="justify"><b>(ABIN - 2018 - Oficial Técnico de Inteligência (Área 8) - CESPE/CEBRASPE - 71)</b> Julgue <u>o item subsequente</u><s>os itens subsequentes</s>, relativos à lógica de programação.</p>
+::ALEST I - Estruturas Lineares - Questões de Concursos - 007::[html]<p align="justify"><b>(ABIN - 2018 - Oficial Técnico de Inteligência (Área 8) - CESPE/CEBRASPE - 71)</b> Julgue <u>o item subsequente</u> <s>os itens subsequentes</s>, relativos à lógica de programação.</p>
 <p align="justify">Pilha é uma estrutura de dados em que o último elemento a ser inserido será o primeiro a ser retirado.</p>{
 	=Certo#
 	~Errado#
 }
 
-::ALEST I - Estruturas Lineares - Questões de Concurso - 008::[html]<p align="justify"><b>(AGER-MT - 2023 - Analista Regulador / Perfil: Ciências da Computação e(ou) Sistemas de Informação - CEBRASPE - 27)</b> As operações <i>push</i> (inserir no topo), <i>pop</i> (retirar do topo) e <i>top</i> (observar o topo) são utilizadas em estruturas de dados do tipo</p>{
+::ALEST I - Estruturas Lineares - Questões de Concursos - 008::[html]<p align="justify"><b>(AGER-MT - 2023 - Analista Regulador / Perfil: Ciências da Computação e(ou) Sistemas de Informação - CEBRASPE - 27)</b> As operações <i>push</i> (inserir no topo), <i>pop</i> (retirar do topo) e <i>top</i> (observar o topo) são utilizadas em estruturas de dados do tipo</p>{
 	=pilha.#
 	~fila.#
 	~tabela <i>hash</i>.#
@@ -79,7 +79,7 @@ $CATEGORY: $course$/Algoritmos e Estruturas de Dados I - Estruturas Lineares - Q
 <ol type="I">
 <li>Uma <b>lista linear</b> é uma sequência de zero ou mais itens <i>x<sub>1</i>, <i>x<sub>2</sub></i>, ..., <i>x<sub>n</sub></i>, em que <i>x<sub>i</sub></i> é de um determinado tipo e <i>n</i> representa o tamanho da lista linear.</li>
 <li>Uma <b>pilha</b> é uma lista linear em que todas as inserções, retiradas e geralmente todos os acessos, são feitos em apenas um extremo da lista.</li>
-<li>Uma <b>fila<b> é uma lista linear em que todas as inserções são realizadas em um extremo da lista e todos os acessos e retiradas são realizados no mesmo extremo da lista.</li>
+<li>Uma <b>fila</b> é uma lista linear em que todas as inserções são realizadas em um extremo da lista e todos os acessos e retiradas são realizados no mesmo extremo da lista.</li>
 </ol>
 <p align="justify">Estão CORRETAS as afirmativas:</p>{
 	=I e II, apenas.#
@@ -102,4 +102,54 @@ $CATEGORY: $course$/Algoritmos e Estruturas de Dados I - Estruturas Lineares - Q
 	~I, II e III.#
 }
 
+::ALEST I - Estruturas Lineares - Questões de Concursos - 011::[html]<p align="justify"><b>(MPE/MG - 2012 - Analista do MP/Tecnologia da Informação/Administração de Redes - FUNDEP/UFMG - 52)</b> Analise as afirmativas referentes às estruturas de dados básicas e assinale com <b>V</b> as <b>verdadeiras</b> e com <b>F</b> as <b>falsas</b>.</p>
+<table>
+<tr><td>(&nbsp;&nbsp;&nbsp;&nbsp;) </td><td>Listas lineares são estruturas adequadas a aplicações em que não se pode prever a demanda por memória.</td></tr>
+<tr><td>(&nbsp;&nbsp;&nbsp;&nbsp;) </td><td>Filas são listas lineares em que, geralmente, todos os acessos são feitos em apenas um extremo.</td></tr>
+<tr><td>(&nbsp;&nbsp;&nbsp;&nbsp;) </td><td>Pilhas são listas lineares em que os primeiros elementos incluídos são os primeiros retirados.</td></tr>
+</table>
+<p align="justify">Assinale a alternativa que apresenta a sequência de letras <b><i>CORRETA</i></b>.</p>{
+	~(V) (V) (V)#
+	~(V) (V) (F)#
+	=(V) (F) (F)#
+	~(F) (F) (V)#
+}
 
+::ALEST I - Estruturas Lineares - Questões de Concursos - 012::[html]<p align="justify"><b>(SEED/PR - 2022 - Professor/Programação - Consulplan - 16)</b> Pilhas e filas são implementações de estruturas de dados que possuem algumas diferenças entre si. Dentre tais diferenças está o número de ponteiros empregados para indicar os elementos-chave da estrutura. Assinale, a seguir, o número correto de ponteiros presentes em uma pilha e em uma fila.</p>{
+	~<u>Pilha</u>: 0 ponteiro; <u>Fila</u>: 1 ponteiro#
+	~<u>Pilha</u>: 1 ponteiro; <u>Fila</u>: 0 ponteiro#
+	=<u>Pilha</u>: 1 ponteiro; <u>Fila</u>: 2 ponteiros#
+	~<u>Pilha</u>: 2 ponteiros; <u>Fila</u>: 0 ponteiro#
+}
+
+::ALEST I - Estruturas Lineares - Questões de Concursos - 013::[html]<p align="justify"><b>(SEFAZ/RR - 2022 - Desenvolvedor de Software/Tipo A - IDECAN - 100)</b> Uma lista encadeada simples, ou lista dinâmica simplesmente encadeada, é uma relação de elementos ligados em sequência. Em relação a manipulação de uma lista encadeada simples, avalie os itens a seguir:</p>
+<ol type="I">
+<li>Não é necessário inicializar a lista antes de inserir algum elemento.</li>
+<li>A inclusão de um elemento em uma lista encadeada simples pode ser realizada somente no início da lista.</li>
+<li>Um elemento de uma lista encadeada simples pode ser excluído somente no final da lista.</li>
+<li>Um elemento de uma lista encadeada simples pode ser excluído quando está no meio da lista.</li>
+<li>Uma lista encadeada está vazia se o elemento inicial aponta para nulo.</li>
+</ol>
+<p align="justify">Assinale a alternativa correta.</p>{
+	~Apenas os itens I, III, IV e V estão corretos.#
+	~Apenas os itens II, IV e V estão corretos.#
+	=Apenas os itens IV e V estão corretos.#
+	~Apenas os itens I, II, III e V estão corretos.#
+	~Apenas os itens I, II e III estão corretos.#
+}
+
+::ALEST I - Estruturas Lineares - Questões de Concursos - 014::[html]<p align="justify"><b>(UFSM - 2022 - Técnico de Tecnologia da Informação - UFSM - 26)</b> Sobre as estruturas de dados, considere as afirmativas a seguir.</p>
+<ol type="I">
+<li>Uma Pilha pode ser implementada com uma Fila FIFO (<i>first-in, first-out</i>).</li>
+<li>Uma Pilha pode ser implementada com uma estrutura de dados Lista.</li>
+<li>Uma Lista permite inserção ou remoção no início ou fim da estrutura de dados.</li>
+<li>O topo de uma Pilha é o elemento mais antigo inserido.</li>
+</ol>
+<p align="justify">Estão corretas</p>{
+	~apenas I.#
+	~apenas I e IV.#
+	=apenas II e III.#
+	~apenas III e IV.#
+	~I, II, III e IV.#
+}
+	

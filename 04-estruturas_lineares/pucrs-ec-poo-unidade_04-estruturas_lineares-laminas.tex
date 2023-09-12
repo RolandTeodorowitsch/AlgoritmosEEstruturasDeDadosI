@@ -62,7 +62,7 @@
 \title[\sc{Estruturas Lineares}]{Estruturas Lineares}
 \author[Roland Teodorowitsch]{Roland Teodorowitsch}
 \institute[ALEST I - EP - PUCRS]{Algoritmos e Estruturas de Dados I - Escola Politécnica - PUCRS}
-\date{4 de setembro de 2023}
+\date{12 de setembro de 2023}
 
 \begin{document}
 
@@ -367,9 +367,65 @@
 	\item Auxiliar para implementação de outras estruturas de dados e algoritmos
 	\item Implementação de compiladores
 	\item Computação Gráfica (operações com matrizes)
-	\item Manipulação de expressões aritméticas: infixada, pós-fixada, pré-fixada % https://ww2.inf.ufg.br/~hebert/disc/aed1/AED1_09_Pilas.pdf
+	\item Manipulação de expressões aritméticas: infixada, pré-fixada, pós-fixada
 \end{itemize}
 \end{frame}
+
+%-------------------------------------------------------
+\begin{frame}\frametitle{Manipulação de Expressões Aritméticas}
+\begin{itemize}
+	\item Expressões aritméticas geralmente são representadas usando a notação infixada\\
+		\texttt{2 + 3 * 4 = 14}\\
+		\texttt{(2 + 3) * 4 = 20}
+	\item Alternativa 1: Notação polonesa (pré-fixada)
+	\begin{itemize}
+		\item Proposta por Jan lukasiewiscz em 1920
+		\item Permite escrever expressões aritméticas com precedência implícita
+		\item Operador aparece antes dos operandos\\
+			\texttt{+ 2 * 3 4}\\
+			\texttt{* + 2 3 4}
+	\end{itemize}
+	\item Alternativa 2: Notação polonesa inversa (pós-fixada)
+	\begin{itemize}
+		\item Proposta por Charles Hamblin em 1950
+		\item Também usa precedência implícita, porém o operandor aparece antes dos operandos\\
+			\texttt{2 3 4 * +}\\
+			\texttt{2 3 + 4 *}
+	\end{itemize}
+\end{itemize}
+\end{frame}
+
+%-------------------------------------------------------
+\begin{frame}\frametitle{Exercício}
+Converta as seguintes expressões na forma infixada para as formas pré-fixada e pós-fixada:
+\begin{enumerate}
+	\item	Infixada: \texttt{(1-2)*(3+4)}\\
+		Pré-fixada: \\
+		Pós-fixada: \\
+	\item	Infixada: \texttt{(2 + 4)/(3 -1)}\\
+		Pré-fixada: \\
+		Pós-fixada: \\
+	\item	Infixada: \texttt{(2+4)/(3-1)x4}\\
+		Pré-fixada: \\
+		Pós-fixada: \\
+\end{enumerate}
+\end{frame}
+
+%-------------------------------------------------------
+\begin{frame}\frametitle{Exercício (Resposta)}
+Converta as seguintes expressões na forma infixada para as formas pré-fixada e pós-fixada:
+\begin{enumerate}
+	\item	Infixada: \texttt{(1-2)*(3+4)}\\
+		Pré-fixada: \texttt{* - 1 2 + 3 4}\\
+		Pós-fixada: \texttt{1 2 - 3 4 + *}\\
+	\item	Infixada: \texttt{(2 + 4)/(3 - 1)}\\
+		Pré-fixada: \texttt{/ + 2 4 - 3 1}\\
+		Pós-fixada: \texttt{2 4 + 3 1 - /}\\
+	\item	Infixada: \texttt{(2+4)/(3-1)*4}\\
+		Pré-fixada: \texttt{* / + 2 4 - 3 1 4}\\
+		Pós-fixada: \texttt{2 4 + 3 1 - / 4 *}\\
+\end{enumerate}
+\end{frame}	
 
 %-------------------------------------------------------
 \begin{frame}\frametitle{Métodos do TAD Pilha}
@@ -416,7 +472,7 @@
 \begin{enumerate}
 {\small
 	\item Considerando como base a implementação da classe \texttt{IntStack} (apresentadas nas lâminas anteriores), implemente uma classe em C++ para gerenciar uma pilha de caracteres (\texttt{CharStack}).
-	\item Usando a classe da questão anterior, escreva um programa em C++, que inverte as letras de cada palavra de um texto terminado por ponto (.) preservando a ordem das palavras.\\
+	\item Usando a classe do exercício anterior, escreva um programa em C++, que inverte as letras de cada palavra de um texto terminado por ponto (.) preservando a ordem das palavras.\\
 Por exemplo, dado o texto:\\
 \begin{verbatim}
 ESTE EXERCICIO E MUITO FACIL.
@@ -505,7 +561,7 @@ struct Nodo {
 	Observações:
 	\begin{itemize}
 		\item A versão usando alocação encadeada eliminará a necessidade de se trabalhar com um limite máximo de elementos, consequentemente, os métodos \texttt{maxSize()} e \texttt{isFull()} NÃO farão parte da nova implementação.
-		\item A definição da classe (arquivo \texttt{IntLinkedStack.hpp}) e um programa de teste ((arquivo \texttt{IntLinkedStackMain.cpp})) estão listados nas lâminas a seguir.
+		\item A definição da classe (arquivo \texttt{IntLinkedStack.hpp}) e um programa de teste (arquivo \texttt{IntLinkedStackMain.cpp}) estão listados nas lâminas a seguir.
 	\end{itemize}
 \end{enumerate}
 \end{frame}
@@ -538,9 +594,36 @@ struct Nodo {
 \end{frame}
 
 %-------------------------------------------------------
+\begin{frame}\frametitle{Aplicações que Usam Fila}
+\begin{itemize}
+	\item Desenvolvimento de aplicativos
+	\begin{itemize}
+		\item Gerenciamento de transações para aplicativos de lojas, teatros, centros de reserva, etc.
+	\end{itemize}
+	\item Simulações
+	\begin{itemize}
+		\item Listas de espera na simulação de sistemas de atendimento (banco, supermercado, etc.)
+	\end{itemize}
+	\item Sistemas Operacionais
+	\begin{itemize}
+		\item Fila de documentos para impressão
+		\item Escalonamento de processos em um sistema operacional
+		\item Fila de requisições de acesso a disco
+		\item Fila de espera por recursos
+		\item Fila (\emph{buffering}) de mensagens e pacotes
+	\end{itemize}
+	\item Estruturas de Dados
+	\begin{itemize}
+		\item Suporte na implementação de algoritmos sobre árvores e grafos
+	\end{itemize}
+	\item etc.
+\end{itemize}
+\end{frame}
+
+%-------------------------------------------------------
 \begin{frame}\frametitle{Fila: Implementações Possíveis}
 \begin{itemize}
-	\item \textbf{Arranjo circular}
+	\item \textbf{Arranjo (\emph{buffer}) circular}
 \begin{figure}[h]
 	\flushleft
 	\includegraphics[height=0.13\paperheight]{imagens/fila1a.png} ~ ~ ~ \includegraphics[height=0.13\paperheight]{imagens/fila1b.png}
@@ -582,38 +665,11 @@ removePos %= maxElements; // Ou: if ( removePos == maxElements ) removePos = 0;
 \end{frame}
 
 %-------------------------------------------------------
-\begin{frame}\frametitle{Aplicações que Usam Fila}
-\begin{itemize}
-	\item Desenvolvimento de aplicativos
-	\begin{itemize}
-		\item Gerenciamento de transações para aplicativos de lojas, teatros, centros de reserva, etc.
-	\end{itemize}
-	\item Simulações
-	\begin{itemize}
-		\item Listas de espera na simulação de sistemas de atendimento (banco, supermercado, etc.)
-	\end{itemize}
-	\item Sistemas Operacionais
-	\begin{itemize}
-		\item Fila de documentos para impressão
-		\item Escalonamento de processos em um sistema operacional
-		\item Fila de requisições de acesso a disco
-		\item Fila de espera por recursos
-		\item Fila (\emph{buffering}) de mensagens e pacotes
-	\end{itemize}
-	\item Estruturas de Dados
-	\begin{itemize}
-		\item Suporte na implementação de algoritmos sobre árvores e grafos
-	\end{itemize}
-	\item etc.
-\end{itemize}
-\end{frame}
-
-%-------------------------------------------------------
 \begin{frame}\frametitle{Métodos do TAD Fila (\emph{Queue})}
 \begin{itemize}
 	\item \texttt{bool enqueue(e)}: insere o elemento no final da fila (retorna \texttt{true}, em caso de sucesso, ou \texttt{false}, se NÃO houver espaço)
 	\item \texttt{bool dequeue(\&e)}: remove e retorna (por referência) o elemento do início da fila (retorna \texttt{true}, em caso de sucesso, ou \texttt{false}, a fila estiver vazia)
-	\item \texttt{bool head(\&e)}: retorna (por referência) o elemento do início da fila, mas não o remove da fila (retorna \texttt{true}, em caso de sucesso, ou \texttt{false}, a fila estiver vazia)
+	\item \texttt{bool head(\&e)} ou \texttt{bool front(\&e)}: retorna (por referência) o elemento do início da fila, mas não o remove da fila (retorna \texttt{true}, em caso de sucesso, ou \texttt{false}, a fila estiver vazia)
 	\item \texttt{int size()}: retorna o número de elementos da fila
 	\item \texttt{int maxSize()}: retorna o número máximo de elementos suportado pela fila
 	\item \texttt{bool isEmpty()}: retorna \texttt{true}, se a fila estiver vazia, ou \texttt{false}, em caso contrário
@@ -667,7 +723,7 @@ Quais serão as sequências de elementos nas filas \texttt{A} e \texttt{B}, apó
 	Observações:
 	\begin{itemize}
 		\item A versão usando alocação encadeada eliminará a necessidade de se trabalhar com um limite máximo de elementos, consequentemente, os métodos \texttt{maxSize()} e \texttt{isFull()} NÃO farão parte da nova implementação.
-		\item A definição da classe (arquivo \texttt{IntLinkedQueue.hpp}) e um programa de teste ((arquivo \texttt{IntLinkedQueueMain.cpp})) estão listados nas lâminas a seguir.
+		\item A definição da classe (arquivo \texttt{IntLinkedQueue.hpp}) e um programa de teste (arquivo \texttt{IntLinkedQueueMain.cpp}) estão listados nas lâminas a seguir.
 	\end{itemize}
 \end{enumerate}
 \end{frame}
@@ -681,6 +737,116 @@ Quais serão as sequências de elementos nas filas \texttt{A} e \texttt{B}, apó
 \begin{frame}[fragile]\frametitle{Exercício 10: \texttt{IntLinkedQueueMain.cpp}}
 \fontsize{6pt}{6pt}\selectfont{
 \lstinputlisting{src/IntLinkedQueueMain.cpp}
+}
+\end{frame}
+
+%=======================================================
+\section{Deque}
+
+%-------------------------------------------------------
+\begin{frame}\frametitle{Deque}
+\begin{itemize}
+	\item É uma abreviação de \emph{Double-Ended QUEue}
+	\item Trata-se de uma estrutura linear de dados, um pouco mais flexível do que pilhas ou filas, que permite inserções e remoções tanto no início quanto no final
+	\item Possui, portanto, duas pontas (\texttt{frente} e \texttt{traseira} ou \texttt{front} e \texttt{back}), sendo possível selecionar qual será utilizada tanto para inserção quanto para remoção
+\begin{figure}[h]
+	\centering
+	\includegraphics[height=0.3\paperheight]{imagens/deque.png}
+\end{figure}
+\end{itemize}
+\end{frame}
+
+%-------------------------------------------------------
+\begin{frame}\frametitle{Deque: Aplicações e Implementações}
+\begin{itemize}
+	\item É usado em aplicações onde, por exemplo:
+	\begin{itemize}
+		\item Um item é removido da fila e por alguma razão precisa ser reinserido na posição que ocupava anteriormente
+		\item O último item da fila ``desiste'' de permanecer nela (por exemplo, devido à demora ou ao tamanho da fila)
+	\end{itemize}
+	\item Pode ser implementado da mesma forma que uma fila:
+	\begin{itemize}
+		\item Arranjo (\emph{buffer}) circular
+		\item Lista Simplesmente Encadeada
+		\item Lista Duplamente Encadeada
+	\end{itemize}
+	\item Há implementações bloqueantes, em que a primitiva de inserção fica bloqueada até haver espaço e a primitiva de remoção fica bloqueada até que exista um elemento para ser removido
+\end{itemize}
+\end{frame}
+
+%-------------------------------------------------------
+\begin{frame}\frametitle{Métodos do TAD Deque}
+\begin{itemize}
+{\scriptsize
+	\item \texttt{bool addFirst(e)}: insere o elemento no início do deque (retorna \texttt{true}, em caso de sucesso, ou \texttt{false}, se NÃO houver espaço)\\
+	\item \texttt{bool addLast(e)}: insere o elemento no fim do deque (retorna \texttt{true}, em caso de sucesso, ou \texttt{false}, se NÃO houver espaço)\\
+	\item \texttt{bool removeFirst(\&e)}: remove e retorna (por referência) o elemento do início do deque (retorna \texttt{true}, em caso de sucesso, ou \texttt{false}, o deque estiver vazio)\\
+	\item \texttt{bool removeFirst(\&e)}: remove e retorna (por referência) o elemento do fim do deque (retorna \texttt{true}, em caso de sucesso, ou \texttt{false}, o deque estiver vazio)\\
+	\item \texttt{bool first(\&e)} ou \texttt{bool head(\&e)} ou \texttt{bool front(\&e)}: retorna (por referência) o elemento do início do deque, mas não o remove do deque (retorna \texttt{true}, em caso de sucesso, ou \texttt{false}, o deque estiver v\\azio)
+	\item \texttt{bool last(\&e)} ou \texttt{bool tail(\&e)} ou \texttt{bool back(\&e)}: retorna (por referência) o elemento do fim do deque, mas não o remove do deque (retorna \texttt{true}, em caso de sucesso, ou \texttt{false}, o deque estiver vazio)\\
+	\item \texttt{int size()}: retorna o número de elementos do deque\\
+	\item \texttt{int maxSize()}: retorna o número máximo de elementos suportado pelo deque\\
+	\item \texttt{bool isEmpty()}: retorna \texttt{true}, se o deque estiver vazio, ou \texttt{false}, em caso contrário\\
+	\item \texttt{bool isFull()}: retorna \texttt{true}, se o deque estiver cheio, ou \texttt{false}, em caso contrário\\
+	\item \texttt{void clear()}: esvazia o deque\\
+}
+\end{itemize}
+\end{frame}
+
+%-------------------------------------------------------
+\begin{frame}[fragile]\frametitle{Exercício 11}
+\begin{enumerate}
+        \setcounter{enumi}{10}
+{\footnotesize	
+	\item Considere as seguintes declarações para uma estrutura linear duplamente encadeada do tipo deque:
+\begin{lstlisting}[basicstyle=\ttfamily\tiny]
+  struct Nodo {
+    char info;
+    Nodo *ant, *prox;
+    Nodo(char i) {  info = i;  ant = prox = nullptr;  }
+  };
+  Node *esquerda = nullptr, *direita = nullptr;
+\end{lstlisting}
+E determine o estado final, na ordem correta, dos ponteiros e dos nodos dessa estrutura, depois da execução das seguintes operaçõess:
+	\begin{itemize}
+{\scriptsize
+		\item Inserir as letras 'D', 'E', 'S', 'C', 'A', 'R', 'T', 'E' e 'S' (nesta ordem), cada uma em um nodo da lista, pela direita;
+		\item Remover 3 letras do deque pela esquerda;
+		\item Remover 4 letras do deque pela direita;
+		\item Inserir as letras 'E', 'D', 'I', 'S', 'O' e 'N' (nesta ordem), cada uma em um nodo da lista, pela esquerda;
+		\item Remover 5 letras do deque pela esquerda;
+		\item Inserir as letras 'R', 'U', 'T', 'H', 'E', 'R', 'F', 'O', 'R' e 'D' (nesta ordem), cada uma em um nodo da lista, pela esquerda;
+		\item Remover 8 letras do deque pela esquerda;
+		\item Inserir as letras 'E', 'I', 'N', 'S', 'T', 'E', 'I' e 'N' (nesta ordem), cada uma em um nodo da lista, pela esquerda;
+		\item Remover 7 letras do deque pela esquerda.
+}
+	\end{itemize}
+}
+\end{enumerate}
+\end{frame}
+
+%-------------------------------------------------------
+\begin{frame}[fragile]\frametitle{Exercício 12}
+\begin{enumerate}
+        \setcounter{enumi}{11}
+	\item Usando como ponto de partida os códigos apresentados e desenvolvidos anteriormente, implemente a classe \texttt{IntDoubleLinkedDeque}, que implementa um deque com uma lista duplamente encadeada.\\
+	Observações:
+	\begin{itemize}
+		\item Lembre-se que NÃO haverá necessidade de trabalhar com um limite máximo de elementos, consequentemente, os métodos \texttt{maxSize()} e \texttt{isFull()} NÃO farão parte da nova implementação.
+		\item A definição da classe (arquivo \texttt{IntDoubleLinkedDeque.hpp}) e um programa de teste (arquivo \texttt{IntDoubleLinkedDequeMain.cpp}) estão listados nas lâminas a seguir.
+	\end{itemize}
+\end{enumerate}
+\end{frame}
+
+%-------------------------------------------------------
+\begin{frame}[fragile]\frametitle{Exercício 12: \texttt{IntDoubleLinkedDeque.hpp}}
+\lstinputlisting[basicstyle=\ttfamily\tiny]{src/IntDoubleLinkedDeque.hpp}
+\end{frame}
+
+%-------------------------------------------------------
+\begin{frame}[fragile]\frametitle{Exercício 12: \texttt{IntDoubleLinkedDequeMain.cpp}}
+\fontsize{6pt}{6pt}\selectfont{
+\lstinputlisting{src/IntDoubleLinkedDequeMain.cpp}
 }
 \end{frame}
 
@@ -710,8 +876,8 @@ Quais serão as sequências de elementos nas filas \texttt{A} e \texttt{B}, apó
 \end{frame}
 
 %-------------------------------------------------------
-\begin{frame}[fragile]\frametitle{Exercício 2: \texttt{questao2.cpp}}
-\lstinputlisting[basicstyle=\ttfamily\tiny]{src/questao2.cpp}
+\begin{frame}[fragile]\frametitle{Exercício 2: \texttt{exercicio02.cpp}}
+\lstinputlisting[basicstyle=\ttfamily\tiny]{src/exercicio02.cpp}
 \end{frame}
 
 %-------------------------------------------------------
@@ -737,16 +903,64 @@ Quais serão as sequências de elementos nas filas \texttt{A} e \texttt{B}, apó
 
 %-------------------------------------------------------
 \begin{frame}[fragile]\frametitle{Exercício 9}
+\small{
 \begin{verbatim}
-A = { 20, 30, 60 }
-B = { 20, 10 }
+// inicial
+A = { 10, 20, 30 }   B = { 30, 20, 10 }
+
+// após dequeue(A) tem-se "10 + dequeue(B) + head(A)"
+A = { 20, 30 }       B = { 30, 20, 10 }
+
+// após dequeue(B) tem-se "10 + 30 + head(A)"
+A = { 20, 30 }       B = { 20, 10 }
+
+// após head(A) tem-se "10 + 30 + 20 = 60"
+A = { 20, 30 }       B = { 20, 10 }
+
+// resposta final, após "enqueue(A, 60)"
+A = { 20, 30, 60 }   B = { 20, 10 }
 \end{verbatim}
+}
 \end{frame}
 
 %-------------------------------------------------------
-\begin{frame}[fragile]\frametitle{Exercício 8: \texttt{IntLinkedQueue.cpp}}
+\begin{frame}[fragile]\frametitle{Exercício 10: \texttt{IntLinkedQueue.cpp}}
 \fontsize{3pt}{5pt}\selectfont{
 \lstinputlisting{src/IntLinkedQueue.cpp}
+}
+\end{frame}
+
+%-------------------------------------------------------
+\begin{frame}[fragile]\frametitle{Exercício 11}
+\small{
+\begin{verbatim}
+esquerda --> || <-- direita
+
+esquerda --> |'D'|'E'|'S'|'C'|'A'|'R'|'T'|'E'|'S'| <-- direita
+esquerda --> |'C'|'A'|'R'|'T'|'E'|'S'| <-- direita
+esquerda --> |'C'|'A'| <-- direita
+esquerda --> |'N'|'O'|'S'|'I'|'D'|'E'|'C'|'A'| <-- direita
+esquerda --> |'E'|'C'|'A'| <-- direita
+esquerda --> |'D'|'R'|'O'|'F'|'R'|'E'|'H'|'T'|'U'|'R'|'E'|'C'|'A'| <-- direita
+esquerda --> |'U'|'R'|'E'|'C'|'A'| <-- direita
+esquerda --> |'N'|'I'|'E'|'T'|'S'|'N'|'I'|'E'|'U'|'R'|'E'|'C'|'A'| <-- direita
+
+esquerda --> |'E'|'U'|'R'|'E'|'C'|'A'| <-- direita
+\end{verbatim}
+}
+\end{frame}
+
+%-------------------------------------------------------
+\begin{frame}[fragile]\frametitle{Exercício 12: \texttt{IntDoubleLinkedDeque.cpp}}
+\fontsize{3pt}{5pt}\selectfont{
+\lstinputlisting[firstline=1,lastline=37]{src/IntDoubleLinkedDeque.cpp}
+}
+\end{frame}
+
+%-------------------------------------------------------
+\begin{frame}[fragile]\frametitle{Exercício 12: \texttt{IntDoubleLinkedDeque.cpp} (continuação)}
+\fontsize{3pt}{5pt}\selectfont{
+\lstinputlisting[firstline=38]{src/IntDoubleLinkedDeque.cpp}
 }
 \end{frame}
 

@@ -18,9 +18,9 @@ public:
   bool isEmpty() const;
   bool isFull() const;
   void clear();
-  bool push(const int &e);
+  bool push(const int e);
   bool pop(int &e);
   bool top(int &e) const;
-  string str() const;
+  string str() const; // APENAS PARA DEPURACAO
 };
 #endif

@@ -1,0 +1,16 @@
+IntDoubleLinkedDeque:   |  size=0  first=X  last=X  isEmpty=1  reverse=|
+addFirst(6):    OK      |6|  size=1  first=6  last=6  isEmpty=0  reverse=|6|
+addLast(7):     OK      |6|7|  size=2  first=6  last=7  isEmpty=0  reverse=|7|6|
+addFirst(5):    OK      |5|6|7|  size=3  first=5  last=7  isEmpty=0  reverse=|7|6|5|
+addLast(8):     OK      |5|6|7|8|  size=4  first=5  last=8  isEmpty=0  reverse=|8|7|6|5|
+addFirst(4):    OK      |4|5|6|7|8|  size=5  first=4  last=8  isEmpty=0  reverse=|8|7|6|5|4|
+addLast(9):     OK      |4|5|6|7|8|9|  size=6  first=4  last=9  isEmpty=0  reverse=|9|8|7|6|5|4|
+removeFirst(4): OK      |5|6|7|8|9|  size=5  first=5  last=9  isEmpty=0  reverse=|9|8|7|6|5|
+removeLast(9):  OK      |5|6|7|8|  size=4  first=5  last=8  isEmpty=0  reverse=|8|7|6|5|
+removeLast(8):  OK      |5|6|7|  size=3  first=5  last=7  isEmpty=0  reverse=|7|6|5|
+removeFirst(5): OK      |6|7|  size=2  first=6  last=7  isEmpty=0  reverse=|7|6|
+removeLast(7):  OK      |6|  size=1  first=6  last=6  isEmpty=0  reverse=|6|
+removeFirst(6): OK      |  size=0  first=X  last=X  isEmpty=1  reverse=|
+removeLast(X):  ERRO    |  size=0  first=X  last=X  isEmpty=1  reverse=|
+addLast(2):     OK      |2|  size=1  first=2  last=2  isEmpty=0  reverse=|2|
+clear():        OK      |  size=0  first=X  last=X  isEmpty=1  reverse=|

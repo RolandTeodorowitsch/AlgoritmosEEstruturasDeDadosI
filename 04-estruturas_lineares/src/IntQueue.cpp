@@ -12,7 +12,7 @@ bool IntQueue::isEmpty() const { return numElements == 0; }
 bool IntQueue::isFull() const { return numElements == maxElements; }
 void IntQueue::clear() { numElements = insertPos = removePos = 0; }
 
-bool IntQueue::enqueue(const int &e) {
+bool IntQueue::enqueue(const int e) {
   if ( numElements == maxElements ) return false;
   else { queue[ insertPos++ ] = e;  insertPos %= maxElements;  ++numElements;  return true; }
 }

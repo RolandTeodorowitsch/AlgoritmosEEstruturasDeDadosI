@@ -18,9 +18,9 @@ public:
   bool isEmpty() const;
   bool isFull() const;
   void clear();
-  bool enqueue(const int &e);
+  bool enqueue(const int e);
   bool dequeue(int &e);
   bool head(int &e) const;
-  string str() const;
+  string str() const; // APENAS PARA DEPURACAO
 };
 #endif

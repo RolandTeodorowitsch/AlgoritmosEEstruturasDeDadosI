@@ -6,12 +6,12 @@ using namespace std;
 class IntLinkedQueue {
 private:
   int numElements;
-  struct Reg {
+  struct Node {
     int data;
-    Reg *next;
-    Reg(int d) {  data = d;  next = nullptr;  }
+    Node *next;
+    Node(int d) {  data = d;  next = nullptr;  }
   };
-  Reg *queueHead, *queueTail;
+  Node *queueHead, *queueTail;
 public:
   IntLinkedQueue();
   ~IntLinkedQueue();
@@ -21,6 +21,6 @@ public:
   bool dequeue(int &e);
   bool head(int &e) const;
   void clear();
-  string str() const;
+  string str() const; // APENAS PARA DEPURACAO
 };
 #endif

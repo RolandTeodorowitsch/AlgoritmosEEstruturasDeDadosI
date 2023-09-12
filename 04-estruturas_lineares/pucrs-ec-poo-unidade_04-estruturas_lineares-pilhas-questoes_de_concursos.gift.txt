@@ -9,7 +9,7 @@ $CATEGORY: $course$/Algoritmos e Estruturas de Dados I - Estruturas Lineares - P
 }
 
 ::ALEST I - Estruturas Lineares - Pilhas - Questões de Concursos - 002::[html]<p align="justify"><b>(Banco do Brasil S/A - 2021 - Escriturário / Agente de Tecnologia - Fundação CESGRANRIO - 68)</b> Em um determinado treinamento de pessoal de TI, para facilitar o aprendizado sobre o funcionamento da estrutura de dados PILHA, utilizou-se o jogo de trocas, cujas regras são apresentadas a seguir.</p>
-<p align="justify"><b>JOGO DAS TROCAS - REGRAS</p></p>
+<p align="justify"><b>JOGO DAS TROCAS - REGRAS</b></p>
 <p align="justify">Para começar o jogo, o jogador recebe duas pilhas, P1 e P2.</p>
 <p align="justify">P1 está preenchida com quatro fichas, identificadas por nomes fictícios e empilhadas em ordem alfabética CRESCENTE
 a partir do topo.</p>
@@ -690,4 +690,37 @@ tmUtK+yb21thj9ZldaHQK0r7B6AHm7bjc/CSAAAAAElFTkSuQmCC" alt="Questão 66" title="Q
 		~o cálculo de espaço em disco consumido por um diretório (e seus componentes) em um sistema de arquivos; a procura por padrões em cadeias de caracteres por meio da técnica de força bruta.#
 }
 
+::ALEST I - Estruturas Lineares - Pilhas - Questões de Concursos - 007::[html]<p align="justify"><b>(TCM-SP - 2020 - Auxiliar Técnico de Controle Externo/Técnico de Informática - VUNESP - 42)</b> Considere uma estrutura de dados do tipo pilha, inicialmente vazia, que possui as operações típicas de inserção e remoção de elementos, denominadas <b>PUSH</b> e <b>POP</b>. Nessa estrutura, foram executadas as seguintes operações, nesta ordem.
+<p align="justify"><b>PUSH</b> 1<br/>
+<b>PUSH</b> 2<br/>
+<b>POP</b><br/>
+<b>PUSH</b> 3<br/>
+<b>POP</b><br/>
+<b>PUSH</b> 4<br/>
+<b>POP</b><br/>
+<b>PUSH</b> 5</p>
+<p align="justify">Após a realização de todas essas operações, o número de elementos na pilha e o valor armazenado no topo da pilha serão, respectivamente,</p>{
+	~0 e 0.#
+	~1 e 1.#
+	~1 e 5.#
+	~2 e 1.#
+	=2 e 5.#
+}
+
+::ALEST I - Estruturas Lineares - Pilhas - Questões de Concursos - 008::[html]<p align="justify"><b>(SEFAZ/RR - 2022 - Desenvolvedor de Software/Tipo A - IDECAN - 56)</b> Uma estrutura de dados é um modo particular de armazenamento e organização de dados em um computador. Selecione a alternativa que mostra o princípio de funcionamento de uma pilha em estrutura de dados.</p>{
+	=LIFO#
+	~FIFO#
+	~FEFO#
+	~LEFO#
+	~Fila#
+}
+
+::ALEST I - Estruturas Lineares - Pilhas - Questões de Concursos - 009::[html]<p align="justify"><b>(MEC - 2009 - Desenvolvedor - FGV - 42)</b> No contexto das estruturas de dados avançadas como listas, pilhas, filas e árvores é comum se encontrar referência à notação polonesa reversa. Nesse sentido, a expressão <code>X*(Y+W)/(X-Y)</code> é representada nessa notação, como:</p>{
+	~<code>XYW+*XY/-</code>#
+	=<code>XYW+*XY-/</code>#
+	~<code>XYW+*/XY-</code>#
+	~<code>XYW*+XY-/</code>#
+	~<code>XYW*+XY/-</code>#
+}
+	
 
