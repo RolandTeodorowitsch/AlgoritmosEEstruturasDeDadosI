@@ -468,23 +468,34 @@ Converta as seguintes expressões na forma infixada para as formas pré-fixada e
 \section{Exercícios}
 
 %-------------------------------------------------------
-\begin{frame}[fragile]\frametitle{Exercícios}
+\begin{frame}[fragile]\frametitle{Exercícios 1-3}
 \begin{enumerate}
 {\small
-	\item Considerando como base a implementação da classe \texttt{IntStack} (apresentadas nas lâminas anteriores), implemente uma classe em C++ para gerenciar uma pilha de caracteres (\texttt{CharStack}).
-	\item Usando a classe do exercício anterior, escreva um programa em C++, que inverte as letras de cada palavra de um texto terminado por ponto (.) preservando a ordem das palavras.\\
+	\item Considerando como base a implementação da classe \texttt{IntStack} (apresentadas nas lâminas anteriores), implemente uma classe em C++ para gerenciar uma pilha de caracteres (\texttt{CharStack}).\\
+
+	\item Usando a classe \texttt{CharStack} (do exercício anterior), escreva um programa em C++, que inverte as letras de cada palavra de um texto terminado por ponto (.), preservando a ordem das palavras.\\
 Por exemplo, dado o texto:\\
 \begin{verbatim}
-ESTE EXERCICIO E MUITO FACIL.
+ETSE OICICREXE E OTIUM LICAF.
 \end{verbatim}
 A saída deve ser:
 \begin{verbatim}
-ETSE OICICREXE E OTIUM LICAF
+ESTE EXERCICIO E MUITO FACIL.
 \end{verbatim}
-\item Considerando ainda a classe \texttt{CharStack}, escreva uma função que verifique se uma palavra (\texttt{string}) é um palíndromo.
-\item Implemente uma função em C++ para testar se duas pilhas de caracteres (objetos da classe \texttt{CharStack}), \texttt{P1} e \texttt{P2}, são iguais.
-\item Implemente uma função em C++ para copiar os elementos de uma pilha Desenvolva uma operação para copiar elementos de uma pilha \texttt{P1} para uma pilha \texttt{P2} (sem destruir \texttt{P1}).
+
+\item Implemente uma função em C++ para testar se duas pilhas de caracteres (objetos da classe \texttt{CharStack}) são iguais. Sua função deve ter o seguinte protótipo:\\
+\texttt{bool saoIguais(CharStack \&p1, CharStack \&p2);}\\
+Para que duas pilhas sejam consideradas iguais, elas devem ter o mesmo número de elementos nas mesmas posições nas duas pilhas; no entanto, o tamanho máximo das pilhas NÃO precisa ser igual. No retorno da função, o conteúdo das pilhas deve ser o mesmo da chamada.\\
 }
+\end{enumerate}
+\end{frame}
+
+%-------------------------------------------------------
+\begin{frame}[fragile]\frametitle{Exercícios 4-5}
+\begin{enumerate}
+        \setcounter{enumi}{3}
+	\item Considerando ainda a classe \texttt{CharStack}, escreva uma função que verifique se uma palavra (\texttt{string}) é um palíndromo.\\
+	\item Implemente uma função em C++ para copiar os elementos de uma pilha Desenvolva uma operação para copiar elementos de uma pilha \texttt{P1} para uma pilha \texttt{P2} (sem destruir \texttt{P1}).\\
 \end{enumerate}
 \end{frame}
 
@@ -1013,6 +1024,13 @@ E determine o estado final, na ordem correta, dos ponteiros e dos nodos dessa es
 %-------------------------------------------------------
 \begin{frame}[fragile]\frametitle{Exercício 2: \texttt{exercicio02.cpp}}
 \lstinputlisting[basicstyle=\ttfamily\tiny]{src/exercicio02.cpp}
+\end{frame}
+
+%-------------------------------------------------------
+\begin{frame}[fragile]\frametitle{Exercício 3: \texttt{exercicio03.cpp}}
+\fontsize{5pt}{5pt}\selectfont{
+\lstinputlisting{src/exercicio03.cpp}
+}
 \end{frame}
 
 %-------------------------------------------------------

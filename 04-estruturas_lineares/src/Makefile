@@ -2,6 +2,7 @@ ALL =				vetores \
 				vetores2 \
 				IntStackApp \
 				exercicio02 \
+				exercicio03 \
 				pilhaApp \
 				filaApp \
 				dequeApp \
@@ -32,6 +33,9 @@ IntStackApp:			IntStack.cpp IntStack.hpp IntStackMain.cpp
 
 exercicio02:			exercicio02.cpp CharStack.hpp CharStack.hpp
 				@g++ ${CFLAGS} -o exercicio02 exercicio02.cpp CharStack.cpp
+
+exercicio03:			exercicio03.cpp CharStack.hpp CharStack.hpp
+				@g++ ${CFLAGS} -o exercicio03 exercicio03.cpp CharStack.cpp
 
 pilhaApp:			pilhaApp.cpp
 				@g++ ${CFLAGS} -o pilhaApp pilhaApp.cpp

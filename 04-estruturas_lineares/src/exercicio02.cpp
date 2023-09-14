@@ -5,7 +5,7 @@ using namespace std;
 
 string invertePalavrasDaFrase(string frase) {
   char ch;
-  CharStack stack(1000);
+  CharStack stack(frase.length());
   string res = "";
   for (int i=0; i<frase.size(); ++i) {
       char c = frase[i];
@@ -20,7 +20,7 @@ string invertePalavrasDaFrase(string frase) {
 }
 
 int main() {
-  string frase1 = "ESTE EXERCICIO E MUITO FACIL.";
+  string frase1 = "ETSE OICICREXE E OTIUM LICAF.";
   cout << frase1 << endl;
   cout << invertePalavrasDaFrase(frase1) << endl;
   return 0;
