@@ -2,6 +2,9 @@ ALL =				vetores \
 				vetores2 \
 				IntStackApp \
 				exercicio02 \
+				pilhaApp \
+				filaApp \
+				dequeApp \
 				pilha_simplesmente_encadeada \
 				pilha_simplesmente_encadeada2 \
 				pilha_duplamente_encadeada \
@@ -10,7 +13,8 @@ ALL =				vetores \
 				IntQueueApp \
 				IntLinkedQueueApp \
 				exercicio11 \
-				IntDoubleLinkedDequeApp
+				IntDoubleLinkedDequeApp \
+				StringArrayListApp
 
 CFLAGS =			-std=c++11
 
@@ -28,6 +32,15 @@ IntStackApp:			IntStack.cpp IntStack.hpp IntStackMain.cpp
 
 exercicio02:			exercicio02.cpp CharStack.hpp CharStack.hpp
 				@g++ ${CFLAGS} -o exercicio02 exercicio02.cpp CharStack.cpp
+
+pilhaApp:			pilhaApp.cpp
+				@g++ ${CFLAGS} -o pilhaApp pilhaApp.cpp
+
+filaApp:			filaApp.cpp
+				@g++ ${CFLAGS} -o filaApp filaApp.cpp
+
+dequeApp:			dequeApp.cpp
+				@g++ ${CFLAGS} -o dequeApp dequeApp.cpp
 
 pilha_simplesmente_encadeada:	pilha_simplesmente_encadeada.cpp
 				@g++ ${CFLAGS} -o pilha_simplesmente_encadeada pilha_simplesmente_encadeada.cpp
@@ -59,6 +72,10 @@ exercicio11:			exercicio11.cpp
 IntDoubleLinkedDequeApp:	IntDoubleLinkedDeque.cpp IntDoubleLinkedDeque.hpp IntDoubleLinkedDequeMain.cpp
 				@g++ ${CFLAGS} -o IntDoubleLinkedDequeApp IntDoubleLinkedDequeMain.cpp IntDoubleLinkedDeque.cpp
 				@./IntDoubleLinkedDequeApp > IntDoubleLinkedDequeApp.output
+
+StringArrayListApp:		StringArrayList.cpp StringArrayList.hpp StringArrayListMain.cpp
+				@g++ ${CFLAGS} -o StringArrayListApp StringArrayListMain.cpp StringArrayList.cpp
+				@./StringArrayListApp > StringArrayListApp.output
 
 clean:
 				@rm -f ${ALL}

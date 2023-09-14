@@ -62,7 +62,7 @@
 \title[\sc{Estruturas Lineares}]{Estruturas Lineares}
 \author[Roland Teodorowitsch]{Roland Teodorowitsch}
 \institute[ALEST I - EP - PUCRS]{Algoritmos e Estruturas de Dados I - Escola Politécnica - PUCRS}
-\date{12 de setembro de 2023}
+\date{14 de setembro de 2023}
 
 \begin{document}
 
@@ -89,7 +89,7 @@
 \end{column}
 %\vspace{3mm}
 \begin{column}{0.85\linewidth}
-\tiny{\textbf{Seções 3.2 (Listas simplesmente encadeadas), 3.3 (Listas duplamente encadeadas), 6.1 (Listas arranjo), 6.2 (Listas de nodos), 6,4 (Os TADs de lista e o \emph{framework} de coleções)}\\
+\tiny{\textbf{Seções 3.2 (Listas simplesmente encadeadas), 3.3 (Listas duplamente encadeadas), 6.1 (Listas arranjo), 6.2 (Listas de nodos), 6.4 (Os TADs de lista e o \emph{framework} de coleções)}\\
 ~}\\
 \scriptsize{GOODRICH, Michael T.; TAMASSIA, Roberto. \textbf{Estruturas de dados e algoritmos em Java}. Tradução: Bernardo Copstein. 5. ed. Porto Alegre: Bookman, 2013. xxii, 713 p. E-book. ISBN 9788582600191. Tradução de: Data Structures and Algorithms in Java, 5th Edition. Disponível em: \textless{}\url{https://integrada.minhabiblioteca.com.br/\#/books/9788582600191/}\textgreater{}. Acesso em: 01 ago. 2023.}
 \end{column}
@@ -159,8 +159,8 @@
 	\item Essas estruturas são classificadas como lineares
 	\begin{itemize}
 		\item Representam coleções de elementos linearmente organizados que oferecem métodos para inserir, acessar e remover elementos
-		\item Tem a ordem interna de seus elementos definida pela forma como são feitas inserções e remoções na estrutura
-		\item Costuma ter duas extremidades (esquerda e direita; frente e traseira; cabeça e cauda; ...)
+		\item Têm a ordem interna de seus elementos definida pela forma como são feitas inserções e remoções na estrutura
+		\item Costumam ter duas extremidades (esquerda e direita; frente e traseira; cabeça e cauda; ...)
 	\end{itemize}
 \end{itemize}
 \end{frame}
@@ -170,7 +170,7 @@
 \begin{itemize}
 	\item \textbf{Lista}
 	\begin{itemize}
-		\item Organiza os dados de maneira sequencial (não necessariamente de forma física, mas sempre existe uma ordem lógica entre os elementos)
+		\item Organiza os dados de maneira ``sequencial'' (não necessariamente de forma física, mas sempre existe uma ordem lógica entre os elementos)
 		\item Permite inserção, acesso e remoção de elementos
 	\end{itemize}
 	\item \textbf{Pilha}
@@ -540,6 +540,9 @@ struct Nodo {
 }
 \end{frame}
 
+%=======================================================
+\section{Exercícios}
+
 %-------------------------------------------------------
 \begin{frame}[fragile]\frametitle{Exercícios 6 e 7}
 \begin{enumerate}
@@ -701,6 +704,9 @@ removePos %= maxElements; // Ou: if ( removePos == maxElements ) removePos = 0;
 \lstinputlisting[basicstyle=\ttfamily\scriptsize]{src/IntQueueApp.output}
 \end{frame}
 
+%=======================================================
+\section{Exercícios}
+
 %-------------------------------------------------------
 \begin{frame}[fragile]\frametitle{Exercício 9}
 \begin{enumerate}
@@ -781,7 +787,7 @@ Quais serão as sequências de elementos nas filas \texttt{A} e \texttt{B}, apó
 	\item \texttt{bool addFirst(e)}: insere o elemento no início do deque (retorna \texttt{true}, em caso de sucesso, ou \texttt{false}, se NÃO houver espaço)\\
 	\item \texttt{bool addLast(e)}: insere o elemento no fim do deque (retorna \texttt{true}, em caso de sucesso, ou \texttt{false}, se NÃO houver espaço)\\
 	\item \texttt{bool removeFirst(\&e)}: remove e retorna (por referência) o elemento do início do deque (retorna \texttt{true}, em caso de sucesso, ou \texttt{false}, o deque estiver vazio)\\
-	\item \texttt{bool removeFirst(\&e)}: remove e retorna (por referência) o elemento do fim do deque (retorna \texttt{true}, em caso de sucesso, ou \texttt{false}, o deque estiver vazio)\\
+	\item \texttt{bool removeLast(\&e)}: remove e retorna (por referência) o elemento do fim do deque (retorna \texttt{true}, em caso de sucesso, ou \texttt{false}, o deque estiver vazio)\\
 	\item \texttt{bool first(\&e)} ou \texttt{bool head(\&e)} ou \texttt{bool front(\&e)}: retorna (por referência) o elemento do início do deque, mas não o remove do deque (retorna \texttt{true}, em caso de sucesso, ou \texttt{false}, o deque estiver v\\azio)
 	\item \texttt{bool last(\&e)} ou \texttt{bool tail(\&e)} ou \texttt{bool back(\&e)}: retorna (por referência) o elemento do fim do deque, mas não o remove do deque (retorna \texttt{true}, em caso de sucesso, ou \texttt{false}, o deque estiver vazio)\\
 	\item \texttt{int size()}: retorna o número de elementos do deque\\
@@ -793,6 +799,9 @@ Quais serão as sequências de elementos nas filas \texttt{A} e \texttt{B}, apó
 \end{itemize}
 \end{frame}
 
+%=======================================================
+\section{Exercícios}
+
 %-------------------------------------------------------
 \begin{frame}[fragile]\frametitle{Exercício 11}
 \begin{enumerate}
@@ -800,10 +809,9 @@ Quais serão as sequências de elementos nas filas \texttt{A} e \texttt{B}, apó
 {\footnotesize	
 	\item Considere as seguintes declarações para uma estrutura linear duplamente encadeada do tipo deque:
 \begin{lstlisting}[basicstyle=\ttfamily\tiny]
-  struct Nodo {
-    char info;
-    Nodo *ant, *prox;
-    Nodo(char i) {  info = i;  ant = prox = nullptr;  }
+  struct Node {
+    char info;  Nodo *prev, *next;
+    Node(char i) {  info = i;  prev = next = nullptr;  }
   };
   Node *esquerda = nullptr, *direita = nullptr;
 \end{lstlisting}
@@ -847,6 +855,133 @@ E determine o estado final, na ordem correta, dos ponteiros e dos nodos dessa es
 \begin{frame}[fragile]\frametitle{Exercício 12: \texttt{IntDoubleLinkedDequeMain.cpp}}
 \fontsize{6pt}{6pt}\selectfont{
 \lstinputlisting{src/IntDoubleLinkedDequeMain.cpp}
+}
+\end{frame}
+
+%=======================================================
+\section{Lista}
+
+%-------------------------------------------------------
+\begin{frame}\frametitle{Lista}
+\begin{itemize}
+	\item Uma lista é uma estrutura de dados que agrupa informações referentes a um conjunto de elementos relacionados entre si
+	\item Há uma ordem lógica entre os elementos, que não corresponde necessariamente à ordem física
+	\item A inserção e exclusão em uma lista é menos restritiva do que em pilhas, filas ou deques
+	\item Isto significa que uma implementação de lista poderia ser usada para criar e gerenciar pilhas, filas e deques
+\end{itemize}
+\end{frame}
+
+%-------------------------------------------------------
+\begin{frame}\frametitle{Operações sobre Listas}
+\begin{itemize}
+	\item Algumas operações básicas sobre listas, envolvendo elementos (nodos), são:
+	\begin{itemize}
+		\item Inserção (no início, no fim ou em uma posição específica)
+		\item Remoção (no início, no fim ou em uma posição específica)
+		\item Busca e acesso (através de índice ou através da informação de algum campo)
+		\item Alteração
+	\end{itemize}
+	\item Também é comum aplicar operações sobre toda a lista, tais como:	
+	\begin{itemize}
+		\item Combinação de duas ou mais listas em uma única lista (concatenação ou \emph{merge})
+		\item Ordenação da lista segundo determinado critério
+	\end{itemize}
+\end{itemize}
+\end{frame}
+
+%-------------------------------------------------------
+\begin{frame}\frametitle{Opções de Implementação}
+\begin{itemize}
+	\item Usando arranjos
+	\begin{itemize}
+		\item Maior desempenho no acesso
+		\item Apresentam maior dificuldade de inserção e remoção no início ou no meio
+	\end{itemize}
+	\item Usando estruturas encadeadas
+	\begin{itemize}
+		\item Menor desempenho no acesso
+		\item Muito mais flexível para inserir e remover nodos
+		\item Podem ser: simplesmente encadeadas, duplamente encadeadas, simplesmente encadeadas e circulares, duplamente encadeadas e circulares
+	\end{itemize}
+\end{itemize}
+\end{frame}
+
+%=======================================================
+\section{Lista com Arranjo}
+
+%-------------------------------------------------------
+\begin{frame}\frametitle{Lista com Arranjo}
+\begin{itemize}
+	\item Consiste em um número fixo de posições \textbf{contíguas} e para o armazenamento de elementos do mesmo tipo
+	\item Possui acesso direto facilitado e rápido, ou seja, o tempo de acesso é constante para qualquer elemento
+	\item A inserção e a remoção de nodos no início ou no meio do arranjo tem alto custo, pois requer a movimentação de nodos ou para abrir espaço ou para evitar espaços não utilizados
+	\item Geralmente é preciso definir o número máximo de elementos que serão armazenados (mudar esse tamanho pode ser possível, mas será custoso)
+\begin{figure}[h]
+	\centering
+	\includegraphics[height=0.15\paperheight]{imagens/lista_com_arranjo.png}
+\end{figure}
+\end{itemize}
+\end{frame}
+
+%-------------------------------------------------------
+\begin{frame}\frametitle{Métodos para um TAD Lista com Arranjo}
+\begin{itemize}
+{\scriptsize
+	\item \texttt{bool add(e)}: insere o elemento no final da lista (retorna \texttt{true}, em caso de sucesso, ou \texttt{false}, se NÃO houver espaço)
+	\item \texttt{bool add(index,e)}: insere o elemento em um índice específico da lista (retorna \texttt{true}, em caso de sucesso, ou \texttt{false}, se NÃO houver espaço)
+	\item \texttt{bool get(index, \&e)}: retorna (por referência) o elemento do início do índice especificado (retorna \texttt{true}, em caso de sucesso, ou \texttt{false}, se o índice for inválido)
+	\item \texttt{bool set(index, e)}: atribui o elemento para a posição do índice especificado (retorna \texttt{true}, em caso de sucesso, ou \texttt{false}, se o índice for inválido)
+	\item \texttt{bool remove(index)}: remove o elemento do índice especificado da lista (retorna \texttt{true}, em caso de sucesso, ou \texttt{false}, se o índice for inválido)
+	\item \texttt{int size()}: retorna o número de elementos da lista\\
+	\item \texttt{int maxSize()}: retorna o número máximo de elementos suportado pela lista\\
+	\item \texttt{bool isEmpty()}: retorna \texttt{true}, se a lista estiver vazia, ou \texttt{false}, em caso contrário\\
+	\item \texttt{bool isFull()}: retorna \texttt{true}, se a lista estiver cheia, ou \texttt{false}, em caso contrário\\
+	\item \texttt{bool contains(e)}: retorna \texttt{true}, se o elemento existir na lista, ou \texttt{false},  em caso contrário\\
+	\item \texttt{int indexOf(e)}: retorna o índice da primeira ocorrência do elemento na lista, se o elemento existir na lista, ou -1 em caso contrário\\
+	\item \texttt{int indexOf(pos,e)}: retorna o índice da próxima ocorrência do elemento na lista a partir da posição especificada, se o elemento existir, ou -1 em caso contrário\\
+	\item \texttt{void clear()}: esvazia a lista\\
+}
+\end{itemize}
+\end{frame}
+
+%-------------------------------------------------------
+\begin{frame}\frametitle{Lista com Arranjo: Inserção e Exclusão}
+\begin{itemize}
+	\item Inserção: \texttt{arrayList->add(3,35)}
+\begin{figure}[h]
+	\centering
+	\includegraphics[height=0.30\paperheight]{imagens/lista_com_arranjo_insercao.png}
+\end{figure}
+	\item Exclusão: \texttt{arrayList->remove(2)}
+\begin{figure}[h]
+	\centering
+	\includegraphics[height=0.30\paperheight]{imagens/lista_com_arranjo_exclusao.png}
+\end{figure}
+\end{itemize}
+\end{frame}
+
+%=======================================================
+\section{Exercício}
+
+%-------------------------------------------------------
+\begin{frame}[fragile]\frametitle{Exercício 13}
+\begin{enumerate}
+        \setcounter{enumi}{11}
+	\item Usando como base a descrição dos métodos de um TAD Lista com Arranjo, implemente os métodos da classe \texttt{StringArrayList}, que implementa uma lista com um arranjo de tamanho predefinido. O arquivo de cabeçalho para esta classe (\texttt{StringArrayList.hpp}) e um programa de teste (\texttt{StringArrayListMain.cpp}).
+\end{enumerate}
+\end{frame}
+
+%-------------------------------------------------------
+\begin{frame}[fragile]\frametitle{Exercício 13: \texttt{StringArrayList.hpp}}
+\fontsize{6pt}{6pt}\selectfont{
+\lstinputlisting{src/StringArrayList.hpp}
+}
+\end{frame}
+
+%-------------------------------------------------------
+\begin{frame}[fragile]\frametitle{Exercício 13: \texttt{StringArrayListMain.cpp}}
+\fontsize{3pt}{5pt}\selectfont{
+\lstinputlisting{src/StringArrayListMain.cpp}
 }
 \end{frame}
 
@@ -961,6 +1096,20 @@ esquerda --> |'E'|'U'|'R'|'E'|'C'|'A'| <-- direita
 \begin{frame}[fragile]\frametitle{Exercício 12: \texttt{IntDoubleLinkedDeque.cpp} (continuação)}
 \fontsize{3pt}{5pt}\selectfont{
 \lstinputlisting[firstline=38]{src/IntDoubleLinkedDeque.cpp}
+}
+\end{frame}
+
+%-------------------------------------------------------
+\begin{frame}[fragile]\frametitle{Exercício 13: \texttt{StringArrayList.cpp}}
+\fontsize{3pt}{5pt}\selectfont{
+\lstinputlisting[firstline=1,lastline=38]{src/StringArrayList.cpp}
+}
+\end{frame}
+
+%-------------------------------------------------------
+\begin{frame}[fragile]\frametitle{Exercício 13: \texttt{StringArrayList.cpp} (continuação)}
+\fontsize{3pt}{5pt}\selectfont{
+\lstinputlisting[firstline=39]{src/StringArrayList.cpp}
 }
 \end{frame}
 

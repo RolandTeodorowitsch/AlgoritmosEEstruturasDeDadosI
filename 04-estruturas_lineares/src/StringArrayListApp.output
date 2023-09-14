@@ -1,0 +1,3 @@
+Bom dia, pessoal!
+Lista ligada ou lista encadeada é uma estrutura de dados linear e dinâmica.
+Ela é composta por uma sequência de nodos, sendo que cada nodo contém dados e também uma ou duas referências que apontam para o nodo anterior ou posterior.
