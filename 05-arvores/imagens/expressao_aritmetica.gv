@@ -1,0 +1,8 @@
+graph expressao_aritmetica {
+	node [shape=circle]
+	"+" -- { "*" "/" }
+	"*" -- { A B }
+	"/" -- { C m2 }
+	m2 -- { D E }
+        m2[label="+"]
+}

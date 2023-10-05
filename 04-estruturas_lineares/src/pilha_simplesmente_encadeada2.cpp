@@ -1,30 +1,30 @@
 #include <iostream>
 
 using namespace std;
-	
-struct Nodo {
-  char letra;
-  Nodo *prox;
-  Nodo(char l) {  letra = l;  prox = nullptr;  cout << "Nodo " << letra << " criado..." << endl;  }
-  ~Nodo() {  cout << "Nodo " << letra << " destruido..." << endl;  }
+
+struct Node {
+  char info;
+  Node *next;
+  Node(char i) {  info = i;  next = nullptr;  cout << "+ Node(" << info << ") criado..." << endl;  }
+  ~Node() {  cout << "- Node(" << info << ") destruido..." << endl;  }
 };
 
 int main() {
-  Nodo *topo = nullptr;
+  Node *topo = nullptr;
   for (char c = 'A'; c <= 'E'; ++c) {
-      Nodo *nodo = new Nodo(c);
-      nodo->prox = topo;
-      topo = nodo;
+      Node *aux = new Node(c);
+      aux->next = topo;
+      topo = aux;
   }
 
-  for (Nodo *aux = topo; aux != nullptr; aux = aux->prox)
-      cout << aux->letra << endl;
+  for (Node *aux = topo; aux != nullptr; aux = aux->next)
+      cout << aux->info << endl;
 
   while (topo != nullptr) {
-        Nodo *aux = topo;
-        topo = topo->prox;
+        Node *aux = topo;
+        topo = topo->next;
         delete aux;
   }
 
-  return 0;	
+  return 0;
 }

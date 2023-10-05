@@ -1,0 +1,22 @@
+graph arvore4 {
+	node [shape=rect]
+	"/" -- "home/"
+	"home/" -- "roland/"
+	"roland/" -- { "alest1/" "poo/" }
+	"poo/" -- { notas1 "exercicios/" }
+	"exercicios/" -- { "ex1.cpp" "ex2.cpp" "ex3.cpp" }
+	"alest1/" -- { "t1/" notas2 }
+	"t1/" -- { "lista.hpp" "lista.cpp" "app.cpp" "dados/" }
+	"dados/" -- { "t1.in" "t1.out" "t1.res" }
+
+	"/" [shape=folder]
+	"home/" [shape=folder]
+	"roland/" [shape=folder]
+	"alest1/" [shape=folder]
+	"exercicios/" [shape=folder]
+	"poo/" [shape=folder]
+	"t1/" [shape=folder]
+	"dados/" [shape=folder]
+	notas1 [label="notas"]
+	notas2 [label="notas"]
+}

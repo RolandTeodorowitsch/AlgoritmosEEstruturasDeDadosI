@@ -1,0 +1,7 @@
+graph arvore1 {
+	"Presidente" -- { "Diretor\nComercial" "Diretor de\nProdução" "Diretor\nAdministrativo" }
+	"Diretor\nComercial" -- { "Gerente de\nMarketing" "Gerente de\nVendas" }
+	"Gerente de\nVendas" -- { "Vendedores" "Caixa" }
+	"Diretor\nAdministrativo" -- { "Gerente de\nContratos" "Gerente de\nCobrança" }
+	"Gerente de\nCobrança" -- { "Auxiliar de\nCobrança" }
+}

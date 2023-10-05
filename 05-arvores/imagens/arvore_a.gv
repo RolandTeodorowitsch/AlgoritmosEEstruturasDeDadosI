@@ -1,0 +1,6 @@
+graph "Árvore A" {
+  node [shape=circle]
+  A -- { B C D }
+  C -- { E F }
+  D -- G
+}

@@ -1,0 +1,8 @@
+graph arvore3 {
+	node [shape=circle]
+	A -- { B C }
+	B -- { D E F }
+	D -- { I J }
+	C -- { G H }
+	H -- { K }
+}

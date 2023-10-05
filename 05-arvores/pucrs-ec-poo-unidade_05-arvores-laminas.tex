@@ -11,6 +11,7 @@
 \usepackage{listings}
 \usepackage{colortbl}
 \usepackage{array}
+\usepackage{xcolor}
 
 \newcolumntype{C}[0]{>{\centering\arraybackslash}p{0.4cm}}
 
@@ -48,6 +49,17 @@
 	{Ç}{{\c{C}}}1
 }
 
+\lstdefinelanguage{XML}{
+  showstringspaces=false,
+  morestring=[b]",
+  morestring=[s]{>}{<},
+  morecomment=[s]{<?}{?>},
+  stringstyle=\color{black},
+  identifierstyle=\color{darkblue},
+  keywordstyle=\color{cyan},
+  morekeywords={xmlns,version,type}% list your attributes here
+}
+
 \AtBeginSection[]{
   \begin{frame}
   \vfill
@@ -59,10 +71,10 @@
   \end{frame}
 }
 
-\title[\sc{Estruturas Lineares}]{Estruturas Lineares}
+\title[\sc{Árvores}]{Árvores}
 \author[Roland Teodorowitsch]{Roland Teodorowitsch}
 \institute[ALEST I - EP - PUCRS]{Algoritmos e Estruturas de Dados I - Escola Politécnica - PUCRS}
-\date{28 de setembro de 2023}
+\date{3 de outubro de 2023}
 
 \begin{document}
 
@@ -89,7 +101,7 @@
 \end{column}
 %\vspace{3mm}
 \begin{column}{0.85\linewidth}
-\tiny{\textbf{Seções 3.2 (Listas simplesmente encadeadas), 3.3 (Listas duplamente encadeadas), 6.1 (Listas arranjo), 6.2 (Listas de nodos), 6.4 (Os TADs de lista e o \emph{framework} de coleções)}\\
+\tiny{\textbf{Capítulo 7, Seções 7.1 e 7.2}\\
 ~}\\
 \scriptsize{GOODRICH, Michael T.; TAMASSIA, Roberto. \textbf{Estruturas de dados e algoritmos em Java}. Tradução: Bernardo Copstein. 5. ed. Porto Alegre: Bookman, 2013. xxii, 713 p. E-book. ISBN 9788582600191. Tradução de: Data Structures and Algorithms in Java, 5th Edition. Disponível em: \textless{}\url{https://integrada.minhabiblioteca.com.br/\#/books/9788582600191/}\textgreater{}. Acesso em: 01 ago. 2023.}
 \end{column}
@@ -98,20 +110,996 @@
 \end{frame}
 
 %=======================================================
-\section{Tipos Abstratos de Dados}
+\section{Conceitos e Terminologia}
 
 %-------------------------------------------------------
-\begin{frame}\frametitle{Abordagem OO}
+\begin{frame}\frametitle{Árvores}
 \begin{itemize}
-	\item Princípios da abordagem OO
+	\item Estruturas de dados não lineares
+	\item Permitem a implementação de vários algoritmos mais rápidos do que no uso de estruturas de dados lineares como as listas
+	\item Fornecem uma forma natural de organizar os dados
 	\begin{itemize}
-		\item \textbf{Abstração}: representação de um objeto do mundo real, ``abstraindo-se'' os detalhes desnecessários, de forma que o objeto possa ser utilizado sem se preocupar com como ele foi implementado
-		\item \textbf{Encapsulamento}: detalhes da implementação ficam escondidos e a manipulação dos dados acontede através de uma interface pública
-		\item \textbf{Modularidade}: vários componentes que interagem
+		\item Sistemas de arquivos
+		\item Bancos de dados
+		\item Sites da Web
 	\end{itemize}
-	\item Abstração, Encapsulamento, Herança e Polimorfismo são considerados os 4 pilares da POO
 \end{itemize}
 \end{frame}
+
+%-------------------------------------------------------
+\begin{frame}\frametitle{Árvore}
+\begin{itemize}
+	\item Tipo abstrato de dados que armazena elementos de maneira \textbf{hierárquica}
+	\item Normalmente, são desenhadas colocando-se os elementos dentro de elipses ou retângulos e conectando-os com linhas retas
+\begin{figure}[h]
+	\centering
+	\includegraphics[height=0.55\paperheight]{imagens/arvore1.eps}
+\end{figure}
+\end{itemize}
+\end{frame}
+
+%-------------------------------------------------------
+\begin{frame}\frametitle{Definição}
+\begin{itemize}
+	\item Formalmente uma árvore \textbf{T} é definida como um conjunto finito de um ou mais \textbf{nodos}, com a seguinte propriedade:
+	\begin{itemize}
+		\item Se \textbf{T} não é vazia, existe um nodo denominado \textbf{raiz} da árvore
+		\item Os demais nodos formam $m > 0$ conjuntos disjuntos $S_1$, $S_2$, ..., $S_m$, sendo cada um destes conjuntos uma árvore
+		\item As árvores $S_i$ ($1 \le i \le m$) são chamadas de \textbf{subárvores}
+	\end{itemize}
+	\item Pela definição
+	\begin{itemize}
+		\item Cada nodo da árvore é a raiz de uma subárvore
+	\end{itemize}
+\end{itemize}
+\end{frame}
+
+%-------------------------------------------------------
+\begin{frame}\frametitle{Definição}
+\begin{itemize}
+	\item Portanto, uma árvore pode ser representada da seguinte forma:
+\begin{figure}[h]
+	\centering
+	\includegraphics[height=0.60\paperheight]{imagens/arvore2.eps}
+\end{figure}
+	\item \textbf{A} é a raiz da árvore
+\end{itemize}
+\end{frame}
+
+%-------------------------------------------------------
+\begin{frame}\frametitle{Relacionamentos entre nodos	}
+\begin{itemize}
+	\item Outra propriedade de uma árvore \textbf{T}:
+	\begin{itemize}
+		\item Cada nodo \textbf{v} de \textbf{T} diferente da raiz tem um único nodo \textbf{pai}, \textbf{w}
+		\item Todo nodo com \textbf{pai} \textbf{w} é \textbf{filho} de \textbf{w}
+	\end{itemize}
+	\item Pela definição
+	\begin{itemize}
+		\item Uma árvore pode ser vazia, isto é, não possui nodos
+		\item Esta convenção permite que se defina uma árvore recursivamente
+		\begin{itemize}
+			\item Uma árvore \textbf{T} ou está vazia, ou consiste de um nodo \textbf{r}, chamado de raiz de \textbf{T}, e um conjunto de árvores cujas raízes são filhas de \textbf{r}
+		\end{itemize}
+	\end{itemize}
+\end{itemize}
+\end{frame}
+	
+%-------------------------------------------------------
+\begin{frame}\frametitle{Relacionamentos entre nodos}
+\begin{itemize}
+	\item Outros relacionamentos entre nodos
+	\begin{itemize}
+		\item Dois nodos que são filhos de um mesmo pai são \textbf{irmãos}
+		\item Um nodo \textbf{v} é \textbf{externo} se \textbf{v} não tem filhos
+		\item Um nodo \textbf{v} é \textbf{interno} se tem um ou mais filhos
+	\end{itemize}
+	\item Nodo \textbf{interno} também é conhecido como \textbf{galho}
+	\item Nodo \textbf{externo} também é conhecido como \textbf{folha}
+\end{itemize}
+\end{frame}
+
+%-------------------------------------------------------
+\begin{frame}\frametitle{Relacionamentos entre nodos}
+\begin{itemize}
+	\item A raiz de uma árvore é chamada de \textbf{pai} de suas subárvores
+	\item As raízes das subárvores de um nodo são chamadas de \textbf{irmãos}, que, por sua vez, são \textbf{filhos} de seu nodo pai
+\begin{columns}[T]
+\begin{column}{0.5\linewidth}
+%\vspace{-3mm}
+\begin{figure}[h]
+	\centering
+	\includegraphics[height=0.55\paperheight]{imagens/arvore3.eps}
+\end{figure}
+\end{column}
+\begin{column}{0.5\linewidth}
+%\vspace{3mm}
+\begin{itemize}
+	\item \textbf{A} é pai de \textbf{B} e \textbf{C}
+	\item \textbf{D}, \textbf{E} e \textbf{F} são irmãos
+	\item \textbf{I} é filho de \textbf{J}
+\end{itemize}
+\end{column}
+\end{columns}
+\end{itemize}
+\end{frame}
+
+%-------------------------------------------------------
+\begin{frame}\frametitle{``Árvore Invertida''}
+\begin{figure}[h]
+	\centering
+	\includegraphics[height=0.60\paperheight]{imagens/arvore_invertida.png}\\
+{\tiny Fonte: \url{https://di.ubi.pt/~cbarrico/Disciplinas/AlgoritmosEstruturasDadosLEI/Downloads/Teorica_ConceitosGeraisArvores.pdf}}
+\end{figure}
+\end{frame}
+
+%-------------------------------------------------------
+\begin{frame}\frametitle{Exemplo}
+\begin{columns}[T]
+\begin{column}{0.4\linewidth}
+%\vspace{-3mm}
+\begin{itemize}
+	\item Organização hierárquica dos arquivos nos sistemas operacionais é uma árvore
+	\item Nodos internos, neste caso, são associados a diretórios, e nodos externos a arquivos
+	\item No Linux o diretório raiz é “/”
+\end{itemize}
+\end{column}
+\begin{column}{0.6\linewidth}
+\vspace{-5mm}
+\begin{figure}[h]
+	\centering
+	\includegraphics[height=0.7\paperheight]{imagens/arvore4.eps}
+\end{figure}
+\end{column}
+\end{columns}
+\end{frame}
+
+%-------------------------------------------------------
+\begin{frame}\frametitle{Arestas e Caminhos em Árvores}
+\begin{columns}[T]
+\begin{column}{0.4\linewidth}
+%\vspace{-3mm}
+\begin{itemize}
+	\item Uma \textbf{\underline{aresta}} de uma árvore \textbf{T} é um par de nodos (\textbf{u},\textbf{v}) tal que \textbf{u} é pai de \textbf{v}, ou vice-versa
+	\item Um \textbf{\underline{caminho}} de \textbf{T} é uma sequência de nodos tais que quaisquer dois nodos consecutivos
+da sequência formam uma aresta
+	\item Exemplo: \texttt{alest1/}, \texttt{t1/}, \texttt{dados/} e \texttt{t1.out} formam um caminho
+\end{itemize}
+\end{column}
+\begin{column}{0.6\linewidth}
+\vspace{-5mm}
+\begin{figure}[h]
+	\centering
+	\includegraphics[height=0.7\paperheight]{imagens/arvore4-v2.eps}
+\end{figure}
+\end{column}
+\end{columns}
+\end{frame}
+
+%-------------------------------------------------------
+\begin{frame}\frametitle{Grau, Nível e Altura}
+\begin{itemize}
+	\item  Grau
+	\begin{itemize}
+		\item É o número de subárvores de um nodo
+		\item Quando o grau é zero, ou seja, o nodo não possui filhos, ele é \textbf{folha}
+	\end{itemize}
+	\item Nível de um nodo
+	\begin{itemize}
+		\item É o número de linhas que liga o nodo à raiz, sabendo que a raiz é o nível zero
+	\end{itemize}
+	\item Altura
+	\begin{itemize}
+		\item É definida como sendo o nível mais alto da árvore
+	\end{itemize}
+\end{itemize}
+\end{frame}
+
+%-------------------------------------------------------
+\begin{frame}\frametitle{Grau, Nível e Altura}
+\begin{columns}[T]
+\begin{column}{0.4\linewidth}
+%\vspace{-3mm}
+\begin{itemize}
+	\item Grau:
+	\begin{itemize}
+		\item Nodo A:
+		\item Nodo B:
+		\item Nodo C:
+		\item Nodo D:
+		\item Nodo E:
+		\item Nodo F:
+		\item Nodo G:
+		\item Nodo H:
+		\item Nodo I:
+		\item Nodo J:
+		\item Nodo K:
+	\end{itemize}
+\end{itemize}
+\end{column}
+\begin{column}{0.6\linewidth}
+\vspace{-5mm}
+\begin{figure}[h]
+	\centering
+	\includegraphics[height=0.70\paperheight]{imagens/arvore3.eps}
+\end{figure}
+\end{column}
+\end{columns}
+\end{frame}
+
+%-------------------------------------------------------
+\begin{frame}\frametitle{Grau, Nível e Altura}
+\begin{columns}[T]
+\begin{column}{0.4\linewidth}
+%\vspace{-3mm}
+\begin{itemize}
+	\item Grau:
+	\begin{itemize}
+		\item Nodo A: 2
+		\item Nodo B: 3
+		\item Nodo C: 2
+		\item Nodo D: 2
+		\item Nodo E: 0
+		\item Nodo F: 0
+		\item Nodo G: 0
+		\item Nodo H: 1
+		\item Nodo I: 0
+		\item Nodo J: 0
+		\item Nodo K: 0
+	\end{itemize}
+\end{itemize}
+\end{column}
+\begin{column}{0.6\linewidth}
+\vspace{-5mm}
+\begin{figure}[h]
+	\centering
+	\includegraphics[height=0.70\paperheight]{imagens/arvore3.eps}
+\end{figure}
+\end{column}
+\end{columns}
+\end{frame}
+
+%-------------------------------------------------------
+\begin{frame}\frametitle{Grau, Nível e Altura}
+\begin{columns}[T]
+\begin{column}{0.4\linewidth}
+%\vspace{-3mm}
+\begin{itemize}
+	\item Nível:
+	\begin{itemize}
+		\item Nodo A:
+		\item Nodo B:
+		\item Nodo C:
+		\item Nodo D:
+		\item Nodo E:
+		\item Nodo F:
+		\item Nodo G:
+		\item Nodo H:
+		\item Nodo I:
+		\item Nodo J:
+		\item Nodo K:
+	\end{itemize}
+	\item Altura:
+	\begin{itemize}
+		\item Árvore:
+	\end{itemize}
+\end{itemize}
+\end{column}
+\begin{column}{0.6\linewidth}
+\vspace{-5mm}
+\begin{figure}[h]
+	\centering
+	\includegraphics[height=0.70\paperheight]{imagens/arvore3.eps}
+\end{figure}
+\end{column}
+\end{columns}
+\end{frame}
+
+%-------------------------------------------------------
+\begin{frame}\frametitle{Grau, Nível e Altura}
+\begin{columns}[T]
+\begin{column}{0.4\linewidth}
+%\vspace{-3mm}
+\begin{itemize}
+	\item Nível:
+	\begin{itemize}
+		\item Nodo A: 0
+		\item Nodo B: 1
+		\item Nodo C: 1
+		\item Nodo D: 2
+		\item Nodo E: 2
+		\item Nodo F: 2
+		\item Nodo G: 2
+		\item Nodo H: 2
+		\item Nodo I: 3
+		\item Nodo J: 3
+		\item Nodo K: 3
+	\end{itemize}
+	\item Altura:
+	\begin{itemize}
+		\item Árvore: 3
+	\end{itemize}
+\end{itemize}
+\end{column}
+\begin{column}{0.6\linewidth}
+\vspace{-5mm}
+\begin{figure}[h]
+	\centering
+	\includegraphics[height=0.70\paperheight]{imagens/arvore3.eps}
+\end{figure}
+\end{column}
+\end{columns}
+\end{frame}
+
+%-------------------------------------------------------
+\begin{frame}\frametitle{Grau, Nível e Altura}
+\begin{columns}[T]
+\begin{column}{0.4\linewidth}
+%\vspace{-3mm}
+\begin{itemize}
+	\item Raiz: A
+	\item Nodos internos: B, C, D, H
+	\item Folhas: I, J, E, F, G, K
+	\end{itemize}
+\end{column}
+\begin{column}{0.6\linewidth}
+\vspace{-5mm}
+\begin{figure}[h]
+	\centering
+	\includegraphics[height=0.70\paperheight]{imagens/arvore3.eps}
+\end{figure}
+\end{column}
+\end{columns}
+\end{frame}
+
+%-------------------------------------------------------
+\begin{frame}\frametitle{Floresta}
+\begin{itemize}
+	\item Conjunto de uma ou mais árvores disjuntas
+	\item Se eliminarmos o nodo raiz de uma árvore, obtém-se uma floresta
+	\item Os filhos da raiz original irão se transformar nas raízes das novas árvores
+\end{itemize}
+\begin{figure}[h]
+	\centering
+	\includegraphics[height=0.5\paperheight]{imagens/floresta.eps}
+\end{figure}
+\end{frame}
+
+%=======================================================
+\section{Exercícios}
+
+%-------------------------------------------------------
+\begin{frame}[fragile]\frametitle{Exercício 1}
+\begin{enumerate}
+        \setcounter{enumi}{0}
+\item Analise a árvore abaixo.
+\begin{columns}[T]
+\begin{column}{0.5\linewidth}
+%\vspace{-5mm}
+\begin{figure}[h]
+	\centering
+	\includegraphics[height=0.6\paperheight]{imagens/exercicio01.eps}
+\end{figure}
+\end{column}
+\begin{column}{0.5\linewidth}
+E responda:
+\begin{itemize}
+	\item Qual é a altura da árvore?\\
+	\item Quais são as folhas da árvore?\\
+	\item Quais são os nodos irmãos?\\
+	\item Os nodos D e G são pais de que nodos?\\
+	\item Qual é o grau do nodo B?\\
+	\item Qual é o grau do nodo G?\\
+	\item Quais são os níveis dos nodos B, G, H, L e N?\\
+\end{itemize}
+\end{column}
+\end{columns}
+\end{enumerate}
+\end{frame}
+
+%-------------------------------------------------------
+\begin{frame}[fragile]\frametitle{Exercício 2}
+\begin{enumerate}
+        \setcounter{enumi}{1}
+\item Analise a árvore abaixo.
+\begin{columns}[T]
+\begin{column}{0.5\linewidth}
+%\vspace{-5mm}
+\begin{figure}[h]
+	\centering
+	\includegraphics[height=0.5\paperheight]{imagens/exercicio02.eps}
+\end{figure}
+\end{column}
+\begin{column}{0.5\linewidth}
+E responda:
+\begin{itemize}
+	\item Qual é a altura da árvore?\\
+	\item Quais são as folhas da árvore?\\
+	\item Quais são os nodos irmãos?\\
+	\item Quais são os nodos internos?
+	\item Qual é o grau do nodo C?
+	\item Qual é o grau do nodo D?
+	\item Quais são os níveis dos nodos C, H e K?
+\end{itemize}
+\end{column}
+\end{columns}
+\end{enumerate}
+\end{frame}
+
+%=======================================================
+\section{Aplicações}
+
+%-------------------------------------------------------
+\begin{frame}\frametitle{Aplicações}
+\begin{itemize}
+	\item Árvores são estruturas de dados adequadas para representar diversos tipos de informações
+	\item Várias aplicações que podem utilizar árvores
+\end{itemize}
+\end{frame}
+
+%-------------------------------------------------------
+\begin{frame}\frametitle{Árvore de decisão}
+\begin{itemize}
+	\item Exemplo: Ir ou não ir para praia?
+\begin{figure}[h]
+	\centering
+	\includegraphics[height=0.65\paperheight]{imagens/arvore_de_decisao.eps}
+\end{figure}
+\end{itemize}
+\end{frame}
+
+%-------------------------------------------------------
+\begin{frame}\frametitle{Representação de estruturas/informações hierárquicas}
+\begin{itemize}
+	\item Árvore genealógica
+	\item Organização de livros e documentos
+	\item Organização hierárquica de cargos de uma empresa
+	\item Sistemas de arquivos
+\begin{figure}[h]
+	\centering
+	\includegraphics[height=0.4\paperheight]{imagens/arvore_de_diretorios.eps}
+\end{figure}
+\end{itemize}
+\end{frame}
+
+%-------------------------------------------------------
+\begin{frame}[fragile]\frametitle{Representação de estruturas/informações hierárquicas}
+\begin{itemize}
+	\item Arquivos HTML e  XML
+\begin{lstlisting}[language=XML,basicstyle=\ttfamily\scriptsize]
+<?xml version="1.0"?>
+<Company>
+  <Employee>
+    <FirstName>Maria</FirstName>
+    <LastName>Silva</LastName>
+    <PhoneNumber>(51)98986767</PhoneNumber>
+    <Email>maria.silva@gmail.com</Email>
+    <Address>
+      <Street>Rua dos Andradas 1586/202</Street>
+      <City>Porto Alegre</City>
+      <State>RS</State>
+      <Zip>90021-212</Zip>
+    </Address>
+  </Employee>
+</Company>
+\end{lstlisting}
+\end{itemize}
+\end{frame}
+
+%-------------------------------------------------------
+\begin{frame}\frametitle{Computação Gráfica}
+\begin{columns}[T]
+\begin{column}{0.30\linewidth}
+\begin{itemize}
+	\item Grafo de cena
+\end{itemize}
+\begin{figure}[h]
+	\centering
+	\includegraphics[height=0.60\paperheight]{imagens/grafo_de_cena.png}
+\end{figure}
+\end{column}
+\begin{column}{0.70\linewidth}
+\begin{itemize}
+	\item Algoritmos para remoção de superfícies escondidas (árvore \emph{Binary Space-Partitioning})
+\end{itemize}
+\begin{figure}[h]
+	\centering
+	\includegraphics[height=0.50\paperheight]{imagens/binary_space_partitioning.png}
+\end{figure}
+\end{column}
+\end{columns}
+\end{frame}
+
+%-------------------------------------------------------
+\begin{frame}\frametitle{Computação Gráfica}
+\begin{itemize}
+	\item Representação de objetos (Quadtree e Octree), etc.
+\end{itemize}
+\begin{columns}[T]
+\begin{column}{0.36\linewidth}
+\begin{figure}[h]
+	\centering
+	\includegraphics[height=0.45\paperheight]{imagens/quadtree.jpg}
+\end{figure}
+\end{column}
+\begin{column}{0.34\linewidth}
+\begin{figure}[h]
+	\centering
+	\includegraphics[height=0.45\paperheight]{imagens/octree.png}
+\end{figure}
+\end{column}
+\begin{column}{0.30\linewidth}
+\begin{figure}[h]
+	\centering
+	\includegraphics[height=0.45\paperheight]{imagens/coelho.jpg}
+\end{figure}
+\end{column}
+\end{columns}
+\end{frame}
+
+%-------------------------------------------------------
+\begin{frame}\frametitle{Eliminatórias de Campeonatos}
+\begin{figure}[h]
+	\centering
+	\includegraphics[height=0.70\paperheight]{imagens/copa_russia_2018.jpg}
+\end{figure}
+\end{frame}
+
+%-------------------------------------------------------
+\begin{frame}\frametitle{Interfaces Gráficas com o Usuário}
+\begin{columns}[T]
+\begin{column}{0.62\linewidth}
+\vspace{-5mm}
+\begin{figure}[h]
+	\centering
+	\includegraphics[height=0.70\paperheight]{imagens/interface1.jpg}
+\end{figure}
+\end{column}
+\begin{column}{0.38\linewidth}
+\vspace{-5mm}
+\begin{figure}[h]
+	\centering
+	\includegraphics[height=0.70\paperheight]{imagens/interface2.jpg}
+\end{figure}
+\end{column}
+\end{columns}
+\end{frame}
+
+%-------------------------------------------------------
+\begin{frame}\frametitle{Expressões Aritméticas}
+\begin{itemize}
+	\item Pode-se usar árvores para representar e avaliar expressões aritméticas
+	\item Exemplo: \texttt{A * B + C / ( D + E )}
+\begin{figure}[h]
+	\centering
+	\includegraphics[height=0.6\paperheight]{imagens/expressao_aritmetica.eps}
+\end{figure}
+\end{itemize}
+\end{frame}
+
+%-------------------------------------------------------
+\begin{frame}\frametitle{Organização das Páginas de um \emph{Site}}
+\vspace{-3mm}
+\begin{figure}[h]
+	\centering
+	\includegraphics[height=0.70\paperheight]{imagens/paginas_web.jpg}\\
+{\tiny Fonte: \url{https://dribbble.com/shots/1198252-Sitemap-For-Student-Guide}}
+\end{figure}	
+\end{frame}
+
+	
+%=======================================================
+\section{Representação na Memória}
+
+%-------------------------------------------------------
+\begin{frame}\frametitle{Representação na Memória}
+\begin{itemize}
+	\item Da mesma forma que as estruturas de dados lineares, podemos alocar as árvores de duas maneiras
+	\begin{itemize}
+		\item Por contiguidade
+		\item Por encadeamento
+	\end{itemize}
+\end{itemize}
+\end{frame}
+
+%-------------------------------------------------------
+\begin{frame}[fragile]\frametitle{Representação por Contiguidade}
+\begin{itemize}
+	\item A árvore é armazenada em um arranjo
+	\item Cada posição por arranjo pode, por exemplo, conter, além da informação do nodo, referências aos nodos filhos
+\begin{columns}[T]
+\begin{column}{0.30\linewidth}
+%\vspace{-5mm}
+\begin{figure}[h]
+	\centering
+	\includegraphics[height=0.4\paperheight]{imagens/arvore_a.eps}
+\end{figure}
+\end{column}
+\begin{column}{0.70\linewidth}
+\begin{figure}[h]
+	\centering
+	\includegraphics[height=0.4\paperheight]{imagens/arvore_a-cont.eps}
+\end{figure}
+\end{column}
+\end{columns}
+\end{itemize}
+\end{frame}
+
+%-------------------------------------------------------
+\begin{frame}\frametitle{Representação por Contiguidade}
+\begin{itemize}
+	\item Vantagem:
+	\begin{itemize}
+		\item Forma de armazenar árvores em arquivos
+	\end{itemize}
+	\item Desvantagem:
+	\begin{itemize}
+		\item Quantidade de processamento para inserção, remoção ou mesmo localização de um nodo
+	\end{itemize}
+\end{itemize}
+\end{frame}
+
+%-------------------------------------------------------
+\begin{frame}[fragile]\frametitle{Representação por Encadeamento}
+\begin{itemize}
+	\item Forma \textbf{mais usual}
+	\item Facilita as operações de inserção, remoção e pesquisa na árvore
+	\item Cada nodo conterá, além da informação, as referências das suas subárvores
+\begin{columns}[T]
+\begin{column}{0.30\linewidth}
+%\vspace{-5mm}
+\begin{figure}[h]
+	\centering
+	\includegraphics[height=0.4\paperheight]{imagens/arvore_a.eps}
+\end{figure}
+\end{column}
+\begin{column}{0.70\linewidth}
+\begin{figure}[h]
+	\centering
+	\includegraphics[height=0.4\paperheight]{imagens/arvore_a-enc.eps}
+\end{figure}
+\end{column}
+\end{columns}
+\end{itemize}
+\end{frame}
+
+%-------------------------------------------------------
+\begin{frame}\frametitle{Representação por Encadeamento}
+\begin{itemize}
+	\item  No caso de árvores ``genéricas'', cada nodo pode ter uma quantidade de subárvores diferentes
+	\item Torna-se necessário:
+	\begin{itemize}
+		\item Limitar, ou seja, determinar o número máximo de subárvores que cada nodo deve conter
+		\item Ou ter uma lista de subárvores
+	\end{itemize}
+	\item Isso é necessário, pois os nodos de uma mesma árvore são todos do mesmo tipo
+\end{itemize}
+\end{frame}
+
+%-------------------------------------------------------
+\begin{frame}\frametitle{Exemplo}
+\begin{columns}[T]
+\begin{column}{0.25\linewidth}
+%\vspace{-5mm}
+\begin{figure}[h]
+	\centering
+	\includegraphics[height=0.4\paperheight]{imagens/arvore_a.eps}
+\end{figure}
+\end{column}
+\begin{column}{0.75\linewidth}
+\pause\lstinputlisting[basicstyle=\ttfamily\tiny]{src/exemplo01.cpp}
+\end{column}
+\end{columns}
+\end{frame}
+
+%-------------------------------------------------------
+\begin{frame}\frametitle{GraphViz}
+\vspace{-2mm}
+\begin{figure}[h]
+	\centering
+	\includegraphics[height=0.25\paperheight]{imagens/graphviz.png}
+\end{figure}
+\vspace{-3mm}
+\begin{itemize}
+	\item Graphviz (abreviação de \emph{Graph Visualization Software}) é uma ferramenta de código-fonte aberto para desenhar grafos (formados por nodos e arestas) especificados a partir de uma linguagem de escrite chamada DOT (que usa a extensão ``gv'')
+	\item GraphViz também provê bibliotecas para que aplicações possam usar suas facilidades
+	\item É um \emph{software} livre licenciado através da Licença Pública Eclipse
+	\item Página: \url{https://graphviz.org/}
+	\item Há várias opções para gerar imagens a partir dos arquivos no formato DOT
+	\begin{itemize}
+		\item \url{https://dreampuf.github.io/GraphvizOnline/}
+	\end{itemize}
+\end{itemize}
+\end{frame}
+
+%-------------------------------------------------------
+\begin{frame}[fragile]\frametitle{GraphViz}
+\begin{columns}[T]
+\begin{column}{0.3\linewidth}
+%\vspace{-5mm}
+\textbf{\underline{Grafo:}}\\
+\begin{figure}[h]
+	\centering
+	\includegraphics[height=0.4\paperheight]{imagens/arvore_a.eps}
+\end{figure}
+\end{column}
+\begin{column}{0.35\linewidth}
+\textbf{\underline{Versão 1:}}\\
+\lstinputlisting[basicstyle=\ttfamily\tiny]{imagens/arvore_a.gv}
+\end{column}
+\begin{column}{0.35\linewidth}
+\textbf{\underline{Versão 2:}}\\
+\lstinputlisting[basicstyle=\ttfamily\tiny]{imagens/arvore_a-v2.gv}
+\end{column}
+\end{columns}
+\end{frame}
+
+%=======================================================
+\section{Exercícios}
+
+%-------------------------------------------------------
+\begin{frame}[fragile]\frametitle{Exercício 3}
+\begin{enumerate}
+        \setcounter{enumi}{2}
+	\small
+	\item Considere a árvore e o programa que cria esta árvore correspondente, usando estruturas encadeadas em C++, ambos apresentados na próxima página. Observe que o nodo declarado (\texttt{struct Node}) armazena um caractere (\texttt{char}) e suporta até 3 subárvores (ou seja, cada nodo pode ter 3 nodos filhos). Para este programa, implemente as seguintes funções:
+	\begin{itemize}
+		\footnotesize
+		\item \texttt{void clean(Node *root)}: que recebe o endereço de um nodo e faz a desalocação de todos os nodos da árvore a partir do nodo recebido (\texttt{root}) -- esta função deve ser implementada de forma recursiva;
+		\item \texttt{string strGraphViz(Node *root)}: que recebe o endereço de um nodo e gera uma cadeia de caracteres (\texttt{string}) com representação da árvore no formato DOT, usado pelo GraphViz -- esta função deve: imprimir a parte inicial do formato DOT; chamar um outro método recursivo (por exemplo, \texttt{string strNode(Node *node)}) para gerar a lista de arestas entre os nodos; imprimir a parte final do formato DOT.
+	\end{itemize}
+	Rode o seu programa, por exemplo, com:
+\begin{lstlisting}[basicstyle=\ttfamily\scriptsize,language=bash]
+./exercicio03 > exercicio03.gv
+\end{lstlisting}
+	Use o site \url{https://dreampuf.github.io/GraphvizOnline/} para verificar se o arquivo \texttt{exercicio03.gv} foi corretamente gerado.
+\end{enumerate}
+\end{frame}
+
+%-------------------------------------------------------
+\begin{frame}[fragile]\frametitle{Exercício 3}
+\begin{columns}
+\begin{column}{0.23\linewidth}
+%\vspace{-5mm}
+\begin{figure}[h]
+	\centering
+	\includegraphics[height=0.4\paperheight]{imagens/arvore_a.eps}
+\end{figure}
+\end{column}
+\begin{column}{0.77\linewidth}
+\fontsize{6pt}{6pt}\selectfont{
+\lstinputlisting{src/exercicio03.cpp}
+}
+\end{column}
+\end{columns}
+\end{frame}
+
+%-------------------------------------------------------
+\begin{frame}[fragile]\frametitle{Exercício 4}
+\begin{enumerate}
+        \setcounter{enumi}{3}
+	\small
+	\item Considere a árvore abaixo e, usando como modelo o código do exercício 3 (resolvido), implemente um programa em C++ que crie esta árvore em memória, que a imprima no formato DOT e que desaloque corretamente todos os nodos da árvore. Use o site \url{https://dreampuf.github.io/GraphvizOnline/} para verificar se o arquivo DOT foi corretamente gerado.
+\begin{figure}[h]
+	\centering
+	\includegraphics[height=0.5\paperheight]{imagens/exercicio02.eps}
+\end{figure}
+\end{enumerate}
+\end{frame}
+
+%=======================================================
+\section{TAD para Árvore}
+
+%-------------------------------------------------------
+\begin{frame}\frametitle{TAD para Árvore}
+\begin{itemize}
+	\item Um TAD para árvore:
+	\begin{itemize}
+		\item Armazena elementos em nodos
+		\item O posicionamento dos nodos satisfaz as relações pai-filho
+		\item Operações consideram as propriedades desta estrutura de dados hierárquica
+	\end{itemize}
+\end{itemize}
+\end{frame}
+
+%-------------------------------------------------------
+\begin{frame}\frametitle{TAD para Árvore}
+\begin{itemize}
+	\item Uma árvore deve disponibilizar métodos de acesso que retornam e aceitam posições:
+	\begin{itemize}
+		\item \texttt{root()}: retorna a raiz da árvore
+		\item \texttt{parent(v)}: retorna o nodo pai de \texttt{v}, ocorrendo um erro se for a raiz
+		\item \texttt{children(v)}: retorna os filhos do nodo \texttt{v}
+	\end{itemize}
+\end{itemize}
+\end{frame}
+
+%-------------------------------------------------------
+\begin{frame}\frametitle{TAD para Árvore}
+\begin{itemize}
+	\item Métodos de consulta:
+	\begin{itemize}
+		\item \texttt{isInternal(v)}: testa se um nodo \texttt{v} é interno e retorna \texttt{true} ou \texttt{false}
+		\item \texttt{isExternal(v)}: testa se um nodo \texttt{v} é externo e retorna \texttt{true} ou \texttt{false}
+		\item \texttt{isRoot(v)}: testa se um nodo \texttt{v} é raiz e retorna \texttt{true} ou \texttt{false}
+	\end{itemize}
+\end{itemize}
+\end{frame}
+
+%-------------------------------------------------------
+\begin{frame}\frametitle{TAD para Árvore}
+\begin{itemize}
+	\item Métodos ``genéricos'' (não estão necessariamente relacionados com sua estrutura):
+	\begin{itemize}
+		\item \texttt{size()}: retorna o número de nodos na árvore
+		\item \texttt{isEmpty()}: testa se a árvore tem ou não tem algum nodo
+		\item \texttt{iterator()}: retorna um iterator de todos os elementos armazenados nos nodos da árvore
+		\item \texttt{positions()}: retorna uma coleção com todos os nodos da árvore
+		\item \texttt{replaceElement(v,e)}: retorna o elemento armazenado em \texttt{v} e o substitui por \texttt{e}
+	\end{itemize}
+\end{itemize}
+\end{frame}
+
+%=======================================================
+\section{Árvore Binária}
+
+%=======================================================
+\section{Exercícios}
+
+%-------------------------------------------------------
+\begin{frame}[fragile]\frametitle{Exercício 10}
+\begin{enumerate}
+        \setcounter{enumi}{9}
+\item Crie uma nova classe para um nodo de uma árvore binária que tenha a seguinte estrutura:
+\begin{itemize}
+	\item Referência ao dado\\
+	\item Referência ao nodo da esquerda\\
+	\item Referência ao nodo da direita\\
+	\item Referência ao nodo pai\\
+\end{itemize}
+\end{enumerate}
+\end{frame}
+
+%=======================================================
+\section{Créditos}
+
+%-------------------------------------------------------
+\begin{frame}\frametitle{Créditos}
+\begin{itemize}
+	\item Estas lâminas foram adaptadas do material desenvolvido pela professora Isabel Harb Manssour.
+\end{itemize}
+\end{frame}
+
+
+\begin{comment}
+
+Árvore Binária
+◼
+ Uma árvore binária é aquela na qual o grau de cada
+nodo é menor ou igual a 2
+◼
+ As subárvores de um nodo
+A
+são chamadas de
+◼
+ subárvore da esquerda
+◼
+ subárvore da direita
+ B
+ C
+◼
+ Exemplo →
+D
+ E
+ F
+G
+ H
+Árvore Binária
+◼
+ Se o grau de um nodo é 1, deve-se especificar
+se a sua subárvore é a da esquerda ou a da
+direita
+B
+A
+A
+B
+Árvore Binária
+◼
+ Uma árvore binária é própria se cada um de
+seus nodos internos tiver dois filhos
+◼
+ Todo nodo interno tem
+exatamente dois filhos
+A
+◼
+ Exemplo:
+B
+ C
+D
+ E
+ F
+ G
+H
+ I
+Árvore Binária
+◼
+Árvores de decisão
+◼
+ Classe importante de árvores binárias
+◼
+ Quando se quer representar as diferentes saídas que
+podem resultar a partir das respostas a um conjunto de
+perguntas do tipo sim ou não
+◼
+ Cada nodo interno é associado com uma questão
+◼
+ Exemplo:
+Você é nervoso
+sim
+ não
+Conta Poupança
+ Você vai necessitar do dinheiro
+nos próximos 5 anos
+sim
+não
+Fundo Préfixado
+ Carteira de Ações
+Árvore Binária
+◼
+ Os nodos de uma árvore binária terão no mínimo:
+◼
+ A informação
+◼
+ Referência para o nodo da esquerda
+◼
+ Referência para o nodo da direita
+◼
+ Também se pode usar referência para o nodo pai
+
+
+◼
+ÁrvoreExemplo:
+Binária
+Árvore Binária
+◼
+ Uma árvore qualquer pode ser transformada em
+árvore binária
+◼
+ Fases para a transformação
+1.
+ Ligar os nodos irmãos
+2.
+ Desligar o nodo pai com os filhos,
+exceto o primeiro filho
+ A
+A
+ A
+ B
+C
+B
+ C
+ D
+ B
+ C
+ D
+E
+ F
+ G
+E
+ F
+ G
+ E
+ D
+ Irmão
+seguinte
+Mesmo nível → p/ direita
+ F G
+ Primeiro
+Nível maior → p/ esquerda
+ filho
+Roteiro
+
+
 
 %-------------------------------------------------------
 \begin{frame}\frametitle{Tipos Abstratos de Dados}
@@ -233,10 +1221,6 @@
 	\item Estruturas lineares podem ser alocadas de forma:
 	\begin{itemize}
 		\item \textbf{Sequencial ou Contígua}\\Os nós, além de estarem em uma sequência lógica, também estão \textbf{fisicamente em sequência}
-\begin{figure}[h]
-	\centering
-	\includegraphics[height=0.10\paperheight]{imagens/vetor.png}
-\end{figure}
 		\item \textbf{Encadeada}\\Os nós são alocados dinamicamente e são ligados entre si, de forma que há uma sequência lógica, mas fisicamente os nós NÃO precisam estar contíguos
 \begin{figure}[h]
 	\centering
@@ -487,20 +1471,6 @@ ESTE EXERCICIO E MUITO FACIL.
 \texttt{CharStack *copia(CharStack \&p);}\\
 No retorno da função, o conteúdo da pilha recebida como parâmetro deve ser o mesmo da chamada.\\
 }
-\end{enumerate}
-\end{frame}
-
-%-------------------------------------------------------
-\begin{frame}[fragile]\frametitle{Exercícios 4-5}
-\begin{enumerate}
-        \setcounter{enumi}{3}
-
-\item Implemente uma função em C++ para testar se duas pilhas de caracteres (objetos da classe \texttt{CharStack}) são iguais. Sua função deve ter o seguinte protótipo:\\
-\texttt{bool saoIguais(CharStack \&p1, CharStack \&p2);}\\
-Para que duas pilhas sejam consideradas iguais, elas devem ter o mesmo número de elementos nas mesmas posições; no entanto, o tamanho máximo das pilhas NÃO precisa ser igual. No retorno da função, o conteúdo das pilhas deve ser o mesmo da chamada.\\
-
-	\item Considerando ainda a classe \texttt{CharStack}, implemente uma função em C++, usando o conceito de pilha, para testar se uma palavra (\texttt{string}) recebida como parâmetro é um palíndromo ou não. Sua função deve ter o seguinte protótipo:\\
-\texttt{bool ehPalindromo(string s);}\\
 \end{enumerate}
 \end{frame}
 
@@ -1386,23 +2356,6 @@ struct Node {
 \end{itemize}
 \end{frame}
 
-%=======================================================
-\section{Créditos}
-
-%-------------------------------------------------------
-\begin{frame}\frametitle{Créditos}
-\begin{itemize}
-	\item Estas lâminas contêm trechos inspirados em materiais criados e disponibilizados pelos professores Isabel Harb Manssour e Iaçanã Ianiski Weber.
-\end{itemize}
-\end{frame}
-
-%=======================================================
-\section{Soluções}
-
-%-------------------------------------------------------
-\begin{frame}[fragile]\frametitle{Exercício 1: \texttt{CharStack.hpp}}
-\lstinputlisting[basicstyle=\ttfamily\tiny]{src/CharStack.hpp}
-\end{frame}
 
 %-------------------------------------------------------
 \begin{frame}[fragile]\frametitle{Exercício 1: \texttt{CharStack.cpp}}
@@ -1484,26 +2437,6 @@ A = { 20, 30, 60 }   B = { 20, 10 }
 \end{frame}
 
 %-------------------------------------------------------
-\begin{frame}[fragile]\frametitle{Exercício 11}
-\small{
-\begin{verbatim}
-esquerda --> || <-- direita
-
-esquerda --> |'D'|'E'|'S'|'C'|'A'|'R'|'T'|'E'|'S'| <-- direita
-esquerda --> |'C'|'A'|'R'|'T'|'E'|'S'| <-- direita
-esquerda --> |'C'|'A'| <-- direita
-esquerda --> |'N'|'O'|'S'|'I'|'D'|'E'|'C'|'A'| <-- direita
-esquerda --> |'E'|'C'|'A'| <-- direita
-esquerda --> |'D'|'R'|'O'|'F'|'R'|'E'|'H'|'T'|'U'|'R'|'E'|'C'|'A'| <-- direita
-esquerda --> |'U'|'R'|'E'|'C'|'A'| <-- direita
-esquerda --> |'N'|'I'|'E'|'T'|'S'|'N'|'I'|'E'|'U'|'R'|'E'|'C'|'A'| <-- direita
-
-esquerda --> |'E'|'U'|'R'|'E'|'C'|'A'| <-- direita
-\end{verbatim}
-}
-\end{frame}
-
-%-------------------------------------------------------
 \begin{frame}[fragile]\frametitle{Exercício 12: \texttt{IntDoubleLinkedDeque.cpp}}
 \fontsize{3pt}{5pt}\selectfont{
 \lstinputlisting[firstline=1,lastline=37]{src/IntDoubleLinkedDeque.cpp}
@@ -1556,6 +2489,69 @@ esquerda --> |'E'|'U'|'R'|'E'|'C'|'A'| <-- direita
 \begin{frame}[fragile]\frametitle{Exercício 18: \texttt{exercicio18.cpp}}
 \fontsize{5pt}{5pt}\selectfont{
 \lstinputlisting{src/exercicio18.cpp}
+}
+\end{frame}
+
+\end{comment}
+
+%=======================================================
+\section{Soluções}
+
+%-------------------------------------------------------
+\begin{frame}[fragile]\frametitle{Exercício 1}
+\small{
+\begin{verbatim}
+Qual é a altura da árvore?
+    4
+Quais são as folhas da árvore?
+    H, I, E, F, J, N, L, M
+Quais são os nodos irmãos?
+    B e C; D, E e F; H e I; J, K, L e M
+Os nodos D e G são pais de que nodos?
+    D é pai de H e I; G é pai de J, K, L e M
+Qual é o grau do nodo B?
+    3
+Qual é o grau do nodo G?
+    4
+Quais são os níveis dos nodos B, G, H, L e N? 
+    B, nível 1; G, nível 2; H, nível 3; L, nível 3; N, nível 4
+\end{verbatim}
+}
+\end{frame}
+
+%-------------------------------------------------------
+\begin{frame}[fragile]\frametitle{Exercício 2}
+\small{
+\begin{verbatim}
+Qual é a altura da árvore?
+    3
+Quais são as folhas da árvore?
+    E, F, G, K, I, J
+Quais são os nodos irmãos?
+    B, C e D; E e F; H, I e J
+Quais são os nodos internos?
+    B, C, D e H
+Qual é o grau do nodo C?
+    1
+Qual é o grau do nodo D?
+    3
+Quais são os níveis dos nodos C, H e K?
+    C, nível 1; H, nível 2; K, nível 3
+\end{verbatim}
+}
+\end{frame}
+
+%-------------------------------------------------------
+\begin{frame}[fragile]\frametitle{Exercício 3: \texttt{exercicio03-resp.cpp}}
+\fontsize{3pt}{5pt}\selectfont{
+\lstinputlisting[firstline=15,lastline=34]{src/exercicio03-resp.cpp}
+}
+\end{frame}
+
+%-------------------------------------------------------
+\begin{frame}[fragile]\frametitle{Exercício 4: \texttt{exercicio04.cpp}}
+\fontsize{3pt}{5pt}\selectfont{
+\lstinputlisting{src/exercicio04.cpp}
 }
 \end{frame}
 

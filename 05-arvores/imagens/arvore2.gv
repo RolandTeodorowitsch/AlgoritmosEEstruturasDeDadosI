@@ -1,0 +1,13 @@
+graph arvore2 {
+	node [shape=circle]
+	A -- { B C };
+	subgraph cluster_0 {
+		style=filled;
+		color=lightgrey;
+		B -- { D E F };
+		D -- { I J };
+		label="Subárvore"
+	}
+	C -- { G H };
+	H -- { K }
+}

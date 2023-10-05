@@ -4,7 +4,7 @@ using namespace std;
 
 struct Node {
   char info;  Node *prev, *next;
-  Node (char i) { info = i; prev = next = nullptr; }
+  Node(char i) {  info = i;  prev = next = nullptr;  }
 };
 
 int main() {

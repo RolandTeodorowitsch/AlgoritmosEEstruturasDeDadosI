@@ -1,0 +1,7 @@
+graph "Árvore A - V1" {
+
+   node [shape=record];
+
+   matriz [label = "{ índice | 0 | 1 | 2 | 3 | 4 | 5 | 6 }|{ conteúdo | A | B | C | D | E | F | G }|{ filho1 | 1 | -1 | 4 | 6 | -1 | -1 | -1 }|{ filho2 | 2 | -1 | 5 | -1 | -1 | -1 | -1 }|{ filho3 | 3 | -1 | -1 | -1 | -1 | -1 | -1 }"];
+
+}

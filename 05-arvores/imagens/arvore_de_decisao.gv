@@ -1,0 +1,21 @@
+graph arvore_de_decisao {
+	node [shape=rectangle,style=filled,color=black,fillcolor=yellowgreen]
+	Tempo -- { Nublado Ensolarado Chuvoso }
+	Nublado -- Umidade
+	Umidade -- { Alta Normal }
+	Alta -- semPraia1
+	Normal -- praia1
+	Ensolarado -- praia2
+	Chuvoso -- { "Chuva forte" "Chuva fraca" }
+	"Chuva forte" -- semPraia2
+	"Chuva fraca" -- Vento
+	Vento -- { Forte Fraco }
+	Forte -- semPraia3
+	Fraco -- praia3
+	praia1[label="Ir para a praia"]
+	praia2[label="Ir para a praia"]
+	praia3[label="Ir para a praia"]
+	semPraia1[label="Não ir para a praia"]
+	semPraia2[label="Não ir para a praia"]
+	semPraia3[label="Não ir para a praia"]
+}

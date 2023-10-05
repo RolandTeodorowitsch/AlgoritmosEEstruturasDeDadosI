@@ -1,0 +1,9 @@
+graph "Árvore A (Versão 2)" {
+  node [shape=circle]
+  A -- B
+  A -- C
+  A -- D
+  C -- E
+  C -- F
+  D -- G
+}

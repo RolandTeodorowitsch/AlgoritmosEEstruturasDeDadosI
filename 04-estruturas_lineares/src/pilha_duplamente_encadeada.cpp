@@ -1,36 +1,35 @@
 #include <iostream>
 
 using namespace std;
-	
-struct Nodo {
-  int valor;
-  Nodo *prev;
-  Nodo *prox;
-  Nodo(int v) {  valor = v;  prev = nullptr;  prox = nullptr;  cout << "Nodo " << valor << " criado..." << endl;  }
-  ~Nodo() {  cout << "Nodo " << valor << " destruido..." << endl;  }
+
+struct Node {
+  int info;
+  Node *prev, *next;
+  Node(int i) {  info = i;  prev = next = nullptr;  cout << "+ Node(" << info << ") criado..." << endl;  }
+  ~Node() {  cout << "- Node(" << info << ") destruido..." << endl;  }
 };
 
 int main() {
-  Nodo *nodo1 = new Nodo(1);
-  Nodo *nodo2 = new Nodo(2);
-  Nodo *nodo3 = new Nodo(3);
-  Nodo *nodo4 = new Nodo(4);
-  Nodo *nodo5 = new Nodo(5);
+  Node *node1 = new Node(1);
+  Node *node2 = new Node(2);
+  Node *node3 = new Node(3);
+  Node *node4 = new Node(4);
+  Node *node5 = new Node(5);
 
-  Nodo *topo  = nodo5;      nodo5->prox = nodo4;
-  nodo4->prev = nodo5;      nodo4->prox = nodo3;
-  nodo3->prev = nodo4;      nodo3->prox = nodo2;
-  nodo2->prev = nodo3;      nodo2->prox = nodo1;
-  nodo1->prev = nodo2;      Nodo *base  = nodo1;
+  Node *topo  = node5;      node5->next = node4;
+  node4->prev = node5;      node4->next = node3;
+  node3->prev = node4;      node3->next = node2;
+  node2->prev = node3;      node2->next = node1;
+  node1->prev = node2;      Node *base  = node1;
 
-  for (Nodo *aux = topo; aux != nullptr; aux = aux->prox)
-      cout << aux->valor << endl;
-  for (Nodo *aux = base; aux != nullptr; aux = aux->prev)
-      cout << aux->valor << endl;
+  for (Node *aux = topo; aux != nullptr; aux = aux->next)
+      cout << aux->info << endl;
+  for (Node *aux = base; aux != nullptr; aux = aux->prev)
+      cout << aux->info << endl;
 
   while (topo != nullptr) {
-        Nodo *aux = topo;
-        topo = topo->prox;
+        Node *aux = topo;
+        topo = topo->next;
         delete aux;
   }
 

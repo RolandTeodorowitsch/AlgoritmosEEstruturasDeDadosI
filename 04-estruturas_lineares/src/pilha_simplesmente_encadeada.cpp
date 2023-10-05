@@ -2,32 +2,32 @@
 
 using namespace std;
 	
-struct Nodo {
-  char letra;
-  Nodo *prox;
-  Nodo(char l) {  letra = l;  prox = nullptr;  cout << "Nodo " << letra << " criado..." << endl;  }
-  ~Nodo() {  cout << "Nodo " << letra << " destruido..." << endl;  }
+struct Node {
+  char info;
+  Node *next;
+  Node(char i) {  info = i;  next = nullptr;  cout << "+ Node(" << info << ") criado..." << endl;  }
+  ~Node() {  cout << "- Node(" << info << ") destruido..." << endl;  }
 };
 
 int main() {
-  Nodo *nodo1 = new Nodo('A');
-  Nodo *nodo2 = new Nodo('B');
-  Nodo *nodo3 = new Nodo('C');
-  Nodo *nodo4 = new Nodo('D');
-  Nodo *nodo5 = new Nodo('E');
+  Node *nodo1 = new Node('A');
+  Node *nodo2 = new Node('B');
+  Node *nodo3 = new Node('C');
+  Node *nodo4 = new Node('D');
+  Node *nodo5 = new Node('E');
 
-  Nodo *topo = nodo5;
-  nodo5->prox = nodo4;
-  nodo4->prox = nodo3;
-  nodo3->prox = nodo2;
-  nodo2->prox = nodo1;
+  Node *topo  = nodo5;
+  nodo5->next = nodo4;
+  nodo4->next = nodo3;
+  nodo3->next = nodo2;
+  nodo2->next = nodo1;
 
-  for (Nodo *aux = topo; aux != nullptr; aux = aux->prox)
-      cout << aux->letra << endl;
+  for (Node *aux = topo; aux != nullptr; aux = aux->next)
+      cout << aux->info << endl;
 
   while (topo != nullptr) {
-        Nodo *aux = topo;
-        topo = topo->prox;
+        Node *aux = topo;
+        topo = topo->next;
         delete aux;
   }
 

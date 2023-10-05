@@ -1,0 +1,8 @@
+graph exercicio02 {
+	node [shape=circle]
+	A -- { B C D }
+	B -- { E F }
+	D -- { H I J }
+	C -- G
+	H -- K
+}

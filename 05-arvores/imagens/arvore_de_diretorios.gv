@@ -1,0 +1,5 @@
+graph arvore_de_diretorios {
+	node [shape=folder,style=filled,color=black,fillcolor=yellowgreen]
+	"C:\\" -- { "Download\\" "Meus Documentos\\" "Temp\\" }
+	"Meus Documentos\\" -- { "Fotos\\" "PUCRS\\" "Docs\\" }
+}

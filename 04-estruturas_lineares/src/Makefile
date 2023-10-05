@@ -3,6 +3,14 @@ ALL =				vetores \
 				IntStackApp \
 				exercicio02 \
 				exercicio03 \
+				exercicio04 \
+				exercicio05 \
+				exercicio14 \
+				exercicio14-solucao \
+				exercicio15 \
+				exercicio15-solucao \
+				exercicio17 \
+				exercicio18 \
 				pilhaApp \
 				filaApp \
 				dequeApp \
@@ -15,7 +23,9 @@ ALL =				vetores \
 				IntLinkedQueueApp \
 				exercicio11 \
 				IntDoubleLinkedDequeApp \
-				StringArrayListApp
+				StringArrayListApp \
+				exercicio16 \
+				exercicio16-template
 
 CFLAGS =			-std=c++11
 
@@ -36,6 +46,30 @@ exercicio02:			exercicio02.cpp CharStack.hpp CharStack.hpp
 
 exercicio03:			exercicio03.cpp CharStack.hpp CharStack.hpp
 				@g++ ${CFLAGS} -o exercicio03 exercicio03.cpp CharStack.cpp
+
+exercicio04:			exercicio04.cpp CharStack.hpp CharStack.hpp
+				@g++ ${CFLAGS} -o exercicio04 exercicio04.cpp CharStack.cpp
+
+exercicio05:			exercicio05.cpp CharStack.hpp CharStack.hpp
+				@g++ ${CFLAGS} -o exercicio05 exercicio05.cpp CharStack.cpp
+
+exercicio14:			exercicio14.cpp
+				@g++ ${CFLAGS} -o exercicio14 exercicio14.cpp
+
+exercicio14-solucao:		exercicio14-solucao.cpp
+				@g++ ${CFLAGS} -o exercicio14-solucao exercicio14-solucao.cpp
+
+exercicio15:			exercicio15.cpp
+				@g++ ${CFLAGS} -o exercicio15 exercicio15.cpp
+
+exercicio15-solucao:		exercicio15-solucao.cpp
+				@g++ ${CFLAGS} -o exercicio15-solucao exercicio15-solucao.cpp
+
+exercicio17:			exercicio17.cpp
+				@g++ ${CFLAGS} -o exercicio17 exercicio17.cpp
+
+exercicio18:			exercicio18.cpp
+				@g++ ${CFLAGS} -o exercicio18 exercicio18.cpp
 
 pilhaApp:			pilhaApp.cpp
 				@g++ ${CFLAGS} -o pilhaApp pilhaApp.cpp
@@ -80,6 +114,13 @@ IntDoubleLinkedDequeApp:	IntDoubleLinkedDeque.cpp IntDoubleLinkedDeque.hpp IntDo
 StringArrayListApp:		StringArrayList.cpp StringArrayList.hpp StringArrayListMain.cpp
 				@g++ ${CFLAGS} -o StringArrayListApp StringArrayListMain.cpp StringArrayList.cpp
 				@./StringArrayListApp > StringArrayListApp.output
+
+exercicio16:			exercicio16.cpp
+				@g++ ${CFLAGS} -o exercicio16 exercicio16.cpp
+				@./exercicio16 < exercicio16.input > exercicio16.output
+
+exercicio16-template:		exercicio16-template.cpp
+				@g++ ${CFLAGS} -o exercicio16-template exercicio16-template.cpp
 
 clean:
 				@rm -f ${ALL}
