@@ -26,11 +26,11 @@ string strGraphViz(Node *root) {
   return ss.str();
 }
 	
-void clean(Node *root) {
-  if ( root->child1 != nullptr ) clean(root->child1);
-  if ( root->child2 != nullptr ) clean(root->child2);
-  if ( root->child3 != nullptr ) clean(root->child3);
-  delete root;
+void clean(Node *subtree) {
+  if ( subtree->child1 != nullptr ) clean(subtree->child1);
+  if ( subtree->child2 != nullptr ) clean(subtree->child2);
+  if ( subtree->child3 != nullptr ) clean(subtree->child3);
+  delete subtree;
 }
 
 int main() {

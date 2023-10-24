@@ -6,22 +6,22 @@ digraph "Árvore A - V2" {
         raiz -> A;
 
 	A [label="{ <data> A | <ref1> | <ref2> | <ref3> }"]
-        B [label="{ <data> B | <data> * | <data> * | <data> * }"]
-        C [label="{ <data> C | <ref1> | <ref2> | <data> * }"]
-        D [label="{ <data> D | <ref1> | <data> * | <data> * }"]
-        E [label="{ <data> E | <data> * | <data> * | <data> * }"]
-        F [label="{ <data> F | <data> * | <data> * | <data> * }"]
-        G [label="{ <data> G | <data> * | <data> * | <data> * }"]
+        B [label="{ <data> B | <data> ∅ | <data> ∅ | <data> ∅ }"]
+        C [label="{ <data> C | <ref1> | <ref2> | <data> ∅ }"]
+        D [label="{ <data> D | <ref1> | <data> ∅ | <data> ∅ }"]
+        E [label="{ <data> E | <data> ∅ | <data> ∅ | <data> ∅ }"]
+        F [label="{ <data> F | <data> ∅ | <data> ∅ | <data> ∅ }"]
+        G [label="{ <data> G | <data> ∅ | <data> ∅ | <data> ∅ }"]
 
         raiz [shape=plaintext]
 
-	A:ref1:c -> B:data:n [arrowhead=vee, arrowtail=dot, dir=both, tailclip=false];
-	A:ref2:c -> C:data:n [arrowhead=vee, arrowtail=dot, dir=both, tailclip=false];
-	A:ref3:c -> D:data:n [arrowhead=vee, arrowtail=dot, dir=both, tailclip=false];
+	A:ref1:c -> B:data:w [arrowhead=vee, arrowtail=dot, dir=both, tailclip=false];
+	A:ref2:c -> C:data:w [arrowhead=vee, arrowtail=dot, dir=both, tailclip=false];
+	A:ref3:c -> D:data:w [arrowhead=vee, arrowtail=dot, dir=both, tailclip=false];
 
-	C:ref1:c -> E:data:n [arrowhead=vee, arrowtail=dot, dir=both, tailclip=false];
-	C:ref2:c -> F:data:n [arrowhead=vee, arrowtail=dot, dir=both, tailclip=false];
+	C:ref1:c -> E:data:w [arrowhead=vee, arrowtail=dot, dir=both, tailclip=false];
+	C:ref2:c -> F:data:w [arrowhead=vee, arrowtail=dot, dir=both, tailclip=false];
 
-	D:ref1:c -> G:data:n [arrowhead=vee, arrowtail=dot, dir=both, tailclip=false];
+	D:ref1:c -> G:data:w [arrowhead=vee, arrowtail=dot, dir=both, tailclip=false];
 }
-# / &#8709; / * /
+# / &#8709; / ∅ /

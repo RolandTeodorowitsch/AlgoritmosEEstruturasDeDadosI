@@ -1,0 +1,24 @@
+graph arvore_b {
+	node [shape=circle]
+	{
+		rank = same;
+		B;
+		C;
+		D;
+	}
+	{
+		rank = same;
+		E;
+		F;
+		G;
+	}
+	A -- B
+	A -- C
+	A -- D
+	B -- C [style=invisible]
+	C -- E
+	C -- D [style=invisible]
+	C -- F
+	D -- G
+	E -- F [style=invisible]
+}

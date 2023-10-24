@@ -1,0 +1,14 @@
+graph arvore_binaria1 {
+	node [shape=circle]
+	A -- B
+	A -- C [style=invisible]
+	C[style=invisible]
+
+	X[label="São\nárvores\nDIFERENTES",shape=plaintext]
+
+	A1 -- C1 [style=invisible]
+	A1 -- B1
+	A1[label="A"]
+	B1[label="B"]
+	C1[style=invisible]
+}

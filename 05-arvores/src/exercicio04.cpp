@@ -26,17 +26,21 @@ string strGraphViz(Node *root) {
   return ss.str();
 }
 	
-void clean(Node *root) {
-  if ( root->child1 != nullptr ) clean(root->child1);
-  if ( root->child2 != nullptr ) clean(root->child2);
-  if ( root->child3 != nullptr ) clean(root->child3);
-  delete root;
+void clean(Node *subtree) {
+  if ( subtree->child1 != nullptr ) clean(subtree->child1);
+  if ( subtree->child2 != nullptr ) clean(subtree->child2);
+  if ( subtree->child3 != nullptr ) clean(subtree->child3);
+  delete subtree;
 }
 
 int main() {
-  Node    *e = new Node('E'),   *f = new Node('F'),       *g = new Node('G'),       *k = new Node('K'),
-          *i = new Node('I'),   *j = new Node('J'),       *b = new Node('B',e,f),   *c = new Node('C',g),
-          *h = new Node('H',k), *d = new Node('D',h,i,j), *a = new Node('A',b,c,d);
-  cout << strGraphViz(a);  clean(a);
+  Node    *e = new Node('E'),      *f = new Node('F'),
+          *g = new Node('G'),      *k = new Node('K'),
+          *i = new Node('I'),      *j = new Node('J'),
+          *b = new Node('B',e,f),  *c = new Node('C',g),
+          *h = new Node('H',k),    *d = new Node('D',h,i,j),
+          *root = new Node('A',b,c,d);
+  cout << strGraphViz(root);
+  clean(root);
   return 0;
 }

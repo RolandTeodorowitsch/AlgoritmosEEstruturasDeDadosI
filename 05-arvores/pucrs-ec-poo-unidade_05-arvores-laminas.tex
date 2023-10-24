@@ -74,7 +74,7 @@
 \title[\sc{Árvores}]{Árvores}
 \author[Roland Teodorowitsch]{Roland Teodorowitsch}
 \institute[ALEST I - EP - PUCRS]{Algoritmos e Estruturas de Dados I - Escola Politécnica - PUCRS}
-\date{3 de outubro de 2023}
+\date{24 de outubro de 2023}
 
 \begin{document}
 
@@ -565,7 +565,7 @@ E responda:
 %-------------------------------------------------------
 \begin{frame}[fragile]\frametitle{Representação de estruturas/informações hierárquicas}
 \begin{itemize}
-	\item Arquivos HTML e  XML
+	\item Arquivos HTML e XML
 \begin{lstlisting}[language=XML,basicstyle=\ttfamily\scriptsize]
 <?xml version="1.0"?>
 <Company>
@@ -756,7 +756,7 @@ E responda:
 \begin{column}{0.70\linewidth}
 \begin{figure}[h]
 	\centering
-	\includegraphics[height=0.4\paperheight]{imagens/arvore_a-enc.eps}
+	\includegraphics[height=0.35\paperheight]{imagens/arvore_a-enc.png}
 \end{figure}
 \end{column}
 \end{columns}
@@ -941,590 +941,627 @@ E responda:
 \end{frame}
 
 %=======================================================
+\section{Observação}
+
+%-------------------------------------------------------
+\begin{frame}[fragile]\frametitle{Sobre a Solução dos Exercícios 3 e 4}
+\begin{itemize}
+	\item Os exercícios 3 e 4 usam o método recursivo \texttt{clean()} para desalocar árvores
+\begin{lstlisting}[language=C++,basicstyle=\ttfamily\tiny]
+void clean(Node *subtree) {
+  if ( subtree->child1 != nullptr ) clean(subtree->child1);
+  if ( subtree->child2 != nullptr ) clean(subtree->child2);
+  if ( subtree->child3 != nullptr ) clean(subtree->child3);
+  delete subtree;
+}
+\end{lstlisting}
+	\item Considerando-se que \texttt{root} é um \texttt{Node *} e é a raiz da árvore, a sua desalocação seria então feita usando-se \texttt{clean(root);}
+\item Uma alternativa mais interessante poderia ser usar o método destrutor para isso:
+\begin{lstlisting}[language=C++,basicstyle=\ttfamily\tiny]
+~Node() {
+  if ( child1 != nullptr ) delete child1;
+  if ( child2 != nullptr ) delete child2;
+  if ( child3 != nullptr ) delete child3;
+  cerr << "- Node("<< info << ") destruido..." << endl;
+}
+\end{lstlisting}
+	\item Neste caso a árvore seria desalocada usando-se \texttt{delete root;}
+\end{itemize}
+\end{frame}
+
+%=======================================================
 \section{Árvore Binária}
 
-%=======================================================
-\section{Exercícios}
+%-------------------------------------------------------
+\begin{frame}[fragile]\frametitle{Árvore Binária}
+\begin{itemize}
+	\item Uma árvore binária é aquela na qual o grau de cada nodo é menor ou igual a 2
+	\item As subárvores de um nodo são chamadas de
+	\begin{itemize}
+		\item Subárvore da esquerda
+		\item Subárvore da direita
+	\end{itemize}
+\begin{figure}[h]
+	\centering
+	\includegraphics[height=0.5\paperheight]{imagens/arvore_binaria1-v2.eps}
+\end{figure}
+\end{itemize}
+\end{frame}
 
 %-------------------------------------------------------
-\begin{frame}[fragile]\frametitle{Exercício 10}
+\begin{frame}[fragile]\frametitle{Árvore Binária}
+\begin{itemize}
+	\item Se o grau de um nodo é 1, deve-se especificar se a sua subárvore é a da esquerda ou a da direita
+\begin{figure}[h]
+	\centering
+	\includegraphics[height=0.35\paperheight]{imagens/arvores_binarias_diferentes.eps}
+\end{figure}
+\end{itemize}
+\end{frame}
+
+%-------------------------------------------------------
+\begin{frame}[fragile]\frametitle{Árvore Binária Própria}
+\begin{itemize}
+	\item Uma árvore binária é \textbf{própria} se cada um de seus nodos internos tiver dois filhos
+	\item Todos os nodos, com exceção dos nodos-folha, têm exatamente dois filhos
+\begin{figure}[h]
+	\centering
+	\includegraphics[height=0.5\paperheight]{imagens/arvore_binaria2.eps}
+\end{figure}
+\end{itemize}
+\end{frame}
+
+%-------------------------------------------------------
+\begin{frame}[fragile]\frametitle{Árvores de Decisão}
+\begin{itemize}
+	\item Classe importante de árvores binárias
+	\item Quando se quer representar as diferentes saídas que podem resultar a partir das respostas a um conjunto de perguntas do tipo sim ou não
+	\item Cada nodo interno é associado com uma questão
+\begin{figure}[h]
+	\centering
+	\includegraphics[height=0.5\paperheight]{imagens/arvore_de_decisao2.eps}
+\end{figure}
+\end{itemize}
+\end{frame}
+
+%-------------------------------------------------------
+\begin{frame}\frametitle{Árvore Binária}
+\begin{itemize}
+	\item  Os nodos de uma árvore binária terão no mínimo:
+	\begin{itemize}
+		\item A informação
+		\item Referência para o nodo da esquerda
+		\item Referência para o nodo da direita
+	\end{itemize}
+	\item Também se pode usar referência para o nodo pai (o que facilita a ``navegação'')
+	\item Árvores binárias são fáceis de implementar, pois cada nodo tem no máximo 2 filhos	
+\end{itemize}
+\end{frame}
+
+%-------------------------------------------------------
+\begin{frame}\frametitle{Árvore Binária}
+\begin{columns}[T]
+\begin{column}{0.2\linewidth}
+%\vspace{-3mm}
+\begin{figure}[h]
+	\centering
+	\includegraphics[height=0.70\paperheight]{imagens/arvore_binaria3.eps}
+\end{figure}
+\end{column}
+\begin{column}{0.8\linewidth}
+\vspace{-2mm}
+\begin{figure}[h]
+	\centering
+	\textbf{\underline{SEM referência para o nodo-pai:}}\\	
+	\includegraphics[height=0.3\paperheight]{imagens/arvore_binaria3-enc1.png}\\
+	\textbf{\underline{COM referência para o nodo-pai:}}\\	
+	\includegraphics[height=0.27\paperheight]{imagens/arvore_binaria3-enc2.png}
+\end{figure}
+\end{column}
+\end{columns}
+\end{frame}
+
+%-------------------------------------------------------
+\begin{frame}\frametitle{Árvore Binária}
+\begin{columns}[T]
+\begin{column}{0.75\linewidth}
+%\vspace{-3mm}
+\begin{itemize}
+	\item Uma árvore qualquer pode ser transformada em árvore binária\\
+	\item Passos para a transformação:\\
+	\begin{enumerate}
+		\item Ligar os nodos irmãos
+		\item Desligar a ligação do nodo pai com os filhos, exceto o primeiro filho
+	\end{enumerate}
+	\item Nodos de mesmo nível (irmãos) são encadeados à direita e nodos com nível maior (filhos) são encadeados à esquerda (iniciando pelo primeiro filho)
+\end{itemize}
+\vspace{-4mm}
+\begin{figure}[h]
+	\includegraphics[height=0.3\paperheight]{imagens/arvore_b.eps} \hspace{25mm}
+	\includegraphics[height=0.3\paperheight]{imagens/arvore_b-v2.eps}
+\end{figure}
+\end{column}
+\begin{column}{0.25\linewidth}
+%\vspace{-2mm}
+\begin{figure}[h]
+	\centering
+	\includegraphics[height=0.7\paperheight]{imagens/arvore_b-v3.eps}
+\end{figure}
+\end{column}
+\end{columns}
+\end{frame}
+
+%=======================================================
+\section{Exercício}
+
+%-------------------------------------------------------
+\begin{frame}[fragile]\frametitle{Exercício 5}
+\begin{columns}[T]
+\begin{column}{0.75\linewidth}
 \begin{enumerate}
-        \setcounter{enumi}{9}
-\item Crie uma nova classe para um nodo de uma árvore binária que tenha a seguinte estrutura:
-\begin{itemize}
-	\item Referência ao dado\\
-	\item Referência ao nodo da esquerda\\
-	\item Referência ao nodo da direita\\
-	\item Referência ao nodo pai\\
-\end{itemize}
+        \setcounter{enumi}{4}
+	\scriptsize
+	\item O código apresentado nas duas páginas seguintes (\texttt{exercicio05.cpp}), define um nodo (\texttt{struct Node}) para uma árvore binária. Este nodo armazena: a informação (\texttt{info}, um único caractere), uma referência para o nodo pai (\texttt{parent}) e referências para as subárvores da esquerda (\texttt{left}) e direita (\texttt{right}). Além destas informações, o nodo contém um construtor e um destrutor. Juntamente com a definição do nodo são fornecidas funções para mostrar a árvore no formato GraphViz e uma função \texttt{main()}, que cria a árvore ao lado (usando o código fornecido) e realiza alguns testes com as funções que você deverá implementar.\\
+	As funções que você deverá implementar são as seguintes:
+	\begin{itemize}
+		\tiny
+		\item \texttt{int degree(Node *subtree)}: retorna o número de filhos (grau) de determinado nodo da árvore (parâmetro \texttt{subtree});
+		\item \texttt{int depth(Node *subtree)}: retorna o nível de determinado nodo (parâmetro \texttt{subtree}) dentro da árvore (o que pode ser feito navegando pela árvore usando as referências para o nodos-pai, e contando o número de nodos até alcançar a raiz);
+		\item \texttt{int size(Node *subtree)}: retorna o número de nodos que há na árvore a partir de determinado nodo (parâmetro \texttt{subtree}) -- deve ser implementado como uma função recursiva;
+		\item \texttt{int treeDepth(Node *subtree)}: retorna o altura da árvore/subárvore a partir de um nodo específico (parâmetro \texttt{subtree}) -- deve ser implementado como uma função recursiva.
+	\end{itemize}
+Observação: os códigos usados neste exercício foram adaptados das soluções dos exercícios 3 e 4. As soluções, por outro lado, precisam ser desenvolvidas.
 \end{enumerate}
+\end{column}
+\begin{column}{0.25\linewidth}
+\begin{figure}[h]
+	\centering
+	\includegraphics[height=0.4\paperheight]{imagens/exercicio05.eps}
+\end{figure}
+\end{column}
+\end{columns}
+\end{frame}
+
+%-------------------------------------------------------
+\begin{frame}[fragile]\frametitle{Exercício 5 (continuação)}
+\fontsize{3pt}{5pt}\selectfont{
+\lstinputlisting[firstline=1,lastline=36]{src/exercicio05.cpp}
+}
+\end{frame}
+
+%-------------------------------------------------------
+\begin{frame}[fragile]\frametitle{Exercício 5 (continuação)}
+\fontsize{6pt}{6pt}\selectfont{
+\lstinputlisting[firstline=38]{src/exercicio05.cpp}
+}
 \end{frame}
 
 %=======================================================
-\section{Créditos}
+\section{Observações}
 
 %-------------------------------------------------------
-\begin{frame}\frametitle{Créditos}
+\begin{frame}[fragile]\frametitle{Sobre a Implementação do Construtor do Exercício 5}
 \begin{itemize}
-	\item Estas lâminas foram adaptadas do material desenvolvido pela professora Isabel Harb Manssour.
+	\item Observe o código que foi usado no construtor da \texttt{struct Node} do exercício 5:
+\begin{lstlisting}[language=C++,basicstyle=\ttfamily\tiny]
+Node(char i, Node *l = nullptr, Node *r = nullptr) {
+  info = i;  left = l;  right = r;  parent = nullptr;
+  if ( left != nullptr ) left->parent = this;
+  if ( right != nullptr ) right->parent = this;
+}
+\end{lstlisting}
+	\item Quando um nodo é criado, o construtor recebe as subárvores que serão inseridas como seus ``filhos''
+	\item Como em cada nodo há uma referência para o nodo pai, este campo precisa ser atualizado nos nodos/subárvores filhos, o que é feito nas duas últimas linhas do construtor
+	\item Para referenciar que os campos pai (\texttt{parent}) dos filhos (\texttt{left} e \texttt{right}) apontarão para o nodo que está sendo inicializado usa-se a autorreferência \texttt{\textbf{this}}
 \end{itemize}
 \end{frame}
 
+%-------------------------------------------------------
+\begin{frame}[fragile]\frametitle{Sobre a Solução do Exercício 5}
+\begin{itemize}
+	\item A solução do exercício 5 apresenta uma solução para o método \texttt{size()}, a princípio, mais fácil de entender:
+\begin{lstlisting}[language=C++,basicstyle=\ttfamily\tiny]
+int size(Node *subtree) {
+  if (subtree == nullptr) return 0; // Somente pode ocorrer na primeira chamada,
+  int res = 1;                      // ou seja, se a árvore estiver vazia
+  if ( subtree->left != nullptr ) res += size(subtree->left);
+  if ( subtree->right != nullptr ) res += size(subtree->right);
+  return res;
+}
+\end{lstlisting}
+	\item Veja uma solução alternativa e equivalente abaixo:
+\begin{lstlisting}[language=C++,basicstyle=\ttfamily\tiny]
+int size(Node *subtree) {
+  if (subtree == nullptr) return 0;
+  return 1 + size(subtree->left) + size(subtree->right);
+}
+\end{lstlisting}
+	\item Analise as diferenças!
+\end{itemize}
+\end{frame}
 
-\begin{comment}
-
-Árvore Binária
-◼
- Uma árvore binária é aquela na qual o grau de cada
-nodo é menor ou igual a 2
-◼
- As subárvores de um nodo
-A
-são chamadas de
-◼
- subárvore da esquerda
-◼
- subárvore da direita
- B
- C
-◼
- Exemplo →
-D
- E
- F
-G
- H
-Árvore Binária
-◼
- Se o grau de um nodo é 1, deve-se especificar
-se a sua subárvore é a da esquerda ou a da
-direita
-B
-A
-A
-B
-Árvore Binária
-◼
- Uma árvore binária é própria se cada um de
-seus nodos internos tiver dois filhos
-◼
- Todo nodo interno tem
-exatamente dois filhos
-A
-◼
- Exemplo:
-B
- C
-D
- E
- F
- G
-H
- I
-Árvore Binária
-◼
-Árvores de decisão
-◼
- Classe importante de árvores binárias
-◼
- Quando se quer representar as diferentes saídas que
-podem resultar a partir das respostas a um conjunto de
-perguntas do tipo sim ou não
-◼
- Cada nodo interno é associado com uma questão
-◼
- Exemplo:
-Você é nervoso
-sim
- não
-Conta Poupança
- Você vai necessitar do dinheiro
-nos próximos 5 anos
-sim
-não
-Fundo Préfixado
- Carteira de Ações
-Árvore Binária
-◼
- Os nodos de uma árvore binária terão no mínimo:
-◼
- A informação
-◼
- Referência para o nodo da esquerda
-◼
- Referência para o nodo da direita
-◼
- Também se pode usar referência para o nodo pai
-
-
-◼
-ÁrvoreExemplo:
-Binária
-Árvore Binária
-◼
- Uma árvore qualquer pode ser transformada em
-árvore binária
-◼
- Fases para a transformação
-1.
- Ligar os nodos irmãos
-2.
- Desligar o nodo pai com os filhos,
-exceto o primeiro filho
- A
-A
- A
- B
-C
-B
- C
- D
- B
- C
- D
-E
- F
- G
-E
- F
- G
- E
- D
- Irmão
-seguinte
-Mesmo nível → p/ direita
- F G
- Primeiro
-Nível maior → p/ esquerda
- filho
-Roteiro
-
-
+%=======================================================
+\section{Árvores Genéricas}
 
 %-------------------------------------------------------
-\begin{frame}\frametitle{Tipos Abstratos de Dados}
+\begin{frame}\frametitle{Definição}
 \begin{itemize}
-	\item A aplicação de abstração ao projeto de estruturas de dados nos leva a \textbf{Tipos Abstratos de Dados (TAD)}
-	\item TAD
+	\item Formalmente uma árvore \textbf{T} é definida como um conjunto de \textbf{nodos}, que armazenam elementos em relacionamentos \textbf{pai-filho} com as seguintes propriedades:
 	\begin{itemize}
-		\item É uma especificação de um conjunto de dados e operações que podem ser executadas sobre esses dados
-		\item Modelo matemático de estruturas de dados que especifica
-		\begin{itemize}
-			\item O tipo dos dados armazenados
-			\item As operações definidas sobre esses dados
-			\item Os tipos dos parâmetros dessas operações
-		\end{itemize}
-	\end{itemize}
-	\item A separação de especificação e implementação permite usar um TAD sem conhecer nada sobre a sua implementação
-	\begin{itemize}
-		\item Assim, um TAD pode ter mais de uma implementação
+		\item Se \textbf{T} não é vazia, ela tem um nodo especial chamado de \textbf{raiz} de \textbf{T} que não tem pai
+		\item Cada nodo \textbf{v} de \textbf{T} diferente da raiz tem um único nodo \textbf{pai}, \textbf{w}; todo nodo com pai \textbf{w} é \textbf{filho} de \textbf{w}
 	\end{itemize}
 \end{itemize}
 \end{frame}
 
 %-------------------------------------------------------
-\begin{frame}\frametitle{TAD}
+\begin{frame}[fragile]\frametitle{Representações}
 \begin{itemize}
-	\item Usa ``encapsulamento''
-	\item Princípio: esconder detalhes de representação e direcionar o acesso aos objetos abstratos por meio de operações
-	\item A representação fica protegida contra qualquer tentativa de manipulá-la diretamente (só através das operações disponíveis)
-	\item Define o que cada operação faz, mas não como o faz
+	\item Textual
+\begin{lstlisting}[basicstyle=\ttfamily\scriptsize]
+T={A,{B,{D,{I},{J}},{E},{F}},{C,{G},{H,{K}}}}
+\end{lstlisting}
 \end{itemize}
+\begin{columns}[T]
+\begin{column}{0.5\linewidth}
+%\vspace{-5mm}
+\begin{itemize}
+	\item GraphViz
+	\lstinputlisting[basicstyle=\ttfamily\scriptsize]{imagens/arvore3.gv}
+\end{itemize}
+\end{column}
+\begin{column}{0.5\linewidth}
+\begin{itemize}
+	\item Visual/Gráfica
+\begin{figure}[h]
+	\centering
+	\includegraphics[height=0.4\paperheight]{imagens/arvore3.eps}
+\end{figure}
+\end{itemize}
+\end{column}
+\end{columns}
 \end{frame}
 
 %-------------------------------------------------------
-\begin{frame}\frametitle{Tipos Abstratos de Dados}
+\begin{frame}\frametitle{Operações}
 \begin{itemize}
-	\item Resumindo, TAD é uma estrutura de programa que contém
-	\begin{itemize}
-		\item A especificação de uma estrutura de dados
-		\item Um conjunto de operações que podem ser realizadas sobre os dados encapsulados
-	\end{itemize}
-	\item Exemplos de TADs
-	\begin{itemize}
-		\item Pilhas, Filas, Deques e Listas
-	\end{itemize}
-	\item Essas estruturas são classificadas como lineares
-	\begin{itemize}
-		\item Representam coleções de elementos linearmente organizados que oferecem métodos para inserir, acessar e remover elementos
-		\item Têm a ordem interna de seus elementos definida pela forma como são feitas inserções e remoções na estrutura
-		\item Costumam ter duas extremidades (esquerda e direita; frente e traseira; cabeça e cauda; ...)
-	\end{itemize}
-\end{itemize}
-\end{frame}
-
-%-------------------------------------------------------
-\begin{frame}\frametitle{Estruturas Lineares}
-\begin{itemize}
-	\item \textbf{Lista}
-	\begin{itemize}
-		\item Organiza os dados de maneira ``sequencial'' (não necessariamente de forma física, mas sempre existe uma ordem lógica entre os elementos)
-		\item Permite inserção, acesso e remoção de elementos
-	\end{itemize}
-	\item \textbf{Pilha}
-	\begin{itemize}
-		\item Usa a política \emph{LIFO -- Last In First Out} (o último elemento que entrou, é o primeiro a sair)
-		\item Possui apenas uma entrada, chamada de topo, a partir da qual os dados entram e saem dela
-	\end{itemize}
-	\item \textbf{Fila}
-	\begin{itemize}
-		\item Usa a política \emph{FIFO -- First In First Out} (o primeiro elemento a entrar será o primeiro a sair)
-		\item Os elementos entram por um lado (``cauda'' ou parte de trás) e saem por outro (``cabeça'' ou parte da frente)
-	\end{itemize}
-	\item \textbf{Deque} (\emph{Double-Ended QUEue})
-	\begin{itemize}
-		\item Os elementos entram e saem por qualquer uma das extremidades (cauda ou cabeça) da lista
-	\end{itemize}
-\end{itemize}
-\end{frame}
-
-%-------------------------------------------------------
-\begin{frame}\frametitle{Estruturas Lineares}
-\begin{itemize}
-	\item Permitem representar um conjunto de dados de um mesmo tipo (com alguma afinidade) de forma a preservar a relação de ordem entre seus elementos
-	\item Cada elemento da estrutura é chamado de nó, ou nodo.
-	\item Uma estrutura linear é definida como:
-	\begin{itemize}
-		\item Um conjunto de $N$ nós, organizados de forma a refletir a posição relativa dos mesmos
-		\item Se $N > 0$, os nós da estrutura serão $x_1$, $x_2$, ..., $x_N$, 
-		\begin{itemize}
-			\item $x_1$ é o primeiro nó
-			\item Para $1 < k < N$, o nó $x_k$ é precedido pelo nó $x_{k-1}$ e seguido pelo nó $x_{k+1}$
-			\item $x_N$ é o último nó
-		\end{itemize}
-		\item Quando $N = 0$, diz-se que a estrutura está vazia
-	\end{itemize}
-\end{itemize}
-\end{frame}
-
-%-------------------------------------------------------
-\begin{frame}\frametitle{Exemplos de Estruturas Lineares}
-\begin{itemize}
-	\item Pessoas na fila de um caixa (ordem definida pela chegada e posição na fila)
-	\item Pessoas na sala de espera de um consultório (ordem definida pela chegada)
-	\item Conjunto de notas dos alunos de uma turma
-	\item Itens no estoque de uma loja
-	\item Palavras de um texto
-	\item Letras de uma palavra
-	\item Especificação de operações e operandos em uma expressão matemática
-	\item Dias da semana
-	\item Relação de compromissos
-	\item Pilha de livros
-	\item Cartas de um baralho
+	\item Inserir um nodo raiz
+	\item Obter o valor da raiz (da árvore e de qualquer subárvore)
+	\item Esvaziar uma árvore
+	\item Obter uma subárvore de um determinado nodo
+	\item Anexar uma subárvore em um determinado nodo
+	\item Contar o número de nodos da árvore
+	\item Calcular o grau e o nível de um determinado nodo
+	\item Calcular a altura de uma árvore
+	\item Percorrer a árvore
 	\item etc.
 \end{itemize}
 \end{frame}
 
 %-------------------------------------------------------
-\begin{frame}[fragile]\frametitle{Alocação de Estruturas Lineares}
+\begin{frame}\frametitle{TAD para Árvores Genéricas}
 \begin{itemize}
-	\item Estruturas lineares podem ser alocadas de forma:
+	\item Forma mais usual de implementação:
 	\begin{itemize}
-		\item \textbf{Sequencial ou Contígua}\\Os nós, além de estarem em uma sequência lógica, também estão \textbf{fisicamente em sequência}
-		\item \textbf{Encadeada}\\Os nós são alocados dinamicamente e são ligados entre si, de forma que há uma sequência lógica, mas fisicamente os nós NÃO precisam estar contíguos
-\begin{figure}[h]
-	\centering
-	\includegraphics[height=0.15\paperheight]{imagens/lista_simplesmente_encadeada.png}
-\end{figure}
+		\item Estruturas encadeadas (alocação dinâmica)
+		\item Cada nodo contém:
+		\begin{itemize}
+			\item A informação
+			\item Uma referência para o nodo pai
+			\item Uma lista de referências para os nodos filhos (subárvores)
+		\end{itemize}
 	\end{itemize}
-	\item Cada forma tem as suas vantagens e desvantagens
-\end{itemize}
-\end{frame}
-
-%-------------------------------------------------------
-\begin{frame}\frametitle{Alocação Sequencial ou Contígua de Estruturas Lineares}
-\begin{itemize}
-	\item Nós adjacentes na estrutura são armazenados em endereços contíguos na memória física e o tamanho da estrutura é fixo
-	\item A implementação é feita com vetores (arranjos ou \emph{arrays}), que podem ser alocados de forma estática ou dinâmica
-	\item Pode-se trabalhar com vetores parcialmente prenchidos
-	\item O acesso é rápido
-	\item NÃO é possível ter espaços vazios (não utilizados) no meio da estrutura (a não ser no final, para vetores parcialmente preenchidos)
-	\item Inserção e Remoção de elementos no meio exige movimentação de elementos
-	\item Para estruturas alocadas dinamicamente, pode-se: alocar um novo vetor, copiar os elementos do antigo para o novo, desalocar o antigo e passar a usar o novo -- mas isto pode ser custoso
-\end{itemize}
-\end{frame}
-	
-%-------------------------------------------------------
-\begin{frame}[fragile]\frametitle{Alocação Sequencial ou Contígua de Estruturas Lineares (vetores.cpp)}
-\lstinputlisting[basicstyle=\ttfamily\tiny]{src/vetores.cpp}
-\end{frame}
-
-%-------------------------------------------------------
-\begin{frame}[fragile]\frametitle{Alocação Sequencial ou Contígua de Estruturas Lineares (vetores2.cpp)}
-\lstinputlisting[basicstyle=\ttfamily\tiny]{src/vetores2.cpp}
-\end{frame}
-
-%-------------------------------------------------------
-\begin{frame}\frametitle{Alocação Encadeada de Estruturas Lineares}
-\begin{itemize}
-	\item Os elementos da estrutura seguem uma ordem lógica, mas \textbf{NÃO estão necessariamente armazenados sequencialmente na memória}
-	\item A relação lógica de ordem é implementada através de uma ligação (referência ou armazenamento de endereço) entre os nodos
-	\item Estruturas lineares encadeadas são chamadas de \textbf{listas encadeadas}, sendo que cada nodo pode armazenar uma referência para o próximo elemento (lista simplesmente encadeada)
-\begin{figure}[h]
-	\centering
-	\includegraphics[height=0.15\paperheight]{imagens/lista_simplesmente_encadeada.png}
-\end{figure}
-	\item Ou para o elemento anterior e para o próximo elemento (lista duplamente encadeada)
-\begin{figure}[h]
-	\centering
-	\includegraphics[height=0.16\paperheight]{imagens/lista_duplamente_encadeada.png}
-\end{figure}
-	\item A estrutura pode aumentar e diminuir em tempo de execução
-\end{itemize}
-\end{frame}
-
-%-------------------------------------------------------
-\begin{frame}\frametitle{Alocação Encadeada de Estruturas Lineares}
-\begin{itemize}
-	\item Quando for necessário inserir um elemento na estrutura, deve-se:
+	\item É possível declarar um TAD para:
 	\begin{itemize}
-		\item Alocar um novo nodo
-		\item Preencher as informações no nodo
-		\item Inserir o novo nodo em determinada posição da estrutura (o que exige ajustes em alguns encadeamentos)
-	\end{itemize}
-	\item Alocação encadeada será útil quando:
-	\begin{itemize}
-		\item Não é possível prever o número de entradas de dados em tempo de compilação
-		\item For mais fácil aplicar determinada operação sobre a estrutura encadeada
+		\item O \textbf{nodo} e deixar o gerenciamento da árvore a cargo da aplicação (é necessário fornecer chamadas para acrescentar nodos filho em determinado nodo, e também para remover nodos filhos)
+		\item A \textbf{estrutura de dados}, que terá uma classe interna para o nodo, determinando automaticamente onde cada informação será inserida (chamadas para acrescentar e remover algum dado NÃO precisam especificar onde a informação será inserida; nodos e referências que formam a árvore permanecem encapsulados)
 	\end{itemize}
 \end{itemize}
 \end{frame}
 
 %-------------------------------------------------------
-\begin{frame}\frametitle{Operações Básicas sobre Estruturas Lineares}
+\begin{frame}[fragile]\frametitle{Lista de Referências para os Nodos Filhos}
 \begin{itemize}
-	\item Criação da estrutura
-	\item Destruição da estrutura
-	\item Inserção de um elemento na estrutura
-	\item Remoção de um elemento da estrutura
-	\item Acesso a um elemento da estrutura
-	\item Alteração de um elemento da estrutura
-	\item Combinação de duas ou mais estruturas
-	\item Ordenação dos elementos da estrutura
-	\item Cópia de uma estrutura
-	\item Localização de um nodo através de alguma informação do nodo
-\end{itemize}
-\end{frame}
+	\item Como um nodo pode ter número variável de filhos, é interessante trabalhar com uma lista dinamicamente expansível
+	\item Para implemenar esta lista dinamicamente expansível é possível usar o \emph{container} \texttt{vector} da \emph{Standard Template Library} da linguagem C++
+	\item Exemplo de uso de \texttt{vector}:
+\begin{lstlisting}[language=C++,basicstyle=\ttfamily\tiny]
+#include <vector>
 
-%=======================================================
-\section{Pilha (\emph{Stack})}
+// ...
 
-%-------------------------------------------------------
-\begin{frame}\frametitle{Pilha ou \emph{Stack}}
-\begin{itemize}
-	\item Usa a política \emph{LIFO -- Last In First Out} (o último elemento que entrou, é o primeiro a sair)
-	\item Possui apenas uma entrada, chamada de topo, a partir da qual os dados são inseridos e removidos
-\begin{figure}[h]
-	\centering
-	\includegraphics[height=0.3\paperheight]{imagens/pilha.png}
-\end{figure}
-\end{itemize}
-\end{frame}
-
-%-------------------------------------------------------
-\begin{frame}\frametitle{Pilha: Implementações Possíveis}
-\begin{itemize}
-	\item \textbf{Arranjo}
-\begin{figure}[h]
-	\flushleft
-	\includegraphics[height=0.15\paperheight]{imagens/pilha1.png}
-\end{figure}
-	\item \textbf{Lista Simplesmente Encadeada}
-\begin{figure}[h]
-	\flushleft
-	\includegraphics[height=0.15\paperheight]{imagens/pilha2.png}
-\end{figure}
-	\item \textbf{Lista Duplamente Encadeada}
-\begin{figure}[h]
-	\flushleft
-	\includegraphics[height=0.15\paperheight]{imagens/pilha3.png}
-\end{figure}
-\end{itemize}
-\end{frame}
-
-%-------------------------------------------------------
-\begin{frame}\frametitle{Aplicações que Usam Pilha}
-\begin{itemize}
-	\item Operações de edição de desfazer/refazer
-	\item Histórico de visitação de páginas em navegadores \emph{web} (botão \emph{back})
-	\item Cadeia de chamada de métodos em interpretadores e máquinas virtuais
-	\item Auxiliar para implementação de outras estruturas de dados e algoritmos
-	\item Implementação de compiladores
-	\item Computação Gráfica (operações com matrizes)
-	\item Manipulação de expressões aritméticas: infixada, pré-fixada, pós-fixada
-\end{itemize}
-\end{frame}
-
-%-------------------------------------------------------
-\begin{frame}\frametitle{Manipulação de Expressões Aritméticas}
-\begin{itemize}
-	\item Expressões aritméticas geralmente são representadas usando a notação infixada\\
-		\texttt{2 + 3 * 4 = 14}\\
-		\texttt{(2 + 3) * 4 = 20}
-	\item Alternativa 1: Notação polonesa (pré-fixada)
-	\begin{itemize}
-		\item Proposta por Jan lukasiewiscz em 1920
-		\item Permite escrever expressões aritméticas com precedência implícita
-		\item Operador aparece antes dos operandos\\
-			\texttt{+ 2 * 3 4}\\
-			\texttt{* + 2 3 4}
-	\end{itemize}
-	\item Alternativa 2: Notação polonesa inversa (pós-fixada)
-	\begin{itemize}
-		\item Proposta por Charles Hamblin em 1950
-		\item Também usa precedência implícita, porém o operandor aparece antes dos operandos\\
-			\texttt{2 3 4 * +}\\
-			\texttt{2 3 + 4 *}
-	\end{itemize}
-\end{itemize}
-\end{frame}
-
-%-------------------------------------------------------
-\begin{frame}\frametitle{Exercício}
-Converta as seguintes expressões na forma infixada para as formas pré-fixada e pós-fixada:
-\begin{enumerate}
-	\item	Infixada: \texttt{(1-2)*(3+4)}\\
-		Pré-fixada: \\
-		Pós-fixada: \\
-	\item	Infixada: \texttt{(2 + 4)/(3 -1)}\\
-		Pré-fixada: \\
-		Pós-fixada: \\
-	\item	Infixada: \texttt{(2+4)/(3-1)x4}\\
-		Pré-fixada: \\
-		Pós-fixada: \\
-\end{enumerate}
-\end{frame}
-
-%-------------------------------------------------------
-\begin{frame}\frametitle{Exercício (Resposta)}
-Converta as seguintes expressões na forma infixada para as formas pré-fixada e pós-fixada:
-\begin{enumerate}
-	\item	Infixada: \texttt{(1-2)*(3+4)}\\
-		Pré-fixada: \texttt{* - 1 2 + 3 4}\\
-		Pós-fixada: \texttt{1 2 - 3 4 + *}\\
-	\item	Infixada: \texttt{(2 + 4)/(3 - 1)}\\
-		Pré-fixada: \texttt{/ + 2 4 - 3 1}\\
-		Pós-fixada: \texttt{2 4 + 3 1 - /}\\
-	\item	Infixada: \texttt{(2+4)/(3-1)*4}\\
-		Pré-fixada: \texttt{* / + 2 4 - 3 1 4}\\
-		Pós-fixada: \texttt{2 4 + 3 1 - / 4 *}\\
-\end{enumerate}
-\end{frame}
-
-%-------------------------------------------------------
-\begin{frame}\frametitle{Métodos do TAD Pilha}
-\begin{itemize}
-	\item \texttt{bool push(e)}: insere o elemento no topo da pilha (retorna \texttt{true}, em caso de sucesso, ou \texttt{false}, se NÃO houver espaço)
-	\item \texttt{bool pop(\&e)}: remove e retorna (por referência) o elemento do topo da pilha (retorna \texttt{true}, em caso de sucesso, ou \texttt{false}, a pilha estiver vazia)
-	\item \texttt{bool top(\&e)} ou \texttt{bool peek(\&e)}: retorna (por referência) o elemento do topo da pilha, mas não o remove da pilha (retorna \texttt{true}, em caso de sucesso, ou \texttt{false}, a pilha estiver vazia)
-	\item \texttt{int size()}: retorna o número de elementos da pilha
-	\item \texttt{int maxSize()}: retorna o número máximo de elementos suportado pela pilha
-	\item \texttt{bool isEmpty()}: retorna \texttt{true}, se a pilha estiver vazia, ou \texttt{false}, em caso contrário
-	\item \texttt{bool isFull()}: retorna \texttt{true}, se a pilha estiver cheia, ou \texttt{false}, em caso contrário
-	\item \texttt{void clear()}: esvazia a pilha
-\end{itemize}
-\end{frame}
-
-%-------------------------------------------------------
-\begin{frame}\frametitle{Exemplo de Implementação: \texttt{IntStack.hpp}}
-\lstinputlisting[basicstyle=\ttfamily\tiny]{src/IntStack.hpp}
-\end{frame}
-
-%-------------------------------------------------------
-\begin{frame}\frametitle{Exemplo de Implementação: \texttt{IntStack.cpp}}
-\fontsize{3pt}{5pt}\selectfont{
-\lstinputlisting{src/IntStack.cpp}
-}
-\end{frame}
-
-%-------------------------------------------------------
-\begin{frame}\frametitle{Exemplo de Implementação: \texttt{IntStackMain.cpp}}
-\fontsize{5pt}{6pt}\selectfont{
-\lstinputlisting{src/IntStackMain.cpp}
-}
-\end{frame}
-%-------------------------------------------------------
-\begin{frame}\frametitle{Exemplo de Implementação (Saída)}
-\lstinputlisting[basicstyle=\ttfamily\scriptsize]{src/IntStackApp.output}
-\end{frame}
-
-%=======================================================
-\section{Exercícios}
-
-%-------------------------------------------------------
-\begin{frame}[fragile]\frametitle{Exercícios 1-3}
-\begin{enumerate}
-{\small
-	\item Considerando como base a implementação da classe \texttt{IntStack} (apresentadas nas lâminas anteriores), implemente uma classe em C++ para gerenciar uma pilha de caracteres (\texttt{CharStack}).\\
-
-	\item Usando a classe \texttt{CharStack} (do exercício anterior), escreva um programa em C++, que inverte as letras de cada palavra de um texto terminado por ponto (.), preservando a ordem das palavras.\\
-Por exemplo, dado o texto:\\
-\begin{verbatim}
-ETSE OICICREXE E OTIUM LICAF.
-\end{verbatim}
-A saída deve ser:
-\begin{verbatim}
-ESTE EXERCICIO E MUITO FACIL.
-\end{verbatim}
-
-\item Implemente uma função em C++ para criar uma nova cópia de uma pilha de caracteres (objeto da classe \texttt{CharStack}). A pilha deve ser criada usando \texttt{new}, deve ser uma cópia duplicada exatamente igual à pilha original e deve ser retornada como resultado da execução da função. Sua função deve ter o seguinte protótipo:\\
-\texttt{CharStack *copia(CharStack \&p);}\\
-No retorno da função, o conteúdo da pilha recebida como parâmetro deve ser o mesmo da chamada.\\
-}
-\end{enumerate}
-\end{frame}
-
-%=======================================================
-\section{Implementando uma Pilha Encadeada}
-
-%-------------------------------------------------------
-\begin{frame}\frametitle{Estruturas Lineares Encadeadas}
-\begin{itemize}
-	\item Uma estrutura encadeada é uma estrutura composta por nodos, que possuem campos que apontam para outros nodos
-	\item Por exemplo, em uma lista simplesmente encadeada, tipicamente:
-	\begin{itemize}
-		\item Há um ponteiro para o primeiro elemento da lista
-		\item Cada nodo tem um campo que aponta para o próximo elemento da lista
-		\item O campo de encadeamento do último elemento contém uma referência inválida
-	\end{itemize}
-\begin{figure}[h]
-	\centering
-	\includegraphics[height=0.15\paperheight]{imagens/lista_simplesmente_encadeada2.png}
-\end{figure}
-	\item Ao inserir um elemento, deve-se alocar um nodo, preenchê-lo e colocá-lo na posição desejada na estrutura (ajustando as referências necessárias)
-	\item Ao remover um elemento, é preciso removê-lo (ajustando as referências necessárias) e desalocá-lo
-\end{itemize}
-\end{frame}
-
-%-------------------------------------------------------
-\begin{frame}[fragile]\frametitle{Estruturas Encadeadas em C++}
-\begin{itemize}
-	\item Pode-se declarar um nodo em C++, para armazenar caracteres, da seguinte forma:
-\begin{lstlisting}[basicstyle=\ttfamily\scriptsize]
-struct Node {
-  char info;
-  Nodo *next;
-  Nodo(char l) {
-    info = l;
-    next = nullptr;
-  }
-};
+vector<int> v;   // Cria um vetor de inteiros vazio
+v.push_back(10); // Adiciona 10 no vetor -> v = { 10 }
+v.push_back(20); // Adiciona 20 no vetor -> v = { 10, 20 }
+v.push_back(30); // Adiciona 30 no vetor -> v = { 10, 20, 30 }
+v.push_back(40); // Adiciona 40 no vetor -> v = { 10, 20, 30, 40 }
+v.erase( v.begin() + 1 );  // Remove o elemento de índice 1 do vetor -> v = { 10, 30, 40 }
+v.pop_back();              // Remove o último elemento do vetor -> v = { 10, 30 }
+for (int i=0; i<v.size(); ++i) // mostra o vetor
+    cout << v[i] << endl;      // v é usado como se fosse um arranjo
 \end{lstlisting}
-	\item \texttt{nullptr} é usado para indicar uma estrutura vazia ou fim da estrutura
-	\item Exemplo: construção da seguinte pilha simplesmente encadeada
-\begin{figure}[h]
-	\centering
-	\includegraphics[height=0.15\paperheight]{imagens/pilha_simplesmente_encadeada.png}
-\end{figure}
 \end{itemize}
 \end{frame}
 
 %-------------------------------------------------------
-\begin{frame}[fragile]\frametitle{Exemplo: \texttt{pilha\_simplesmente\_encadeada.cpp}}
-\fontsize{5pt}{5pt}\selectfont{
-\lstinputlisting{src/pilha_simplesmente_encadeada.cpp}
+\begin{frame}[fragile]\frametitle{Declaração de um TAD de Árvore Genérica}
+\fontsize{3pt}{5pt}\selectfont{
+\lstinputlisting{src/NodeCharTree1/NodeCharTree.hpp}
 }
 \end{frame}
+
+%-------------------------------------------------------
+\begin{frame}[fragile]\frametitle{Representações}
+\begin{columns}[T]
+\begin{column}{0.5\linewidth}
+\begin{figure}[h]
+	\centering
+	\includegraphics[height=0.4\paperheight]{imagens/arvore_c.eps}
+\end{figure}
+\end{column}
+\begin{column}{0.5\linewidth}
+...
+\end{column}
+\end{columns}
+\end{frame}
+
+
+\begin{comment}
+// Atributos
+Node father
+Integer element
+LinkedListOfNodes subtrees
+// Métodos
+Node (Integer element)
+void addSubtree (Node n)
+boolean removeSubtree(Node n)
+Node getSubtree(int i)
+int getSubtreesSize()
+TAD para Árvores Genéricas
+B
+A
+ D
+ F
+C
+ E
+B 
+A
+  D
+F
+ 
+C
+ 
+ E
+ 
+TAD para Árvores Genéricas
+	\item Inserindo um elemento
+B
+ B  
+ B
+ B 
+A
+A
+ 
+TAD para Árvores Genéricas
+	\item Removendo um elemento
+B
+ B 
+A
+ D
+ F
+A
+  D
+F
+ 
+A
+B
+D
+B 
+A
+  D
+ 
+ F  
+TAD para Árvores Genéricas
+◼
+O TAD:
+	\item Armazena referência para a raiz da árvore e o número de
+elementos já inseridos
+	\item Suporta, por exemplo, os seguintes métodos (1/3):
+	\item boolean add(Integer e, Integer father): insere o elemento e como
+filho de father
+	\item Integer getRoot(): retorna o elemento armazenado na raiz
+	\item void setRoot(Integer e): altera o elemento armazenado na raiz
+	\item Integer getParent(Integer e): retorna o pai do elemento e
+	\item boolean removeBranch(Integer e): remove o elemento e e seus
+filhos
+	\item boolean contains(Integer e): retorna true se a árvore contém o
+elemento e
+TAD para Árvores Genéricas
+◼
+O TAD:
+	\item Armazena referência para a raiz da árvore e o número de
+elementos já inseridos
+	\item Suporta, por exemplo, os seguintes métodos (2/3):
+	\item boolean isInternal(Integer e): retorna true se o elemento está
+armazenado em um nodo interno
+	\item boolean isExternal(Integer e): retorna true se o elemento está
+armazenado em um nodo externo
+	\item boolean isRoot(Integer e): retorna true se o elemento e está
+armazenado na raiz
+	\item boolean isEmpty(): retorna true se a árvore está vazia
+TAD para Árvores Genéricas
+◼
+O TAD:
+	\item Armazena referência para a raiz da árvore e o número de
+elementos já inseridos
+	\item Suporta, por exemplo, os seguintes métodos (3/3):
+	\item int size(): retorna o número de elementos armazenados na árvore
+	\item void clear(): remove todos os elementos da árvore
+	\item LinkedListOfInteger positionsPre(): retorna uma lista com todos os
+elementos da árvore na ordem pré-fixada
+	\item LinkedListOfInteger positionsPos(): retorna uma lista com todos
+os elementos da árvore na ordem pos-fixada
+	\item LinkedListOfInteger positionsWidth(): retorna uma lista com todos
+os elementos da árvore com um caminhamento em largura
+Roteiro
+	\item Introdução
+	\item TAD para Árvores Genéricas
+	\item Caminhamento
+	\item Exercícios
+
+
+Caminhamento
+	\item Caminhamento é a forma como vamos
+percorrer as árvores, ou seja, a ordem em
+que vamos visitar seus nodos
+	\item Existem vários tipos de caminhamento que
+permitem varrer a árvore de forma
+sistemática visitando cada nodo uma única
+vez
+Caminhamento
+	\item Pré-Ordem
+	\item Do inglês preorder traversal
+	\item Nodo é visitado antes de seus descendentes
+	\item É definido recursivamente como:
+	\item Visite o nodo;
+	\item Realize um percurso em pré-ordem para cada uma
+das subárvores do nodo.
+	\item Exemplo de aplicação:
+	\item Impressão de um documento estruturado em capítulos
+Caminhamento
+◼
+Pré-Ordem
+	\item Exemplo:
+1
+A
+2
+ 5
+ 9
+B
+ C
+ D
+3
+ 4
+ 6
+ 7
+ 8
+E
+ F
+ G
+ H
+ I
+Caminhamento
+	\item Pós-Ordem
+	\item Do inglês postorder traversal
+	\item Nodo é visitado depois de seus descentes
+	\item É definido recursivamente como:
+	\item Realize um percurso em pós-ordem para cada uma
+das subárvores do nodo;
+	\item Visite o nodo.
+	\item Exemplos de aplicação:
+	\item Calcular o total de espaço em disco ocupado por
+arquivos em um sistema de diretórios
+Caminhamento
+◼
+Pós-Ordem
+	\item Exemplo:
+9
+A
+3
+ 7
+ 8
+B
+ C
+ D
+1
+ 2
+ 4
+ 5
+ 6
+E
+ F
+ G
+ H
+ I
+Caminhamento
+	\item Em largura
+	\item Visita os nodos na ordem dos níveis da árvore,
+da esquerda para a direita
+	\item Visite os nodos de nível 0;
+	\item Visite os nodos de nível 1;
+	\item ...
+	\item Algoritmo não-recursivo:
+	\item Inserir nodo raiz em uma fila;
+	\item Repetir até que a fila esteja vazia
+	\item Remover o nodo da fila;
+	\item Visitar o nodo atual;
+	\item Inserir na fila, em ordem, cada subárvore não vazia do nodo
+atual.
+Caminhamento
+	\item Em largura
+	\item Exemplo:
+1
+A
+2
+ 3
+ 4
+B
+ C
+ D
+5
+ 6
+ 7
+ 8
+ 9
+E
+ F
+ G
+ H
+ I
+Roteiro
+	\item Introdução
+	\item Algoritmos para Árvores Genéricas
+	\item Caminhamento
+	\item Exercícios
+
+
+Exercícios
+	\item Implementar os algoritmos para o TAD de
+árvore genérica
+	\item Para as árvores a seguir, mostrar a ordem
+que os elementos serão apresentados para
+cada caminhamento (pré-ordem, pós-ordem e
+em largura)
+Exercícios
++
+A
+*
+ /
+B
+ C
+A
+ B
+ C
+ +
+D
+ E
+D
+ E
+ F
+ G
+ H
+I
+ J
+ K
+ L
+M
+ N
+ O
+ P
+ Q
+
+
+
 
 %=======================================================
 \section{Exercícios}
@@ -2495,6 +2532,16 @@ A = { 20, 30, 60 }   B = { 20, 10 }
 \end{comment}
 
 %=======================================================
+\section{Créditos}
+
+%-------------------------------------------------------
+\begin{frame}\frametitle{Créditos}
+\begin{itemize}
+	\item Estas lâminas foram adaptadas do material desenvolvido pela professora Isabel Harb Manssour.
+\end{itemize}
+\end{frame}
+
+%=======================================================
 \section{Soluções}
 
 %-------------------------------------------------------
@@ -2550,8 +2597,22 @@ Quais são os níveis dos nodos C, H e K?
 
 %-------------------------------------------------------
 \begin{frame}[fragile]\frametitle{Exercício 4: \texttt{exercicio04.cpp}}
-\fontsize{3pt}{5pt}\selectfont{
-\lstinputlisting{src/exercicio04.cpp}
+\fontsize{5pt}{5pt}\selectfont{
+\lstinputlisting[firstline=1,lastline=34]{src/exercicio04.cpp}
+}
+\end{frame}
+
+%-------------------------------------------------------
+\begin{frame}[fragile]\frametitle{Exercício 4: \texttt{exercicio04.cpp} (continuação)}
+\fontsize{5pt}{5pt}\selectfont{
+\lstinputlisting[basicstyle=\ttfamily\tiny,firstline=35]{src/exercicio04.cpp}
+}
+\end{frame}
+
+%-------------------------------------------------------
+\begin{frame}[fragile]\frametitle{Exercício 5: \texttt{exercicio05-resp.cpp}}
+\fontsize{6pt}{6pt}\selectfont{
+\lstinputlisting[firstline=38,lastline=68]{src/exercicio05-resp.cpp}
 }
 \end{frame}
 

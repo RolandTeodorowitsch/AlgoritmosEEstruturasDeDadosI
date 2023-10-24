@@ -1,0 +1,11 @@
+graph "Arvore Binária" {
+  Node [shape=circle]
+  A -- B
+  B -- D
+  B -- E
+  A -- C
+  C -- F
+  F -- H
+  F -- I
+  C -- G
+}

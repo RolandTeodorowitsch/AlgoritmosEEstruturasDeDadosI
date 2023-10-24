@@ -1,0 +1,7 @@
+graph arvore_de_decisao2 {
+	node [shape=rectangle,style=filled,color=black,fillcolor=yellowgreen]
+	"Você é nervoso?" -- "Conta-poupança" [label="sim"]
+	"Você é nervoso?" -- "Você vai necessitar\ndo dinheiro nos\npróximos 5 anos?" [label="não"]
+	"Você vai necessitar\ndo dinheiro nos\npróximos 5 anos?" -- "Fundo pré-fixado" [label="sim"]
+	"Você vai necessitar\ndo dinheiro nos\npróximos 5 anos?" -- "Carteira de ações" [label="não"]
+}
