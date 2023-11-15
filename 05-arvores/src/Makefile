@@ -4,9 +4,13 @@ ALL =				exemplo01 \
 				exercicio04 \
 				exercicio05 \
 				exercicio05-resp \
-				NodeCharTree1/app1 \
-				NodeCharTree1/app2 \
-				NodeCharTree2/app
+				exercicio06/app1 \
+				exercicio06/app2 \
+				exercicio08/app \
+				exercicio09/app \
+				exercicio10/app \
+				exercicio13/app \
+				exercicio15/app
 
 CFLAGS =			-std=c++11
 
@@ -27,17 +31,33 @@ exercicio04:			exercicio04.cpp
 exercicio05:			exercicio05.cpp
 				@g++ ${CFLAGS} -o exercicio05 exercicio05.cpp
 
-NodeCharTree1/app1:		NodeCharTree1/NodeCharTree.cpp NodeCharTree1/NodeCharTree.hpp NodeCharTree1/main1.cpp
-				@g++ ${CFLAGS} -o NodeCharTree1/app1 NodeCharTree1/NodeCharTree.cpp NodeCharTree1/main1.cpp
-				@NodeCharTree1/app > NodeCharTree1/app1.output
+exercicio06/app1:		exercicio06/NodeCharTree.cpp exercicio06/NodeCharTree.hpp exercicio06/app1.cpp
+				@g++ ${CFLAGS} -o exercicio06/app1 exercicio06/NodeCharTree.cpp exercicio06/app1.cpp
+				@exercicio06/app1 > exercicio06/app1.output
 
-NodeCharTree1/app2:		NodeCharTree1/NodeCharTree.cpp NodeCharTree1/NodeCharTree.hpp NodeCharTree1/main2.cpp
-				@g++ ${CFLAGS} -o NodeCharTree1/app2 NodeCharTree1/NodeCharTree.cpp NodeCharTree1/main2.cpp
-				@NodeCharTree1/app > NodeCharTree1/app2.output
+exercicio06/app2:		exercicio06/NodeCharTree.cpp exercicio06/NodeCharTree.hpp exercicio06/app2.cpp
+				@g++ ${CFLAGS} -o exercicio06/app2 exercicio06/NodeCharTree.cpp exercicio06/app2.cpp
+				@exercicio06/app2 > exercicio06/app2.output
 
-NodeCharTree2/app:		NodeCharTree2/NodeCharTree.cpp NodeCharTree2/NodeCharTree.hpp NodeCharTree2/main.cpp
-				@g++ ${CFLAGS} -o NodeCharTree2/app NodeCharTree2/NodeCharTree.cpp NodeCharTree2/main.cpp
-				@NodeCharTree2/app > NodeCharTree2/app.output
+exercicio08/app:		exercicio08/NodeCharTree.cpp exercicio08/NodeCharTree.hpp exercicio08/app.cpp
+				@g++ ${CFLAGS} -o exercicio08/app exercicio08/NodeCharTree.cpp exercicio08/app.cpp
+				@exercicio08/app > exercicio08/app.output
+
+exercicio09/app:		exercicio09/NodeTree.hpp exercicio09/app.cpp
+				@g++ ${CFLAGS} -o exercicio09/app exercicio09/app.cpp
+				@exercicio09/app > exercicio09/app.output
+
+exercicio10/app:		exercicio10/NodeCharTree.cpp exercicio10/NodeCharTree.hpp exercicio10/app.cpp
+				@g++ ${CFLAGS} -o exercicio10/app exercicio10/NodeCharTree.cpp exercicio10/app.cpp
+				@exercicio10/app > exercicio10/app.output
+
+exercicio13/app:		exercicio13/NodeBT.hpp exercicio13/app.cpp
+				@g++ ${CFLAGS} -o exercicio13/app exercicio13/app.cpp
+				@exercicio13/app > exercicio13/app.output
+
+exercicio15/app:		exercicio15/NodeBT.hpp exercicio15/BST.hpp exercicio15/app.cpp
+				@g++ ${CFLAGS} -o exercicio15/app exercicio15/app.cpp
+				@exercicio15/app > exercicio15/app.output
 
 clean:
 				@rm -f ${ALL}

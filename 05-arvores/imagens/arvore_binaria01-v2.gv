@@ -1,0 +1,17 @@
+graph arvore_binaria01_v2 {
+	node [shape=circle]
+	A -- { B C };
+	subgraph cluster_0 {
+		style=filled;
+		color=lightgrey;
+		B -- { D };
+		label="   Subárvore   \nEsquerda";
+	}
+	subgraph cluster_1 {
+			style=filled;
+		color=lightgrey;
+		C -- { E F };
+		F -- { G H };
+		label="Subárvore\nDireita";
+	}
+}

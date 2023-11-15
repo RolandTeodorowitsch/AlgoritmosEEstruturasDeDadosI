@@ -1,0 +1,9 @@
+graph arvore_de_decisao2 {
+	node [shape=rectangle,style=filled,color=black,fillcolor=yellowgreen]
+	"Você é estressado?" -- "Conta-poupança" [label="sim"]
+	"Você é estressado?" -- "Você vai precisar\nde dinheiro nos\npróximos 5 anos?" [label="não"]
+	"Você vai precisar\nde dinheiro nos\npróximos 5 anos?" -- "Fundo de aplicação" [label="sim"]
+	"Você vai precisar\nde dinheiro nos\npróximos 5 anos?" -- "Você aceita correr riscos\nna transação em troca de\nganhos maiores?" [label="não"]
+	"Você aceita correr riscos\nna transação em troca de\nganhos maiores?" -- "Carteira de ações" [label="não"]
+	"Você aceita correr riscos\nna transação em troca de\nganhos maiores?" -- "Carteira diversificada com ações,\ntítulos e aplicações de curto prazo" [label="sim"]
+}

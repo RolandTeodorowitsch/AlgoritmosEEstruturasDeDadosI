@@ -1,0 +1,23 @@
+graph arvore_binaria06 {
+	node [shape=circle]
+	1 -- 2
+	1 -- t [style=invisible]
+	1 -- u [style=invisible]
+	1 -- 3
+	2 -- 4
+	2 -- v [style=invisible]
+	4 -- w [style=invisible]
+	4 -- x [style=invisible]
+	4 -- 6
+	3 -- 5
+	3 -- y [style=invisible]
+	5 -- z [style=invisible]
+	5 -- 7
+	t [style=invisible]
+	u [style=invisible]
+	v [style=invisible]
+	w [style=invisible]
+	z [style=invisible]
+	x [style=invisible]
+	y [style=invisible]
+}

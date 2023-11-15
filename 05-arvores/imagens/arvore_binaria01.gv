@@ -1,0 +1,7 @@
+graph arvore_binaria01 {
+	node [shape=circle]
+	A -- { B C }
+	B -- D
+	C -- { E F }
+	F -- { G H }
+}

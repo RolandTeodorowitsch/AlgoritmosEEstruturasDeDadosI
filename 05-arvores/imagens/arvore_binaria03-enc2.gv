@@ -1,0 +1,38 @@
+digraph "arvore_binaria03-enc2" {
+        rankdir=LR;
+
+        node [shape=record];
+
+        raiz -> A;
+
+	A [label="{ <ref0> ∅ | <data> A | <ref1> | <ref2> ∅ }"]
+        B [label="{ <ref0> | <data> B | <data> ∅ | <ref2> }"]
+        C [label="{ <ref0> | <data> C | <ref1> | <ref2> }"]
+        E [label="{ <ref0> | <data> E | <ref1> ∅ | <ref2> }"]
+        D [label="{ <ref0> | <data> D | <ref1> | <ref2> ∅ }"]
+        F [label="{ <ref0> | <data> F | <ref1> ∅ | <ref2> ∅ }"]
+        G [label="{ <ref0> | <data> G | <ref1> ∅ | <ref2> ∅ }"]
+
+        raiz [shape=plaintext]
+
+	A:ref1:c -> B:data:n [arrowhead=vee, arrowtail=dot, dir=both, tailclip=false];
+
+	B:ref0:c -> A:data:s [arrowhead=vee, arrowtail=dot, dir=both, tailclip=false];
+	B:ref2:c -> C:data:n [arrowhead=vee, arrowtail=dot, dir=both, tailclip=false];
+
+	C:ref0:c -> B:data:s [arrowhead=vee, arrowtail=dot, dir=both, tailclip=false];
+	C:ref1:c -> E:data:n [arrowhead=vee, arrowtail=dot, dir=both, tailclip=false];
+	C:ref2:c -> D:data:n [arrowhead=vee, arrowtail=dot, dir=both, tailclip=false];
+
+	E:ref0:c -> C:data:s [arrowhead=vee, arrowtail=dot, dir=both, tailclip=false];
+	E:ref2:c -> F:data:n [arrowhead=vee, arrowtail=dot, dir=both, tailclip=false];
+
+	D:ref0:c -> C:data:s [arrowhead=vee, arrowtail=dot, dir=both, tailclip=false];
+	D:ref1:c -> G:data:n [arrowhead=vee, arrowtail=dot, dir=both, tailclip=false];
+
+	F:ref0:c -> E:data:s [arrowhead=vee, arrowtail=dot, dir=both, tailclip=false];
+
+	G:ref0:c -> D:data:s [arrowhead=vee, arrowtail=dot, dir=both, tailclip=false];
+
+}
+# / &#8709; / ∅ /

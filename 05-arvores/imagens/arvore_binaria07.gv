@@ -1,0 +1,21 @@
+graph arvore_binaria07 {
+	node [shape=circle]
+	sum1 -- sum2
+	sum1 -- minus1
+	sum2 -- A
+	sum2 -- B
+	minus1 -- div1
+	minus1	 -- mul1
+	div1 -- C
+	div1 -- G
+	mul1 -- F
+	mul1 -- minus2
+	minus2 -- D
+	minus2 -- E
+	sum1 [label="-"]
+	sum2 [label="+"]
+	minus1 [label="-"]
+	minus2 [label="-"]
+	div1 [label="/"]
+	mul1 [label="*"]
+}

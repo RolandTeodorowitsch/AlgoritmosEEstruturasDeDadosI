@@ -1,0 +1,15 @@
+graph "arvore_binaria10-expressao" {
+	node [shape=square]
+	minus1 -- { sum1 sum2 }
+	sum1 -- { A B }
+	sum2 -- { mul1 div1 }
+	mul1 -- { C minus2 }
+	minus2 -- { D E }
+	div1 -- { F G }
+	sum1 [label="+",shape=circle]
+	sum2 [label="+",shape=circle]
+	minus1 [label="-",shape=circle]
+	minus2 [label="-",shape=circle]
+	mul1 [label="*",shape=circle]
+	div1 [label="/",shape=circle]
+}

@@ -1,0 +1,8 @@
+graph arvore_c {
+	node [shape=circle]
+	B -- A [style=invisible]
+	B -- D [style=invisible]
+	B -- F [style=invisible]
+	D -- C
+	D -- E
+}

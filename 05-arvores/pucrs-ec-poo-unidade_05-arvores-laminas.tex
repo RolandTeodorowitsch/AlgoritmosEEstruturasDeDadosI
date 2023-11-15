@@ -20,7 +20,7 @@
 	basicstyle=\ttfamily,
 	keywordstyle=\color{blue}\ttfamily,
 	stringstyle=\color{red}\ttfamily,
-	commentstyle=\color{green}\ttfamily,
+	commentstyle=\color{brown}\ttfamily,
 	morecomment=[l][\color{magenta}]{\#},
 	literate=
 	{á}{{\'a}}1
@@ -74,7 +74,7 @@
 \title[\sc{Árvores}]{Árvores}
 \author[Roland Teodorowitsch]{Roland Teodorowitsch}
 \institute[ALEST I - EP - PUCRS]{Algoritmos e Estruturas de Dados I - Escola Politécnica - PUCRS}
-\date{24 de outubro de 2023}
+\date{15 de novembro de 2023}
 
 \begin{document}
 
@@ -101,7 +101,7 @@
 \end{column}
 %\vspace{3mm}
 \begin{column}{0.85\linewidth}
-\tiny{\textbf{Capítulo 7, Seções 7.1 e 7.2}\\
+\tiny{\textbf{Capítulo 7, Seções 7.1, 7.2, 7.3, 10.1, 10.2 e 10.5}\\
 ~}\\
 \scriptsize{GOODRICH, Michael T.; TAMASSIA, Roberto. \textbf{Estruturas de dados e algoritmos em Java}. Tradução: Bernardo Copstein. 5. ed. Porto Alegre: Bookman, 2013. xxii, 713 p. E-book. ISBN 9788582600191. Tradução de: Data Structures and Algorithms in Java, 5th Edition. Disponível em: \textless{}\url{https://integrada.minhabiblioteca.com.br/\#/books/9788582600191/}\textgreater{}. Acesso em: 01 ago. 2023.}
 \end{column}
@@ -241,7 +241,7 @@
 \begin{itemize}
 	\item Organização hierárquica dos arquivos nos sistemas operacionais é uma árvore
 	\item Nodos internos, neste caso, são associados a diretórios, e nodos externos a arquivos
-	\item No Linux o diretório raiz é “/”
+	\item No Linux o diretório raiz é ``/''
 \end{itemize}
 \end{column}
 \begin{column}{0.6\linewidth}
@@ -983,7 +983,7 @@ void clean(Node *subtree) {
 	\end{itemize}
 \begin{figure}[h]
 	\centering
-	\includegraphics[height=0.5\paperheight]{imagens/arvore_binaria1-v2.eps}
+	\includegraphics[height=0.5\paperheight]{imagens/arvore_binaria01-v2.eps}
 \end{figure}
 \end{itemize}
 \end{frame}
@@ -1006,7 +1006,7 @@ void clean(Node *subtree) {
 	\item Todos os nodos, com exceção dos nodos-folha, têm exatamente dois filhos
 \begin{figure}[h]
 	\centering
-	\includegraphics[height=0.5\paperheight]{imagens/arvore_binaria2.eps}
+	\includegraphics[height=0.5\paperheight]{imagens/arvore_binaria02.eps}
 \end{figure}
 \end{itemize}
 \end{frame}
@@ -1045,7 +1045,7 @@ void clean(Node *subtree) {
 %\vspace{-3mm}
 \begin{figure}[h]
 	\centering
-	\includegraphics[height=0.70\paperheight]{imagens/arvore_binaria3.eps}
+	\includegraphics[height=0.70\paperheight]{imagens/arvore_binaria03.eps}
 \end{figure}
 \end{column}
 \begin{column}{0.8\linewidth}
@@ -1053,9 +1053,9 @@ void clean(Node *subtree) {
 \begin{figure}[h]
 	\centering
 	\textbf{\underline{SEM referência para o nodo-pai:}}\\	
-	\includegraphics[height=0.3\paperheight]{imagens/arvore_binaria3-enc1.png}\\
+	\includegraphics[height=0.3\paperheight]{imagens/arvore_binaria03-enc1.png}\\
 	\textbf{\underline{COM referência para o nodo-pai:}}\\	
-	\includegraphics[height=0.27\paperheight]{imagens/arvore_binaria3-enc2.png}
+	\includegraphics[height=0.27\paperheight]{imagens/arvore_binaria03-enc2.png}
 \end{figure}
 \end{column}
 \end{columns}
@@ -1107,8 +1107,8 @@ void clean(Node *subtree) {
 		\tiny
 		\item \texttt{int degree(Node *subtree)}: retorna o número de filhos (grau) de determinado nodo da árvore (parâmetro \texttt{subtree});
 		\item \texttt{int depth(Node *subtree)}: retorna o nível de determinado nodo (parâmetro \texttt{subtree}) dentro da árvore (o que pode ser feito navegando pela árvore usando as referências para o nodos-pai, e contando o número de nodos até alcançar a raiz);
+		\item \texttt{int height(Node *subtree)}: retorna o altura da árvore/subárvore a partir de um nodo específico (parâmetro \texttt{subtree}) -- deve ser implementado como uma função recursiva.
 		\item \texttt{int size(Node *subtree)}: retorna o número de nodos que há na árvore a partir de determinado nodo (parâmetro \texttt{subtree}) -- deve ser implementado como uma função recursiva;
-		\item \texttt{int treeDepth(Node *subtree)}: retorna o altura da árvore/subárvore a partir de um nodo específico (parâmetro \texttt{subtree}) -- deve ser implementado como uma função recursiva.
 	\end{itemize}
 Observação: os códigos usados neste exercício foram adaptados das soluções dos exercícios 3 e 4. As soluções, por outro lado, precisam ser desenvolvidas.
 \end{enumerate}
@@ -1225,15 +1225,23 @@ T={A,{B,{D,{I},{J}},{E},{F}},{C,{G},{H,{K}}}}
 %-------------------------------------------------------
 \begin{frame}\frametitle{Operações}
 \begin{itemize}
-	\item Inserir um nodo raiz
-	\item Obter o valor da raiz (da árvore e de qualquer subárvore)
-	\item Esvaziar uma árvore
-	\item Obter uma subárvore de um determinado nodo
-	\item Anexar uma subárvore em um determinado nodo
-	\item Contar o número de nodos da árvore
-	\item Calcular o grau e o nível de um determinado nodo
-	\item Calcular a altura de uma árvore
+	\scriptsize
+	\item Alocar nodos
+	\item Desalocar nodos e seus descendentes
+	\item Obter a informação de um nodo
+	\item Obter a referência do nodo-pai de um nodo
+	\item Inserir nodos ou subárvores como filhos de outro nodo
+	\item Obter o grau (número de filhos) de um nodo
+	\item Obter a referência para determinado nodo-filho de um nodo
+	\item Remover determinado nodo-filho de um nodo
+	\item Verificar se um nodo é raiz, interno ou externo
+	\item Obter o nível de determinado nodo
+	\item Obter o número de nodos a partir de determinado nodo da árvore
+	\item Determinar a altura de uma árvore
+	\item Verificar se determinada informação aparece a partir de um nodo
+	\item Localizar o nodo que armazena determinada informação
 	\item Percorrer a árvore
+	\item Obter representações da árvore ou de subárvores em formatos específicos
 	\item etc.
 \end{itemize}
 \end{frame}
@@ -1241,21 +1249,14 @@ T={A,{B,{D,{I},{J}},{E},{F}},{C,{G},{H,{K}}}}
 %-------------------------------------------------------
 \begin{frame}\frametitle{TAD para Árvores Genéricas}
 \begin{itemize}
-	\item Forma mais usual de implementação:
+	\item A forma mais usual de implementação consiste no uso de \textbf{estruturas encadeadas} (alocação dinâmica)
+	\item Cada nodo contém:
 	\begin{itemize}
-		\item Estruturas encadeadas (alocação dinâmica)
-		\item Cada nodo contém:
-		\begin{itemize}
-			\item A informação
-			\item Uma referência para o nodo pai
-			\item Uma lista de referências para os nodos filhos (subárvores)
-		\end{itemize}
+		\item A informação
+		\item Uma referência para o nodo pai
+		\item Uma lista de referências para os nodos filhos (subárvores)
 	\end{itemize}
-	\item É possível declarar um TAD para:
-	\begin{itemize}
-		\item O \textbf{nodo} e deixar o gerenciamento da árvore a cargo da aplicação (é necessário fornecer chamadas para acrescentar nodos filho em determinado nodo, e também para remover nodos filhos)
-		\item A \textbf{estrutura de dados}, que terá uma classe interna para o nodo, determinando automaticamente onde cada informação será inserida (chamadas para acrescentar e remover algum dado NÃO precisam especificar onde a informação será inserida; nodos e referências que formam a árvore permanecem encapsulados)
-	\end{itemize}
+	\item Também é comum armazenar para uma árvore, o seu número total de nodos
 \end{itemize}
 \end{frame}
 
@@ -1284,870 +1285,1095 @@ for (int i=0; i<v.size(); ++i) // mostra o vetor
 \end{frame}
 
 %-------------------------------------------------------
-\begin{frame}[fragile]\frametitle{Declaração de um TAD de Árvore Genérica}
+\begin{frame}\frametitle{TAD para Árvores Genéricas}
+\begin{itemize}
+	\item É possível declarar um TAD para:
+	\begin{itemize}
+		\item A \textbf{estrutura de dados}, que terá uma classe interna para o nodo, determinando automaticamente onde cada informação será inserida (chamadas para acrescentar e remover algum dado NÃO especificam onde a informação será inserida; nodos e referências que formam a árvore permanecem encapsulados)
+		\item O \textbf{nodo}, deixando o gerenciamento da árvore a cargo da própria aplicação (é necessário fornecer chamadas para acrescentar nodos-filho em determinado nodo, e também para remover nodos-filhos, etc.)
+	\end{itemize}
+\end{itemize}
+\end{frame}
+
+%-------------------------------------------------------
+\begin{frame}\frametitle{Exemplo de TAD para uma Árvores de Inteiros}
 \fontsize{3pt}{5pt}\selectfont{
-\lstinputlisting{src/NodeCharTree1/NodeCharTree.hpp}
+\lstinputlisting{src/IntTree.hpp}
+}
+\end{frame}
+
+%-------------------------------------------------------	
+\begin{frame}[fragile]\frametitle{Exemplo de TAD para um Nodo de Árvore de Caracteres}
+\fontsize{3pt}{5pt}\selectfont{
+\lstinputlisting{src/exercicio06/NodeCharTree.hpp}
 }
 \end{frame}
 
 %-------------------------------------------------------
-\begin{frame}[fragile]\frametitle{Representações}
+\begin{frame}[fragile]\frametitle{Criando uma Árvore de Caracteres (Passo 1)}
 \begin{columns}[T]
+\begin{column}{0.5\linewidth}
+\textbf{\underline{Código:}}
+\begin{lstlisting}[language=C++,basicstyle=\ttfamily\tiny]
+// Criação de nodos
+NodeCharTree *b = new NodeCharTree('B');
+NodeCharTree *a = new NodeCharTree('A');
+NodeCharTree *d = new NodeCharTree('D');
+NodeCharTree *f = new NodeCharTree('F');
+NodeCharTree *c = new NodeCharTree('C');
+NodeCharTree *e = new NodeCharTree('E');
+\end{lstlisting}
+~\\
+\textbf{\underline{Memória:}}
+{\tiny
+\begin{verbatim}
+b = ref1 --> |info='B'|parent=nullptr|childs={}|
+a = ref2 --> |info='A'|parent=nullptr|childs={}|
+d = ref3 --> |info='D'|parent=nullptr|childs={}|
+f = ref4 --> |info='F'|parent=nullptr|childs={}|
+c = ref5 --> |info='C'|parent=nullptr|childs={}|
+e = ref6 --> |info='E'|parent=nullptr|childs={}|
+\end{verbatim}
+}
+\end{column}
+\begin{column}{0.5\linewidth}
+\begin{figure}[h]
+	\centering
+	\includegraphics[height=0.4\paperheight]{imagens/arvore_c-passo1.eps}
+\end{figure}
+\end{column}
+\end{columns}
+\end{frame}
+
+%-------------------------------------------------------
+\begin{frame}[fragile]\frametitle{Criando uma Árvore de Caracteres (Passo 2)}
+\begin{columns}[T]
+\begin{column}{0.5\linewidth}
+\textbf{\underline{Código:}}
+\begin{lstlisting}[language=C++,basicstyle=\ttfamily\tiny]
+// Adicionando os filhos de D
+d->addSubtree( c );
+d->addSubtree( e );
+\end{lstlisting}
+~\\
+\textbf{\underline{Memória:}}
+{\tiny
+\begin{verbatim}
+b = ref1 --> |info='B'|parent=nullptr|childs={}|
+a = ref2 --> |info='A'|parent=nullptr|childs={}|
+d = ref3 --> |info='D'|parent=nullptr|childs={ref5,ref6}|
+f = ref4 --> |info='F'|parent=nullptr|childs={}|
+c = ref5 --> |info='C'|parent=ref3   |childs={}|
+e = ref6 --> |info='E'|parent=ref3   |childs={}|
+\end{verbatim}
+}
+\end{column}
+\begin{column}{0.5\linewidth}
+\begin{figure}[h]
+	\centering
+	\includegraphics[height=0.4\paperheight]{imagens/arvore_c-passo2.eps}
+\end{figure}
+\end{column}
+\end{columns}
+\end{frame}
+
+%-------------------------------------------------------
+\begin{frame}[fragile]\frametitle{Criando uma Árvore de Caracteres (Passo Final)}
+\begin{columns}[T]
+\begin{column}{0.5\linewidth}
+\textbf{\underline{Código:}}
+\begin{lstlisting}[language=C++,basicstyle=\ttfamily\tiny]
+// Adicionando os filhos de B
+b->addSubtree( a );
+b->addSubtree( d );
+b->addSubtree( f );
+\end{lstlisting}
+~\\
+\textbf{\underline{Memória:}}
+{\tiny
+\begin{verbatim}
+b = ref1 --> |info='B'|parent=nullptr|childs={ref2,ref3,ref4}|
+a = ref2 --> |info='A'|parent=ref1   |childs={}|
+d = ref3 --> |info='D'|parent=ref1   |childs={ref5,ref6}|
+f = ref4 --> |info='F'|parent=ref1   |childs={}|
+c = ref5 --> |info='C'|parent=ref3   |childs={}|
+e = ref6 --> |info='E'|parent=ref3   |childs={}|
+\end{verbatim}
+}
+\end{column}
 \begin{column}{0.5\linewidth}
 \begin{figure}[h]
 	\centering
 	\includegraphics[height=0.4\paperheight]{imagens/arvore_c.eps}
 \end{figure}
 \end{column}
-\begin{column}{0.5\linewidth}
-...
-\end{column}
 \end{columns}
-\end{frame}
-
-
-\begin{comment}
-// Atributos
-Node father
-Integer element
-LinkedListOfNodes subtrees
-// Métodos
-Node (Integer element)
-void addSubtree (Node n)
-boolean removeSubtree(Node n)
-Node getSubtree(int i)
-int getSubtreesSize()
-TAD para Árvores Genéricas
-B
-A
- D
- F
-C
- E
-B 
-A
-  D
-F
- 
-C
- 
- E
- 
-TAD para Árvores Genéricas
-	\item Inserindo um elemento
-B
- B  
- B
- B 
-A
-A
- 
-TAD para Árvores Genéricas
-	\item Removendo um elemento
-B
- B 
-A
- D
- F
-A
-  D
-F
- 
-A
-B
-D
-B 
-A
-  D
- 
- F  
-TAD para Árvores Genéricas
-◼
-O TAD:
-	\item Armazena referência para a raiz da árvore e o número de
-elementos já inseridos
-	\item Suporta, por exemplo, os seguintes métodos (1/3):
-	\item boolean add(Integer e, Integer father): insere o elemento e como
-filho de father
-	\item Integer getRoot(): retorna o elemento armazenado na raiz
-	\item void setRoot(Integer e): altera o elemento armazenado na raiz
-	\item Integer getParent(Integer e): retorna o pai do elemento e
-	\item boolean removeBranch(Integer e): remove o elemento e e seus
-filhos
-	\item boolean contains(Integer e): retorna true se a árvore contém o
-elemento e
-TAD para Árvores Genéricas
-◼
-O TAD:
-	\item Armazena referência para a raiz da árvore e o número de
-elementos já inseridos
-	\item Suporta, por exemplo, os seguintes métodos (2/3):
-	\item boolean isInternal(Integer e): retorna true se o elemento está
-armazenado em um nodo interno
-	\item boolean isExternal(Integer e): retorna true se o elemento está
-armazenado em um nodo externo
-	\item boolean isRoot(Integer e): retorna true se o elemento e está
-armazenado na raiz
-	\item boolean isEmpty(): retorna true se a árvore está vazia
-TAD para Árvores Genéricas
-◼
-O TAD:
-	\item Armazena referência para a raiz da árvore e o número de
-elementos já inseridos
-	\item Suporta, por exemplo, os seguintes métodos (3/3):
-	\item int size(): retorna o número de elementos armazenados na árvore
-	\item void clear(): remove todos os elementos da árvore
-	\item LinkedListOfInteger positionsPre(): retorna uma lista com todos os
-elementos da árvore na ordem pré-fixada
-	\item LinkedListOfInteger positionsPos(): retorna uma lista com todos
-os elementos da árvore na ordem pos-fixada
-	\item LinkedListOfInteger positionsWidth(): retorna uma lista com todos
-os elementos da árvore com um caminhamento em largura
-Roteiro
-	\item Introdução
-	\item TAD para Árvores Genéricas
-	\item Caminhamento
-	\item Exercícios
-
-
-Caminhamento
-	\item Caminhamento é a forma como vamos
-percorrer as árvores, ou seja, a ordem em
-que vamos visitar seus nodos
-	\item Existem vários tipos de caminhamento que
-permitem varrer a árvore de forma
-sistemática visitando cada nodo uma única
-vez
-Caminhamento
-	\item Pré-Ordem
-	\item Do inglês preorder traversal
-	\item Nodo é visitado antes de seus descendentes
-	\item É definido recursivamente como:
-	\item Visite o nodo;
-	\item Realize um percurso em pré-ordem para cada uma
-das subárvores do nodo.
-	\item Exemplo de aplicação:
-	\item Impressão de um documento estruturado em capítulos
-Caminhamento
-◼
-Pré-Ordem
-	\item Exemplo:
-1
-A
-2
- 5
- 9
-B
- C
- D
-3
- 4
- 6
- 7
- 8
-E
- F
- G
- H
- I
-Caminhamento
-	\item Pós-Ordem
-	\item Do inglês postorder traversal
-	\item Nodo é visitado depois de seus descentes
-	\item É definido recursivamente como:
-	\item Realize um percurso em pós-ordem para cada uma
-das subárvores do nodo;
-	\item Visite o nodo.
-	\item Exemplos de aplicação:
-	\item Calcular o total de espaço em disco ocupado por
-arquivos em um sistema de diretórios
-Caminhamento
-◼
-Pós-Ordem
-	\item Exemplo:
-9
-A
-3
- 7
- 8
-B
- C
- D
-1
- 2
- 4
- 5
- 6
-E
- F
- G
- H
- I
-Caminhamento
-	\item Em largura
-	\item Visita os nodos na ordem dos níveis da árvore,
-da esquerda para a direita
-	\item Visite os nodos de nível 0;
-	\item Visite os nodos de nível 1;
-	\item ...
-	\item Algoritmo não-recursivo:
-	\item Inserir nodo raiz em uma fila;
-	\item Repetir até que a fila esteja vazia
-	\item Remover o nodo da fila;
-	\item Visitar o nodo atual;
-	\item Inserir na fila, em ordem, cada subárvore não vazia do nodo
-atual.
-Caminhamento
-	\item Em largura
-	\item Exemplo:
-1
-A
-2
- 3
- 4
-B
- C
- D
-5
- 6
- 7
- 8
- 9
-E
- F
- G
- H
- I
-Roteiro
-	\item Introdução
-	\item Algoritmos para Árvores Genéricas
-	\item Caminhamento
-	\item Exercícios
-
-
-Exercícios
-	\item Implementar os algoritmos para o TAD de
-árvore genérica
-	\item Para as árvores a seguir, mostrar a ordem
-que os elementos serão apresentados para
-cada caminhamento (pré-ordem, pós-ordem e
-em largura)
-Exercícios
-+
-A
-*
- /
-B
- C
-A
- B
- C
- +
-D
- E
-D
- E
- F
- G
- H
-I
- J
- K
- L
-M
- N
- O
- P
- Q
-
-
-
-
-%=======================================================
-\section{Exercícios}
-
-%-------------------------------------------------------
-\begin{frame}[fragile]\frametitle{Exercícios 6 e 7}
-\begin{enumerate}
-	\setcounter{enumi}{5}
-	\item Modifique o programa da lâmina anterior para que a lista seja criada \textbf{com um laço}, exatamente com o mesmo conteúdo e na mesma ordem lógica. Faça as inserções sempre pela mesma extremidade da estrutura encadeada.
-	\item Usando como modelo o programa da lâmina anterior, construa em C++ a seguinte lista duplamente encadeada. Percorra a lista, mostrando o conteúdo de seus nodos, tanto do início para o fim, quanto do fim para o início.
-\begin{figure}[h]
-	\centering
-	\includegraphics[height=0.16\paperheight]{imagens/pilha_duplamente_encadeada.png}
-\end{figure}
-\end{enumerate}
-\end{frame}
-
-%-------------------------------------------------------
-\begin{frame}[fragile]\frametitle{Exercício 8}
-\begin{enumerate}
-        \setcounter{enumi}{7}
-	\item Usando como ponto de partida a classe \texttt{IntStack}, apresentada anteriormente e implementada usando alocação sequencial ou contígua, implemente a classe \texttt{IntLinkedStack}, que funciona da mesma forma, porém usando alocação encadeada.\\
-	Observações:
-	\begin{itemize}
-		\item A versão usando alocação encadeada eliminará a necessidade de se trabalhar com um limite máximo de elementos, consequentemente, os métodos \texttt{maxSize()} e \texttt{isFull()} NÃO farão parte da nova implementação.
-		\item A definição da classe (arquivo \texttt{IntLinkedStack.hpp}) e um programa de teste (arquivo \texttt{IntLinkedStackMain.cpp}) estão listados nas lâminas a seguir.
-	\end{itemize}
-\end{enumerate}
-\end{frame}
-
-%-------------------------------------------------------
-\begin{frame}[fragile]\frametitle{Exercício 8: \texttt{IntLinkedStack.hpp}}
-\lstinputlisting[basicstyle=\ttfamily\tiny]{src/IntLinkedStack.hpp}
-\end{frame}
-
-%-------------------------------------------------------
-\begin{frame}[fragile]\frametitle{Exercício 8: \texttt{IntLinkedStackMain.cpp}}
-\fontsize{6pt}{6pt}\selectfont{
-\lstinputlisting{src/IntLinkedStackMain.cpp}
-}
-\end{frame}
-
-%=======================================================
-\section{Fila (\emph{Queue})}
-
-%-------------------------------------------------------
-\begin{frame}\frametitle{Fila ou \emph{Queue}}
-\begin{itemize}
-	\item Usa a política \emph{FIFO -- First In First Out} (o primeiro que entrou, é o primeiro a sair)
-	\item Possui uma entrada (fim), a partir da qual os dados são inseridos, e uma saída (início), a partir da qual os dados são removidos
-\begin{figure}[h]
-	\centering
-	\includegraphics[height=0.3\paperheight]{imagens/fila.png}
-\end{figure}
-\end{itemize}
-\end{frame}
-
-%-------------------------------------------------------
-\begin{frame}\frametitle{Aplicações que Usam Fila}
-\begin{itemize}
-	\item Desenvolvimento de aplicativos
-	\begin{itemize}
-		\item Gerenciamento de transações para aplicativos de lojas, teatros, centros de reserva, etc.
-	\end{itemize}
-	\item Simulações
-	\begin{itemize}
-		\item Listas de espera na simulação de sistemas de atendimento (banco, supermercado, etc.)
-	\end{itemize}
-	\item Sistemas Operacionais
-	\begin{itemize}
-		\item Fila de documentos para impressão
-		\item Escalonamento de processos em um sistema operacional
-		\item Fila de requisições de acesso a disco
-		\item Fila de espera por recursos
-		\item Fila (\emph{buffering}) de mensagens e pacotes
-	\end{itemize}
-	\item Estruturas de Dados
-	\begin{itemize}
-		\item Suporte na implementação de algoritmos sobre árvores e grafos
-	\end{itemize}
-	\item etc.
-\end{itemize}
-\end{frame}
-
-%-------------------------------------------------------
-\begin{frame}\frametitle{Fila: Implementações Possíveis}
-\begin{itemize}
-	\item \textbf{Arranjo (\emph{buffer}) circular}
-\begin{figure}[h]
-	\flushleft
-	\includegraphics[height=0.13\paperheight]{imagens/fila1a.png} ~ ~ ~ \includegraphics[height=0.13\paperheight]{imagens/fila1b.png}
-\end{figure}
-	\item \textbf{Lista Simplesmente Encadeada}
-\begin{figure}[h]
-	\flushleft
-	\includegraphics[height=0.15\paperheight]{imagens/fila2.png}
-\end{figure}
-	\item \textbf{Lista Duplamente Encadeada}
-\begin{figure}[h]
-	\flushleft
-	\includegraphics[height=0.15\paperheight]{imagens/fila3.png}
-\end{figure}
-\end{itemize}
-\end{frame}
-
-%-------------------------------------------------------
-\begin{frame}[fragile]\frametitle{Implementação de um Arranjo Circular}
-\begin{itemize}
-	\item Usam-se índices para inserção (\texttt{insertPos}) e remoção (\texttt{removePos}) que percorrem o arranjo (\texttt{queue}) de forma ``circular''
-	\item Para inserir pode-se usar:
-\begin{lstlisting}[basicstyle=\ttfamily\scriptsize]
-queue[ insertPos++ ] = e;
-insertPos %= maxElements; // Ou: if ( insertPos == maxElements ) insertPos = 0;
-\end{lstlisting}
-	\item Para remover pode-se usar:
-\begin{lstlisting}[basicstyle=\ttfamily\scriptsize]
-e = queue[ removePos++ ];
-removePos %= maxElements; // Ou: if ( removePos == maxElements ) removePos = 0;
-\end{lstlisting}
-	\item Deve-se verificar as situações de arranjo cheio (na inserção) e arranjo vazio (na remoção)
-	\item Exemplos:
-\begin{figure}[h]
-	\flushleft
-	\includegraphics[height=0.13\paperheight]{imagens/fila1a.png} ~ ~ ~ \includegraphics[height=0.13\paperheight]{imagens/fila1b.png}
-\end{figure}
-\end{itemize}
-\end{frame}
-
-%-------------------------------------------------------
-\begin{frame}\frametitle{Métodos do TAD Fila (\emph{Queue})}
-\begin{itemize}
-	\item \texttt{bool enqueue(e)}: insere o elemento no final da fila (retorna \texttt{true}, em caso de sucesso, ou \texttt{false}, se NÃO houver espaço)
-	\item \texttt{bool dequeue(\&e)}: remove e retorna (por referência) o elemento do início da fila (retorna \texttt{true}, em caso de sucesso, ou \texttt{false}, a fila estiver vazia)
-	\item \texttt{bool head(\&e)} ou \texttt{bool front(\&e)}: retorna (por referência) o elemento do início da fila, mas não o remove da fila (retorna \texttt{true}, em caso de sucesso, ou \texttt{false}, a fila estiver vazia)
-	\item \texttt{int size()}: retorna o número de elementos da fila
-	\item \texttt{int maxSize()}: retorna o número máximo de elementos suportado pela fila
-	\item \texttt{bool isEmpty()}: retorna \texttt{true}, se a fila estiver vazia, ou \texttt{false}, em caso contrário
-	\item \texttt{bool isFull()}: retorna \texttt{true}, se a fila estiver cheia, ou \texttt{false}, em caso contrário
-	\item \texttt{void clear()}: esvazia a fila
-\end{itemize}
-\end{frame}
-
-%-------------------------------------------------------
-\begin{frame}\frametitle{Exemplo de Implementação: \texttt{IntQueue.hpp}}
-\lstinputlisting[basicstyle=\ttfamily\tiny]{src/IntQueue.hpp}
-\end{frame}
-
-%-------------------------------------------------------
-\begin{frame}\frametitle{Exemplo de Implementação: \texttt{IntQueue.cpp}}
-\fontsize{3pt}{5pt}\selectfont{
-\lstinputlisting{src/IntQueue.cpp}
-}
-\end{frame}
-
-%-------------------------------------------------------
-\begin{frame}\frametitle{Exemplo de Implementação: \texttt{IntQueueMain.cpp}}
-\fontsize{5pt}{6pt}\selectfont{
-\lstinputlisting{src/IntQueueMain.cpp}
-}
-\end{frame}
-%-------------------------------------------------------
-\begin{frame}\frametitle{Exemplo de Implementação (Saída)}
-\lstinputlisting[basicstyle=\ttfamily\scriptsize]{src/IntQueueApp.output}
-\end{frame}
-
-%=======================================================
-\section{Exercícios}
-
-%-------------------------------------------------------
-\begin{frame}[fragile]\frametitle{Exercício 9}
-\begin{enumerate}
-	\setcounter{enumi}{8}
-	\item Considere duas estrutura de dados do tipo fila, chamadas \texttt{A} e \texttt{B}. Na fila \texttt{A}, foram inseridos (nessa ordem) os seguintes valores: 10, 20 e 30. E, na fila \texttt{B}, foram inseridos (nessa ordem) os seguintes valores: 30, 20 e 10. Para ambas as estruturas, considere as seguintes operações:
-\begin{itemize}
-	\item \texttt{dequeue(F)}: que remove um elemento da fila \texttt{F} e retorna esse elemento;
-	\item \texttt{enqueue(F, E)}: que insere o elemento \texttt{E} na fila \texttt{F};
-	\item \texttt{head(F)}: que retorna o elemento do início da fila, sem removê-lo da estrutura.
-\end{itemize}
-Quais serão as sequências de elementos nas filas \texttt{A} e \texttt{B}, após executar a expressão ``\texttt{enqueue(A, dequeue(A) + dequeue(B) + head(A))}''?
-\end{enumerate}
-\end{frame}
-
-%-------------------------------------------------------
-\begin{frame}[fragile]\frametitle{Exercício 10}
-\begin{enumerate}
-        \setcounter{enumi}{9}
-	\item Usando como ponto de partida a classe \texttt{IntQueue}, apresentada anteriormente e implementada usando alocação sequencial ou contígua, implemente a classe \texttt{IntLinkedQueue}, que funciona da mesma forma, porém usando alocação encadeada.\\
-	Observações:
-	\begin{itemize}
-		\item A versão usando alocação encadeada eliminará a necessidade de se trabalhar com um limite máximo de elementos, consequentemente, os métodos \texttt{maxSize()} e \texttt{isFull()} NÃO farão parte da nova implementação.
-		\item A definição da classe (arquivo \texttt{IntLinkedQueue.hpp}) e um programa de teste (arquivo \texttt{IntLinkedQueueMain.cpp}) estão listados nas lâminas a seguir.
-	\end{itemize}
-\end{enumerate}
-\end{frame}
-
-%-------------------------------------------------------
-\begin{frame}[fragile]\frametitle{Exercício 10: \texttt{IntLinkedQueue.hpp}}
-\lstinputlisting[basicstyle=\ttfamily\tiny]{src/IntLinkedQueue.hpp}
-\end{frame}
-
-%-------------------------------------------------------
-\begin{frame}[fragile]\frametitle{Exercício 10: \texttt{IntLinkedQueueMain.cpp}}
-\fontsize{6pt}{6pt}\selectfont{
-\lstinputlisting{src/IntLinkedQueueMain.cpp}
-}
-\end{frame}
-
-%=======================================================
-\section{Deque}
-
-%-------------------------------------------------------
-\begin{frame}\frametitle{Deque}
-\begin{itemize}
-	\item É uma abreviação de \emph{Double-Ended QUEue}
-	\item Trata-se de uma estrutura linear de dados, um pouco mais flexível do que pilhas ou filas, que permite inserções e remoções tanto no início quanto no final
-	\item Possui, portanto, duas pontas (\texttt{frente} e \texttt{traseira} ou \texttt{front} e \texttt{back}), sendo possível selecionar qual será utilizada tanto para inserção quanto para remoção
-\begin{figure}[h]
-	\centering
-	\includegraphics[height=0.3\paperheight]{imagens/deque.png}
-\end{figure}
-\end{itemize}
-\end{frame}
-
-%-------------------------------------------------------
-\begin{frame}\frametitle{Deque: Aplicações e Implementações}
-\begin{itemize}
-	\item É usado em aplicações onde, por exemplo:
-	\begin{itemize}
-		\item Um item é removido da fila e por alguma razão precisa ser reinserido na posição que ocupava anteriormente
-		\item O último item da fila ``desiste'' de permanecer nela (por exemplo, devido à demora ou ao tamanho da fila)
-	\end{itemize}
-	\item Pode ser implementado da mesma forma que uma fila:
-	\begin{itemize}
-		\item Arranjo (\emph{buffer}) circular
-		\item Lista Simplesmente Encadeada
-		\item Lista Duplamente Encadeada
-	\end{itemize}
-	\item Há implementações bloqueantes, em que a primitiva de inserção fica bloqueada até haver espaço e a primitiva de remoção fica bloqueada até que exista um elemento para ser removido
-\end{itemize}
-\end{frame}
-
-%-------------------------------------------------------
-\begin{frame}\frametitle{Métodos do TAD Deque}
-\begin{itemize}
-{\scriptsize
-	\item \texttt{bool addFirst(e)}: insere o elemento no início do deque (retorna \texttt{true}, em caso de sucesso, ou \texttt{false}, se NÃO houver espaço)\\
-	\item \texttt{bool addLast(e)}: insere o elemento no fim do deque (retorna \texttt{true}, em caso de sucesso, ou \texttt{false}, se NÃO houver espaço)\\
-	\item \texttt{bool removeFirst(\&e)}: remove e retorna (por referência) o elemento do início do deque (retorna \texttt{true}, em caso de sucesso, ou \texttt{false}, o deque estiver vazio)\\
-	\item \texttt{bool removeLast(\&e)}: remove e retorna (por referência) o elemento do fim do deque (retorna \texttt{true}, em caso de sucesso, ou \texttt{false}, o deque estiver vazio)\\
-	\item \texttt{bool first(\&e)} ou \texttt{bool head(\&e)} ou \texttt{bool front(\&e)}: retorna (por referência) o elemento do início do deque, mas não o remove do deque (retorna \texttt{true}, em caso de sucesso, ou \texttt{false}, o deque estiver v\\azio)
-	\item \texttt{bool last(\&e)} ou \texttt{bool tail(\&e)} ou \texttt{bool back(\&e)}: retorna (por referência) o elemento do fim do deque, mas não o remove do deque (retorna \texttt{true}, em caso de sucesso, ou \texttt{false}, o deque estiver vazio)\\
-	\item \texttt{int size()}: retorna o número de elementos do deque\\
-	\item \texttt{int maxSize()}: retorna o número máximo de elementos suportado pelo deque\\
-	\item \texttt{bool isEmpty()}: retorna \texttt{true}, se o deque estiver vazio, ou \texttt{false}, em caso contrário\\
-	\item \texttt{bool isFull()}: retorna \texttt{true}, se o deque estiver cheio, ou \texttt{false}, em caso contrário\\
-	\item \texttt{void clear()}: esvazia o deque\\
-}
-\end{itemize}
-\end{frame}
-
-%=======================================================
-\section{Exercícios}
-
-%-------------------------------------------------------
-\begin{frame}[fragile]\frametitle{Exercício 11}
-\begin{enumerate}
-        \setcounter{enumi}{10}
-{\footnotesize
-	\item Considere as seguintes declarações para uma estrutura linear duplamente encadeada do tipo deque:
-\begin{lstlisting}[basicstyle=\ttfamily\tiny]
-  struct Node {
-    char info;  Nodo *prev, *next;
-    Node(char i) {  info = i;  prev = next = nullptr;  }
-  };
-  Node *esquerda = nullptr, *direita = nullptr;
-\end{lstlisting}
-E determine o estado final, na ordem correta, dos ponteiros e dos nodos dessa estrutura, depois da execução das seguintes operaçõess:
-	\begin{itemize}
-{\scriptsize
-		\item Inserir as letras 'D', 'E', 'S', 'C', 'A', 'R', 'T', 'E' e 'S' (nesta ordem), cada uma em um nodo da lista, pela direita;
-		\item Remover 3 letras do deque pela esquerda;
-		\item Remover 4 letras do deque pela direita;
-		\item Inserir as letras 'E', 'D', 'I', 'S', 'O' e 'N' (nesta ordem), cada uma em um nodo da lista, pela esquerda;
-		\item Remover 5 letras do deque pela esquerda;
-		\item Inserir as letras 'R', 'U', 'T', 'H', 'E', 'R', 'F', 'O', 'R' e 'D' (nesta ordem), cada uma em um nodo da lista, pela esquerda;
-		\item Remover 8 letras do deque pela esquerda;
-		\item Inserir as letras 'E', 'I', 'N', 'S', 'T', 'E', 'I' e 'N' (nesta ordem), cada uma em um nodo da lista, pela esquerda;
-		\item Remover 7 letras do deque pela esquerda.
-}
-	\end{itemize}
-}
-\end{enumerate}
-\end{frame}
-
-%-------------------------------------------------------
-\begin{frame}[fragile]\frametitle{Exercício 12}
-\begin{enumerate}
-        \setcounter{enumi}{11}
-	\item Usando como ponto de partida os códigos apresentados e desenvolvidos anteriormente, implemente a classe \texttt{IntDoubleLinkedDeque}, que implementa um deque com uma lista duplamente encadeada.\\
-	Observações:
-	\begin{itemize}
-		\item Lembre-se que NÃO haverá necessidade de trabalhar com um limite máximo de elementos, consequentemente, os métodos \texttt{maxSize()} e \texttt{isFull()} NÃO farão parte da nova implementação.
-		\item A definição da classe (arquivo \texttt{IntDoubleLinkedDeque.hpp}) e um programa de teste (arquivo \texttt{IntDoubleLinkedDequeMain.cpp}) estão listados nas lâminas a seguir.
-	\end{itemize}
-\end{enumerate}
-\end{frame}
-
-%-------------------------------------------------------
-\begin{frame}[fragile]\frametitle{Exercício 12: \texttt{IntDoubleLinkedDeque.hpp}}
-\lstinputlisting[basicstyle=\ttfamily\tiny]{src/IntDoubleLinkedDeque.hpp}
-\end{frame}
-
-%-------------------------------------------------------
-\begin{frame}[fragile]\frametitle{Exercício 12: \texttt{IntDoubleLinkedDequeMain.cpp}}
-\fontsize{6pt}{6pt}\selectfont{
-\lstinputlisting{src/IntDoubleLinkedDequeMain.cpp}
-}
-\end{frame}
-
-%=======================================================
-\section{Lista}
-
-%-------------------------------------------------------
-\begin{frame}\frametitle{Lista}
-\begin{itemize}
-	\item Uma lista é uma estrutura de dados que agrupa informações referentes a um conjunto de elementos relacionados entre si
-	\item Há uma ordem lógica entre os elementos, que não corresponde necessariamente à ordem física
-	\item A inserção e exclusão em uma lista é menos restritiva do que em pilhas, filas ou deques
-	\item Isto significa que uma implementação de lista poderia ser usada para criar e gerenciar pilhas, filas e deques
-\end{itemize}
-\end{frame}
-
-%-------------------------------------------------------
-\begin{frame}\frametitle{Operações sobre Listas}
-\begin{itemize}
-	\item Algumas operações básicas sobre listas, envolvendo elementos (nodos), são:
-	\begin{itemize}
-		\item Inserção (no início, no fim ou em uma posição específica)
-		\item Remoção (no início, no fim ou em uma posição específica)
-		\item Busca e acesso (através de índice ou através da informação de algum campo)
-		\item Alteração
-	\end{itemize}
-	\item Também é comum aplicar operações sobre toda a lista, tais como:
-	\begin{itemize}
-		\item Combinação de duas ou mais listas em uma única lista (concatenação ou \emph{merge})
-		\item Ordenação da lista segundo determinado critério
-	\end{itemize}
-\end{itemize}
-\end{frame}
-
-%-------------------------------------------------------
-\begin{frame}\frametitle{Opções de Implementação}
-\begin{itemize}
-	\item Usando arranjos
-	\begin{itemize}
-		\item Maior desempenho no acesso
-		\item Apresentam maior dificuldade de inserção e remoção no início ou no meio
-	\end{itemize}
-	\item Usando estruturas encadeadas
-	\begin{itemize}
-		\item Menor desempenho no acesso
-		\item Muito mais flexível para inserir e remover nodos
-		\item Podem ser: simplesmente encadeadas, duplamente encadeadas, simplesmente encadeadas e circulares, duplamente encadeadas e circulares
-	\end{itemize}
-\end{itemize}
-\end{frame}
-
-%=======================================================
-\section{Lista com Arranjo}
-
-%-------------------------------------------------------
-\begin{frame}\frametitle{Lista com Arranjo}
-\begin{itemize}
-	\item Consiste em um número fixo de posições \textbf{contíguas} e para o armazenamento de elementos do mesmo tipo
-	\item Possui acesso direto facilitado e rápido, ou seja, o tempo de acesso é constante para qualquer elemento
-	\item A inserção e a remoção de nodos no início ou no meio do arranjo tem alto custo, pois requer a movimentação de nodos ou para abrir espaço ou para evitar espaços não utilizados
-	\item Geralmente é preciso definir o número máximo de elementos que serão armazenados (mudar esse tamanho pode ser possível, mas será custoso)
-\begin{figure}[h]
-	\centering
-	\includegraphics[height=0.15\paperheight]{imagens/lista_com_arranjo.png}
-\end{figure}
-\end{itemize}
-\end{frame}
-
-%-------------------------------------------------------
-\begin{frame}\frametitle{Métodos para um TAD Lista com Arranjo}
-\begin{itemize}
-{\scriptsize
-	\item \texttt{bool add(e)}: insere o elemento no final da lista (retorna \texttt{true}, em caso de sucesso, ou \texttt{false}, se NÃO houver espaço)
-	\item \texttt{bool add(index,e)}: insere o elemento em um índice específico da lista (retorna \texttt{true}, em caso de sucesso, ou \texttt{false}, se NÃO houver espaço)
-	\item \texttt{bool get(index, \&e)}: retorna (por referência) o elemento do índice especificado (retorna \texttt{true}, em caso de sucesso, ou \texttt{false}, se o índice for inválido)
-	\item \texttt{bool set(index, e)}: atribui o elemento para a posição do índice especificado (retorna \texttt{true}, em caso de sucesso, ou \texttt{false}, se o índice for inválido)
-	\item \texttt{bool remove(index)}: remove o elemento do índice especificado da lista (retorna \texttt{true}, em caso de sucesso, ou \texttt{false}, se o índice for inválido)
-	\item \texttt{int size()}: retorna o número de elementos da lista\\
-	\item \texttt{int maxSize()}: retorna o número máximo de elementos suportado pela lista\\
-	\item \texttt{bool isEmpty()}: retorna \texttt{true}, se a lista estiver vazia, ou \texttt{false}, em caso contrário\\
-	\item \texttt{bool isFull()}: retorna \texttt{true}, se a lista estiver cheia, ou \texttt{false}, em caso contrário\\
-	\item \texttt{bool contains(e)}: retorna \texttt{true}, se o elemento existir na lista, ou \texttt{false},  em caso contrário\\
-	\item \texttt{int indexOf(e)}: retorna o índice da primeira ocorrência do elemento na lista, se o elemento existir na lista, ou -1 em caso contrário\\
-	\item \texttt{int indexOf(pos,e)}: retorna o índice da próxima ocorrência do elemento na lista a partir da posição especificada, se o elemento existir, ou -1 em caso contrário\\
-	\item \texttt{void clear()}: esvazia a lista\\
-}
-\end{itemize}
-\end{frame}
-
-%-------------------------------------------------------
-\begin{frame}\frametitle{Lista com Arranjo: Inserção e Exclusão}
-\begin{itemize}
-	\item Inserção: \texttt{arrayList->add(3,35)}
-\begin{figure}[h]
-	\centering
-	\includegraphics[height=0.30\paperheight]{imagens/lista_com_arranjo_insercao.png}
-\end{figure}
-	\item Exclusão: \texttt{arrayList->remove(2)}
-\begin{figure}[h]
-	\centering
-	\includegraphics[height=0.30\paperheight]{imagens/lista_com_arranjo_exclusao.png}
-\end{figure}
-\end{itemize}
 \end{frame}
 
 %=======================================================
 \section{Exercício}
 
 %-------------------------------------------------------
-\begin{frame}[fragile]\frametitle{Exercício 13}
+\begin{frame}[fragile]\frametitle{Exercício 6}
 \begin{enumerate}
-	\setcounter{enumi}{11}
-	\item Usando como base a descrição dos métodos de um TAD Lista com Arranjo, implemente os métodos da classe \texttt{StringArrayList}, que implementa uma lista com um arranjo de tamanho predefinido. O arquivo de cabeçalho para esta classe (\texttt{StringArrayList.hpp}) e um programa de teste (\texttt{StringArrayListMain.cpp}).
+        \setcounter{enumi}{5}
+	\small
+	\item Nas páginas a seguir, há 3 arquivos, respectivamente, com: a definição da classe \texttt{NodeCharTree} (arquivo \texttt{exercicio06/NodeCharTree.hpp} e duas aplicações para testar a implementação dessa classe (arquivos \texttt{exercicio06/app1.cpp} e \texttt{exercicio06/app2.cpp}. Ambas as aplicações criam a árvore abaixo e testam a implementação da classe. Você encontra estes arquivos, juntamente com resultados esperados para a sua execução, no arquivo \texttt{src.zip} (disponível no Moodle da disciplina). A descrição do que cada método faz encontra-se nos comentários da definição da classe. \textbf{Implemente os métodos da classe no arquivo \texttt{exercicio06/NodeCharTree.cpp}}.
+\begin{figure}[h]
+	\centering
+	\includegraphics[height=0.4\paperheight]{imagens/arvore3.eps}
+\end{figure}
 \end{enumerate}
 \end{frame}
 
 %-------------------------------------------------------
-\begin{frame}[fragile]\frametitle{Exercício 13: \texttt{StringArrayList.hpp}}
-\fontsize{6pt}{6pt}\selectfont{
-\lstinputlisting{src/StringArrayList.hpp}
-}
-\end{frame}
-
-%-------------------------------------------------------
-\begin{frame}[fragile]\frametitle{Exercício 13: \texttt{StringArrayListMain.cpp}}
+\begin{frame}[fragile]\frametitle{Exercício 6: \texttt{exercicio06/NodeCharTree.hpp}}
 \fontsize{3pt}{5pt}\selectfont{
-\lstinputlisting{src/StringArrayListMain.cpp}
+\lstinputlisting{src/exercicio06/NodeCharTree.hpp}
+}
+\end{frame}
+
+%-------------------------------------------------------
+\begin{frame}[fragile]\frametitle{Exercício 6: \texttt{exercicio06/app1.cpp}}
+\fontsize{6pt}{6pt}\selectfont{
+\lstinputlisting{src/exercicio06/app1.cpp}
+}
+\end{frame}
+
+%-------------------------------------------------------
+\begin{frame}[fragile]\frametitle{Exercício 6: \texttt{exercicio06/app2.cpp}}
+\fontsize{3pt}{5pt}\selectfont{
+\lstinputlisting{src/exercicio06/app2.cpp}
 }
 \end{frame}
 
 %=======================================================
-\section{Lista Encadeada}
+\section{Caminhamento em Árvores Genéricas}
 
 %-------------------------------------------------------
-\begin{frame}\frametitle{Lista Encadeada}
+\begin{frame}\frametitle{Caminhamento}
 \begin{itemize}
-	\item Armazena elementos do mesmo tipo em uma estrutura formada por nodos (não necessariamente contíguos na memória), cada nodo contendo uma referência para o nodo seguinte (lista simplesmente encadeada) e eventualmente também uma referência para o nodo anterior (lista duplamente encadeada)
-\begin{figure}[h]
-	\centering
-	\includegraphics[height=0.12\paperheight]{imagens/lista_simplesmente_encadeada.png} ~ \includegraphics[height=0.12\paperheight]{imagens/lista_duplamente_encadeada.png}
-\end{figure}
-	\item Para acessar determinado elemento, será preciso percorrer a lista...
-	\item No entanto, inserir elementos na lista ou removê-los não exigirá deslocamentos de nodos, apenas ajustes em algumas poucas referências!
+	\item Caminhamento é a forma como vamos percorrer as árvores, ou seja, a ordem em que vamos visitar seus nodos
+	\item Existem vários tipos de caminhamento que permitem varrer a árvore de forma sistemática visitando cada nodo uma única vez
+	\item Para uma árvore genérica é comum o uso de três formas de caminhamento: \textbf{pré-ordem}, \textbf{pós-ordem} e \textbf{em largura}
 \end{itemize}
 \end{frame}
 
 %-------------------------------------------------------
-\begin{frame}\frametitle{Métodos para um TAD Lista Encadeada}
+\begin{frame}\frametitle{Pré-ordem (\emph{pre-order})}
 \begin{itemize}
-{\scriptsize
-	\item \texttt{int size()}: retorna o número de elementos da lista\\
-	\item \texttt{bool isEmpty()}: retorna \texttt{true}, se a lista estiver vazia, ou \texttt{false}, em caso contrário\\
-	\item \texttt{void clear()}: esvazia a lista\\
-	\item \texttt{void push\_front(e)}: insere o elemento no início da lista\\
-	\item \texttt{void push\_back(e)}: insere o elemento no final da lista\\
-	\item \texttt{bool insert(index, e)}: insere o elemento no índice especificado da lista\\
-	\item \texttt{bool pop\_front()}: remove o elemento do início da lista (retorna \texttt{false} se a lista estiver vazia)\\
-	\item \texttt{bool pop\_back()}: remove o elemento do final da lista (retorna \texttt{false} se a lista estiver vazia)\\
-	\item \texttt{bool remove(index)}: remove o elemento do índice especificado da lista (retorna \texttt{true}, em caso de sucesso, ou \texttt{false}, se o índice for inválido)\\
-	\item \texttt{bool get(index, \&e)}: retorna (por referência) o elemento do índice especificado (retorna \texttt{true}, em caso de sucesso, ou \texttt{false}, se o índice for inválido)\\
-	\item \texttt{bool set(index, e)}: atribui o elemento para a posição do índice especificado (retorna \texttt{true}, em caso de sucesso, ou \texttt{false}, se o índice for inválido)\\
-	\item \texttt{bool contains(e)}: retorna \texttt{true}, se o elemento existir na lista, ou \texttt{false}, em caso contrário\\
-	\item \texttt{int indexOf(e)}: retorna o índice da primeira ocorrência do elemento na lista, ou -1 se o elemento não existir\\
-	\item \texttt{int indexOf(pos,e)}: retorna o índice da próxima ocorrência do elemento na lista a partir da posição especificada, ou -1 se o elemento não existir a partir dessa posição\\
-}	
-\end{itemize}
-\end{frame}
-
-%=======================================================
-\section{Lista Simplesmente Encadeada}
-
-%-------------------------------------------------------
-\begin{frame}[fragile]\frametitle{Lista Simplesmente Encadeada}
-\begin{itemize}
-	\item É uma estrutura encadeada onde cada nodo, além da informação, guarda apenas uma referência para o próximo nodo
-\begin{figure}[h]
-	\centering
-	\includegraphics[height=0.15\paperheight]{imagens/lista_simplesmente_encadeada.png}
-\end{figure}
-	\item Em C++, usando \texttt{struct}, seria possível declarar, por exemplo, uma lista simplesmente encadeada de valores inteiros usando:
-\begin{lstlisting}[basicstyle=\ttfamily\scriptsize]
-struct Node {
-  int info;
-  Node *next;
-  Node(int i) {  info = i;  next = nullptr;  }
-};
-\end{lstlisting}
-	\item Pode-se trabalhar com dois ponteiros, um para o início (por exemplo, \texttt{head}) e outro (opcional, mas desejável) para o fim da lista (por exemplo, \texttt{tail})
-\begin{lstlisting}[basicstyle=\ttfamily\scriptsize]
-Node *head = nullptr, *tail = nullptr;
-\end{lstlisting}
-\end{itemize}
-\end{frame}
-
-%-------------------------------------------------------
-\begin{frame}[fragile]\frametitle{Lista Simplesmente Encadeada}
-\begin{itemize}
-	\item Inserir ou remover em uma lista simplesmente encadeada exige localizar o elemento anterior, o que pode exigir percorrer a lista a partir do início
+	\item Do inglês \emph{pre-order traversal}
+	\item O nodo é visitado antes de seus descendentes
+	\item É definido recursivamente como:
 	\begin{itemize}
-		\item Inserir ou remover no meio de uma lista duplamente encadeada é mais simples
+		\item Visite o nodo
+		\item Realize um percurso em pré-ordem para cada uma das subárvores do nodo
 	\end{itemize}
-	\item Para inserir em uma lista encadeada é preciso: alocar um novo nodo, inserir as informações nele e encadeá-lo na lista
-	\item Para remover de uma lista encadeada é preciso: recuperar a informação (se necessário), ajustar os encadeamentos da lista e desalocar o nodo
-	\item Operações em listas simplesmente encadeadas
+	\item Exemplo de aplicação:
 	\begin{itemize}
-		\item Inserção no início: simples
-		\item Inserção no meio: exige referência para o elemento anterior
-		\item Inserção no final: simples
-		\item Remoção do início: simples
-		\item Remoção do meio: exige referência para o elemento anterior
-		\item Remoção do final: exige referência para o elemento anterior
+		\item Impressão de um documento estruturado em capítulos
 	\end{itemize}
 \end{itemize}
 \end{frame}
 
 %-------------------------------------------------------
-\begin{frame}[fragile]\frametitle{Lista Simplesmente Encadeada: Inserção}
+\begin{frame}\frametitle{Pré-ordem (\emph{pre-order})}
+\begin{columns}[T]
+\begin{column}{0.7\linewidth}
+\begin{figure}[h]
+	\centering
+	\includegraphics[height=0.5\paperheight]{imagens/arvore_d.eps}
+\end{figure}
+\end{column}
+\begin{column}{0.3\linewidth}
+\pause
+\begin{enumerate}
+	\item A
+	\item B
+	\item E
+	\item F
+	\item C
+	\item G
+	\item H
+	\item I
+	\item D
+\end{enumerate}
+\end{column}
+\end{columns}
+\end{frame}
+
+%-------------------------------------------------------
+\begin{frame}\frametitle{Pós-ordem (\emph{post-order})}
 \begin{itemize}
-	\item Inserção no início
-\begin{lstlisting}[basicstyle=\ttfamily\scriptsize]
-Node *node = new Node(info);
-node->next = head;
-head = node;
-if ( tail == nullptr ) tail = node;
-\end{lstlisting}
-	\item Inserção no meio
-\begin{lstlisting}[basicstyle=\ttfamily\scriptsize]
-// aux aponta para nodo antes do qual se quer inserir
-// ant aponta para nodo anterior a aux
-Node *node = new Node(info);
-ant->next = node;
-node->next = aux;
-\end{lstlisting}
-	\item Inserção no final
-\begin{lstlisting}[basicstyle=\ttfamily\scriptsize]
-Node *node = new Node(info);
-tail->next = node;
-tail = node;
-\end{lstlisting}
+	\item Do inglês \emph{post-order traversal}
+	\item O nodo é visitado depois de seus descentes
+	\item É definido recursivamente como:
+	\begin{itemize}
+		\item Realize um percurso em pós-ordem para cada uma das subárvores do nodo
+		\item Visite o nodo
+	\end{itemize}
+	\item Exemplos de aplicação:
+	\begin{itemize}
+		\item Calcular o total de espaço em disco ocupado por arquivos em um sistema de diretórios
+	\end{itemize}
 \end{itemize}
 \end{frame}
 
 %-------------------------------------------------------
-\begin{frame}[fragile]\frametitle{Lista Simplesmente Encadeada: Remoção}
+\begin{frame}\frametitle{Pós-ordem (\emph{post-order})}
+\begin{columns}[T]
+\begin{column}{0.7\linewidth}
+\begin{figure}[h]
+	\centering
+	\includegraphics[height=0.5\paperheight]{imagens/arvore_d.eps}
+\end{figure}
+\end{column}
+\begin{column}{0.3\linewidth}
+\pause
+\begin{enumerate}
+	\item E
+	\item F
+	\item B
+	\item G
+	\item H
+	\item I
+	\item C
+	\item D
+	\item A
+\end{enumerate}
+\end{column}
+\end{columns}
+\end{frame}
+
+%-------------------------------------------------------
+\begin{frame}\frametitle{Em Largura (\emph{level-order})}
 \begin{itemize}
-	\item Remoção do início
-\begin{lstlisting}[basicstyle=\ttfamily\tiny]
-if ( head != nullptr ) {
-   Node *aux = head;
-   head = head->next;
-   if ( head == nullptr ) tail = nullptr;
-   delete aux;
-}
-\end{lstlisting}
-	\item Remoção do meio
-\begin{lstlisting}[basicstyle=\ttfamily\tiny]
-// aux aponta para nodo que se quer remover
-// ant aponta para nodo anterior a aux
-ant->next = aux->next;
-if ( aux->next == nullptr ) tail = ant;
-delete aux;
-\end{lstlisting}
-	\item Remoção do final
-\begin{lstlisting}[basicstyle=\ttfamily\tiny]
-// ant aponta para nodo anterior a tail
-ant->next = nullptr;
-delete tail;
-tail = ant;
-\end{lstlisting}
+	\item Visita os nodos na ordem dos níveis da árvore, da esquerda para a direita
+	\begin{itemize}
+		\item Visite os nodos de nível 0
+		\item Visite os nodos de nível 1
+		\item ...
+	\end{itemize}
+	\item Algoritmo não-recursivo:
+	\begin{itemize}
+		\item Inserir nodo raiz em uma fila
+		\item Repetir até que a fila esteja vazia
+		\begin{itemize}
+			\item Remover o nodo da fila	
+			\item Visitar o nodo atual
+			\item Inserir na fila, em ordem, cada subárvore não vazia do nodo atual
+		\end{itemize}
+	\end{itemize}
 \end{itemize}
+\end{frame}
+
+%-------------------------------------------------------
+\begin{frame}\frametitle{Em Largura (\emph{level-order})}
+\begin{columns}[T]
+\begin{column}{0.7\linewidth}
+\begin{figure}[h]
+	\centering
+	\includegraphics[height=0.5\paperheight]{imagens/arvore_d.eps}
+\end{figure}
+\end{column}
+\begin{column}{0.3\linewidth}
+\pause
+\begin{enumerate}
+	\item A
+	\item B
+	\item C
+	\item D
+	\item E
+	\item F
+	\item G
+	\item H
+	\item I
+\end{enumerate}
+\end{column}
+\end{columns}
+\end{frame}
+
+%=======================================================
+\section{Observação}
+
+%-------------------------------------------------------
+\begin{frame}[fragile]\frametitle{\emph{Templates} em C++}
+\begin{itemize}
+	\small
+	\item Até aqui foram implementadas \textbf{estruturas de dados} diferentes para armazenar \textbf{diferentes tipos de informação} (\texttt{int}, \texttt{char}, \texttt{string}, etc.), o que acaba gerando uma grande quantidade de \textbf{código repetido} ou no mínimo parecido
+	\item É possível em C++, criar um \emph{template} para determinada estrutura de dados, de forma que a mesma implementação possa ser aproveitada para diferentes tipos
+	\item Assim, em vez de uma classe \texttt{NodeCharTree}, teríamos a seguinte classe genérica:
+\begin{lstlisting}[language=C++,basicstyle=\ttfamily\tiny]
+template <typename T>
+class NodeTree {
+private:
+  T info;
+  NodeTree *parent;
+  vector<NodeTree *> childs;
+  // ...
+\end{lstlisting}
+	\item Um nodo poderia então ser criado usando-se, por exemplo:
+\begin{lstlisting}[language=C++,basicstyle=\ttfamily\tiny]
+  NodeTree<char> *a1 = new NodeTree<char>('A');
+  NodeTree<string> *a2 = new NodeTree<string>("raiz");
+\end{lstlisting}
+	\item O material da disciplina de Programação Orientada a Objetos contém maiores detalhes
+\end{itemize}
+\end{frame}
+%=======================================================
+\section{Exercícios}
+
+%-------------------------------------------------------
+\begin{frame}[fragile]\frametitle{Exercício 7}
+\begin{enumerate}
+	\setcounter{enumi}{6}
+	\item Para as árvores a seguir, mostrar a ordem que os elementos serão apresentados para cada caminhamento (pré-ordem, pós-ordem e em largura).
+
+\begin{tabular}{p{0.4\textwidth}p{0.5\textwidth}}
+a) & b)\\
+\includegraphics[height=0.5\paperheight]{imagens/expressao_aritmetica.eps} & \includegraphics[height=0.55\paperheight]{imagens/arvore_e.eps}\\
+\end{tabular}
+\end{enumerate}
+\end{frame}
+
+%-------------------------------------------------------
+\begin{frame}[fragile]\frametitle{Exercício 8}
+\begin{enumerate}
+	\setcounter{enumi}{7}
+	\footnotesize
+	\item Considerando a classe \texttt{NodeCharTree} (resposta do Exercício 6), crie para esta classe três novos métodos que implementam os três tipos de caminhamento vistos até aqui (pré-ordem, pós-ordem e em largura). Estes caminhamentos devem ser implementados em métodos que geram uma cadeia de caracteres com o conteúdo dos nodos, na respectiva ordem do caminhamento, cada nodo em uma linha separada. Em \texttt{NodeCharTree.hpp}, acrescente:
+\begin{lstlisting}[language=C++,basicstyle=\ttfamily\tiny]
+string preorder() const;   // Gera uma cadeia de caracteres (um nodo por linha) em pré-ordem
+string postorder() const;  // Gera uma cadeia de caracteres (um nodo por linha) em pós-ordem
+string levelorder() const; // Gera uma cadeia de caracteres (um nodo por linha) em largura
+\end{lstlisting}
+Implemente estes métodos em \texttt{NodeCharTree.cpp} e use o programa da próxima página para testar a sua implementação. Este programa cria a árvore abaixo e mostra, para esta árvore, os resultados dos métodos a serem implementados.
+\begin{figure}[h]
+	\centering
+	\includegraphics[height=0.3\paperheight]{imagens/arvore_d.eps}
+\end{figure}
+\end{enumerate}
+\end{frame}
+
+%-------------------------------------------------------
+\begin{frame}[fragile]\frametitle{Exercício 8: \texttt{exercicio08/app.cpp}}
+\lstinputlisting[basicstyle=\ttfamily\tiny]{src/exercicio08/app.cpp}
+\end{frame}
+
+%-------------------------------------------------------
+\begin{frame}[fragile]\frametitle{Exercício 9 (DESAFIO)}
+\begin{enumerate}
+	\setcounter{enumi}{8}
+	\footnotesize
+	\item Considerando a classe \texttt{NodeCharTree} (resposta do Exercício 8), crie uma versão genérica desta classe usando \emph{templates}. A declaração da classe deve ser colocada em um arquivo chamado \texttt{NodeTree.hpp}. A \textbf{parte inicial} do arquivo \texttt{NodeTree.hpp} e a versão do arquivo \texttt{app.cpp} que usa esta classe genérica encontram-se nas páginas a seguir.\\
+	Lembre-se de que a implementação dos métodos da classe genérica \texttt{NodeTree} deve ser colocada no próprio arquivo  \texttt{NodeTree.hpp}.\\
+	Por sua vez, o arquivo \texttt{app.cpp} cria a árvore abaixo e mostra os caminhamentos em pré-ordem, pós-ordem e em largura para esta árvore.
+\begin{figure}[h]
+	\centering
+	\includegraphics[height=0.3\paperheight]{imagens/arvore_d.eps}
+\end{figure}
+\end{enumerate}
+\end{frame}
+
+%-------------------------------------------------------
+\begin{frame}[fragile]\frametitle{Exercício 9 (DESAFIO): \texttt{exercicio09/NodeTree.hpp} (início)}
+\fontsize{3pt}{5pt}\selectfont{
+\lstinputlisting[firstline=1,lastline=38]{src/exercicio09/NodeTree.hpp}
+}
+\end{frame}
+
+%-------------------------------------------------------
+\begin{frame}[fragile]\frametitle{Exercício 9 (DESAFIO): \texttt{exercicio09/app.cpp}}
+\lstinputlisting[basicstyle=\ttfamily\tiny]{src/exercicio09/app.cpp}
+\end{frame}
+
+%-------------------------------------------------------
+\begin{frame}[fragile]\frametitle{Exercício 10 (DESAFIO)}
+\begin{columns}
+\begin{column}{0.6\linewidth}
+\begin{enumerate}
+	\scriptsize
+	\setcounter{enumi}{9}
+	\item Comandos como o \texttt{pstree} do Unix, na versão para GNU/Linux, por exemplo, conseguem imprimir a árvore hierárquica de processos (que é uma árvore genérica) de uma forma visualmente agradável, como mostrado na figura ao lado.\\
+Implemente na classe \texttt{NodeCharTree} (resposta do Exercício 8) uma funcionalidade semelhante. Em \texttt{NodeCharTree.hpp}, acrescente:
+\begin{lstlisting}[language=C++,basicstyle=\ttfamily\tiny]
+string strTree() const;
+\end{lstlisting}
+Este método deve gerar, por exemplo, uma cadeia de caracteres equivalente à representação ao lado para a árvore abaixo.
+\begin{figure}[h]
+	\centering
+	\includegraphics[height=0.25\paperheight]{imagens/arvore3.eps}
+\end{figure}
+\end{enumerate}
+\end{column}
+\begin{column}{0.4\linewidth}
+\begin{figure}[h]
+	\centering
+	\includegraphics[height=0.4\paperheight]{imagens/pstree.png}
+\end{figure}
+\vspace{3mm}
+\begin{figure}[h]
+	\centering
+	\includegraphics[height=0.15\paperheight]{imagens/strtree.png}
+\end{figure}
+\end{column}
+\end{columns}
+\end{frame}
+
+%=======================================================
+\section{Árvores Binárias}
+
+%-------------------------------------------------------
+\begin{frame}\frametitle{Árvores Binárias}
+\begin{itemize}
+	\item Uma árvore binária é uma árvore ordenada com as seguintes propriedades:
+	\begin{itemize}
+		\item Todos os nodos tem no máximo dois filhos
+		\item Cada nodo filho é rotulado como sendo um \textbf{filho da esquerda} ou um \textbf{filho da direita}
+		\item O filho da esquerda precede o filho da direita na ordenação dos filhos de um nodo
+	\end{itemize}
+	\item Subárvores:
+	\begin{itemize}
+		\item O filho da esquerda de um nodo interno \textbf{v} é chamado de \textbf{subárvore da esquerda}
+		\item O filho da direita de um nodo interno \textbf{v} é chamado de \textbf{subárvore da direita}
+	\end{itemize}
+	\item Árvore binária própria (ou cheia)
+	\begin{itemize}
+		\item Cada nodo tem 0 ou 2 filhos
+	\end{itemize}
+	\item As estruturas de árvores binárias são muito utilizadas na computação
+\end{itemize}
+\end{frame}
+
+%-------------------------------------------------------
+\begin{frame}\frametitle{Exemplo: Árvore para uma Expressão Aritmética}
+\begin{itemize}
+	\item Nodos externos são associados com variáveis e constantes
+	\item Nodos internos são associados com um operador
+	\item Exemplo: \texttt{(((3+1)*3)/((9-5)+2))-(3*(7-4)+6)}
+\end{itemize}
+\begin{figure}[h]
+	\centering
+	\includegraphics[height=0.55\paperheight]{imagens/arvore_binaria09-expressao.eps}
+\end{figure}
+\end{frame}
+
+%-------------------------------------------------------
+\begin{frame}\frametitle{Exemplo: Árvore de Decisão}
+\begin{itemize}
+	\item Árvore de decisão que fornece recomendações para um investidor
+\begin{figure}[h]
+	\centering
+	\includegraphics[height=0.65\paperheight]{imagens/arvore_de_decisao3.eps}
+\end{figure}
+\end{itemize}
+\end{frame}
+
+%-------------------------------------------------------
+\begin{frame}\frametitle{TAD para Árvores Binárias}
+\begin{itemize}
+	\item Forma mais usual de implementação é usando estruturas encadeadas, sendo que cada nó contém:
+	\begin{itemize}
+		\item A informação
+		\item Uma referência para o nodo pai
+		\item Uma referência para a subárvore da esquerda
+		\item Uma referência para a subárvore da direita
+	\end{itemize}
+	\item Também é comum armazenar para uma árvore, o seu número total de nodos
+	\item Da mesma forma que com árvores genéricas, é possível criar uma TAD para árvores binárias para:
+	\begin{itemize}
+		\item A \textbf{estrutura de dados}, que terá uma classe interna para o nodo, determinando automaticamente onde cada informação será inserida
+		\item O \textbf{nodo}, deixando o gerenciamento da árvore a cargo da própria aplicação
+	\end{itemize}
+\end{itemize}
+\end{frame}
+
+%-------------------------------------------------------
+\begin{frame}\frametitle{TAD para Árvores Binárias}
+\begin{itemize}
+	\item Para manipular uma árvore implementada como um TAD (ou seja, TAD para a estrutura de dados), pode-se ter métodos para:
+	\begin{itemize}
+		\item Criar a árvore
+		\item Inserir nodos na árvore
+		\item Pesquisar nodos na árvore
+		\item Excluir nodos da árvore
+		\item Determinar a altura da árvore e o nível de um nodo
+		\item Caminhar em uma árvore, visitando seus nodos
+		\item ...
+	\end{itemize}
+	\item Neste caso, o TAD contém uma classe interna para os nodos e armazena uma referência para a raiz da árvore e o número de elementos já inseridos
+\end{itemize}
+\end{frame}
+
+%-------------------------------------------------------
+\begin{frame}\frametitle{Exemplo de TAD para uma Árvores Binária de Inteiros}
+\fontsize{3pt}{5pt}\selectfont{
+\lstinputlisting[firstline=7,lastline=41]{src/IntBTree.hpp}
+}
+\end{frame}
+
+%-------------------------------------------------------
+\begin{frame}[fragile]\frametitle{Exemplo de TAD para um Nodo de Árvore Binária Genérica}
+\fontsize{3pt}{5pt}\selectfont{
+\lstinputlisting[firstline=11,lastline=42]{src/exercicio13/NodeBT.hpp}
+}
+\end{frame}
+
+%-------------------------------------------------------
+\begin{frame}\frametitle{Caminhamento}
+\begin{itemize}
+	\item Existem essencialmente duas formas diferentes de caminhamento:
+	\begin{itemize}
+		\item Percurso em profundidade
+		\begin{itemize}
+			\item Percurso pré-fixado ou em pré-ordem
+			\item Percurso pós-fixado ou em pós-ordem
+			\item Percurso central ou em ordem central
+		\end{itemize}
+		\item Percurso em largura
+	\end{itemize}
+\end{itemize}
+\end{frame}
+
+%-------------------------------------------------------
+\begin{frame}\frametitle{Caminhamento Pré-fixado}
+\begin{itemize}
+	\item O nodo é visitado antes de seus descendentes
+	\item Segue a ordem:
+	\begin{itemize}
+		\item Visita Raiz
+		\item Percorre subárvore da esquerda
+		\item Percorre subárvore da direita
+	\end{itemize}
+\end{itemize}
+\begin{columns}[T]
+\begin{column}{0.7\linewidth}
+\begin{figure}[h]
+	\centering
+	\includegraphics[height=0.4\paperheight]{imagens/arvore_binaria08.eps}
+\end{figure}
+\end{column}
+\begin{column}{0.3\linewidth}
+\pause
+\begin{enumerate}
+	\item A
+	\item B
+	\item D
+	\item E
+	\item C
+	\item F
+	\item G
+\end{enumerate}
+\end{column}
+\end{columns}
+\end{frame}
+
+%-------------------------------------------------------
+\begin{frame}\frametitle{Caminhamento Pós-fixado}
+\begin{itemize}
+	\item O nodo é visitado depois de seus descentes
+	\item Segue a ordem:
+	\begin{itemize}
+		\item Percorre subárvore da esquerda
+		\item Percorre subárvore da direita
+		\item Visita Raiz
+	\end{itemize}
+\end{itemize}
+\begin{columns}[T]
+\begin{column}{0.7\linewidth}
+\begin{figure}[h]
+	\centering
+	\includegraphics[height=0.4\paperheight]{imagens/arvore_binaria08.eps}
+\end{figure}
+\end{column}
+\begin{column}{0.3\linewidth}
+\pause
+\begin{enumerate}
+	\item D
+	\item E
+	\item B
+	\item F
+	\item G
+	\item C
+	\item A
+\end{enumerate}
+\end{column}
+\end{columns}
+\end{frame}
+
+%-------------------------------------------------------
+\begin{frame}\frametitle{Caminhamento Central (\emph{In-order})	}
+\begin{itemize}
+	\item Segue a ordem:
+	\begin{itemize}
+		\item Percorre subárvore da esquerda
+		\item Visita Raiz
+		\item Percorre subárvore da direita
+	\end{itemize}
+\end{itemize}
+\begin{columns}[T]
+\begin{column}{0.7\linewidth}
+\begin{figure}[h]
+	\centering
+	\includegraphics[height=0.4\paperheight]{imagens/arvore_binaria08.eps}
+\end{figure}
+\end{column}
+\begin{column}{0.3\linewidth}
+\pause
+\begin{enumerate}
+	\item D
+	\item B
+	\item E
+	\item A
+	\item C
+	\item F
+	\item G
+\end{enumerate}
+\end{column}
+\end{columns}
+\end{frame}
+
+%-------------------------------------------------------
+\begin{frame}\frametitle{Caminhamento em Largura}
+\begin{itemize}
+	\item Visita os nodos na ordem dos níveis da árvore, da esquerda para a direita
+	\begin{itemize}
+		\item Visite os nodos de nível 0
+		\item Visite os nodos de nível 1
+		\item ...
+	\end{itemize}
+\end{itemize}
+\begin{columns}[T]
+\begin{column}{0.7\linewidth}
+\begin{figure}[h]
+	\centering
+	\includegraphics[height=0.4\paperheight]{imagens/arvore_binaria08.eps}
+\end{figure}
+\end{column}
+\begin{column}{0.3\linewidth}
+\pause
+\begin{enumerate}
+	\item A
+	\item B
+	\item C
+	\item D
+	\item E
+	\item F
+	\item G
+\end{enumerate}
+\end{column}
+\end{columns}
+\end{frame}
+
+%=======================================================
+\section{Exercícios}
+
+%-------------------------------------------------------
+\begin{frame}[fragile]\frametitle{Exercícios 11 e 12}
+\begin{enumerate}
+	\setcounter{enumi}{10}
+	\item Monte a árvore binária para a seguinte seguinte expressão aritmética:
+\texttt{(A+B)-(C*(D-E)+(F/G))}.
+	\item Apresente os caminhamentos pré-fixado, pós-fixado, central e em largura para as seguintes árvores binárias. \begin{tabular}{llll}%p{0.10\textwidth}p{0.15\textwidth}p{0.25\textwidth}p{0.25\textwidth}}
+a) & b) & c) & d)\\
+\includegraphics[height=0.5\paperheight]{imagens/arvore_binaria04.eps} &
+\includegraphics[height=0.5\paperheight]{imagens/arvore_binaria05.eps} &
+\includegraphics[height=0.5\paperheight]{imagens/arvore_binaria06.eps} &
+\includegraphics[height=0.5\paperheight]{imagens/arvore_binaria07.eps} \\
+\end{tabular}
+\end{enumerate}
+\end{frame}
+
+%-------------------------------------------------------
+\begin{frame}[fragile]\frametitle{Exercício 13}
+\begin{columns}[T]
+\begin{column}{0.75\linewidth}
+%\vspace{-3mm}
+\begin{enumerate}
+	\setcounter{enumi}{12}
+	\small
+	\item Nas páginas a seguir, há a definição de uma classe genérica para gerenciamento dos nodos de uma árvore binária (\texttt{NodeBT}) -- cujos métodos devem ser implementados -- e uma aplicação para testar a implementação dessa classe (arquivo \texttt{exercicio13/app.cpp}). A aplicação cria a árvore ao lado e testa a implementação da classe sobre essa árvore. Você encontra este arquivo, juntamente com o resultado esperado para a sua execução, no arquivo \texttt{src.zip} (disponível no Moodle da disciplina). A descrição do que cada método faz encontra-se nos comentários da definição da classe. Por se tratar de um \emph{template}, lembre-se de colocar a definição da classe em um arquivo chamado \texttt{NodeBT.hpp} e de \textbf{implementar os métodos da classe nesse mesmo arquivo}.
+\end{enumerate}
+\end{column}
+\begin{column}{0.25\linewidth}
+\vspace{-3mm}
+\begin{figure}[h]
+	\centering
+	\includegraphics[height=0.7\paperheight]{imagens/arvore_binaria05.eps}
+\end{figure}
+\end{column}
+\end{columns}
+\end{frame}
+
+%-------------------------------------------------------
+\begin{frame}[fragile]\frametitle{Trecho do arquivo \texttt{NodeBT.hpp}}
+\fontsize{3pt}{5pt}\selectfont{
+\lstinputlisting[firstline=11,lastline=42]{src/exercicio13/NodeBT.hpp}
+}
+\end{frame}
+
+%-------------------------------------------------------
+\begin{frame}[fragile]\frametitle{Exercício 13: \texttt{exercicio13/app.cpp}}
+\fontsize{3pt}{5pt}\selectfont{
+\lstinputlisting{src/exercicio13/app.cpp}
+}
+\end{frame}
+
+%=======================================================
+\section{Árvores Binárias de Pesquisa (ABP)}
+
+%-------------------------------------------------------
+\begin{frame}\frametitle{Introdução}
+\begin{itemize}
+	\item Árvores ``comuns'' não possuem restrição com relação às posições relativas de seus nodos
+	\item Um item pode aparecer em qualquer posição da árvore
+	\item Algoritmos de busca são ineficientes
+	\begin{itemize}
+		\item Pode ser necessário percorrer todos os nodos da árvore.
+		\item $O(n)$
+	\end{itemize}
+\end{itemize}
+\end{frame}
+
+%-------------------------------------------------------
+\begin{frame}\frametitle{Árvores Binárias de Pesquisa (ABP)}
+\begin{itemize}
+	\item Classe especial de árvores de busca
+	\item Suportam operações eficientes de busca, inserção e remoção
+	\begin{itemize}
+		\item $O(\log{n})$, se balanceada
+	\end{itemize}
+	\item Apresentam restrições quanto à posição relativa dos nodos
+	\begin{itemize}
+		\item Possuem uma relação de ordem total entre os elementos armazenados (os elementos são usualmente chamados de ``chaves'')
+	\end{itemize}
+\end{itemize}
+\end{frame}
+
+%-------------------------------------------------------
+\begin{frame}\frametitle{Árvores Binárias de Pesquisa (ABP)}
+\begin{itemize}
+	\item Seja $S$ um conjunto cujos elementos possuem uma relação de ordem (exemplo: conjunto de inteiros, lista de nomes, etc.)
+	\item Uma árvore binária de pesquisa para $S$ é uma árvore binária $T$ tal que
+	\begin{itemize}
+		\item Cada nodo interno $v$ de $T$ armazena um elemento de $S$ denotado $x(v)$
+		\item Para cada nodo interno $v$ de $T$, os elementos armazenados na subárvore esquerda de $v$ são menores ou iguais a $x(v)$, e os elementos armazenados na subárvore direita de $v$ são maiores ou iguais a $x(v)$
+	\end{itemize}
+\end{itemize}
+\end{frame}
+
+%-------------------------------------------------------
+\begin{frame}\frametitle{Árvores Binárias de Pesquisa (ABP)}
+\begin{itemize}
+	\item Quando a árvore é montada
+	\begin{itemize}
+		\item Todos os elementos da subárvore esquerda são menores do que o elemento da raiz
+		\item Todos os elementos da subárvore direita são maiores do que o elemento da raiz
+	\end{itemize}
+	\item Exemplo:
+\begin{figure}[h]
+	\centering
+	\includegraphics[height=0.3\paperheight]{imagens/abp01.png}
+\end{figure}
+	\item Quando implementada, todos os métodos respeitam e fazem uso dessa ordenação
+\end{itemize}
+\end{frame}
+
+%-------------------------------------------------------
+\begin{frame}\frametitle{TAD para Árvores Binárias de Pesquisa (ABP)}
+\begin{itemize}
+	\item A ABP é implementada usando o nodo para árvore binária (\texttt{NodeBT})
+	\begin{itemize}
+		\item A forma mais usual de implementação é através de estruturas encadeadas	
+		\item Cada nodo contém a informação e referências para nodo-pai, subárvore da esquerda e subárvore da direita
+	\end{itemize}
+	\item Deve ser possível comparar os elementos de uma árvore
+	\begin{itemize}
+		\item Em C++, classes devem ter os operadores relacionais corretamente sobrecarregadoso
+		\item Em Java, objetos devem implementar a interface \texttt{Comparable}
+	\end{itemize}
+	\item Vários métodos são necessários para manipular uma árvore binária de pesquisa
+	\begin{itemize}
+		\item Inserir um elemento na árvore
+		\item Localizar um elemento na árvore
+		\item Remover um elemento da árvore
+		\item Caminhar em uma árvore, visitando seus nodos
+		\item ...
+	\end{itemize}
+\end{itemize}
+\end{frame}
+
+%-------------------------------------------------------
+\begin{frame}\frametitle{TAD Genérico para Árvores Binárias de Pesquisa (ABP)}
+\begin{itemize}
+	\scriptsize
+	\item \texttt{bool isEmpty()}: retorna \texttt{true} se a árvore está vazia\\
+	\item \texttt{int size()}: retorna o número de elementos armazenados na árvore\\
+	\item \texttt{void clear()}: remove todos os elementos da árvore\\
+	\item \texttt{T getRoot()}: retorna o elemento armazenado na raiz\\
+	\item \texttt{void add(T \&e)}: insere o elemento \texttt{e} na árvore de forma ordenada\\
+	\item \texttt{bool remove(T \&e)}: remove o elemento \texttt{e} e reestrutura a árvore se necessário\\
+	\item \texttt{T getLeft(T \&e)}: retorna o filho à esquerda de \texttt{e}\\
+	\item \texttt{T getRight(T \&e)}: retorna o filho à direita de \texttt{e}\\
+	\item \texttt{T getParent(T \&e)}: retorna o pai do elemento \texttt{e}\\
+	\item \texttt{int level(T \&e)}: retorna o nível do elemento \texttt{e} e -1 caso o elemento não esteja na árvore\\
+	\item \texttt{int height()}: retorna a altura da árvore\\
+	\item \texttt{bool contains(T \&e)}: retorna \texttt{true} se a árvore contém o elemento \texttt{e}\\
+	\item \texttt{bool isInternal(T \&e)}: retorna \texttt{true} se o elemento está armazenado em um nodo interno\\
+	\item \texttt{bool isExternal(T \&e)}: retorna \texttt{true} se o elemento está armazenado em um nodo externo\\
+	\item \texttt{vector<T> preorder()}: retorna um vetor com todos os elementos da árvore na ordem pré-fixada\\
+	\item \texttt{vector<T> inorder()}: retorna um vetor com todos os elementos da árvore na ordem central\\
+	\item \texttt{vector<T> postorder()}: retorna um vetor com todos os elementos da árvore na ordem pos-fixada\\
+	\item \texttt{vector<T> levelorder()}: retorna uma lista com todos os elementos da árvore com um caminhamento em largura\\
+\end{itemize}
+\end{frame}
+
+%-------------------------------------------------------
+\begin{frame}\frametitle{Inserção em Árvores Binárias de Pesquisa (ABP)}
+\begin{itemize}
+	\item Se a árvore estiver vazia, então o elemento é a raiz
+	\item Senão
+	\begin{itemize}
+		\item Se for menor, inserir na subárvore esquerda
+		\item Se for maior ou igual, inserir na subárvore direita
+	\end{itemize}
+	\item Repetir este processo \textbf{recursivamente} até que chegue a uma subárvore vazia
+	\item Neste ponto o novo valor é incluído
+	\item Exemplo: \texttt{abp.add(5);}
+\begin{figure}[h]
+	\centering
+	\includegraphics[height=0.3\paperheight]{imagens/abp-insercao.png}
+\end{figure}
+\end{itemize}
+\end{frame}
+
+%-------------------------------------------------------
+\begin{frame}\frametitle{Busca Recursiva em Árvores Binárias de Pesquisa (ABP)}
+\begin{itemize}
+	\item Comparar o valor a ser localizado com a raiz
+	\begin{itemize}
+		\item Se for igual, então encontrou
+		\item Se for menor, procura na subárvore esquerda
+		\item Se for maior, procura na subárvore direita
+	\end{itemize}
+	\item Repetir este processo até encontrar ou até chegar a uma subárvore vazia (não encontrou)
+	\item Exemplo: \texttt{abp.contains(4);}
+\begin{figure}[h]
+	\centering
+	\includegraphics[height=0.3\paperheight]{imagens/abp-busca.png}
+\end{figure}
+\end{itemize}
+\end{frame}
+
+%-------------------------------------------------------
+\begin{frame}\frametitle{Remoção em Árvores Binárias de Pesquisa (ABP)}
+\begin{itemize}
+	\item Trata-se de uma operação mais complexa, pois após a remoção é necessário que a árvore permaneça satisfazendo o critério de ordenação dos dados\\
+	\item Exemplo: \texttt{abp.remove(2);}\\
+\begin{figure}[h]
+	\centering
+	\includegraphics[height=0.3\paperheight]{imagens/abp-remocao1.png}
+\end{figure}
+	\item Algoritmo\\
+	\begin{itemize}
+		\item Localizar o elemento a ser excluído, e, se ele estiver na árvore, guardar quem é o seu pai\\
+		\item Verificar se o elemento: é um nodo folha, tem 1 filho ou tem 2 filhos\\
+		\item Excluir o nodo e reestruturar a árvore\\
+	\end{itemize}
+\end{itemize}
+\end{frame}
+
+%-------------------------------------------------------
+\begin{frame}\frametitle{Remoção em Árvores Binárias de Pesquisa (ABP)}
+\begin{itemize}
+	\item Item a ser removido está em uma folha: remover o nodo\\
+	\item Item a ser removido tem apenas um filho: remover o nodo e o filho ocupa seu lugar\\
+	\item Item a ser removido tem dois filhos: trocar por um nodo folha e depois remover a folha. Há duas possibilidades:\\
+	\begin{itemize}
+		\item Trocar pelo menor item da subárvore direita\\
+		\item Trocar pelo maior item da subárvore esquerda\\
+	\end{itemize}
+	\item Exemplo: \texttt{abp.remove(3);}\\
+\begin{figure}[h]
+	\centering
+	\includegraphics[height=0.3\paperheight]{imagens/abp-remocao2.png}
+\end{figure}
+\end{itemize}
+\end{frame}
+
+%-------------------------------------------------------
+\begin{frame}\frametitle{ABP: Caminhamento}
+\begin{itemize}
+	\item Os caminhamentos são os mesmos que já foram visto para árvores bináras:
+	\begin{itemize}
+		\item Percurso em profundidade
+		\begin{itemize}
+			\item Percurso pré-fixado ou em pré-ordem
+			\item Percurso pós-fixado ou em pós-ordem
+			\item Percurso central ou em ordem central
+		\end{itemize}
+		\item Percurso em largura
+	\end{itemize}
+\end{itemize}
+\end{frame}
+
+%-------------------------------------------------------
+\begin{frame}\frametitle{ABP: Caminhamento Pré-fixado}
+\begin{itemize}
+	\item O nodo é visitado antes de seus descendentes
+	\item Segue a ordem:
+	\begin{itemize}
+		\item Visita Raiz
+		\item Percorre subárvore da esquerda
+		\item Percorre subárvore da direita
+	\end{itemize}
+\end{itemize}
+\begin{columns}[T]
+\begin{column}{0.7\linewidth}
+\begin{figure}[h]
+	\centering
+	\includegraphics[height=0.3\paperheight]{imagens/abp02.png}
+\end{figure}
+\end{column}
+\begin{column}{0.3\linewidth}
+\pause
+\begin{enumerate}
+	\small
+	\item 15
+	\item 9
+	\item 2
+	\item 11
+	\item 23
+	\item 20
+	\item 38
+\end{enumerate}
+\end{column}
+\end{columns}
+\end{frame}
+
+%-------------------------------------------------------
+\begin{frame}\frametitle{ABP: Caminhamento Pós-fixado}
+\begin{itemize}
+	\item O nodo é visitado depois de seus descentes
+	\item Segue a ordem:
+	\begin{itemize}
+		\item Percorre subárvore da esquerda
+		\item Percorre subárvore da direita
+		\item Visita Raiz
+	\end{itemize}
+\end{itemize}
+\begin{columns}[T]
+\begin{column}{0.7\linewidth}
+\begin{figure}[h]
+	\centering
+	\includegraphics[height=0.3\paperheight]{imagens/abp02.png}
+\end{figure}
+\end{column}
+\begin{column}{0.3\linewidth}
+\pause
+\begin{enumerate}
+	\small
+	\item 2
+	\item 11
+	\item 9
+	\item 20
+	\item 38
+	\item 23
+	\item 15
+\end{enumerate}
+\end{column}
+\end{columns}
+\end{frame}
+
+%-------------------------------------------------------
+\begin{frame}\frametitle{ABP: Caminhamento Central (\emph{In-order})}
+\begin{itemize}
+	\item Segue a ordem:
+	\begin{itemize}
+		\item Percorre subárvore da esquerda
+		\item Visita Raiz
+		\item Percorre subárvore da direita
+	\end{itemize}
+\end{itemize}
+\begin{columns}[T]
+\begin{column}{0.7\linewidth}
+\begin{figure}[h]
+	\centering
+	\includegraphics[height=0.3\paperheight]{imagens/abp02.png}
+\end{figure}
+\end{column}
+\begin{column}{0.3\linewidth}
+\pause
+\begin{enumerate}
+	\small
+	\item 2
+	\item 9
+	\item 11
+	\item 15
+	\item 20
+	\item 23
+	\item 38
+\end{enumerate}
+\end{column}
+\end{columns}
+\end{frame}
+
+%-------------------------------------------------------
+\begin{frame}\frametitle{ABP: Caminhamento Central (\emph{In-order})}
+\begin{columns}[T]
+\begin{column}{0.6\linewidth}
+\begin{itemize}
+	\item Em uma ABP, o caminhamento central sempre fornece os dados classificados em ordem crescente
+	\item Exemplo:
+	\begin{itemize}
+		\item Considerando: Jan=1, ..., Dez=12
+		\item \textbf{Pré-Fixado:} Jul, Abr, Mar, Jan, Fev, Jun, Mai, Dez, Nov, Ago, Out, Set
+		\item \textbf{Central:}    Jan, Fev, Mar, Abr, Mai, Jun, Jul, Ago, Set, Out, Nov, Dez
+		\item \textbf{Pós-Fixado:} Fev, Jan, Mar, Mai, Jun, Abr, Set, Out, Ago, Nov, Dez, Jul
+	\end{itemize}
+\end{itemize}
+\end{column}
+\begin{column}{0.4\linewidth}
+\vspace{-3mm}
+\begin{figure}[h]
+	\centering
+	\includegraphics[height=0.7\paperheight]{imagens/abp-meses.png}
+\end{figure}
+\end{column}
+\end{columns}
+\end{frame}
+
+%-------------------------------------------------------
+\begin{frame}\frametitle{ABP: Caminhamento em Largura}
+\begin{itemize}
+	\item Visita os nodos na ordem dos níveis da árvore, da esquerda para a direita
+	\begin{itemize}
+		\item Visite os nodos de nível 0
+		\item Visite os nodos de nível 1
+		\item ...
+	\end{itemize}
+\end{itemize}
+\begin{columns}[T]
+\begin{column}{0.7\linewidth}
+\begin{figure}[h]
+	\centering
+	\includegraphics[height=0.3\paperheight]{imagens/abp02.png}
+\end{figure}
+\end{column}
+\begin{column}{0.3\linewidth}
+\pause
+\begin{enumerate}
+	\small
+	\item 15
+	\item 9
+	\item 23
+	\item 2
+	\item 11
+	\item 20
+	\item 38
+\end{enumerate}
+\end{column}
+\end{columns}
 \end{frame}
 
 %=======================================================
@@ -2156,157 +2382,540 @@ tail = ant;
 %-------------------------------------------------------
 \begin{frame}[fragile]\frametitle{Exercício 14}
 \begin{enumerate}
-{\footnotesize
 	\setcounter{enumi}{13}
-	\item Considere o código abaixo, que cria uma lista simplesmente encadeada formada por 4 nodos, respectivamente, com as letras 'B', 'C', 'E' e 'F' como conteúdo. Modifique este código para inserir na lista, \textbf{no ponto indicado no código}, um nodo com a letra 'D', na posição correta da lista, mantendo-se a ordem alfabética crescente. Depois, teste o seu código (e adapte-o se necessário) para inserir, na posição correta, tanto a letra 'A' quanto a letra 'G'.\\
-
-\fontsize{5pt}{5pt}\selectfont{
-\lstinputlisting{src/exercicio14.cpp}
-}
-}
+	\item Mostre como ficaria uma ABP de inteiros, se fossem incluídos os seguintes elementos (nesta ordem):\\8, 2, 10, 6, 5, 15, 7, 3, 20, 11.\\
+Verifique a sua solução usando a seguinte página: \url{https://www.cs.usfca.edu/~galles/visualization/BST.html}
 \end{enumerate}
 \end{frame}
 
 %-------------------------------------------------------
 \begin{frame}[fragile]\frametitle{Exercício 15}
 \begin{enumerate}
-{\footnotesize
 	\setcounter{enumi}{14}
-	\item Considere o código abaixo, que cria uma lista simplesmente encadeada formada por 5 nodos, respectivamente, com as letras 'A', 'D', 'C', 'B' e 'E' como conteúdo. Modifique este código para trocar, \textbf{no ponto indicado no código}, a posição dos nodos que contêm 'D' e 'B' na lista.\\
-\fontsize{6pt}{6pt}\selectfont{
-\lstinputlisting{src/exercicio15.cpp}
-}
-}
+	\item Usando a classe genéria para nodo de uma árvore binária, classe \texttt{NodeBT} (desenvolvida no Exercício 13), implemente uma classe, também genérica, chamada \texttt{BST} (de \emph{Binary Search Tree}) de forma que esta classe tenha como variável de instância a referência para o nodo raiz:
+\begin{lstlisting}[language=C++,basicstyle=\ttfamily\tiny]
+NodeBT<T> *root;
+\end{lstlisting}
+Na interface pública desta classe implemente os seguintes métodos:
+	\begin{itemize}
+		\item \texttt{BST()}: construtor que simplesmente inicializa \texttt{root} com \texttt{nullptr}
+		\item \texttt{\~{}BST()}: destrutor que remove todos os nodos da árvore
+		\item \texttt{string strGraphViz() const}: mostra a árvore no formato GraphViz
+		\item \texttt{void add(const T \&e)}: adiciona o elemento \texttt{e} na posição correta da árvore
+		\item \texttt{bool contains(const T \&e)}: verifica se a árvore contém o elemento \texttt{e}
+	\end{itemize}
+O programa da próxima página usa a classe genérica \texttt{ABP} para criar a mesma árvore do Exercício 14.
 \end{enumerate}
 \end{frame}
+
+%-------------------------------------------------------
+\begin{frame}[fragile]\frametitle{Exercício 15: \texttt{exercicio15/app.cpp}}
+\lstinputlisting[basicstyle=\ttfamily\scriptsize]{src/exercicio15/app.cpp}
+\end{frame}
+
+%=======================================================
+\section{ABPs Balanceadas}
+
+%-------------------------------------------------------
+\begin{frame}\frametitle{Árvores Binárias de Pesquisa (ABP)}
+\begin{itemize}
+	\item ABPs apresentam restrições quanto à posição relativa dos nodos
+	\item Suportam operações eficientes de busca e inserção \textbf{se estiverem balanceadas}
+	\begin{itemize}
+		\item $O(n)$, se não estiver balanceada
+		\item $O(\log{n})$, se estiver balanceada
+	\end{itemize}
+\end{itemize}
+\vspace{-3mm}
+\begin{columns}[T]
+\begin{column}{0.45\linewidth}
+\begin{figure}[h]
+	\centering
+	\textbf{\underline{Árvore não balanceada}}\\~\\
+	\includegraphics[height=0.4\paperheight]{imagens/abp03.png}
+\end{figure}
+\end{column}
+\begin{column}{0.10\linewidth}
+~\\~\\X
+\end{column}
+\begin{column}{0.45\linewidth}
+\begin{figure}[h]
+	\centering
+	\textbf{\underline{Árvore balanceada}}\\~\\
+	\includegraphics[height=0.32\paperheight]{imagens/avl01.png}
+\end{figure}
+	\end{column}
+\end{columns}
+\end{frame}	
+
+%-------------------------------------------------------
+\begin{frame}\frametitle{ABP Balanceada -- Introdução}
+\begin{itemize}
+	\item Usar estruturas de dados e algoritmos \textbf{eficientes e simples de implementar} é importante
+	\item Uma ABP balanceada apresenta melhor (desempenho) que uma ABP
+	\begin{itemize}
+		\item Muitas vezes, árvores balanceadas podem ter um desempenho muito superior do que listas encadeadas e matrizes
+	\end{itemize}	
+	\item Critério para determinar se uma árvore não vazia é balanceada:
+	\begin{itemize}
+		\item Depende do tipo de árvore
+		\item Exemplos de ABPs balanceadas:
+		\begin{itemize}
+			\item Árvores AVL\\
+				\url{https://www.cs.usfca.edu/~galles/visualization/AVLtree.html}
+			\item Árvores rubro-negras\\
+				\url{https://www.cs.usfca.edu/~galles/visualization/RedBlack.html}
+			\item Árvores de Andersson\\
+				\url{https://en.wikipedia.org/wiki/AA_tree}
+			\item \emph{Splay Tree} (nódos são reposicionados de acordo com a frequência de acesso)\\
+				\url{https://www.cs.usfca.edu/~galles/visualization/SplayTree.html}
+			\end{itemize}
+	\end{itemize}
+\end{itemize}
+\end{frame}
+
+%-------------------------------------------------------
+\begin{frame}\frametitle{Árvores AVL}
+\begin{itemize}
+	\item Nome referente aos autores: G. M. \underline{A}delson-\underline{V}elskii e E. M. \underline{L}andis
+	\item Operações de busca, inserção e remoção: $O(\log{n})$	
+	\item Regra para árvore estar balanceada:
+	\begin{itemize}
+		\item Subárvores da esquerda e da direita balanceadas
+		\item Altura das subárvores devem ter no máximo a diferença de uma unidade
+	\end{itemize}
+	\item A cada inserção ou exclusão, é necessário:
+	\begin{itemize}
+		\item Atualizar as alturas dos nodos das subárvores envolvidas na operação
+		\item Calcular o fator de balanceamento da árvore
+		\item Verificar se a árvore ainda está balanceada
+	\end{itemize}
+\end{itemize}
+\end{frame}
+
+%-------------------------------------------------------
+\begin{frame}\frametitle{Árvores rubro-negras}
+\begin{itemize}
+	\item Uma árvore rubro-negra (\emph{red–black tree}) é um tipo especial de árvore binária de pesquisa
+	\item Nodos com dados são chamados de internos (ou \emph{non-NIL})
+	\item Nodos-folha NÃO contém dados e são identificados como \emph{NIL} (\texttt{nullptr}, por exemplo)
+	\item Além dos requisitos de uma ABP, uma árvore rubro-negra deve satisfazer aos seguintes requisitos:
+	\begin{enumerate}
+		\item Todo nodo é ou vermelho ou preto
+		\item Toos os nodos \emph{NIL} são considerados pretos
+		\item Um nodo vermelho NÃO tem filhos vermelhos
+		\item Todo caminho de determinado nodo para algum de seus nodos descendentes \emph{NIL} passa pelo mesmo número de nodos pretos
+		\item (Conclusão) Se um nodo N tem exatamente um filho, ele deve ser um filho vermelho, pois se ele fosse preto, os seus descendentes \emph{NIL} teriam uma profundidade preta diferente do que o filho \emph{NIL} de N (o que violaria o requisito 4)
+	\end{enumerate}
+\end{itemize}
+\end{frame}
+
+%-------------------------------------------------------
+\begin{frame}\frametitle{Árvores rubro-negras}
+\begin{itemize}
+	\item Para criar árvores rubro-negras, experimente usar\\
+\small{\url{https://www.cs.usfca.edu/~galles/visualization/RedBlack.html}}
+	\item Exemplo:
+\begin{figure}[h]
+	\centering
+	\includegraphics[height=0.5\paperheight]{imagens/arvore_rubro_negra.png}\\
+\tiny{Fonte: \url{https://en.wikipedia.org/wiki/File:Red-black_tree_example_with_NIL.svg}}
+\end{figure}
+\end{itemize}
+\end{frame}
+
+%-------------------------------------------------------
+\begin{frame}\frametitle{Árvores rubro-negras}
+\begin{itemize}
+	\item Inserções, remoções e buscas possuem pior tempo de execução equivalente a $O(\log{n})$
+	\item Inserções e remoções podem modificar sua estrutura
+	\begin{itemize}
+		\item Rebalanceamento local (apenas a parte ``afetada'' pela inserção ou remoção)
+	\end{itemize}
+	\item Propriedades não podem ser violadas
+	\begin{itemize}
+		\item Pode ser necessário mudar a estrutura da árvore e as cores de alguns nodos
+	\end{itemize}
+\end{itemize}
+\end{frame}
+
+%-------------------------------------------------------
+\begin{frame}\frametitle{Árvores de Andersson}
+\begin{itemize}
+	\item São ABPs balanceadas baseadas nas árvores rubro-negras\\
+	\item Propriedades de desempenho e estrutura semelhantes\\
+	\item Mais simples e fácil de implementar
+	\begin{itemize}
+		\item São uma alternativa simples para as tradicionais ABPs balanceadas
+		\item Performance próxima à das árvores rubro-negras, com menor esforço de programação
+	\end{itemize}
+	\item Foram introduzidas por Arne Andersson
+	\begin{itemize}
+		\item	ANDERSON, Arne. \textbf{Balanced Search Trees Made Simple}.\\
+			\emph{Proceedings of Workshop on Algorithms and Data Structures}.\\
+			Springer, Berlin, Heidelberg, 1993. p. 60-71.\\
+			\url{http://user.it.uu.se/~arnea/ps/simp.pdf}.
+	\end{itemize}
+	\item Posteriormente, foi discutida por Mark Allen Weiss
+	\begin{itemize}
+		\item	WEISS, M. A. \textbf{Data Structures \& Algorithm Analysis in C++}.\\
+	\end{itemize}
+\end{itemize}
+\end{frame}
+
+%=======================================================
+\section{Árvores Balanceadas AVL}
+
+%-------------------------------------------------------
+\begin{frame}\frametitle{Árvore Binárias de Pesquisa (ABP)}
+\begin{itemize}
+	\item Há uma relação de ordem definida pelas chaves (informações armazenadas)
+	\item As operações básicas são: inserção, consulta e remoção
+	\item O balanceamento garante que o tempo de busca seja $O(\log{n})$
+\end{itemize}
+\end{frame}
+
+%-------------------------------------------------------
+\begin{frame}\frametitle{Árvore Binárias de Pesquisa (ABP)}
+\begin{columns}[T]
+\begin{column}{0.25\linewidth}
+\scriptsize{Ordem de inserção:\\
+40, 20, 60, 10, 30, 50, 70}
+\begin{figure}[h]
+	\centering
+	\includegraphics[height=0.2\paperheight]{imagens/avl02.png}
+\end{figure}
+\end{column}
+\begin{column}{0.25\linewidth}
+\scriptsize{Ordem de inserção:\\
+40, 20, 50, 10, 30, 70, 60}
+\begin{figure}[h]
+	\centering
+	\includegraphics[height=0.3\paperheight]{imagens/avl03.png}
+\end{figure}
+\end{column}
+\begin{column}{0.25\linewidth}
+\scriptsize{Ordem de inserção:\\
+20, 10, 30, 40, 50, 60, 70}
+\begin{figure}[h]
+	\centering
+	\includegraphics[height=0.45\paperheight]{imagens/avl04.png}
+\end{figure}
+\end{column}
+\begin{column}{0.25\linewidth}
+\scriptsize{Ordem de inserção:\\
+10, 20, 30, 40, 50, 60, 70}
+\begin{figure}[h]
+	\centering
+	\includegraphics[height=0.5\paperheight]{imagens/avl05.png}
+\end{figure}
+\end{column}
+\end{columns}
+\pause
+\begin{itemize}
+	\item A ordem de inserção pode causar desbalanceamento, comprometendo o desempenho
+\end{itemize}
+\end{frame}
+
+%-------------------------------------------------------
+\begin{frame}\frametitle{Balanceamento de Árvores}
+\begin{itemize}
+	\item O balanceamento busca uma distribuição equilibrada dos nodos, tendo como objetivos:
+	\begin{itemize}
+		\item Otimizar as operações de consulta
+		\item Diminuir o número médio de comparações
+	\end{itemize}
+	\item Tipos de distribuição
+	\begin{itemize}
+		\item Uniforme
+		\begin{itemize}
+			\item A árvore é balanceada pela altura (distância entre as alturas dos nodos não deve exceder determinado valor)
+			\item Exemplo: árvores AVL e rubro-negras
+		\end{itemize}
+		\item Não uniforme
+		\begin{itemize}
+			\item Chaves mais solicitadas ficam mais perto da raiz
+			\item Exemplo: \emph{splay trees}
+		\end{itemize}
+	\end{itemize}
+\end{itemize}
+\end{frame}
+
+%-------------------------------------------------------
+\begin{frame}\frametitle{Tipos de Distribuição}
+\vspace{-3mm}
+\begin{columns}[T]
+\begin{column}{0.5\linewidth}
+\begin{figure}[h]
+	\centering
+	\textbf{\underline{\emph{Splay Tree}}}\\
+	\scriptsize{~\\
+	Nodos mais acessados ficam perto da raiz\\
+	~\\
+	Ordem de inserção: 20, 50, 10, 60, 40, 30\\
+	Acessos: 30, 50, 40, 10, 20, 10, 40, 20, 40, 20}\\
+	~\\
+	\includegraphics[height=0.37\paperheight]{imagens/splay01.png}\\
+	~\\
+	\tiny{Testar em: \url{https://www.cs.usfca.edu/~galles/visualization/SplayTree.html}}
+\end{figure}
+\end{column}
+\begin{column}{0.5\linewidth}
+\begin{figure}[h]
+	\centering
+	\textbf{\underline{Árvore AVL}}\\
+	\scriptsize{~\\
+	Diferenças das alturas das subárvores não excedem um determinado valor\\
+	~\\
+	Ordem de inserção: 30, 20, 50, 10, 40,60}\\
+	~\\
+	\includegraphics[height=0.30\paperheight]{imagens/avl06.png}\\
+	~\\
+	\tiny{Testar em: \url{https://www.cs.usfca.edu/~galles/visualization/AVLtree.html}}
+\end{figure}
+\end{column}
+\end{columns}
+\end{frame}
+
+%-------------------------------------------------------
+\begin{frame}\frametitle{Árvores AVL (\underline{A}DELSON-\underline{V}ELSKY \& \underline{L}ANDIS)}
+\begin{itemize}
+	\item Foram propostas por Adelson-Velsky e Landis em 1962\\
+ADELSON-VELSKY, G. M.; LANDIS, E. M. (1962). ``An algorithm for the organization of information''. \textbf{Proceedings of the USSR Academy of Sciences}, 146(2): p. 263-266.\\
+\begin{columns}[T]
+\begin{column}{0.5\linewidth}
+\begin{figure}[h]
+	\centering
+	\includegraphics[height=0.3\paperheight]{imagens/adelson_velsky.jpg}\\
+	\tiny{Georgy Maximovich Adelson-Velsky (1922-2014)}
+\end{figure}
+\end{column}
+	\begin{column}{0.5\linewidth}
+\begin{figure}[h]
+	\centering
+	\includegraphics[height=0.3\paperheight]{imagens/landis.jpg}\\
+	\tiny{Evgenii Mikhailovich Landis (1921-1997)}
+\end{figure}
+\end{column}
+\end{columns}
+~\\
+	\item Uma ABP é uma AVL quando, \textbf{para qualquer um de seus nodos, a diferença entre as alturas de suas subárvores direita e esquerda é \underline{no máximo 1}}
+\end{itemize}
+\end{frame}
+
+%-------------------------------------------------------
+\begin{frame}\frametitle{Árvores AVL}
+\begin{itemize}
+	\item As seguintes ABP são árvores AVL?
+\end{itemize}
+\vspace{-3mm}
+\begin{columns}[T]
+\begin{column}{0.5\linewidth}
+\begin{figure}[h]
+	\centering
+	\includegraphics[height=0.5\paperheight]{imagens/avl07.png}\\~
+\end{figure}
+\end{column}
+\begin{column}{0.5\linewidth}
+\begin{figure}[h]
+	\centering
+	\includegraphics[height=0.5\paperheight]{imagens/avl03.png}\\~
+\end{figure}
+\end{column}
+\end{columns}
+\end{frame}
+
+%-------------------------------------------------------
+\begin{frame}\frametitle{Árvores AVL}
+\begin{itemize}
+	\item As seguintes ABP são árvores AVL?
+\end{itemize}
+\vspace{-3mm}
+\begin{columns}[T]
+\begin{column}{0.5\linewidth}
+\begin{figure}[h]
+	\centering
+	\includegraphics[height=0.5\paperheight]{imagens/avl07b.png}\\
+	\textbf{SIM}
+\end{figure}
+\end{column}
+\begin{column}{0.5\linewidth}
+\begin{figure}[h]
+	\centering
+	\includegraphics[height=0.5\paperheight]{imagens/avl03b.png}\\
+	\textbf{NÃO}
+\end{figure}
+\end{column}
+\end{columns}
+\end{frame}
+
+%-------------------------------------------------------
+\begin{frame}\frametitle{Fator de Balanceamento}
+\begin{itemize}
+	\item Fator de Balanceamento (FB): é a diferença entre as alturas das subárvores direita e esquerda de um nodo\\
+\texttt{FB(nodo) = altura(nodo -> dir) - altura(nodo -> esq)}
+	\item FB precisa ser -1, 0 ou +1 em todos os nodos da árvore para que árvore seja AVL
+\end{itemize}
+\end{frame}
+
+%-------------------------------------------------------
+\begin{frame}\frametitle{Fator de Balanceamento: Exemplo}
+\begin{itemize}
+	\item Determine o fator de balanceamento dos nodos das seguintes árvores e verifique se elas são árvores AVL.
+\end{itemize}
+\vspace{-3mm}
+\begin{columns}[T]
+\begin{column}{0.5\linewidth}
+\begin{figure}[h]
+	\centering
+	\includegraphics[height=0.5\paperheight]{imagens/avl07.png}\\~
+\end{figure}
+\end{column}
+\begin{column}{0.5\linewidth}
+\begin{figure}[h]
+	\centering
+	\includegraphics[height=0.5\paperheight]{imagens/avl03.png}\\~
+\end{figure}
+\end{column}
+\end{columns}
+\end{frame}
+
+%-------------------------------------------------------
+\begin{frame}\frametitle{Fator de Balanceamento: Exemplo}
+\begin{itemize}
+	\item Determine o fator de balanceamento dos nodos das seguintes árvores e verifique se elas são árvores AVL.
+\end{itemize}
+\vspace{-3mm}
+\begin{columns}[T]
+\begin{column}{0.5\linewidth}
+\begin{figure}[h]
+	\centering
+	\includegraphics[height=0.5\paperheight]{imagens/avl07c.png}\\
+	\textbf{SIM}
+\end{figure}
+\end{column}
+\begin{column}{0.5\linewidth}
+\begin{figure}[h]
+	\centering
+	\includegraphics[height=0.5\paperheight]{imagens/avl03c.png}\\
+	\textbf{NÃO}
+\end{figure}
+\end{column}
+\end{columns}
+\end{frame}
+
+%=======================================================
+\section{Exercício}
 
 %-------------------------------------------------------
 \begin{frame}[fragile]\frametitle{Exercício 16}
 \begin{enumerate}
-{\small
 	\setcounter{enumi}{15}
-	\item Implemente uma aplicação para gerenciar uma \textbf{lista simplesmente encadeada} em que os nós armazenam uma letra (\texttt{char}) e um ponteiro para o próximo elemento. A aplicação deve permitir interativamente a inserção de letras na lista a partir de um pequeno conjunto de operações fornecidas pela entrada padrão (terminal). As operações e seus parâmetros são indicadas pelos seguintes caracteres:
-	\begin{itemize}
-	{\scriptsize
-		\item '<' (menor) e letra: insere a letra especificada no início da lista;
-		\item '>' (maior) e letra: insere a letra especificada no fim da lista;
-		\item '+' (mais), letra e índice: insere a letra especificada no índice especificado da lista;
-		\item '\{' (abre-chaves): remove a letra/nodo do início da lista (imprime ``ERRO'' se a lista estiver vazia);
-		\item '\}' (fecha-chaves): remove a letra/nodo do final da lista (imprime ``ERRO'' se a lista estiver vazia);
-		\item '-' (menos) e índice: remove o elemento no índice especificado (imprime ``ERRO'' se o índice for inválido);
-		\item '.' (ponto): encerra a aplicação.
-	}
-	\end{itemize}
-	No laço principal da sua aplicação, sempre antes de ler a especificação de uma operação, mostre o conteúdo da lista. Use o arquivo \texttt{exercicio16.input} (dentro do arquivo \texttt{src.zip}) como entrada para testar o seu programa.
-}
+	\item Determine o fator de balanceamento dos nodos das seguintes árvores e verifique se elas são árvores AVL.\\~\\
+\begin{tabular}{lll}		
+a) & b) & c)\\
+\includegraphics[height=0.4\paperheight]{imagens/avl08.png} &
+\includegraphics[height=0.3\paperheight]{imagens/avl09.png} &
+\includegraphics[height=0.4\paperheight]{imagens/avl10.png} \\
+\end{tabular}
 \end{enumerate}
 \end{frame}
 
+%=======================================================
+\section{Operações sobre Árvores Balanceadas AVL}
+
 %-------------------------------------------------------
-\begin{frame}[fragile]\frametitle{Exercício 16: \texttt{exercicio16-template.cpp}}
-\fontsize{5pt}{5pt}\selectfont{
-\lstinputlisting{src/exercicio16-template.cpp}
-}
+\begin{frame}\frametitle{Operações sobre Árvores Balanceadas AVL}
+\begin{itemize}
+	\item A pesquisa em árvores AVL é igual à pesquisa em ABPs
+	\item \textbf{Inserção} e \textbf{exclusão} devem preservar as propriedades da árvore AVL
+\end{itemize}
 \end{frame}
 
-%=======================================================
-\section{Lista Duplamente Encadeada}
+%-------------------------------------------------------
+\begin{frame}[fragile]\frametitle{Inserção em Árvores AVL}
+\begin{itemize}
+	\item \texttt{avl->add(5);}\\~
+\end{itemize}
+\begin{tabular}{p{0.5\textwidth}p{0.50\textwidth}}
+\includegraphics[height=0.5\paperheight]{imagens/avl07c.png} &
+\includegraphics[height=0.5\paperheight]{imagens/avl11c.png} \\
+\end{tabular}
+\\~
+\begin{itemize}
+	\item A árvore continua balanceada!
+\end{itemize}
+\end{frame}
 
 %-------------------------------------------------------
-\begin{frame}[fragile]\frametitle{Lista Duplamente Encadeada}
+\begin{frame}[fragile]\frametitle{Inserção em Árvores AVL}
 \begin{itemize}
-	\item É uma estrutura encadeada onde cada nodo, além da informação, guarda uma referência para o próximo nodo e uma referência para o nodo anterior
+	\item \texttt{avl->add(80);}\\~
+\end{itemize}
+\begin{tabular}{p{0.5\textwidth}p{0.50\textwidth}}
+\includegraphics[height=0.5\paperheight]{imagens/avl11c.png} &
+\includegraphics[height=0.5\paperheight]{imagens/avl12c.png} \\
+\end{tabular}
+\\~
+\begin{itemize}
+	\item Agora será necessário \textbf{REESTRUTURAR A ÁRVORE}!
+\end{itemize}
+\end{frame}
+
+%-------------------------------------------------------
+\begin{frame}\frametitle{Balanceamento de Árvores AVL por Rotação}
+\begin{itemize}
+	\item Quando uma inserção ou exclusão faz com que a árvore perca as propriedades de árvore AVL, deve-se realizar uma operação de reestruturação chamada \textbf{rotação}
+	\item A rotação preserva a ordem das chaves, de modo que a árvore resultante é uma ABP válida e é uma árvore AVL válida
+	\item Tipos de rotação
+	\begin{itemize}
+		\item Simples: direita ou esquerda
+		\item Dupla: direita-esquerda ou esquerda-direita
+	\end{itemize}
+	\item Nas operações ilustradas a seguir:
+	\begin{itemize}
+		\item \texttt{T1}, \texttt{T2}, \texttt{T3} e \texttt{T4} são subárvores (vazias ou não)
+		\item O nó \texttt{p} corresponde ao nó que ficou desbalanceado, ou seja, será a raiz da transformação
+	\end{itemize}
+\end{itemize}
+\end{frame}
+
+%-------------------------------------------------------
+\begin{frame}[fragile]\frametitle{Rotação Simples Direita}
+\begin{itemize}
+	\item Aplicado em nodos com $FB = -2$ e filho com $FB = -1$ ou $FB = 0$ (sinal igual e negativo)
 \begin{figure}[h]
 	\centering
-	\includegraphics[height=0.15\paperheight]{imagens/lista_duplamente_encadeada.png}
+	\includegraphics[height=0.3\paperheight]{imagens/rot_sim_dir.png}
 \end{figure}
-	\item Em C++, usando \texttt{struct}, seria possível declarar, por exemplo, uma lista simplesmente encadeada de valores inteiros usando:
-\begin{lstlisting}[basicstyle=\ttfamily\scriptsize]
-struct Node {
-  int info;
-  Node *prev, *next;
-  Node(int i) {  info = i;  prev = next = nullptr;  }
-};
-\end{lstlisting}
-	\item Também são usados dois ponteiros, um para o início (por exemplo, \texttt{head}) e outro (opcional, mas desejável)	 para o fim da lista (por exemplo, \texttt{tail})
-\begin{lstlisting}[basicstyle=\ttfamily\scriptsize]
-Node *head = nullptr, *tail = nullptr;
-\end{lstlisting}
-\end{itemize}
-\end{frame}
-
-%-------------------------------------------------------
-\begin{frame}[fragile]\frametitle{Lista Duplamente Encadeada}
-\begin{itemize}
-	\item Para inserir ou remover em uma lista duplamente encadeada basta ter a posição de inserção ou remoção, NÃO sendo necessário percorrer a lista a partir do início
-	\begin{itemize}
-		\item É mais fácicl inserir ou remover em uma lista duplamente encadeada do que em uma lista simplesmente encadeada
-	\end{itemize}
-	\item Para inserir em uma lista encadeada é preciso: alocar um novo nodo, inserir as informações nele e encadeá-lo na lista
-	\item Para remover de uma lista encadeada é preciso: recuperar a informação (se necessário), ajustar os encadeamentos da lista e desalocar o nodo
-\end{itemize}
-\end{frame}
-
-%-------------------------------------------------------
-\begin{frame}[fragile]\frametitle{Lista Duplamente Encadeada: Inserção}
-\begin{itemize}
-	\item Inserção no início
-\begin{lstlisting}[basicstyle=\ttfamily\tiny]
-Node *node = new Node(info);
-if ( head == nullptr ) { head = tail = node; }
-else {
-  node->next = head;
-  head->prev = node;
-  head = node;
+	\item Implementação (esboço):
+\begin{lstlisting}[language=C++,basicstyle=\ttfamily\scriptsize]
+NodeBT<T> *rotateRight(NodeBT<T> *p) {
+  NodeBT<T> u = p->getLeft();
+  p->setLeft( u->getRight() );
+  u->setRight( p );
+  return u;  // Ficará no lugar de p
 }
 \end{lstlisting}
-	\item Inserção no meio
-\begin{lstlisting}[basicstyle=\ttfamily\tiny]
-// aux aponta para nodo antes do qual se quer inserir
-Node *node = new Node(info);
-node->prev = aux->prev;
-node->next = aux;
-(aux->prev)->next = node;
-aux->prev = node;
-\end{lstlisting}
-	\item Inserção no final
-\begin{lstlisting}[basicstyle=\ttfamily\tiny]
-Node *node = new Node(info);
-node->prev = tail;
-tail->next = node;
-tail = node;
-\end{lstlisting}
 \end{itemize}
 \end{frame}
 
 %-------------------------------------------------------
-\begin{frame}[fragile]\frametitle{Lista Duplamente Encadeada: Remoção}
+\begin{frame}[fragile]\frametitle{Rotação Simples Esquerda}
 \begin{itemize}
-	\item Remoção do início
-\begin{lstlisting}[basicstyle=\ttfamily\tiny]
-if ( head != nullptr ) {
-   Node *aux = head;
-   head = head->next;
-   if ( head == nullptr ) tail = nullptr;
-   else head->prev = nullptr;
-   delete aux;
+	\item Aplicado em nodos com $FB = +2$ e filho com $FB = +1$ ou $FB = 0$ (sinal igual e positivo)
+\begin{figure}[h]
+	\centering
+	\includegraphics[height=0.3\paperheight]{imagens/rot_sim_esq.png}
+\end{figure}
+	\item Implementação (esboço):
+\begin{lstlisting}[language=C++,basicstyle=\ttfamily\scriptsize]
+NodeBT<T> *rotateLeft(NodeBT<T> *p) {
+  NodeBT<T> z = p->getRight();
+  p->setRight( z->getLeft() );
+  z->setLeft( p );
+  return z;  // Ficará no lugar de p
 }
-\end{lstlisting}
-	\item Remoção do meio
-\begin{lstlisting}[basicstyle=\ttfamily\tiny]
-// aux aponta para nodo que se quer remover
-(aux->prev)->next = aux->next;
-if ( aux->next == nullptr ) tail = aux->prev;
-else (aux->next)->prev = aux->prev;
-delete aux;
-\end{lstlisting}
-	\item Remoção do final
-\begin{lstlisting}[basicstyle=\ttfamily\tiny]
-Node *aux = tail;
-tail = tail->prev;
-if ( tail == nullptr )  head = nullptr;
-else tail->next = nullptr;
-delete aux;
 \end{lstlisting}
 \end{itemize}
 \end{frame}
@@ -2317,219 +2926,350 @@ delete aux;
 %-------------------------------------------------------
 \begin{frame}[fragile]\frametitle{Exercício 17}
 \begin{enumerate}
-{\scriptsize
-        \setcounter{enumi}{16}
-	\item Considere uma \textbf{lista simplesmente encadeada}, com referências para o início e para o final, cujos nodos foram declarados da seguinte forma:
-\begin{lstlisting}[basicstyle=\ttfamily\tiny]
-struct Node {
-  int info;  Node *next;
-  Node(int i) {  info = i;  next = nullptr;  }
-};
-\end{lstlisting}
-Implemente uma função que recebe os ponteiros para o início e para o final da lista (por referência) e inverte a lista. A função deve ter o seguinte protótipo:
-\begin{lstlisting}[basicstyle=\ttfamily\tiny]
-void reverse(Node **head, Node **tail);
-\end{lstlisting}
-	\item Considere uma \textbf{lista duplamente encadeada}, com referências para o início e para o final, cujos nodos foram declarados da seguinte forma:
-\begin{lstlisting}[basicstyle=\ttfamily\tiny]
-struct Node {
-  int info;  Node *prev, *next;
-  Node(int i) {  info = i;  prev = next = nullptr;  }
-};
-\end{lstlisting}
-Implemente uma função que recebe os ponteiros para o início e para o final da lista (por referência) e inverte a lista. A função deve ter o seguinte protótipo:
-\begin{lstlisting}[basicstyle=\ttfamily\tiny]
-void reverse(Node **head, Node **tail);
-\end{lstlisting}
-}
+	\setcounter{enumi}{16}
+	\item Determine o fator de balanceamento dos nodos das seguintes árvores e aplique a rotação apropriada para transformá-las em árvores AVL.\\~\\
+\begin{tabular}{lll}
+a) & ~ ~ & b)\\
+\includegraphics[height=0.4\paperheight]{imagens/avl13.png} & ~ ~ &
+\includegraphics[height=0.4\paperheight]{imagens/avl14.png} \\
+\end{tabular}
+\end{enumerate}
+\end{frame}
+
+%-------------------------------------------------------
+\begin{frame}[fragile]\frametitle{Exercício 18}
+\begin{enumerate}
+	\setcounter{enumi}{17}
+	\item Considere as árvores AVL a seguir, insira os nodos indicados nas respectivas árvores, determine o fator de balanceamento de seus nodos e aplique, se necessário, a rotação apropriada para que elas continuem sendo árvores AVL.\\~\\
+\begin{tabular}{lll}
+a) \texttt{avl18a->add(4);}& ~ ~ & b) \texttt{avl18b->add(90);}\\
+\includegraphics[height=0.3\paperheight]{imagens/avl15.png} & ~ ~ &
+\includegraphics[height=0.3\paperheight]{imagens/avl16.png} \\
+\end{tabular}
 \end{enumerate}
 \end{frame}
 
 %=======================================================
-\section{Lista Circular}
+\section{Operações sobre Árvores Balanceadas AVL (cont.)}
 
 %-------------------------------------------------------
-\begin{frame}[fragile]\frametitle{Lista Circular}
+\begin{frame}[fragile]\frametitle{Rotação Dupla Esquerda-Direita}
 \begin{itemize}
-	\item Uma lista circular é um tipo especial de estrutura encadeada onde o último elemento aponta para o primeiro (não usando-se, neste caso, \texttt{nullptr} para indicar o final da lista)
-	\item É possível ter listas circulares:
-	\begin{itemize}
-		\item Simplesmente encadeadas: a busca somente ocorre em um sentido
-\begin{lstlisting}[basicstyle=\ttfamily\tiny]
-struct Node {
-  int info;  Node *next;
-  Node(int i) {  info = i;  next = nullptr;  }
-};
-\end{lstlisting}
-		\item Duplamente encadeadas: a busca pode ocorrer em qualquer sentido
+	\item Aplicado em nodos com $FB = -2$ e filho com $FB = +1$ (sinal contrário com pai negativo e filho positivo)
+	\item Aplica-se a rotação simples para a esquerda do filho com $FB = +1$, seguida da rotação simples para a direita do pai com $FB = -2$
 \begin{figure}[h]
 	\centering
-	\includegraphics[height=0.14\paperheight]{imagens/lista_circular_duplamente_encadeada.png}
+	\includegraphics[height=0.3\paperheight]{imagens/rot_dup_esq_dir0.png}
 \end{figure}
-\begin{lstlisting}[basicstyle=\ttfamily\tiny]
-struct Node {
-  int info;  Node *prev, *next;
-  Node(int i) {  info = i;  prev = next = nullptr;  }
-};
+	\item Implementação (esboço):
+\begin{lstlisting}[language=C++,basicstyle=\ttfamily\scriptsize]
+NodeBT<T> *rotateLeftRight(NodeBT<T> *p) {
+  p->setLeft( rotateLeft( p->getLeft() ) );
+  return rotateRight( p );  // Ficará no lugar de p
+}
 \end{lstlisting}
-	\end{itemize}
 \end{itemize}
 \end{frame}
 
 %-------------------------------------------------------
-\begin{frame}[fragile]\frametitle{Lista Circular}
+\begin{frame}[fragile]\frametitle{Rotação Dupla Esquerda-Direita}
+\begin{figure}[h]
+	\centering
+	\includegraphics[height=0.33\paperheight]{imagens/rot_dup_esq_dir0.png}
+	\vspace{3mm}
+	\hrule
+	\vspace{3mm}
+	\includegraphics[height=0.33\paperheight]{imagens/rot_dup_esq_dir.png}
+\end{figure}
+\end{frame}
+
+%-------------------------------------------------------
+\begin{frame}[fragile]\frametitle{Rotação Dupla Direita-Esquerda}
 \begin{itemize}
-	\item Observe que nada muda nas declarações em relação às versões não circulares
-	\item Se a lista circular é duplamente encadeada, NÃO há a necessidade de um ponteiro para o final da listas
-	\item Com listas circulares simplesmente encadeadas, um ponteiro para o final da lista é desejável
-	\item Exemplo de aplicação: \textbf{Lista de processos prontos para serem executados em um sistema operacional com algoritmo de escalonamento \emph{Round Robin}}
+	\item Aplicado em nodos com $FB = +2$ e filho com $FB = -1$ (sinal contrário com pai positivo e filho negativo)
+	\item Aplica-se a rotação simples para a direita do filho com $FB = -1$, seguida da rotação simples para a esquerda do pai com $FB = +2$
+\begin{figure}[h]
+	\centering
+	\includegraphics[height=0.3\paperheight]{imagens/rot_dup_dir_esq0.png}
+\end{figure}
+	\item Implementação (esboço):
+\begin{lstlisting}[language=C++,basicstyle=\ttfamily\scriptsize]
+NodeBT<T> *rotateRightLeft(NodeBT<T> *p) {
+  p->setRight( rotateRight( p->getRight() ) );
+  return rotateLeft( p );  // Ficará no lugar de p
+}
+\end{lstlisting}
+\end{itemize}
+\end{frame}
+
+%-------------------------------------------------------
+\begin{frame}[fragile]\frametitle{Rotação Dupla Direita-Esquerda}
+\begin{figure}[h]
+	\centering
+	\includegraphics[height=0.33\paperheight]{imagens/rot_dup_dir_esq0.png}
+	\vspace{3mm}
+	\hrule
+	\vspace{3mm}
+	\includegraphics[height=0.33\paperheight]{imagens/rot_dup_dir_esq.png}
+\end{figure}
+\end{frame}
+
+%=======================================================
+\section{Exercícios}
+
+%-------------------------------------------------------
+\begin{frame}[fragile]\frametitle{Exercício 19}
+\begin{enumerate}
+	\setcounter{enumi}{18}
+	\item Determine o fator de balanceamento dos nodos das seguintes árvores e aplique a rotação apropriada para transformá-las em árvores AVL.\\~\\
+\begin{tabular}{lll}
+a) & ~ ~ & b)\\
+\includegraphics[height=0.4\paperheight]{imagens/avl17.png} & ~ ~ &
+\includegraphics[height=0.4\paperheight]{imagens/avl18.png} \\
+\end{tabular}
+\end{enumerate}
+\end{frame}
+
+%-------------------------------------------------------
+\begin{frame}[fragile]\frametitle{Exercício 20}
+\begin{enumerate}
+	\setcounter{enumi}{19}
+	\item Considere as árvores AVL a seguir, insira os nodos indicados nas respectivas árvores, determine o fator de balanceamento de seus nodos e aplique, se necessário, a rotação apropriada para que elas continuem sendo árvores AVL.\\~\\
+\begin{tabular}{lll}
+a) \texttt{avl18a->add(34);}& ~ ~ & b) \texttt{avl18b->add(70);}\\
+\includegraphics[height=0.3\paperheight]{imagens/avl19.png} & ~ ~ &
+\includegraphics[height=0.3\paperheight]{imagens/avl20.png} \\
+\end{tabular}
+\end{enumerate}
+\end{frame}
+
+%=======================================================
+\section{Operações sobre Árvores Balanceadas AVL (cont.)}
+
+%-------------------------------------------------------
+\begin{frame}\frametitle{Inserção de Nodos em Árvores AVL}
+\begin{itemize}
+	\item Percorrer a árvore verificando se a chave já existe ou não
 	\begin{itemize}
-		\item \emph{Round Robin} é um escalonamento preemptivo que divide uniformemente o tempo da UCP entre todos os processos prontos para a execução
-		\item Processos são mantidos em uma lista de prontos circular e duplamente encadeada
-		\item Cada processo tem uma fatia de tempo máxima (\emph{time slice} ou \emph{quantum}) para usar o processador
-		\item Se o processo termina a sua computação antes do final da fatia de tempo, ele sai da lista
-		\item Se o processo usa toda a sua fatia de tempo, o ponteiro da lista é apontado para o próximo processo
+		\item Se a chave existir e a árvore NÃO permitir elementos duplicados, encerrar a tentativa de inserção
+		\item Caso contrário, localizar a posição correta de inserção do nodo
+	\end{itemize}
+	\item Verificar se a inclusão tornará a árvore desbalanceada
+	\begin{itemize}
+		\item Em caso negativo, o processo termina
+		\item Caso contrário, efetuar o balanceamento da árvore
+	\end{itemize}
+	\item Descobrir qual a operação de rotação a ser executada
+	\begin{itemize}
+		\item Executar a rotação
 	\end{itemize}
 \end{itemize}
 \end{frame}
 
+%-------------------------------------------------------
+\begin{frame}\frametitle{Execução das Rotações}
+\begin{itemize}
+	\small
+	\item	Fator de Balanceamento: \texttt{FB(n) = altura(n -\textgreater dir) - altura(n -\textgreater esq)}
+	\item Se $|FB| > 1$, aplicar rotação
+	\begin{itemize}
+		\footnotesize
+		\item Se $FB$ positivo (subárvore da direita é maior): rotações à esquerda
+		\item Se $FB$ negativo (subárvore da esquerda é maior): rotações à direita
+	\end{itemize}
+	\item Se $FB$ do nodo e $FB$ do filho têm o \textbf{mesmo sinal}, aplicar \textbf{rotação simples}
+	\begin{itemize}
+		\footnotesize
+		\item	Nodo com $FB = -2$ e filho com $FB = -1$ ou $FB = 0$:\\
+			rotação do nodo com $FB = -2$ para direita
+		\item	Nodo com $FB = +2$ e filho com $FB = +1$ ou $FB = 0$:\\
+			rotação do nodo com $FB = +2$ para esquerda
+	\end{itemize}
+	\item Se $FB$ do nodo e $FB$ do filho têm \textbf{sinais diferentes}, aplicar \textbf{rotação dupla}
+	\begin{itemize}
+		\footnotesize
+		\item	Nodo com $FB = -2$ e filho com $FB = +1$:\\
+			rotação do nodo com $FB = +1$ para esquerda, e\\
+			rotação do nodo com $FB = -2$ para direita
+		\item	Nodo com $FB = +2$ e filho com $FB = -1$:\\
+			rotação do nodo com $FB = -1$ para direita, e\\
+			rotação do nodo com $FB = +2$ para esquerda
+	\end{itemize}
+\end{itemize}
+\end{frame}
+
+%=======================================================
+\section{Exercício}
 
 %-------------------------------------------------------
-\begin{frame}[fragile]\frametitle{Exercício 1: \texttt{CharStack.cpp}}
-\fontsize{5pt}{5pt}\selectfont{
-\lstinputlisting{src/CharStack.cpp}
-}
+\begin{frame}[fragile]\frametitle{Exercício 21}
+\begin{enumerate}
+	\setcounter{enumi}{20}
+	\item Inserir nodos com as seguintes chaves em uma árvore AVL, refazendo a árvore quando houver rotação e anotando as rotações realizadas:\\
+50, 40, 30, 45, 47, 55, 56, 1, 2, 3, 49.
+\end{enumerate}
+\end{frame}
+
+%=======================================================
+\section{Operações sobre Árvores Balanceadas AVL (cont.)}
+
+%-------------------------------------------------------
+\begin{frame}\frametitle{Sobre Inserção em Árvores AVL – PROBLEMAS!}
+\begin{itemize}
+	\item	Como saber se a árvore está balanceada?\\
+		-- Verificando se existe um nó ``desbalanceado''
+	\item	Como saber se um nó está desbalanceado?\\
+		-- Determina-se as alturas de suas subárvores e subtrai-se uma da outra
+	\item	Procedimento muito lento!
+	\item	Como ser mais eficiente?\\
+		-- Para cada nó de uma árvore, armazena-se uma variável fb que registra essa diferença
+\end{itemize}
 \end{frame}
 
 %-------------------------------------------------------
-\begin{frame}[fragile]\frametitle{Exercício 2: \texttt{exercicio02.cpp}}
-\lstinputlisting[basicstyle=\ttfamily\tiny]{src/exercicio02.cpp}
+\begin{frame}\frametitle{Manutenção de FB: Inserção à Direita de v}
+\begin{itemize}
+	\item Se, antes da inclusão, $FB(v) = -1$, então $FB(v)$ se tornará $0$
+	\begin{itemize}
+		\item Altura da árvore não foi alterada
+		\item Por consequência, altura dos outros nodos no caminho até a raiz não se altera também
+	\end{itemize}
+\end{itemize}
+\begin{figure}[h]
+	\centering
+	\includegraphics[height=0.22\paperheight]{imagens/avl_ins_dir1.png}
+\end{figure}
+\end{frame}
+
+\begin{frame}\frametitle{Manutenção de FB: Inserção à Direita de v}
+\begin{itemize}
+	\item Se, antes da inclusão, $FB(v) = 0$, então $FB(v)$ se tornará $+1$
+	\begin{itemize}
+		\item Altura da árvore foi modificada
+		\item Por consequência, altura dos outros nodos no caminho até a raiz pode ter sido alterada também
+		\item Repetir o processo (recursivamente), com $v$ substituído por seu pai
+	\end{itemize}
+\end{itemize}
+\begin{figure}[h]
+	\centering
+	\includegraphics[height=0.35\paperheight]{imagens/avl_ins_dir2.png}
+\end{figure}
+\end{frame}
+
+\begin{frame}\frametitle{Manutenção de FB: Inserção à Direita de v}
+\begin{itemize}
+	\item Se, antes da inclusão, $FB(v) = +1$, então $FB(v)$ se tornará $+2$
+	\begin{itemize}
+		\item Esse caso só ocorre por propagação de inserção em nó com $FB = 0$
+		\item Altura da árvore foi modificada e o nodo está desbalanceado
+		\item Rotação correta deve ser empregada
+		\item Como a árvore será redesenhada, não é necessário verificar os outros nodos
+		\end{itemize}
+\end{itemize}
+\begin{figure}[h]
+	\centering
+	\includegraphics[height=0.35\paperheight]{imagens/avl_ins_dir3.png}
+\end{figure}
 \end{frame}
 
 %-------------------------------------------------------
-\begin{frame}[fragile]\frametitle{Exercício 3: \texttt{exercicio03.cpp}}
-\lstinputlisting[basicstyle=\ttfamily\tiny]{src/exercicio03.cpp}
+\begin{frame}\frametitle{Manutenção de FB: Inserção à Esquerda de v}
+\begin{itemize}
+	\item Se, antes da inclusão, $FB(v) = +1$, então $FB(v)$ se tornará $0$
+	\begin{itemize}
+		\item Altura da árvore não foi alterada
+		\item Por consequência, altura dos outros nodos no caminho até a raiz não se altera também
+	\end{itemize}
+\end{itemize}
+\begin{figure}[h]
+	\centering
+	\includegraphics[height=0.22\paperheight]{imagens/avl_ins_esq1.png}
+\end{figure}
 \end{frame}
 
 %-------------------------------------------------------
-\begin{frame}[fragile]\frametitle{Exercício 4: \texttt{exercicio04.cpp}}
-\fontsize{5pt}{5pt}\selectfont{
-\lstinputlisting{src/exercicio04.cpp}
-}
+\begin{frame}\frametitle{Manutenção de FB: Inserção à Esquerda de v}
+\begin{itemize}
+	\item Se, antes da inclusão, $FB(v) = 0$, então $FB(v)$ se tornará $-1$
+	\begin{itemize}
+		\item Altura da árvore foi modificada
+		\item Por consequência, altura dos outros nodos no caminho até a raiz pode ter sido alterada também
+		\item Repetir o processo (recursivamente), com $v$ substituído por seu pai
+	\end{itemize}
+\end{itemize}
+\begin{figure}[h]
+	\centering
+	\includegraphics[height=0.35\paperheight]{imagens/avl_ins_esq2.png}
+\end{figure}
 \end{frame}
 
 %-------------------------------------------------------
-\begin{frame}[fragile]\frametitle{Exercício 5: \texttt{exercicio05.cpp}}
-\lstinputlisting[basicstyle=\ttfamily\tiny]{src/exercicio05.cpp}
+\begin{frame}\frametitle{Manutenção de FB: Inserção à Esquerda de v}
+\begin{itemize}
+	\item Se, antes da inclusão, $FB(v) = -1$, então $FB(v)$ se tornará $-2$
+	\begin{itemize}
+		\item Esse caso só ocorre por propagação de inserção em nodo com $FB = 0$
+		\item Altura da árvore foi modificada e o nodo está desbalanceado
+		\item Rotação correta deve ser empregada
+		\item Como a árvore será redesenhada, não é necessário verificar os outros nodos
+	\end{itemize}
+\end{itemize}
+\begin{figure}[h]
+	\centering
+	\includegraphics[height=0.35\paperheight]{imagens/avl_ins_esq3.png}
+\end{figure}
 \end{frame}
 
 %-------------------------------------------------------
-\begin{frame}[fragile]\frametitle{Exercício 6: \texttt{pilha\_simplesmente\_encadeada2.cpp}}
-\fontsize{6pt}{6pt}\selectfont{
-\lstinputlisting{src/pilha_simplesmente_encadeada2.cpp}
-}
+\begin{frame}\frametitle{Remoção de Nós em Árvores AVL}
+\begin{itemize}
+	\item Parecido com as inclusões
+	\begin{itemize}
+		\item Realizar a remoção
+		\item Recalcular FB	
+		\item Fazer rotações que forem necessárias
+	\end{itemize}
+\end{itemize}
 \end{frame}
 
 %-------------------------------------------------------
-\begin{frame}[fragile]\frametitle{Exercício 7: \texttt{pilha\_duplamente\_encadeada.cpp}}
-\fontsize{5pt}{5pt}\selectfont{
-\lstinputlisting{src/pilha_duplamente_encadeada.cpp}
-}
+\begin{frame}\frametitle{Exemplo 1: Remoção de 29}
+\begin{figure}[h]
+	\centering
+	\includegraphics[height=0.30\paperheight]{imagens/avl_rem_29.png}
+\end{figure}
 \end{frame}
 
 %-------------------------------------------------------
-\begin{frame}[fragile]\frametitle{Exercício 8: \texttt{IntLinkedStack.cpp}}
-\fontsize{3pt}{5pt}\selectfont{
-\lstinputlisting{src/IntLinkedStack.cpp}
-}
+\begin{frame}\frametitle{Exemplo 1: Remoção de 30}
+\begin{figure}[h]
+	\centering
+	\includegraphics[height=0.35\paperheight]{imagens/avl_rem_30.png}
+\end{figure}
 \end{frame}
 
 %-------------------------------------------------------
-\begin{frame}[fragile]\frametitle{Exercício 9}
-\small{
-\begin{verbatim}
-// inicial
-A = { 10, 20, 30 }   B = { 30, 20, 10 }
-
-// após dequeue(A) tem-se "10 + dequeue(B) + head(A)"
-A = { 20, 30 }       B = { 30, 20, 10 }
-
-// após dequeue(B) tem-se "10 + 30 + head(A)"
-A = { 20, 30 }       B = { 20, 10 }
-
-// após head(A) tem-se "10 + 30 + 20 = 60"
-A = { 20, 30 }       B = { 20, 10 }
-
-// resposta final, após "enqueue(A, 60)"
-A = { 20, 30, 60 }   B = { 20, 10 }
-\end{verbatim}
-}
+\begin{frame}\frametitle{Remoção de Nodo Intermediário}
+\begin{itemize}
+	\item Mesmo raciocínio!!
+	\item \textbf{Lembrete:} se nodo excluído tem 2 filhos, substituir pelo nodo de maior chave da subárvore esquerda, seguindo o algoritmo de remoção em ABP
+\end{itemize}
 \end{frame}
+
+%=======================================================
+\section{Exercício}
 
 %-------------------------------------------------------
-\begin{frame}[fragile]\frametitle{Exercício 10: \texttt{IntLinkedQueue.cpp}}
-\fontsize{3pt}{5pt}\selectfont{
-\lstinputlisting{src/IntLinkedQueue.cpp}
-}
+\begin{frame}[fragile]\frametitle{Exercício 22}
+\begin{enumerate}
+	\setcounter{enumi}{21}
+	\item Remova os nodos 400, 140, 120, 130, 150, 200, 250 e 350 da árvore AVL abaixo.\\~\\
+\begin{figure}[h]
+	\centering
+	\includegraphics[height=0.55\paperheight]{imagens/avl-exercicio22.png}
+\end{figure}
+\end{enumerate}
 \end{frame}
-
-%-------------------------------------------------------
-\begin{frame}[fragile]\frametitle{Exercício 12: \texttt{IntDoubleLinkedDeque.cpp}}
-\fontsize{3pt}{5pt}\selectfont{
-\lstinputlisting[firstline=1,lastline=37]{src/IntDoubleLinkedDeque.cpp}
-}
-\end{frame}
-
-%-------------------------------------------------------
-\begin{frame}[fragile]\frametitle{Exercício 12: \texttt{IntDoubleLinkedDeque.cpp} (continuação)}
-\fontsize{3pt}{5pt}\selectfont{
-\lstinputlisting[firstline=38]{src/IntDoubleLinkedDeque.cpp}
-}
-\end{frame}
-
-%-------------------------------------------------------
-\begin{frame}[fragile]\frametitle{Exercício 13: \texttt{StringArrayList.cpp}}
-\fontsize{3pt}{5pt}\selectfont{
-\lstinputlisting[firstline=1,lastline=38]{src/StringArrayList.cpp}
-}
-\end{frame}
-
-%-------------------------------------------------------
-\begin{frame}[fragile]\frametitle{Exercício 13: \texttt{StringArrayList.cpp} (continuação)}
-\fontsize{3pt}{5pt}\selectfont{
-\lstinputlisting[firstline=39]{src/StringArrayList.cpp}
-}
-\end{frame}
-
-%-------------------------------------------------------
-\begin{frame}[fragile]\frametitle{Exercício 14: \texttt{exercicio14-solucao.cpp}}
-\fontsize{6pt}{6pt}\selectfont{
-\lstinputlisting{src/exercicio14-solucao.cpp}
-}
-\end{frame}
-
-%-------------------------------------------------------
-\begin{frame}[fragile]\frametitle{Exercício 15: \texttt{exercicio15-solucao.cpp}}
-\fontsize{6pt}{6pt}\selectfont{
-\lstinputlisting{src/exercicio15-solucao.cpp}
-}
-\end{frame}
-
-%-------------------------------------------------------
-\begin{frame}[fragile]\frametitle{Exercício 17: \texttt{exercicio17.cpp}}
-\fontsize{6pt}{6pt}\selectfont{
-\lstinputlisting{src/exercicio17.cpp}
-}
-\end{frame}
-
-%-------------------------------------------------------
-\begin{frame}[fragile]\frametitle{Exercício 18: \texttt{exercicio18.cpp}}
-\fontsize{5pt}{5pt}\selectfont{
-\lstinputlisting{src/exercicio18.cpp}
-}
-\end{frame}
-
-\end{comment}
 
 %=======================================================
 \section{Créditos}
@@ -2537,7 +3277,7 @@ A = { 20, 30, 60 }   B = { 20, 10 }
 %-------------------------------------------------------
 \begin{frame}\frametitle{Créditos}
 \begin{itemize}
-	\item Estas lâminas foram adaptadas do material desenvolvido pela professora Isabel Harb Manssour.
+	\item Estas lâminas foram adaptadas de materiais desenvolvidos pelos professores Isabel Harb Manssour e Iaçanã Ianiski Weber.
 \end{itemize}
 \end{frame}
 
@@ -2604,9 +3344,7 @@ Quais são os níveis dos nodos C, H e K?
 
 %-------------------------------------------------------
 \begin{frame}[fragile]\frametitle{Exercício 4: \texttt{exercicio04.cpp} (continuação)}
-\fontsize{5pt}{5pt}\selectfont{
 \lstinputlisting[basicstyle=\ttfamily\tiny,firstline=35]{src/exercicio04.cpp}
-}
 \end{frame}
 
 %-------------------------------------------------------
@@ -2614,6 +3352,330 @@ Quais são os níveis dos nodos C, H e K?
 \fontsize{6pt}{6pt}\selectfont{
 \lstinputlisting[firstline=38,lastline=68]{src/exercicio05-resp.cpp}
 }
+\end{frame}
+
+%-------------------------------------------------------
+\begin{frame}[fragile]\frametitle{Exercício 6: \texttt{NoteCharTree.cpp}}
+\fontsize{3pt}{5pt}\selectfont{
+\lstinputlisting[firstline=1,lastline=38]{src/exercicio06/NodeCharTree.cpp}
+}
+\end{frame}
+
+%-------------------------------------------------------
+\begin{frame}[fragile]\frametitle{Exercício 6: \texttt{NoteCharTree.cpp} (continuação)}
+\fontsize{3pt}{5pt}\selectfont{
+\lstinputlisting[firstline=40,lastline=73]{src/exercicio06/NodeCharTree.cpp}
+}
+\end{frame}
+
+%-------------------------------------------------------
+\begin{frame}[fragile]\frametitle{Exercício 6: \texttt{NoteCharTree.cpp} (continuação)}
+\fontsize{3pt}{5pt}\selectfont{
+\lstinputlisting[firstline=75]{src/exercicio06/NodeCharTree.cpp}
+}
+\end{frame}
+
+%-------------------------------------------------------
+\begin{frame}[fragile]\frametitle{Exercício 7}
+\begin{verbatim}
+a)
+Pré-ordem:   +, *, A, B, /, C, +, D, E
+Pós-ordem:   A, B, *, C, D, E, +, /, +
+Em largura:  +, *, /, A, B, C, +, D, E
+
+b)
+Pré-ordem:   A, B, D, I, J, M, N, O, E, F, K, C, G, H, L, P, Q
+Pós-ordem:   I, M, N, O, J, D, E, K, F, B, G, P, Q, L, H, C, A
+Em largura:  A, B, C, D, E, F, G, H, I, J, K, L, M, N, O, P, Q
+\end{verbatim}
+\end{frame}
+
+%-------------------------------------------------------
+\begin{frame}[fragile]\frametitle{Exercício 8: \texttt{NoteCharTree.cpp} (Novos Métodos de Caminhamento)}
+\lstinputlisting[firstline=98,lastline=124,basicstyle=\ttfamily\tiny]{src/exercicio08/NodeCharTree.cpp}
+\end{frame}
+
+%-------------------------------------------------------
+\begin{frame}[fragile]\frametitle{Exercício 9 (DESAFIO): \texttt{NoteTree.hpp}}
+\fontsize{3pt}{5pt}\selectfont{
+\lstinputlisting[firstline=1,lastline=38]{src/exercicio09/NodeTree.hpp}
+}
+\end{frame}
+
+%-------------------------------------------------------
+\begin{frame}[fragile]\frametitle{Exercício 9 (DESAFIO): \texttt{NoteTree.hpp} (continuação)}
+\fontsize{3pt}{5pt}\selectfont{
+\lstinputlisting[firstline=40,lastline=74]{src/exercicio09/NodeTree.hpp}
+}
+\end{frame}
+
+%-------------------------------------------------------
+\begin{frame}[fragile]\frametitle{Exercício 9 (DESAFIO): \texttt{NoteTree.hpp} (continuação)}
+\fontsize{3pt}{5pt}\selectfont{
+\lstinputlisting[firstline=76,lastline=107]{src/exercicio09/NodeTree.hpp}
+}
+\end{frame}
+
+%-------------------------------------------------------
+\begin{frame}[fragile]\frametitle{Exercício 9 (DESAFIO): \texttt{NoteTree.hpp} (continuação)}
+\fontsize{3pt}{5pt}\selectfont{
+\lstinputlisting[firstline=109,lastline=140]{src/exercicio09/NodeTree.hpp}
+}
+\end{frame}
+
+%-------------------------------------------------------
+\begin{frame}[fragile]\frametitle{Exercício 9 (DESAFIO): \texttt{NoteTree.hpp} (continuação)}
+\fontsize{3pt}{5pt}\selectfont{
+\lstinputlisting[firstline=142]{src/exercicio09/NodeTree.hpp}
+}
+\end{frame}
+
+%-------------------------------------------------------
+\begin{frame}[fragile]\frametitle{Exercício 11}
+\begin{figure}[h]
+	\centering
+	\includegraphics[height=0.7\paperheight]{imagens/arvore_binaria10-expressao.eps}
+\end{figure}
+\end{frame}
+
+%-------------------------------------------------------
+\begin{frame}[fragile]\frametitle{Exercício 12}
+{\tiny	
+\begin{verbatim}
+a)
+Pré-ordem:   A, B, G, C, D, E, F
+Pós-ordem:   G, F, E, D, C, B, A
+Central:     G, B, C, E, F, D, A
+Em largura:  A, B, G, C, D, E, F	
+
+b)
+Pré-ordem:   X, Y, Z, A, W, B, C, D, E
+Pós-ordem:   A, B, C, W, Z, D, Y, E, X
+Central:     A, Z, B, W, C, Y, D, X, E
+Em largura:  X, Y, E, Z, D, A, W, B, C
+
+c)
+Pré-ordem:   1, 2, 4, 6, 3, 5, 7
+Pós-ordem:   6, 4, 2, 7, 5, 3, 1
+Central:     4, 6, 2, 1, 5, 7, 3
+Em largura:  1, 2, 3, 4, 5, 6, 7
+
+d)
+Pré-ordem:   -, +, A, B, -, /, C, G, *, F, -, D, E
+Pós-ordem:   A, B, +, C, G, /, F, D, E, -, *, -, -
+Central:     A, +, B, -, C, /, G, -, F, *, D, -, E
+Em largura:  -, +, -, A, B, /, *, C, G, F, -, D, E
+\end{verbatim}
+}
+\end{frame}
+
+%-------------------------------------------------------
+\begin{frame}[fragile]\frametitle{Exercício 13: \texttt{NoteBT.hpp}}
+\fontsize{3pt}{5pt}\selectfont{
+\lstinputlisting[firstline=1,lastline=38]{src/exercicio13/NodeBT.hpp}
+}
+\end{frame}
+
+%-------------------------------------------------------
+\begin{frame}[fragile]\frametitle{Exercício 13: \texttt{NoteBT.hpp} (continuação)}
+\fontsize{3pt}{5pt}\selectfont{
+\lstinputlisting[firstline=39,lastline=74]{src/exercicio13/NodeBT.hpp}
+}
+\end{frame}
+
+%-------------------------------------------------------
+\begin{frame}[fragile]\frametitle{Exercício 13: \texttt{NoteBT.hpp} (continuação)}
+\fontsize{3pt}{5pt}\selectfont{
+\lstinputlisting[firstline=76,lastline=113]{src/exercicio13/NodeBT.hpp}
+}
+\end{frame}
+
+%-------------------------------------------------------
+\begin{frame}[fragile]\frametitle{Exercício 13: \texttt{NoteBT.hpp} (continuação)}
+\fontsize{3pt}{5pt}\selectfont{
+\lstinputlisting[firstline=115,lastline=150]{src/exercicio13/NodeBT.hpp}
+}
+\end{frame}
+
+%-------------------------------------------------------
+\begin{frame}[fragile]\frametitle{Exercício 13: \texttt{NoteBT.hpp} (continuação)}
+\fontsize{3pt}{5pt}\selectfont{
+\lstinputlisting[firstline=152,lastline=177]{src/exercicio13/NodeBT.hpp}
+}
+\end{frame}
+
+%-------------------------------------------------------
+\begin{frame}[fragile]\frametitle{Exercício 13: \texttt{NoteBT.hpp} (continuação)}
+\fontsize{3pt}{5pt}\selectfont{
+\lstinputlisting[firstline=179]{src/exercicio13/NodeBT.hpp}
+}
+\end{frame}
+
+%-------------------------------------------------------
+\begin{frame}[fragile]\frametitle{Exercício 14}
+\begin{figure}[h]
+	\centering
+	\includegraphics[height=0.6\paperheight]{imagens/abp03.png}
+\end{figure}
+\end{frame}
+
+%-------------------------------------------------------
+\begin{frame}[fragile]\frametitle{Exercício 15: \texttt{BST.hpp}}
+\fontsize{3pt}{5pt}\selectfont{
+\lstinputlisting[lastline=34]{src/exercicio15/BST.hpp}
+}
+\end{frame}
+
+%-------------------------------------------------------
+\begin{frame}[fragile]\frametitle{Exercício 15: \texttt{BST.hpp} (continuação)}
+\fontsize{3pt}{5pt}\selectfont{
+\lstinputlisting[firstline=36,lastline=55]{src/exercicio15/BST.hpp}
+}
+\end{frame}
+
+%-------------------------------------------------------
+\begin{frame}[fragile]\frametitle{Exercício 15: \texttt{BST.hpp} (continuação)}
+\fontsize{3pt}{5pt}\selectfont{
+\lstinputlisting[firstline=57]{src/exercicio15/BST.hpp}
+}
+\end{frame}
+
+%-------------------------------------------------------
+\begin{frame}[fragile]\frametitle{Exercício 16}
+\begin{tabular}{lll}%p{0.35\textwidth}p{0.35\textwidth}p{0.30\textwidth}}
+a) & b) & c)\\
+\includegraphics[height=0.4\paperheight]{imagens/avl08c.png} &
+\includegraphics[height=0.3\paperheight]{imagens/avl09c.png} &
+\includegraphics[height=0.4\paperheight]{imagens/avl10c.png} \\
+\end{tabular}
+\end{frame}
+
+%-------------------------------------------------------
+\begin{frame}[fragile]\frametitle{Exercício 17a}
+\begin{tabular}{lll}
+\includegraphics[height=0.45\paperheight]{imagens/avl13c.png} & ~ ~ &
+\includegraphics[height=0.33\paperheight]{imagens/avl13d.png} \\
+\end{tabular}
+\end{frame}
+
+%-------------------------------------------------------
+\begin{frame}[fragile]\frametitle{Exercício 17b}
+\begin{tabular}{lll}
+\includegraphics[height=0.45\paperheight]{imagens/avl14c.png} & ~ ~ &
+\includegraphics[height=0.33\paperheight]{imagens/avl14d.png} \\
+\end{tabular}
+\end{frame}
+
+%-------------------------------------------------------
+\begin{frame}[fragile]\frametitle{Exercício 18a}
+\begin{tabular}{lll}
+\includegraphics[height=0.45\paperheight]{imagens/avl15c.png} & ~ ~ &
+\includegraphics[height=0.33\paperheight]{imagens/avl15d.png} \\
+\end{tabular}
+\end{frame}
+
+%-------------------------------------------------------
+\begin{frame}[fragile]\frametitle{Exercício 18b}
+\begin{tabular}{lll}
+\includegraphics[height=0.45\paperheight]{imagens/avl16c.png} & ~ ~ &
+\includegraphics[height=0.33\paperheight]{imagens/avl16d.png} \\
+\end{tabular}
+\end{frame}
+
+%-------------------------------------------------------
+\begin{frame}[fragile]\frametitle{Exercício 19a}
+\begin{tabular}{lll}
+\includegraphics[height=0.45\paperheight]{imagens/avl17c.png} & ~ ~ &
+\includegraphics[height=0.33\paperheight]{imagens/avl17d.png} \\
+\end{tabular}
+\end{frame}
+
+%-------------------------------------------------------
+\begin{frame}[fragile]\frametitle{Exercício 19b}
+\begin{tabular}{lll}
+\includegraphics[height=0.45\paperheight]{imagens/avl18c.png} & ~ ~ &
+\includegraphics[height=0.33\paperheight]{imagens/avl18d.png} \\
+\end{tabular}
+\end{frame}
+
+%-------------------------------------------------------
+\begin{frame}[fragile]\frametitle{Exercício 20a}
+\begin{tabular}{lll}
+\includegraphics[height=0.45\paperheight]{imagens/avl19c.png} & ~ ~ &
+\includegraphics[height=0.33\paperheight]{imagens/avl19d.png} \\
+\end{tabular}
+\end{frame}
+
+%-------------------------------------------------------
+\begin{frame}[fragile]\frametitle{Exercício 20b}
+\begin{tabular}{lll}
+\includegraphics[height=0.45\paperheight]{imagens/avl20c.png} & ~ ~ &
+\includegraphics[height=0.33\paperheight]{imagens/avl20d.png} \\
+\end{tabular}
+\end{frame}
+
+%-------------------------------------------------------
+\begin{frame}[fragile]\frametitle{Exercício 21}
+\begin{figure}[h]
+	\centering
+	\includegraphics[height=0.5\paperheight]{imagens/avl-exercicio21.png}
+\end{figure}
+\end{frame}
+
+%-------------------------------------------------------
+\begin{frame}[fragile]\frametitle{Exercício 22}
+\texttt{avl21-\textgreater{}remove(400)}
+\begin{figure}[h]
+	\centering
+	\includegraphics[height=0.32\paperheight]{imagens/avl-exercicio22b.png}
+\end{figure}
+\texttt{avl21-\textgreater{}remove(140)}
+\begin{figure}[h]
+	\centering
+	\includegraphics[height=0.25\paperheight]{imagens/avl-exercicio22c.png}
+\end{figure}
+\end{frame}
+
+%-------------------------------------------------------
+\begin{frame}[fragile]\frametitle{Exercício 22 (cont.)}
+\texttt{avl21-\textgreater{}remove(120)}
+\begin{figure}[h]
+	\centering
+	\includegraphics[height=0.25\paperheight]{imagens/avl-exercicio22d.png}
+\end{figure}
+\texttt{avl21-\textgreater{}remove(130)}
+\begin{figure}[h]
+	\centering
+	\includegraphics[height=0.25\paperheight]{imagens/avl-exercicio22e.png}
+\end{figure}
+\end{frame}
+
+%-------------------------------------------------------
+\begin{frame}[fragile]\frametitle{Exercício 22 (cont.)}
+\texttt{avl21-\textgreater{}remove(150)}
+\begin{figure}[h]
+	\centering
+	\includegraphics[height=0.25\paperheight]{imagens/avl-exercicio22f.png}
+\end{figure}
+\texttt{avl21-\textgreater{}remove(200)}
+\begin{figure}[h]
+	\centering
+	\includegraphics[height=0.25\paperheight]{imagens/avl-exercicio22g.png}
+\end{figure}
+\end{frame}
+
+%-------------------------------------------------------
+\begin{frame}[fragile]\frametitle{Exercício 22 (cont.)}
+\texttt{avl21-\textgreater{}remove(250)}
+\begin{figure}[h]
+	\centering
+	\includegraphics[height=0.25\paperheight]{imagens/avl-exercicio22h.png}
+\end{figure}
+\texttt{avl21-\textgreater{}remove(350)}
+\begin{figure}[h]
+	\centering
+	\includegraphics[height=0.18\paperheight]{imagens/avl-exercicio22i.png}
+\end{figure}
 \end{frame}
 
 %-------------------------------------------------------

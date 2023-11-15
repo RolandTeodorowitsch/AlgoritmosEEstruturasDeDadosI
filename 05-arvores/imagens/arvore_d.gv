@@ -1,0 +1,6 @@
+graph arvore_d {
+	node [shape=circle]
+	A -- { B C D }
+	B -- { E F }
+	C -- { G H I }
+}

@@ -1,0 +1,24 @@
+graph "arvore_binaria09-expressao" {
+	node [shape=square]
+	minus1 -- { div1 sum1 }
+	div1 -- { mul1 sum2 }
+	mul1 -- { sum3 three1 }
+	sum3 -- { three2 1 }
+	sum2 -- { minus2 2 }
+	minus2 -- { 9 5 }
+	sum1 -- { mul2 6 }
+	mul2 -- { three3 minus3 }
+	minus3 -- { 7 4 }
+	three1 [label="3"]
+	three2 [label="3"]
+	three3 [label="3"]
+	minus1 [label="-",shape=circle]
+	minus2 [label="-",shape=circle]
+	minus3 [label="-",shape=circle]
+	div1 [label="/",shape=circle]
+	sum1 [label="+",shape=circle]
+	sum2 [label="+",shape=circle]
+	sum3 [label="+",shape=circle]
+	mul1 [label="*",shape=circle]
+	mul2 [label="*",shape=circle]
+}

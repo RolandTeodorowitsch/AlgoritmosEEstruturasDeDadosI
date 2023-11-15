@@ -35,10 +35,10 @@ string strGraphViz(Node *root) {
   return ss.str();
 }
 
-int degree(Node *subtree)    { return 0; }  // SUBSTITUIR/IMPLEMENTAR
-int depth(Node *subtree)     { return 0; }  // SUBSTITUIR/IMPLEMENTAR
-int size(Node *subtree)      { return 0; }  // SUBSTITUIR/IMPLEMENTAR
-int treeDepth(Node *subtree) { return 0; }  // SUBSTITUIR/IMPLEMENTAR
+int degree(Node *subtree) { return 0; }  // SUBSTITUIR/IMPLEMENTAR
+int depth(Node *subtree)  { return 0; }  // SUBSTITUIR/IMPLEMENTAR
+int height(Node *subtree) { return 0; }  // SUBSTITUIR/IMPLEMENTAR
+int size(Node *subtree)   { return 0; }  // SUBSTITUIR/IMPLEMENTAR
 
 int main() {
   Node *d = new Node('D');
@@ -47,18 +47,18 @@ int main() {
   Node *c = new Node('C',f,new Node('G'));
   Node *root = new Node('A',b,c);
   cout << strGraphViz(root);
-  cout << "degree(root):    " << degree(root) << " [2]" << endl;
-  cout << "degree(b):       " << degree(b) << " [2]" << endl;
-  cout << "degree(d):       " << degree(d) << " [0]" << endl;
-  cout << "depth(root):     " << depth(root) << " [0]" << endl;
-  cout << "depth(b):        " << depth(b) << " [1]" << endl;
-  cout << "depth(f):        " << depth(f) << " [2]" << endl;
-  cout << "size(root):      " << size(root) << " [9]" << endl;
-  cout << "size(b):         " << size(b) << " [3]" << endl;
-  cout << "size(c):         " << size(c) << " [5]" << endl;
-  cout << "treeDepth(root): " << treeDepth(root) << " [3]" << endl;
-  cout << "treeDepth(b):    " << treeDepth(b) << " [1]" << endl;
-  cout << "treeDepth(c):    " << treeDepth(c) << " [2]" << endl;
+  cout << "degree(root): " << degree(root) << " [2]" << endl;
+  cout << "degree(b):    " << degree(b) << " [2]" << endl;
+  cout << "degree(d):    " << degree(d) << " [0]" << endl;
+  cout << "depth(root):  " << depth(root) << " [0]" << endl;
+  cout << "depth(b):     " << depth(b) << " [1]" << endl;
+  cout << "depth(f):     " << depth(f) << " [2]" << endl;
+  cout << "size(root):   " << size(root) << " [9]" << endl;
+  cout << "size(b):      " << size(b) << " [3]" << endl;
+  cout << "size(c):      " << size(c) << " [5]" << endl;
+  cout << "height(root): " << height(root) << " [3]" << endl;
+  cout << "height(b):    " << height(b) << " [1]" << endl;
+  cout << "height(c):    " << height(c) << " [2]" << endl;
   delete root;
   return 0;
 }

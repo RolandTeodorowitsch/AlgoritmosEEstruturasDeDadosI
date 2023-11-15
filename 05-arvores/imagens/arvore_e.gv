@@ -1,0 +1,11 @@
+graph arvore_d {
+	node [shape=circle]
+	A -- { B C }
+	B -- { D E F }
+	D -- { I J }
+	J -- { M N O }
+	F -- K
+	C -- { G H }
+	H -- L
+	L -- { P Q }
+}

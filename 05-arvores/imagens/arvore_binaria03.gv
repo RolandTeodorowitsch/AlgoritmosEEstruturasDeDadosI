@@ -1,0 +1,17 @@
+graph arvore_binaria03 {
+	node [shape=circle]
+	A -- B
+	A -- ghost1 [style=dotted]
+	B -- ghost2 [style=dotted]
+	B -- C
+	C -- E
+	C -- D
+	E -- ghost3 [style=dotted]
+        E -- F
+        D -- G
+	D -- ghost4 [style=dotted]
+	ghost1[style=invisible]
+	ghost2[style=invisible]
+	ghost3[style=invisible]
+	ghost4	[style=invisible]
+}

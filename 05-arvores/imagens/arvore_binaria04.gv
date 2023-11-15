@@ -1,0 +1,17 @@
+graph arvore_binaria04 {
+	node [shape=circle]
+	A -- B
+	A -- G1 [style=invisible]
+	B -- G
+	B -- C
+	C -- G2 [style=invisible]
+	C -- D
+	D -- E
+	D -- G3 [style=invisible]
+	E -- G4 [style=invisible]
+	E -- F
+	G1 [style=invisible]
+	G2 [style=invisible]
+	G3 [style=invisible]
+	G4 [style=invisible]
+}
