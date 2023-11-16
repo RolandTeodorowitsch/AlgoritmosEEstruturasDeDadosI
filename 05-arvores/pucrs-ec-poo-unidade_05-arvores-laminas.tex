@@ -74,7 +74,7 @@
 \title[\sc{Árvores}]{Árvores}
 \author[Roland Teodorowitsch]{Roland Teodorowitsch}
 \institute[ALEST I - EP - PUCRS]{Algoritmos e Estruturas de Dados I - Escola Politécnica - PUCRS}
-\date{15 de novembro de 2023}
+\date{16 de novembro de 2023}
 
 \begin{document}
 
@@ -3036,7 +3036,7 @@ a) & ~ ~ & b)\\
 	\setcounter{enumi}{19}
 	\item Considere as árvores AVL a seguir, insira os nodos indicados nas respectivas árvores, determine o fator de balanceamento de seus nodos e aplique, se necessário, a rotação apropriada para que elas continuem sendo árvores AVL.\\~\\
 \begin{tabular}{lll}
-a) \texttt{avl18a->add(34);}& ~ ~ & b) \texttt{avl18b->add(70);}\\
+a) \texttt{avl20a->add(34);}& ~ ~ & b) \texttt{avl20b->add(70);}\\
 \includegraphics[height=0.3\paperheight]{imagens/avl19.png} & ~ ~ &
 \includegraphics[height=0.3\paperheight]{imagens/avl20.png} \\
 \end{tabular}
@@ -3070,7 +3070,7 @@ a) \texttt{avl18a->add(34);}& ~ ~ & b) \texttt{avl18b->add(70);}\\
 \begin{frame}\frametitle{Execução das Rotações}
 \begin{itemize}
 	\small
-	\item	Fator de Balanceamento: \texttt{FB(n) = altura(n -\textgreater dir) - altura(n -\textgreater esq)}
+	\item	Fator de Balanceamento: \texttt{FB(n) = altura(n -> dir) - altura(n -> esq)}
 	\item Se $|FB| > 1$, aplicar rotação
 	\begin{itemize}
 		\footnotesize
@@ -3552,66 +3552,66 @@ a) & b) & c)\\
 
 %-------------------------------------------------------
 \begin{frame}[fragile]\frametitle{Exercício 17a}
-\begin{tabular}{lll}
-\includegraphics[height=0.45\paperheight]{imagens/avl13c.png} & ~ ~ &
-\includegraphics[height=0.33\paperheight]{imagens/avl13d.png} \\
-\end{tabular}
+\begin{figure}[h]
+	\centering
+	\includegraphics[height=0.40\paperheight]{imagens/avl13-rotdir110.png}
+\end{figure}
 \end{frame}
 
 %-------------------------------------------------------
 \begin{frame}[fragile]\frametitle{Exercício 17b}
-\begin{tabular}{lll}
-\includegraphics[height=0.45\paperheight]{imagens/avl14c.png} & ~ ~ &
-\includegraphics[height=0.33\paperheight]{imagens/avl14d.png} \\
-\end{tabular}
+\begin{figure}[h]
+	\centering
+	\includegraphics[height=0.40\paperheight]{imagens/avl14-rotesq130.png}
+\end{figure}
 \end{frame}
 
 %-------------------------------------------------------
 \begin{frame}[fragile]\frametitle{Exercício 18a}
-\begin{tabular}{lll}
-\includegraphics[height=0.45\paperheight]{imagens/avl15c.png} & ~ ~ &
-\includegraphics[height=0.33\paperheight]{imagens/avl15d.png} \\
-\end{tabular}
+\begin{figure}[h]
+	\centering
+	\includegraphics[height=0.40\paperheight]{imagens/avl15-add4.png}
+\end{figure}
 \end{frame}
 
 %-------------------------------------------------------
 \begin{frame}[fragile]\frametitle{Exercício 18b}
-\begin{tabular}{lll}
-\includegraphics[height=0.45\paperheight]{imagens/avl16c.png} & ~ ~ &
-\includegraphics[height=0.33\paperheight]{imagens/avl16d.png} \\
-\end{tabular}
+\begin{figure}[h]
+	\centering
+	\includegraphics[height=0.40\paperheight]{imagens/avl16-add90.png}
+\end{figure}
 \end{frame}
 
 %-------------------------------------------------------
 \begin{frame}[fragile]\frametitle{Exercício 19a}
-\begin{tabular}{lll}
-\includegraphics[height=0.45\paperheight]{imagens/avl17c.png} & ~ ~ &
-\includegraphics[height=0.33\paperheight]{imagens/avl17d.png} \\
-\end{tabular}
+\begin{figure}[h]
+	\centering
+	\includegraphics[height=0.40\paperheight]{imagens/avl17-rotesqdir110.png}
+\end{figure}
 \end{frame}
-
+	
 %-------------------------------------------------------
 \begin{frame}[fragile]\frametitle{Exercício 19b}
-\begin{tabular}{lll}
-\includegraphics[height=0.45\paperheight]{imagens/avl18c.png} & ~ ~ &
-\includegraphics[height=0.33\paperheight]{imagens/avl18d.png} \\
-\end{tabular}
+\begin{figure}[h]
+	\centering
+	\includegraphics[height=0.40\paperheight]{imagens/avl18-rotdiresq130.png}
+\end{figure}
 \end{frame}
 
 %-------------------------------------------------------
 \begin{frame}[fragile]\frametitle{Exercício 20a}
-\begin{tabular}{lll}
-\includegraphics[height=0.45\paperheight]{imagens/avl19c.png} & ~ ~ &
-\includegraphics[height=0.33\paperheight]{imagens/avl19d.png} \\
-\end{tabular}
+\begin{figure}[h]
+	\centering
+	\includegraphics[height=0.40\paperheight]{imagens/avl19-add34.png}
+\end{figure}
 \end{frame}
 
 %-------------------------------------------------------
 \begin{frame}[fragile]\frametitle{Exercício 20b}
-\begin{tabular}{lll}
-\includegraphics[height=0.45\paperheight]{imagens/avl20c.png} & ~ ~ &
-\includegraphics[height=0.33\paperheight]{imagens/avl20d.png} \\
-\end{tabular}
+\begin{figure}[h]
+	\centering
+	\includegraphics[height=0.40\paperheight]{imagens/avl20-add70.png}
+\end{figure}
 \end{frame}
 
 %-------------------------------------------------------
@@ -3624,12 +3624,12 @@ a) & b) & c)\\
 
 %-------------------------------------------------------
 \begin{frame}[fragile]\frametitle{Exercício 22}
-\texttt{avl21-\textgreater{}remove(400)}
+\texttt{avl22->remove(400);}
 \begin{figure}[h]
 	\centering
 	\includegraphics[height=0.32\paperheight]{imagens/avl-exercicio22b.png}
 \end{figure}
-\texttt{avl21-\textgreater{}remove(140)}
+\texttt{avl22->remove(140);}
 \begin{figure}[h]
 	\centering
 	\includegraphics[height=0.25\paperheight]{imagens/avl-exercicio22c.png}
@@ -3638,12 +3638,12 @@ a) & b) & c)\\
 
 %-------------------------------------------------------
 \begin{frame}[fragile]\frametitle{Exercício 22 (cont.)}
-\texttt{avl21-\textgreater{}remove(120)}
+\texttt{avl22->remove(120);}
 \begin{figure}[h]
 	\centering
 	\includegraphics[height=0.25\paperheight]{imagens/avl-exercicio22d.png}
 \end{figure}
-\texttt{avl21-\textgreater{}remove(130)}
+\texttt{avl22->remove(130);}
 \begin{figure}[h]
 	\centering
 	\includegraphics[height=0.25\paperheight]{imagens/avl-exercicio22e.png}
@@ -3652,12 +3652,12 @@ a) & b) & c)\\
 
 %-------------------------------------------------------
 \begin{frame}[fragile]\frametitle{Exercício 22 (cont.)}
-\texttt{avl21-\textgreater{}remove(150)}
+\texttt{avl22->remove(150);}
 \begin{figure}[h]
 	\centering
 	\includegraphics[height=0.25\paperheight]{imagens/avl-exercicio22f.png}
 \end{figure}
-\texttt{avl21-\textgreater{}remove(200)}
+\texttt{avl22->remove(200);}
 \begin{figure}[h]
 	\centering
 	\includegraphics[height=0.25\paperheight]{imagens/avl-exercicio22g.png}
@@ -3666,12 +3666,12 @@ a) & b) & c)\\
 
 %-------------------------------------------------------
 \begin{frame}[fragile]\frametitle{Exercício 22 (cont.)}
-\texttt{avl21-\textgreater{}remove(250)}
+\texttt{avl22->remove(250);}
 \begin{figure}[h]
 	\centering
 	\includegraphics[height=0.25\paperheight]{imagens/avl-exercicio22h.png}
 \end{figure}
-\texttt{avl21-\textgreater{}remove(350)}
+\texttt{avl22->remove(350);}
 \begin{figure}[h]
 	\centering
 	\includegraphics[height=0.18\paperheight]{imagens/avl-exercicio22i.png}
