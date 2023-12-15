@@ -14,10 +14,10 @@ private:
   T info;   NodeBT *parent, *left, *right;
   string strGraphVizNode(NodeBT const *node) const;  // Imprime as conexões de um nodo com seus filhos em GraphViz
 public:
-  NodeBT(T const &i);                    // Cria um nodo com o caractere i, e sem pai
+  NodeBT(T const &i);                    // Cria um nodo com a informalção i, e sem pai
   ~NodeBT();                             // Destrói o nodo atual e seus descendentes
-  T getInfo() const;                     // Retorna o caractere armazenado no nodo atual
-  void setInfo(T &i);                    // Altera o caractere armazenado no nodo atual
+  T getInfo() const;                     // Retorna a informação armazenada no nodo atual
+  void setInfo(T &i);                    // Altera a informação armazenada no nodo atual
   NodeBT *getParent() const;             // Retorna a referência para o nodo-pai do nodo atual
   NodeBT *getLeft() const;               // Retorna a referência para o nodo-fiho/subárvore da esquerda
   NodeBT *getRight() const;              // Retorna a referência para o nodo-fiho/subárvore da direita
