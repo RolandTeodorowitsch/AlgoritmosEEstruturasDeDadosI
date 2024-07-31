@@ -7,7 +7,7 @@ $CATEGORY: $course$/Algoritmos e Estruturas de Dados I - Estruturas Lineares - F
 	~11, 22.#
 }
 
-::ALEST I - Estruturas Lineares - Filas - Questões de Concursos - 021::[html]<p align="justify"><b>(POSCOMP - 2010 - Mestrado/Doutorado	 - COPOS/Universidade Estadual de Londrina - 21)</b> Um estudante de computação precisa resolver um problema bastante importante, que é executar as operações que estão descritas abaixo, cuja estrutura é uma pilha. Tão logo ele retire algum elemento desta pilha, estes deverão ser inseridos em uma fila, cuja entrada é pela esquerda e a saída, pela direita.</p>
+::ALEST I - Estruturas Lineares - Filas - Questões de Concursos - 021::[html]<p align="justify"><b>(POSCOMP - 2010 - Mestrado/Doutorado - COPOS/Universidade Estadual de Londrina - 21)</b> Um estudante de computação precisa resolver um problema bastante importante, que é executar as operações que estão descritas abaixo, cuja estrutura é uma pilha. Tão logo ele retire algum elemento desta pilha, estes deverão ser inseridos em uma fila, cuja entrada é pela esquerda e a saída, pela direita.</p>
 <p aling="justify">Assinale a alternativa que contém a sequência correta de entrada dos elementos na fila.</p>
 <pre>
 PUSH P
@@ -31,4 +31,11 @@ POP
 	~P - O - R - L - S#
 }
 
+::ALEST I - Estruturas Lineares - Filas - Questões de Concursos - 022::[html]<p align="justify"><b>(SEED/PR - 2020 - Professor/Educação Básica I - CEBRASPE - 16)</b> Na estrutura de dados denominada FILA,</p>{
+	~o último elemento a ser inserido será o primeiro a ser retirado.#
+	=o primeiro elemento a ser inserido será o primeiro a ser retirado: adiciona-se item no fim e remove-se item do início.#
+	~os elementos de um mesmo tipo de dado estão organizados de maneira sequencial e ordenada.#
+	~os elementos não estão necessariamente armazenados sequencialmente na memória por ordem descrente de valores.#
+	~os elementos são formados de índices em duas dimensões: linhas e colunas.#
+}
 

@@ -62,7 +62,7 @@
 \title[\sc{Estruturas Lineares}]{Estruturas Lineares}
 \author[Roland Teodorowitsch]{Roland Teodorowitsch}
 \institute[ALEST I - EP - PUCRS]{Algoritmos e Estruturas de Dados I - Escola Politécnica - PUCRS}
-\date{28 de setembro de 2023}
+\date{18 de abril de 2024}
 
 \begin{document}
 
@@ -405,7 +405,7 @@ Converta as seguintes expressões na forma infixada para as formas pré-fixada e
 	\item	Infixada: \texttt{(2 + 4)/(3 -1)}\\
 		Pré-fixada: \\
 		Pós-fixada: \\
-	\item	Infixada: \texttt{(2+4)/(3-1)x4}\\
+	\item	Infixada: \texttt{(2+4)/(3-1)*4}\\
 		Pré-fixada: \\
 		Pós-fixada: \\
 \end{enumerate}
@@ -534,8 +534,8 @@ Para que duas pilhas sejam consideradas iguais, elas devem ter o mesmo número d
 \begin{lstlisting}[basicstyle=\ttfamily\scriptsize]
 struct Node {
   char info;
-  Nodo *next;
-  Nodo(char l) {
+  Node *next;
+  Node(char l) {
     info = l;
     next = nullptr;
   }
@@ -827,7 +827,7 @@ Quais serão as sequências de elementos nas filas \texttt{A} e \texttt{B}, apó
 	\item Considere as seguintes declarações para uma estrutura linear duplamente encadeada do tipo deque:
 \begin{lstlisting}[basicstyle=\ttfamily\tiny]
   struct Node {
-    char info;  Nodo *prev, *next;
+    char info;  Node *prev, *next;
     Node(char i) {  info = i;  prev = next = nullptr;  }
   };
   Node *esquerda = nullptr, *direita = nullptr;
