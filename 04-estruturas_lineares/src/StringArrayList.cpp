@@ -59,6 +59,7 @@ int StringArrayList::indexOf(const string &s) {
 }
 
 int StringArrayList::indexOf(int index, const string &s) {
+  if ( index < 0 || index >= numElements ) return -1;
   for (int i=index; i<numElements; ++i) if (list[i] == s) return i;
   return -1;
 }

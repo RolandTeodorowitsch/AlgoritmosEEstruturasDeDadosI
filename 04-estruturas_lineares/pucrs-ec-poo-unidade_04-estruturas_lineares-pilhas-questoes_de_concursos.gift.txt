@@ -723,4 +723,11 @@ tmUtK+yb21thj9ZldaHQK0r7B6AHm7bjc/CSAAAAAElFTkSuQmCC" alt="Questão 66" title="Q
 	~<code>XYW*+XY/-</code>#
 }
 	
+::ALEST I - Estruturas Lineares - Pilhas - Questões de Concursos - 010::[html]<p align="justify"><b>(SEED/PR - 2020 - Professor/Educação Básica I - CEBRASPE - 12)</b> Em determinada estrutura de dados, os valores seguem a regra segundo a qual o último a entrar é o primeiro a sair.</p><p align="justify">Essa estrutura é do tipo</p>{
+	=pilha.#
+	~fila.#
+	~lista encadeada.#
+	~lista duplamente encadeada.#
+	~matriz.#
+}
 

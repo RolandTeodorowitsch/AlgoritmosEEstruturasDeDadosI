@@ -2,7 +2,7 @@
 using namespace std;
 struct Node {
   char info;  Node *next;
-  Node(int i) {  info = i;  next = nullptr;  cout << "+ Node(" << info << ") criado..." << endl;  }
+  Node(char i) {  info = i;  next = nullptr;  cout << "+ Node(" << info << ") criado..." << endl;  }
   ~Node() {  cout << "- Node(" << info << ") destruido..." << endl;  }
 };
 

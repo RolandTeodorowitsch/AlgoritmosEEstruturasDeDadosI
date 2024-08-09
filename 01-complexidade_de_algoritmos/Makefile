@@ -1,6 +1,10 @@
 PDF =								pucrs-ec-poo-unidade_01-complexidade_de_algoritmos-laminas.pdf
 
-all:								pucrs-ec-poo-unidade_01-complexidade_de_algoritmos-laminas.pdf
+all:								pucrs-ec-poo-unidade_01-complexidade_de_algoritmos-laminas.pdf \
+								src.zip
+
+src.zip:							pesquisa_linear/pesquisa_linear.c pesquisa_linear/main.c bubble_sort/main.c
+								@zip -r src.zip pesquisa_linear/pesquisa_linear.c pesquisa_linear/main.c bubble_sort/main.c
 
 pucrs-ec-poo-unidade_01-complexidade_de_algoritmos-laminas.pdf:	pucrs-ec-poo-unidade_01-complexidade_de_algoritmos-laminas.tex \
 								pesquisa_linear/grafico.jpg \

@@ -33,7 +33,7 @@
 \title[\sc{Complexidade de Algoritmos}]{Complexidade de Algoritmos}
 \author[Roland Teodorowitsch]{Roland Teodorowitsch}
 \institute[ALEST I - EP - PUCRS]{Algoritmos e Estruturas de Dados I - Escola Politécnica - PUCRS}
-\date{22 de agosto de 2023}
+\date{9 de agosto de 2024}
 
 \begin{document}
 \justifying
@@ -94,6 +94,8 @@
 	\item Notação $O$
 	\item Notação $\Omega$ e Notação $\Theta$
 	\item Análise assintótica
+	\item Créditos
+	\item Soluções
 \end{itemize}
 \end{frame}
 
@@ -268,7 +270,7 @@ void bubble_sort(int *dados, int tam);
 		\item Salve seu código em um arquivo chamado \texttt{bubble\_sort.c} e compile-o usando:\\
 		\texttt{gcc -o bubble\_sort bubble\_sort.c}
 		\item Execute o programa direcionando a sua saída para um arquivo chamado \texttt{curva1.txt}:\\
-		\texttt{./bubble\_sort \textgreater curva1.txt}
+		\texttt{./bubble\_sort \textgreater{} curva1.txt}
 		\item Use o \textbf{GNUPLOT} para visualizar o arquivo \texttt{curva1.txt} (dicas nas próximas páginas)
 	\end{itemize}
 \end{itemize}
@@ -305,30 +307,6 @@ plot "curva1.txt" with lines title "bubble\\_sort()"
 \end{frame}
 
 %-------------------------------------------------------
-\begin{frame}[fragile]\frametitle{Solução 1: \emph{Bubble Sort} (primeira implementação)}
-{\scriptsize\lstinputlisting{bubble_sort/bubble_sort1.c}}
-\end{frame}
-
-%-------------------------------------------------------
-\begin{frame}[fragile]\frametitle{Solução 1: \emph{Bubble Sort} (gráfico da primeira implementação)}
-\vspace{-5mm}
-\begin{columns}[T]
-\begin{column}{0.6\linewidth}
-\begin{figure}[h]
-	\centering
-	\includegraphics[height=0.75\paperheight]{bubble_sort/grafico1.jpg}
-\end{figure}
-\end{column}
-\begin{column}{0.4\linewidth}
-\vspace{5mm}
-{\fontsize{0}{4}\selectfont{}\textbf{GNUPLOT:}
-\verbatiminput{bubble_sort/grafico1.gnuplot}
-}
-\end{column}
-\end{columns}
-\end{frame}
-
-%-------------------------------------------------------
 \begin{frame}[fragile]\frametitle{Exercício 2: \emph{Bubble Sort} otimizado}
 \begin{itemize}
 	\item A versão sugerida para implementação do \emph{Bubble Sort} tem um problema:
@@ -339,40 +317,6 @@ plot "curva1.txt" with lines title "bubble\\_sort()"
 	\item A solução consiste em diminuir gradualmente o tamanho até onde cada passagem é executada
 	\item Implemente esta solução e compare o seu desempenho com a versão anterior
 \end{itemize}
-\end{frame}
-
-%-------------------------------------------------------
-\begin{frame}[fragile]\frametitle{Solução 2: \emph{Bubble Sort} otimizado}
-{\scriptsize\lstinputlisting{bubble_sort/bubble_sort2.c}}
-\end{frame}
-
-%-------------------------------------------------------
-\begin{frame}[fragile]\frametitle{Solução 2: \emph{Bubble Sort} otimizado (comandos do \texttt{gnuplot})}
-\begin{verbatim}
-set xlabel "n" font "Arial,16"
-set ylabel "t(us)" font "Arial,16"
-plot "curva1.txt" with lines title "Bubble Sort",
-     "curva2.txt" with lines title "Bubble Sort Otimizado"
-\end{verbatim}
-\end{frame}
-
-%-------------------------------------------------------
-\begin{frame}[fragile]\frametitle{Solução 2: \emph{Bubble Sort} (gráfico das duas implementações)}
-\vspace{-5mm}
-\begin{columns}[T]
-\begin{column}{0.6\linewidth}
-\begin{figure}[h]
-	\centering
-	\includegraphics[height=0.75\paperheight]{bubble_sort/grafico2.jpg}
-\end{figure}
-\end{column}
-\begin{column}{0.4\linewidth}
-\vspace{5mm}
-{\fontsize{0}{4}\selectfont{}\textbf{GNUPLOT:}
-\verbatiminput{bubble_sort/grafico2.gnuplot}
-}
-\end{column}
-\end{columns}
 \end{frame}
 
 %-------------------------------------------------------
@@ -475,260 +419,30 @@ for (i=0; i<m.comprimento; i++)
 \end{frame}
 
 %-------------------------------------------------------
-\begin{frame}[fragile]\frametitle{Exercício (1/2)}
+\begin{frame}[fragile]\frametitle{Exercício 3 (1/2)}
 Conte o número de operações executadas pelas seguintes funções.
-\begin{columns}[T]
-\begin{column}{0.5\linewidth}
-\begin{enumerate}
-	\item {\scriptsize\lstinputlisting{contagem/contagem01.c}}
-	\item {\scriptsize\lstinputlisting{contagem/contagem02.c}}
+\begin{enumerate}[a]
+	\item {\scriptsize\lstinputlisting{src/exercicio03a.c}}
+	\item {\scriptsize\lstinputlisting{src/exercicio03b.c}}
 \end{enumerate}
-\end{column}
-\begin{column}{0.5\linewidth}
-\begin{enumerate}
+\end{frame}
+
+%-------------------------------------------------------
+\begin{frame}[fragile]\frametitle{Exercício 3 (2/2)}
+\begin{columns}[T]
+\begin{column}{0.45\linewidth}
+\begin{enumerate}[a]
 	\setcounter{enumi}{2}
-	\item {\scriptsize\lstinputlisting{contagem/contagem03.c}}
-	\item {\scriptsize\lstinputlisting{contagem/contagem04.c}}
+	\item {\scriptsize\lstinputlisting{src/exercicio03c.c}}
+	\item {\scriptsize\lstinputlisting{src/exercicio03d.c}}
 \end{enumerate}
 \end{column}
-\end{columns}
-\end{frame}
-
-%-------------------------------------------------------
-\begin{frame}[fragile]\frametitle{Exercício (2/2)}
-\begin{enumerate}
+\begin{column}{0.55\linewidth}
+\begin{enumerate}[a]
 	\setcounter{enumi}{4}
-	\item {\scriptsize\lstinputlisting{contagem/contagem05.c}}
-	\item {\scriptsize\lstinputlisting{contagem/contagem06.c}}
+	\item {\scriptsize\lstinputlisting{src/exercicio03e.c}}
+	\item {\scriptsize\lstinputlisting{src/exercicio03f.c}}
 \end{enumerate}
-\end{frame}
-
-%-------------------------------------------------------
-\begin{frame}[fragile]\frametitle{Exercício: soluções (1/6)}
-\begin{columns}[T]
-\begin{column}{0.5\linewidth}
-%\vspace{-4mm}
-\begin{enumerate}
-	\setcounter{enumi}{0}
-	\item {\scriptsize\lstinputlisting{contagem/contagem01.c}}
-{\tiny
-\begin{verbatim}
-n = 10   /  i = 0..9    [op = 10]
-
-n = 20   /  i = 0..19   [op = 20]
-
-n = 50   /  i = 0..49   [op = 50]
-
-n = 100  /  i = 0..99   [op = 100]
-
-n = 1000 /  i = 0..999  [op = 1000]
-\end{verbatim}
-Número de operações: $n \therefore O(n)$
-}
-\end{enumerate}
-\end{column}
-\begin{column}{0.5\linewidth}
-\begin{figure}[h]
-	\centering
-		\includegraphics[height=0.5\paperheight]{contagem/contagem01.jpg}
-\end{figure}
-{\fontsize{0}{4}\selectfont{}\textbf{GNUPLOT:}
-\verbatiminput{contagem/contagem01.gnuplot}
-}
-\end{column}
-\end{columns}
-\end{frame}
-
-%-------------------------------------------------------
-\begin{frame}[fragile]\frametitle{Exercício: soluções (2/6)}
-\begin{columns}[T]
-\begin{column}{0.5\linewidth}
-%\vspace{-4mm}
-\begin{enumerate}
-	\setcounter{enumi}{1}
-	\item {\scriptsize\lstinputlisting{contagem/contagem02.c}}
-{\tiny
-\begin{verbatim}
-n = 10  /  i = 0  /  j = 0..9
-           i = 1  /  j = 0..9
-           i = 2  /  j = 0..9
-           i = 3  /  j = 0..9
-           i = 4  /  j = 0..9
-           i = 5  /  j = 0..9
-           i = 6  /  j = 0..9
-           i = 7  /  j = 0..9
-           i = 8  /  j = 0..9
-           i = 9  /  j = 0..9  [op = 100]
-\end{verbatim}
-Número de operações: $n \times n = n^{2} \therefore O(n^2)$
-}
-\end{enumerate}
-\end{column}
-\begin{column}{0.5\linewidth}
-\begin{figure}[h]
-	\centering
-	\includegraphics[height=0.5\paperheight]{contagem/contagem02.jpg}
-\end{figure}
-{\fontsize{0}{4}\selectfont{}\textbf{GNUPLOT:}
-\verbatiminput{contagem/contagem02.gnuplot}
-}
-\end{column}
-\end{columns}
-\end{frame}
-
-%-------------------------------------------------------
-\begin{frame}[fragile]\frametitle{Exercício: soluções (3/6)}
-\begin{columns}[T]
-\begin{column}{0.5\linewidth}
-%\vspace{-4mm}
-\begin{enumerate}
-	\setcounter{enumi}{2}
-	\item {\scriptsize\lstinputlisting{contagem/contagem03.c}}
-{\tiny
-\begin{verbatim}
-n = 10  /  i = 0  /  j = 1,2,3,4,5,6,7,8,9
-           i = 1  /  j = 2,3,4,5,6,7,8,9
-           i = 2  /  j = 3,4,5,6,7,8,9
-           i = 3  /  j = 4,5,6,7,8,9
-           i = 4  /  j = 5,6,7,8,9
-           i = 5  /  j = 6,7,8,9
-           i = 6  /  j = 7,8,9
-           i = 7  /  j = 8,9
-           i = 8  /  j = 9
-           i = 9  /  j =        [op = 45]
-\end{verbatim}
-Número de operações: $\frac{n \times (n-1)}{2} = \frac{n^2}{2}-\frac{n}{2} \therefore O(n^2)$
-}
-\end{enumerate}	
-\end{column}
-\begin{column}{0.5\linewidth}
-\begin{figure}[h]
-	\centering
-	\includegraphics[height=0.5\paperheight]{contagem/contagem03.jpg}
-\end{figure}
-{\fontsize{0}{4}\selectfont{}\textbf{GNUPLOT:}
-\verbatiminput{contagem/contagem03.gnuplot}
-}
-\end{column}
-\end{columns}
-\end{frame}
-
-\begin{comment}
-int f4(n)
-    r=0
-    for (i=1; i<n; i++)
-        for (j=i; j<2*i; j++)
-            for (k=i; k<j; k++)
-                r = r + 1
-     return r
-\end{comment}
-
-%-------------------------------------------------------
-\begin{frame}[fragile]\frametitle{Exercício: soluções (4/6)}
-\begin{columns}[T]
-\begin{column}{0.5\linewidth}
-%\vspace{-4mm}
-\begin{enumerate}
-	\setcounter{enumi}{3}
-	\item {\scriptsize\lstinputlisting{contagem/contagem04.c}}
-{\tiny
-\begin{verbatim}
-n = 10  /  i = 0  /  j = 
-           i = 1  /  j = 0..1
-           i = 2  /  j = 0..3
-           i = 3  /  j = 0..5
-           i = 4  /  j = 0..7
-           i = 5  /  j = 0..9
-           i = 6  /  j = 0..11
-           i = 7  /  j = 0..13
-           i = 8  /  j = 0..15
-           i = 9  /  j = 0..17  [op = 90]
-\end{verbatim}
-Número de operações: $n \times (n-1) = n^2 - n \therefore O(n^2)$
-}
-\end{enumerate}
-\end{column}
-\begin{column}{0.5\linewidth}
-\begin{figure}[h]
-	\centering
-	\includegraphics[height=0.5\paperheight]{contagem/contagem04.jpg}
-\end{figure}
-{\fontsize{0}{4}\selectfont{}\textbf{GNUPLOT:}
-\verbatiminput{contagem/contagem04.gnuplot}
-}
-\end{column}
-\end{columns}
-\end{frame}
-
-%-------------------------------------------------------
-\begin{frame}[fragile]\frametitle{Exercício: soluções (5/6)}
-\begin{columns}[T]
-\begin{column}{0.5\linewidth}
-%\vspace{-4mm}
-\begin{enumerate}
-	\setcounter{enumi}{4}
-	\item {\scriptsize\lstinputlisting{contagem/contagem05.c}}
-{\tiny
-\begin{verbatim}
-n = 10  / i = 0  /  j = 0  /  k = 
-                    j = 1  /  k = 0
-                    j = 2  /  k = 0..1
-          i = 1  /  j = 1  /  k = 
-                    j = 2  /  k = 1
-                    j = 3  /  k = 1..2
-          ...
-          i = 9  /  j = 9  /  k = 
-                    j = 10 /  k = 9
-                    j = 11 /  k = 9..10   [op = 30]
-\end{verbatim}
-Número de operações: $n \times 3 = 3n \therefore O(n)$
-}
-\end{enumerate}
-\end{column}
-\begin{column}{0.5\linewidth}
-\begin{figure}[h]
-	\centering
-	\includegraphics[height=0.5\paperheight]{contagem/contagem05.jpg}
-\end{figure}
-{\fontsize{0}{4}\selectfont{}\textbf{GNUPLOT:}
-\verbatiminput{contagem/contagem05.gnuplot}
-}
-\end{column}
-\end{columns}
-\end{frame}
-
-%-------------------------------------------------------
-\begin{frame}[fragile]\frametitle{Exercício: soluções (6/6)}
-\begin{columns}[T]
-\begin{column}{0.5\linewidth}
-%\vspace{-4mm}
-\begin{enumerate}
-	\setcounter{enumi}{5	}
-	\item {\scriptsize\lstinputlisting{contagem/contagem06.c}}
-{\tiny
-\begin{verbatim}
-n = 1  [op = 1]	
-n = 2  [op = 3]
-n = 3  [op = 7]
-n = 4  [op = 15]
-n = 5  [op = 31]
-n = 6  [op = 63]
-n = 7  [op = 127]
-n = 8  [op = 255]
-n = 9  [op = 511]
-\end{verbatim}
-Número de operações: $2^{n}-1 \therefore O(2^{n})$
-}
-\end{enumerate}
-\end{column}
-\begin{column}{0.5\linewidth}
-\begin{figure}[h]
-	\centering
-	\includegraphics[height=0.5\paperheight]{contagem/contagem06.jpg}
-\end{figure}
-{\fontsize{0}{4}\selectfont{}\textbf{GNUPLOT:}
-\verbatiminput{contagem/contagem06.gnuplot}
-}
 \end{column}
 \end{columns}
 \end{frame}
@@ -1027,7 +741,7 @@ Número de operações: $2^{n}-1 \therefore O(2^{n})$
 \section{Exercícios}
 
 %-------------------------------------------------------
-\begin{frame}\frametitle{Exercício 1}
+\begin{frame}\frametitle{Exercício 4}
 Dois algoritmos para resolver o mesmo problema foram analisados e concluiu-se que eles executam os seguintes números de operações:\\
 \begin{itemize}
 	\item Algoritmo A: $f_{A}(n) = 2n^2 + 5n$ operações
@@ -1037,36 +751,36 @@ Qual desses algoritmos consiste na melhor solução? Analise o número de opera�
 \end{frame}
 
 %-------------------------------------------------------
-\begin{frame}[fragile]\frametitle{Exercício 2}
+\begin{frame}[fragile]\frametitle{Exercício 5 (1/2)}
 Analise os algoritmos abaixo e identifique a sua classe de complexidade. Para verificar se a sua resposta está correta, implemente cada algoritmo, teste com diferentes valores de $n$ e gere um gráfico usando o GNUPLOT.
 \vspace{-4mm}
 \begin{columns}[T]
 \begin{column}{0.5\linewidth}
-\begin{enumerate}
-	\item {\scriptsize\lstinputlisting{contagem/contagem07.c}}
+\begin{enumerate}[a]
+	\item {\scriptsize\lstinputlisting{src/exercicio05a.c}}
 \vspace{-4mm}
-	\item {\scriptsize\lstinputlisting{contagem/contagem08.c}}
+	\item {\scriptsize\lstinputlisting{src/exercicio05b.c}}
 \end{enumerate}
 \end{column}
 \begin{column}{0.5\linewidth}
-\begin{enumerate}
+\begin{enumerate}[a]
 	\setcounter{enumi}{2}
-	\item {\scriptsize\lstinputlisting{contagem/contagem09.c}}
+	\item {\scriptsize\lstinputlisting{src/exercicio05c.c}}
 \vspace{-4mm}
-	\item {\scriptsize\lstinputlisting{contagem/contagem10.c}}
+	\item {\scriptsize\lstinputlisting{src/exercicio05d.c}}
 \end{enumerate}
 	\end{column}
 \end{columns}
 \end{frame}
 
 %-------------------------------------------------------
-\begin{frame}[fragile]\frametitle{Exercício 2}
+\begin{frame}[fragile]\frametitle{Exercício 5 (2/2)}
 \begin{columns}[T]
 \begin{column}{0.5\linewidth}
-\begin{enumerate}
+\begin{enumerate}[a]
 	\setcounter{enumi}{4}
-	\item {\scriptsize\lstinputlisting{contagem/contagem11.c}}
-	\item {\scriptsize\lstinputlisting{contagem/contagem12.c}}
+	\item {\scriptsize\lstinputlisting{src/exercicio05e.c}}
+	\item {\scriptsize\lstinputlisting{src/exercicio05f.c}}
 \end{enumerate}
 \end{column}
 \begin{column}{0.5\linewidth}
@@ -1075,7 +789,7 @@ Analise os algoritmos abaixo e identifique a sua classe de complexidade. Para ve
 \end{frame}
 
 %-------------------------------------------------------
-\begin{frame}\frametitle{Exercício 3}
+\begin{frame}\frametitle{Exercício 6}
 Faça um algoritmo para o problema abaixo e analise a sua complexidade.\\
 ~\\
 Problema:
@@ -1100,7 +814,7 @@ Exemplo:
 \section{Notação $O$}
 
 \newcommand{\sep}{\hspace*{.5em}}
-	%-------------------------------------------------------
+%-------------------------------------------------------
 \begin{frame}\frametitle{Notação $O$}
 \begin{itemize}
 	\item O número de passos durante a execução de um algoritmo pode variar
@@ -1417,7 +1131,7 @@ $f(n) \in O(g(n))$
 \end{frame}
 
 %-------------------------------------------------------
-\begin{frame}[fragile]\frametitle{Exercício 1} % Fonte: https://create.kahoot.it/details/2e37a282-4d9d-4902-8afc-9b827ed393fc
+\begin{frame}[fragile]\frametitle{Exercício 7} % Fonte: https://create.kahoot.it/details/2e37a282-4d9d-4902-8afc-9b827ed393fc
 Qual a complexidade do algoritmo abaixo?
 {\scriptsize
 \begin{verbatim}
@@ -1439,7 +1153,7 @@ for (i=1; i<=n; ++i)
 \end{frame}
 
 %-------------------------------------------------------
-\begin{frame}[fragile]\frametitle{Exercício 2} % Fonte: https://create.kahoot.it/details/2e37a282-4d9d-4902-8afc-9b827ed393fc
+\begin{frame}[fragile]\frametitle{Exercício 8} % Fonte: https://create.kahoot.it/details/2e37a282-4d9d-4902-8afc-9b827ed393fc
 Qual a complexidade do algoritmo abaixo?
 {\scriptsize
 \begin{verbatim}
@@ -1459,7 +1173,7 @@ int busca(v[1..N] : inteiro, elem : inteiro)
 \end{frame}
 
 %-------------------------------------------------------
-\begin{frame}[fragile]\frametitle{Exercício 3} % Fonte: P1 (2023/1) - Iaçanã Ianiski Weber
+\begin{frame}[fragile]\frametitle{Exercício 9} % Fonte: P1 (2023/1) - Iaçanã Ianiski Weber
 Analise os trechos de algoritmos abaixo e identifique suas respectivas classes de complexidade.
 
 \begin{columns}[T]
@@ -1517,7 +1231,7 @@ for (i=0; i < 127; i++)
 \end{frame}
 
 %-------------------------------------------------------
-\begin{frame}[fragile]\frametitle{Exercício 4} % Fonte: P1 (2023/1) - Iaçanã Ianiski Weber
+\begin{frame}[fragile]\frametitle{Exercício 10} % Fonte: P1 (2023/1) - Iaçanã Ianiski Weber
 Considere as seguintes funções:
 \[ f_1(n) = O(n) \qquad f_2(n) = O(\log{n}) \qquad f_3(n) = O(2^n) \qquad f_4(n) = O(n^2) \]
 A sequência que apresenta as funções acima ordenadas, pela sua taxa de crescimento, de forma crescente é:
@@ -1531,16 +1245,16 @@ A sequência que apresenta as funções acima ordenadas, pela sua taxa de cresci
 \end{frame}
 
 %-------------------------------------------------------
-\begin{frame}[fragile]\frametitle{Exercício 5} % Fonte: P1 (2023/1) - Iaçanã Ianiski Weber
+\begin{frame}[fragile]\frametitle{Exercício 11} % Fonte: P1 (2023/1) - Iaçanã Ianiski Weber
 Qual a notação $O$ dos algoritmos que têm as seguintes taxas de crescimento assintóticas?
 \begin{enumerate}[a]
-	\item $3n\log{n} + 2n + 5$      % $O(n)$
+	\item $3n\log{n} + 2n + 5$      % $O(n\log{n})$
 	\item $1000n\log{n} + 15n^3$    % $O(n^3)$
-	\item $8 \log{n} + n$           % $O(n)$
-	\item $500n^5 + 2n$             % $O(2^n)$
+	\item $8\log{n} + n$            % $O(n)$
+	\item $500n^5 + 2^n$            % $O(2^n)$
 	\item $10\log{n} + 1521$        % $O(\log{n})$
 	\item $3n + 4500n$              % $O(n)$
-	\item $3n + 753\log{n} + 4$     % $O(n)$s
+	\item $3n + 753\log{n} + 4$     % $O(n)$
 \end{enumerate}
 	\end{frame}
 
@@ -1552,6 +1266,489 @@ Qual a notação $O$ dos algoritmos que têm as seguintes taxas de crescimento a
 \begin{itemize}
 	\item Estas lâminas contêm trechos de materiais criados e disponibilizados pelos professores Isabe Harb Manssour e Iaçanã Ianiski Weber.
 \end{itemize}
+\end{frame}
+
+%=======================================================
+\section{Soluções}
+
+%-------------------------------------------------------
+\begin{frame}[fragile]\frametitle{Exercício 1: \emph{Bubble Sort} (primeira implementação)}
+{\scriptsize\lstinputlisting{bubble_sort/bubble_sort1.c}}
+\end{frame}
+
+%-------------------------------------------------------
+\begin{frame}[fragile]\frametitle{Exercício 1: \emph{Bubble Sort} (gráfico da primeira implementação)}
+\vspace{-5mm}
+\begin{columns}[T]
+\begin{column}{0.6\linewidth}
+\begin{figure}[h]
+	\centering
+	\includegraphics[height=0.75\paperheight]{bubble_sort/grafico1.jpg}
+\end{figure}
+\end{column}
+\begin{column}{0.4\linewidth}
+\vspace{5mm}
+{\fontsize{0}{4}\selectfont{}\textbf{GNUPLOT:}
+\verbatiminput{bubble_sort/grafico1.gnuplot}
+}
+\end{column}
+\end{columns}
+\end{frame}
+
+%-------------------------------------------------------
+\begin{frame}[fragile]\frametitle{Exercício 2: \emph{Bubble Sort} otimizado}
+{\scriptsize\lstinputlisting{bubble_sort/bubble_sort2.c}}
+\end{frame}
+
+%-------------------------------------------------------
+\begin{frame}[fragile]\frametitle{Exercício 2: \emph{Bubble Sort} otimizado (comandos do \texttt{gnuplot})}
+\begin{verbatim}
+set xlabel "n" font "Arial,16"
+set ylabel "t(us)" font "Arial,16"
+plot "curva1.txt" with lines title "Bubble Sort",
+     "curva2.txt" with lines title "Bubble Sort Otimizado"
+\end{verbatim}
+\end{frame}
+
+%-------------------------------------------------------
+\begin{frame}[fragile]\frametitle{Exercício 2: \emph{Bubble Sort} (gráfico das duas implementações)}
+\vspace{-5mm}
+\begin{columns}[T]
+\begin{column}{0.6\linewidth}
+\begin{figure}[h]
+	\centering
+	\includegraphics[height=0.75\paperheight]{bubble_sort/grafico2.jpg}
+\end{figure}
+\end{column}
+\begin{column}{0.4\linewidth}
+\vspace{5mm}
+{\fontsize{0}{4}\selectfont{}\textbf{GNUPLOT:}
+\verbatiminput{bubble_sort/grafico2.gnuplot}
+}
+\end{column}
+\end{columns}
+\end{frame}
+
+%-------------------------------------------------------
+\begin{frame}[fragile]\frametitle{Exercício 3}
+\begin{columns}[T]
+\begin{column}{0.5\linewidth}
+%\vspace{-4mm}
+\begin{enumerate}[a]
+	\setcounter{enumi}{0}
+	\item {\scriptsize\lstinputlisting{src/exercicio03a.c}}
+{\tiny
+\begin{verbatim}
+n = 10   /  i = 0..9    [op = 10]
+
+n = 20   /  i = 0..19   [op = 20]
+
+n = 50   /  i = 0..49   [op = 50]
+
+n = 100  /  i = 0..99   [op = 100]
+
+n = 1000 /  i = 0..999  [op = 1000]
+\end{verbatim}
+Número de operações: $n \therefore O(n)$
+}
+\end{enumerate}
+\end{column}
+\begin{column}{0.5\linewidth}
+\begin{figure}[h]
+	\centering
+		\includegraphics[height=0.5\paperheight]{src/exercicio03a.jpg}
+\end{figure}
+{\fontsize{0}{4}\selectfont{}\textbf{GNUPLOT:}
+\verbatiminput{src/exercicio03a.gnuplot}
+}
+\end{column}
+\end{columns}
+\end{frame}
+
+%-------------------------------------------------------
+\begin{frame}[fragile]\frametitle{Exercício 3}
+\begin{columns}[T]
+\begin{column}{0.5\linewidth}
+%\vspace{-4mm}
+\begin{enumerate}[a]
+	\setcounter{enumi}{1}
+	\item {\scriptsize\lstinputlisting{src/exercicio03b.c}}
+{\tiny
+\begin{verbatim}
+n = 10  /  i = 0  /  j = 0..9
+           i = 1  /  j = 0..9
+           i = 2  /  j = 0..9
+           i = 3  /  j = 0..9
+           i = 4  /  j = 0..9
+           i = 5  /  j = 0..9
+           i = 6  /  j = 0..9
+           i = 7  /  j = 0..9
+           i = 8  /  j = 0..9
+           i = 9  /  j = 0..9  [op = 100]
+\end{verbatim}
+Número de operações: $n \times n = n^{2} \therefore O(n^2)$
+}
+\end{enumerate}
+\end{column}
+\begin{column}{0.5\linewidth}
+\begin{figure}[h]
+	\centering
+	\includegraphics[height=0.5\paperheight]{src/exercicio03b.jpg}
+\end{figure}
+{\fontsize{0}{4}\selectfont{}\textbf{GNUPLOT:}
+\verbatiminput{src/exercicio03b.gnuplot}
+}
+\end{column}
+\end{columns}
+\end{frame}
+
+%-------------------------------------------------------
+\begin{frame}[fragile]\frametitle{Exercício 3}
+\begin{columns}[T]
+\begin{column}{0.5\linewidth}
+%\vspace{-4mm}
+\begin{enumerate}[a]
+	\setcounter{enumi}{2}
+	\item {\scriptsize\lstinputlisting{src/exercicio03c.c}}
+{\tiny
+\begin{verbatim}
+n = 10  /  i = 0  /  j = 1,2,3,4,5,6,7,8,9
+           i = 1  /  j = 2,3,4,5,6,7,8,9
+           i = 2  /  j = 3,4,5,6,7,8,9
+           i = 3  /  j = 4,5,6,7,8,9
+           i = 4  /  j = 5,6,7,8,9
+           i = 5  /  j = 6,7,8,9
+           i = 6  /  j = 7,8,9
+           i = 7  /  j = 8,9
+           i = 8  /  j = 9
+           i = 9  /  j =        [op = 45]
+\end{verbatim}
+Número de operações: $\frac{n \times (n-1)}{2} = \frac{n^2}{2}-\frac{n}{2} \therefore O(n^2)$
+}
+\end{enumerate}	
+\end{column}
+\begin{column}{0.5\linewidth}
+\begin{figure}[h]
+	\centering
+	\includegraphics[height=0.5\paperheight]{src/exercicio03c.jpg}
+\end{figure}
+{\fontsize{0}{4}\selectfont{}\textbf{GNUPLOT:}
+\verbatiminput{src/exercicio03c.gnuplot}
+}
+\end{column}
+\end{columns}
+\end{frame}
+
+\begin{comment}
+int f4(n)
+    r=0
+    for (i=1; i<n; i++)
+        for (j=i; j<2*i; j++)
+            for (k=i; k<j; k++)
+                r = r + 1
+     return r
+\end{comment}
+
+%-------------------------------------------------------
+\begin{frame}[fragile]\frametitle{Exercício 3}
+\begin{columns}[T]
+\begin{column}{0.5\linewidth}
+%\vspace{-4mm}
+\begin{enumerate}[a]
+	\setcounter{enumi}{3}
+	\item {\scriptsize\lstinputlisting{src/exercicio03d.c}}
+{\tiny
+\begin{verbatim}
+n = 10  /  i = 0  /  j = 
+           i = 1  /  j = 0..1
+           i = 2  /  j = 0..3
+           i = 3  /  j = 0..5
+           i = 4  /  j = 0..7
+           i = 5  /  j = 0..9
+           i = 6  /  j = 0..11
+           i = 7  /  j = 0..13
+           i = 8  /  j = 0..15
+           i = 9  /  j = 0..17  [op = 90]
+\end{verbatim}
+Número de operações: $n \times (n-1) = n^2 - n \therefore O(n^2)$
+}
+\end{enumerate}
+\end{column}
+\begin{column}{0.5\linewidth}
+\begin{figure}[h]
+	\centering
+	\includegraphics[height=0.5\paperheight]{src/exercicio03d.jpg}
+\end{figure}
+{\fontsize{0}{4}\selectfont{}\textbf{GNUPLOT:}
+\verbatiminput{src/exercicio03d.gnuplot}
+}
+\end{column}
+\end{columns}
+\end{frame}
+
+%-------------------------------------------------------
+\begin{frame}[fragile]\frametitle{Exercício 3}
+\begin{columns}[T]
+\begin{column}{0.5\linewidth}
+%\vspace{-4mm}
+\begin{enumerate}[a]
+	\setcounter{enumi}{4}
+	\item {\scriptsize\lstinputlisting{src/exercicio03e.c}}
+{\tiny
+\begin{verbatim}
+n = 10  / i = 0  /  j = 0  /  k = 
+                    j = 1  /  k = 0
+                    j = 2  /  k = 0..1
+          i = 1  /  j = 1  /  k = 
+                    j = 2  /  k = 1
+                    j = 3  /  k = 1..2
+          ...
+          i = 9  /  j = 9  /  k = 
+                    j = 10 /  k = 9
+                    j = 11 /  k = 9..10   [op = 30]
+\end{verbatim}
+Número de operações: $n \times 3 = 3n \therefore O(n)$
+}
+\end{enumerate}
+\end{column}
+\begin{column}{0.5\linewidth}
+\begin{figure}[h]
+	\centering
+	\includegraphics[height=0.5\paperheight]{src/exercicio03e.jpg}
+\end{figure}
+{\fontsize{0}{4}\selectfont{}\textbf{GNUPLOT:}
+\verbatiminput{src/exercicio03e.gnuplot}
+}
+\end{column}
+\end{columns}
+\end{frame}
+
+%-------------------------------------------------------
+\begin{frame}[fragile]\frametitle{Exercício 3}
+\begin{columns}[T]
+\begin{column}{0.5\linewidth}
+%\vspace{-4mm}
+\begin{enumerate}[a]
+	\setcounter{enumi}{5}
+	\item {\scriptsize\lstinputlisting{src/exercicio03f.c}}
+{\tiny
+\begin{verbatim}
+n = 1  [op = 1]	
+n = 2  [op = 3]
+n = 3  [op = 7]
+n = 4  [op = 15]
+n = 5  [op = 31]
+n = 6  [op = 63]
+n = 7  [op = 127]
+n = 8  [op = 255]
+n = 9  [op = 511]
+\end{verbatim}
+Número de operações: $2^{n}-1 \therefore O(2^{n})$
+}
+\end{enumerate}
+\end{column}
+\begin{column}{0.5\linewidth}
+\begin{figure}[h]
+	\centering
+	\includegraphics[height=0.5\paperheight]{src/exercicio03f.jpg}
+\end{figure}
+{\fontsize{0}{4}\selectfont{}\textbf{GNUPLOT:}
+\verbatiminput{src/exercicio03f.gnuplot}
+}
+\end{column}
+\end{columns}
+\end{frame}
+
+%-------------------------------------------------------
+\begin{frame}[fragile]\frametitle{Exercício 4}
+...
+\end{frame}
+
+%-------------------------------------------------------
+\begin{frame}[fragile]\frametitle{Exercício 5}
+\begin{columns}[T]
+\begin{column}{0.5\linewidth}
+%\vspace{-4mm}
+\begin{enumerate}[a]
+	\setcounter{enumi}{0}
+	\item {\scriptsize\lstinputlisting{src/exercicio05a.c}}
+\end{enumerate}
+\end{column}
+\begin{column}{0.5\linewidth}
+\begin{figure}[h]
+	\centering
+		\includegraphics[height=0.5\paperheight]{src/exercicio05a.jpg}
+\end{figure}
+{\fontsize{0}{4}\selectfont{}\textbf{GNUPLOT:}
+\verbatiminput{src/exercicio05a.gnuplot}
+}
+\end{column}
+\end{columns}
+\end{frame}
+
+%-------------------------------------------------------
+\begin{frame}[fragile]\frametitle{Exercício 5}
+\begin{columns}[T]
+\begin{column}{0.5\linewidth}
+%\vspace{-4mm}
+\begin{enumerate}[a]
+	\setcounter{enumi}{1}
+	\item {\scriptsize\lstinputlisting{src/exercicio05b.c}}
+\end{enumerate}
+\end{column}
+\begin{column}{0.5\linewidth}
+\begin{figure}[h]
+	\centering
+		\includegraphics[height=0.5\paperheight]{src/exercicio05b.jpg}
+\end{figure}
+{\fontsize{0}{4}\selectfont{}\textbf{GNUPLOT:}
+\verbatiminput{src/exercicio05b.gnuplot}
+}
+\end{column}
+\end{columns}
+\end{frame}
+
+%-------------------------------------------------------
+\begin{frame}[fragile]\frametitle{Exercício 5}
+\begin{columns}[T]
+\begin{column}{0.5\linewidth}
+%\vspace{-4mm}
+\begin{enumerate}[a]
+	\setcounter{enumi}{2}
+	\item {\scriptsize\lstinputlisting{src/exercicio05c.c}}
+\end{enumerate}
+\end{column}
+\begin{column}{0.5\linewidth}
+\begin{figure}[h]
+	\centering
+		\includegraphics[height=0.5\paperheight]{src/exercicio05c.jpg}
+\end{figure}
+{\fontsize{0}{4}\selectfont{}\textbf{GNUPLOT:}
+\verbatiminput{src/exercicio05c.gnuplot}
+}
+\end{column}
+\end{columns}
+\end{frame}
+
+%-------------------------------------------------------
+\begin{frame}[fragile]\frametitle{Exercício 5}
+\begin{columns}[T]
+\begin{column}{0.5\linewidth}
+%\vspace{-4mm}
+\begin{enumerate}[a]
+	\setcounter{enumi}{3}
+	\item {\scriptsize\lstinputlisting{src/exercicio05d.c}}
+\end{enumerate}
+\end{column}
+\begin{column}{0.5\linewidth}
+\begin{figure}[h]
+	\centering
+		\includegraphics[height=0.5\paperheight]{src/exercicio05d.jpg}
+\end{figure}
+{\fontsize{0}{4}\selectfont{}\textbf{GNUPLOT:}
+\verbatiminput{src/exercicio05d.gnuplot}
+}
+\end{column}
+\end{columns}
+\end{frame}
+
+%-------------------------------------------------------
+\begin{frame}[fragile]\frametitle{Exercício 5}
+\begin{columns}[T]
+\begin{column}{0.5\linewidth}
+%\vspace{-4mm}
+\begin{enumerate}[a]
+	\setcounter{enumi}{4}
+	\item {\scriptsize\lstinputlisting{src/exercicio05e.c}}
+\end{enumerate}
+\end{column}
+\begin{column}{0.5\linewidth}
+\begin{figure}[h]
+	\centering
+		\includegraphics[height=0.5\paperheight]{src/exercicio05e.jpg}
+\end{figure}
+{\fontsize{0}{4}\selectfont{}\textbf{GNUPLOT:}
+\verbatiminput{src/exercicio05e.gnuplot}
+}
+\end{column}
+\end{columns}
+\end{frame}
+
+%-------------------------------------------------------
+\begin{frame}[fragile]\frametitle{Exercício 5}
+\begin{columns}[T]
+\begin{column}{0.5\linewidth}
+%\vspace{-4mm}
+\begin{enumerate}[a]
+	\setcounter{enumi}{5}
+	\item {\scriptsize\lstinputlisting{src/exercicio05f.c}}
+\end{enumerate}
+\end{column}
+\begin{column}{0.5\linewidth}
+\begin{figure}[h]
+	\centering
+		\includegraphics[height=0.5\paperheight]{src/exercicio05f.jpg}
+\end{figure}
+{\fontsize{0}{4}\selectfont{}\textbf{GNUPLOT:}
+\verbatiminput{src/exercicio05f.gnuplot}
+}
+\end{column}
+\end{columns}
+\end{frame}
+
+%-------------------------------------------------------
+\begin{frame}[fragile]\frametitle{Exercício 6}
+...
+\end{frame}
+
+%-------------------------------------------------------
+\begin{frame}[fragile]\frametitle{Exercício 7}
+\begin{enumerate}[A]
+	\setcounter{enumi}{1}
+	\item $O(n^2)$ % CERTA (B)
+\end{enumerate}
+\end{frame}
+
+%-------------------------------------------------------
+\begin{frame}[fragile]\frametitle{Exercício 8}
+\begin{enumerate}[A]
+	\setcounter{enumi}{0}
+	\item $O(n)$ % CERTA (A)
+\end{enumerate}
+\end{frame}
+
+%-------------------------------------------------------
+\begin{frame}[fragile]\frametitle{Exercício 9}
+\begin{enumerate}[a]
+	\setcounter{enumi}{0}
+	\item \textbf{Algoritmo I:} $O(n^2)$ (quadrático)
+	\item \textbf{Algoritmo II:} $O(\log{n})$
+	\item \textbf{Algoritmo III:} $O(n^3)$ (cúbico)
+	\item \textbf{Algoritmo IV:} $O(n^2)$ (quadrático)
+	\item \textbf{Algoritmo V:} $O(1)$ (constante)
+\end{enumerate}
+\end{frame}
+
+%-------------------------------------------------------
+\begin{frame}[fragile]\frametitle{Exercício 10}
+\begin{enumerate}[A]
+	\setcounter{enumi}{0}
+	\item $f_2$ -- $f_1$ -- $f_4$ -- $f_3$ % CERTA (A)
+\end{enumerate}
+\end{frame}
+
+%-------------------------------------------------------
+\begin{frame}[fragile]\frametitle{Exercício 11}
+\begin{enumerate}[a]
+	\setcounter{enumi}{0}
+	\item $3n\log{n} + 2n + 5$ é $O(n\log{n})$
+	\item $1000n\log{n} + 15n^3$ é $O(n^3)$
+	\item $8\log{n} + n$ é $O(n)$
+	\item $500n^5 + 2^n$ é $O(2^n)$
+	\item $10\log{n} + 1521$ é $O(\log{n})$
+	\item $3n + 4500n$ é $O(n)$
+	\item $3n + 753\log{n} + 4$ é $O(n)$
+\end{enumerate}
 \end{frame}
 
 %-------------------------------------------------------
