@@ -51,7 +51,7 @@ NodeBT<T>::NodeBT(T const &i) {
 
 template <typename T>
 NodeBT<T>::~NodeBT() {
-  delete left;  delete right;
+  if (left != nullptr) delete left;  if (right != nullptr) delete right;
   #ifdef DEBUG
   cerr << "- NodeBT<>(" << info << ") deleted..." << endl;
   #endif
@@ -64,12 +64,12 @@ template <typename T> NodeBT<T> *NodeBT<T>::getLeft() const { return left; }
 template <typename T> NodeBT<T> *NodeBT<T>::getRight() const { return right; }
 
 template <typename T> void NodeBT<T>::setLeft(NodeBT *subtree) {
-  left = subtree;
+  if (left != nullptr) delete left;  left = subtree;
   if (subtree != nullptr) subtree->parent = this;
 }
 
 template <typename T> void NodeBT<T>::setRight(NodeBT *subtree) {
-  right = subtree;
+  if (right != nullptr) delete right;  right = subtree;
   if (subtree != nullptr) subtree->parent = this;
 }
 
@@ -92,7 +92,7 @@ int NodeBT<T>::depth() const {
   NodeBT *aux = parent;
   while (aux != nullptr) {
      ++res;
-     aux = aux->getParent();
+     aux = aux->parent;
   }
   return res;
 }

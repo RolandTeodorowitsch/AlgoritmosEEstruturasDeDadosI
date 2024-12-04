@@ -1,28 +1,26 @@
 #include <sstream>
 #include "StringArrayList.hpp"
 
-using namespace std;
-
 StringArrayList::StringArrayList(int mxSz) {
   numElements = 0;  maxElements = ( mxSz < 1 ) ? 10 : mxSz;
   list = new string[maxElements];
 }
 
-StringArrayList::~StringArrayList() { delete[] list; }
-void StringArrayList::clear() { numElements = 0; }
-int StringArrayList::size() const { return numElements; }
-int StringArrayList::maxSize() const { return maxElements; }
-bool StringArrayList::isEmpty() const { return numElements == 0; }
-bool StringArrayList::isFull() const { return numElements == maxElements; }
+StringArrayList::~StringArrayList() {  delete[] list;  }
+void StringArrayList::clear() {  numElements = 0;  }
+int StringArrayList::size() const {  return numElements;  }
+int StringArrayList::maxSize() const {  return maxElements;  }
+bool StringArrayList::isEmpty() const {  return numElements == 0;  }
+bool StringArrayList::isFull() const {  return numElements == maxElements;  }
 
 bool StringArrayList::add(const string &s) {
-  if (numElements >= maxElements) return false;
+  if ( numElements == maxElements ) return false;
   list[ numElements++ ] = s;  
   return true;  
 }
 
 bool StringArrayList::add(const int index, const string &s) {
-  if (numElements >= maxElements) return false;
+  if ( numElements == maxElements || index < 0 || index > numElements ) return false;
   for (int i=numElements; i>index; --i)
       list[i] = list[i-1];
   list[index] = s;
@@ -31,9 +29,10 @@ bool StringArrayList::add(const int index, const string &s) {
 }
 
 bool StringArrayList::remove(const int index) {
-  if (index < 0 || index >= numElements) return false;
+  if ( index < 0 || index >= numElements ) return false;
   --numElements;
-  for (int i=index; i<numElements; ++i) list[i] = list[i+1];
+  for (int i=index; i<numElements; ++i)
+      list[i] = list[i+1];
   return true;
 }
 
@@ -54,9 +53,7 @@ bool StringArrayList::contains(const string &s) {
   return false;
 }
 
-int StringArrayList::indexOf(const string &s) {
-  return indexOf(0,s);
-}
+int StringArrayList::indexOf(const string &s) {  return indexOf(0,s);  }
 
 int StringArrayList::indexOf(int index, const string &s) {
   if ( index < 0 || index >= numElements ) return -1;
@@ -65,7 +62,7 @@ int StringArrayList::indexOf(int index, const string &s) {
 }
 
 string StringArrayList::str() const {
-  int i;   stringstream ss;
-  for (i=0; i<numElements; ++i) ss << list[i];
+  stringstream ss;
+  for (int i=0; i<numElements; ++i) ss << list[i];
   return ss.str();
 }

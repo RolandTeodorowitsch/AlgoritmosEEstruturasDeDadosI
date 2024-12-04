@@ -39,7 +39,7 @@
 \title[\sc{Algoritmos de Ordenação}]{Algoritmos de Ordenação}
 \author[Roland Teodorowitsch]{Roland Teodorowitsch}
 \institute[ALEST I - EP - PUCRS]{Algoritmos e Estruturas de Dados I - Escola Politécnica - PUCRS}
-\date{27 de agosto de 2024}
+\date{29 de agosto de 2024}
 
 \begin{document}
 
@@ -550,6 +550,37 @@ algorithm particiona(A, lo, hi) is
 \end{frame}
 
 %=======================================================
+\section{Ordenando Tipos Não-Primitivos}
+
+%-------------------------------------------------------
+\begin{frame}[fragile]\frametitle{Ordenando Tipos Não-Primitivos}
+\begin{itemize}
+	\item A ordenação de tipos que não sejam primitivos (\texttt{int}, \texttt{char}, \texttt{double}, etc.) pode variar de linguagem para linguagem
+	\item Para ordenar uma coleção de cadeias de caracteres:
+	\begin{itemize}
+		\item em C++, como os operadores relacionais estão sobrecarregados para \texttt{string}, a comparação funcionará de forma semelhante à dos tipos primitivos
+		\item em C, será necessário usar, por exemplo, a função \texttt{strcmp()}
+		\item em Java, será necessário usar, por exemplo, o método \texttt{compareTo()}
+	\end{itemize}
+	\item Na ordenação de uma coleção de registros, geralmente define-se mais de um critério de ordenação (se houver empate em determinado critério, aplica-se o próximo critério)
+	\begin{itemize}
+		\item Por exemplo, para ordenar os times do Campeonato Brasileiro de Futebol os critérios são: pontos, maior número de vitórias, maior saldo de gols, maior número de gols pró, confronto direto, menor número de cartões vermelhos recebidos, menor número de cartões amarelos recebidos e sorteio
+	\end{itemize}
+	\item Neste caso é recomendável criar uma função ou método de comparação
+\end{itemize}
+\end{frame}
+
+%-------------------------------------------------------
+\begin{frame}\frametitle{Exemplo}
+\lstinputlisting[basicstyle=\ttfamily\tiny]{src/ordena_struct1.cpp}
+\end{frame}
+
+%-------------------------------------------------------
+\begin{frame}\frametitle{Exemplo em C++ (com sobrecarga de operador)}
+\lstinputlisting[basicstyle=\ttfamily\tiny]{src/ordena_struct2.cpp}
+\end{frame}
+
+%=======================================================
 \section{Comparação}
 
 %-------------------------------------------------------
@@ -717,15 +748,22 @@ algorithm particiona(A, lo, hi) is
 \end{frame}
 
 %-------------------------------------------------------
-\begin{frame}\frametitle{Exercícios 2, 3 e 4}
+\begin{frame}\frametitle{Exercício 2}
 \begin{enumerate}
         \setcounter{enumi}{1}
-	\item Adapte o código com a função \texttt{main()}, da lâmina anterior, para rodá-lo com as implementações de \emph{Bubble Sort}, \emph{Selection Sort}, \emph{Insertion Sort} e \emph{Merge Sort} (apresentadas nestas lâminas). Compare os tempos de execução de todas as implementações de algoritmos de ordenação.
-	\item O código da função \texttt{main()}, da lâmina anterior, executa testes com um vetor já ordenado (em ordem crescente), com um vetor invertido (ordenado em ordem decrescente) e com um vetor com valores aleatórios. Crie uma nova configuração de teste para um vetor com alto número de elementos duplicados, e teste todos os algoritmos para esta nova configuração.
-	\item Procure outros algoritmos de ordenação na Internet, implemente-os e adapte essas implementações para funcionarem no mesmo padrão dos testes executados anteriormente.
+	\item Escreva um programa em C++ que leia um número inteiro $N$ correspondendo ao tamanho de um vetor de inteiros e, na sequência, os $N$ valores inteiros desse vetor. Seu programa deve implementar o algoritmo \textbf{\emph{Bubble Sort}}, ordenando os valores inteiros lidos em \textbf{ordem crescente}. Após cada ``passagem'' (ou iteração principal) executada pelo algoritmo sobre os dados do vetor, seu programa deve imprimir na saída o resultado parcial do vetor.
 \end{enumerate}
 \end{frame}
 
+%-------------------------------------------------------
+\begin{frame}\frametitle{Exercícios 3, 4 e 5}
+\begin{enumerate}
+        \setcounter{enumi}{2}
+	\item Adapte o código com a função \texttt{main()} do exercício 1 para rodá-lo com as implementações de \emph{Bubble Sort}, \emph{Selection Sort}, \emph{Insertion Sort} e \emph{Merge Sort} (apresentadas nestas lâminas). Compare os tempos de execução de todas as implementações de algoritmos de ordenação.
+	\item O código da função \texttt{main()} do exercício 1 executa testes com um vetor já ordenado (em ordem crescente), com um vetor invertido (ordenado em ordem decrescente) e com um vetor com valores aleatórios. Crie uma nova configuração de teste para um vetor com alto número de elementos duplicados, e teste todos os algoritmos para esta nova configuração.
+	\item Procure outros algoritmos de ordenação na Internet, implemente-os e adapte essas implementações para funcionarem no mesmo padrão dos testes executados anteriormente.
+\end{enumerate}
+\end{frame}
 %=======================================================
 \section{Créditos}
 
@@ -740,13 +778,18 @@ algorithm particiona(A, lo, hi) is
 \section{Soluções}
 
 %-------------------------------------------------------
-\begin{frame}\frametitle{Solução: \emph{Quick Sort} (Hoare) em C/C++}
+\begin{frame}\frametitle{Exercício 1: \emph{Quick Sort} (Hoare) em C/C++}
 \lstinputlisting[basicstyle=\ttfamily\scriptsize]{src/quickSort1.cpp}
 \end{frame}
 
 %-------------------------------------------------------
-\begin{frame}\frametitle{Solução: \emph{Quick Sort} (Lomuto) em C/C++}
+\begin{frame}\frametitle{Exercício 1: \emph{Quick Sort} (Lomuto) em C/C++}
 \lstinputlisting[basicstyle=\ttfamily\tiny]{src/quickSort2.cpp}
+\end{frame}
+
+%-------------------------------------------------------
+\begin{frame}\frametitle{Exercício 2}
+\lstinputlisting[basicstyle=\ttfamily\tiny]{src/exercicio2.cpp}
 \end{frame}
 
 %-------------------------------------------------------
